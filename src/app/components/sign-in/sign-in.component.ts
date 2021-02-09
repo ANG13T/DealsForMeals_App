@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -8,11 +9,10 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent implements OnInit {
 
-  name: string = "";
   email: string = "";
   password: string = "";
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {}
 
@@ -20,8 +20,8 @@ export class SignInComponent implements OnInit {
     this.router.navigate([`/${route}`]);
   }
 
-  signIn(){
-    
+  async login(){
+    await this.userService.login(this.email, this.password);
   }
 
 }
