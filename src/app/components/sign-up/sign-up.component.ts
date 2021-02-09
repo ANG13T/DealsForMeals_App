@@ -12,7 +12,7 @@ export class SignUpComponent implements OnInit {
   name: string = "";
   email: string = "";
   password: string = "";
-  accountType: string = "";
+  accountType: string = "foodbank";
   errors = {password: "", name: "", email: ""};
 
   constructor(private router: Router, private userService: UserService) { }

@@ -10,9 +10,23 @@
 <div class="form">
   <div class="main">
     
-    <p>Organization Type</p>
-    <ion-checkbox color="primary">Foodbank</ion-checkbox>
-    <ion-checkbox color="secondary">Grocery Store / Donater</ion-checkbox>
+    <ion-list>
+      <ion-radio-group [(ngModel)]="accountType">
+        <ion-list-header>
+          <ion-label>Select an Option:</ion-label>
+        </ion-list-header>
+    
+        <ion-item>
+          <ion-label>Foodbank</ion-label>
+          <ion-radio slot="start" value="foodbank"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>Grocery Store / Donater</ion-label>
+          <ion-radio slot="start" value="store"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
 
     <p class="content">Organization Name:</p>
     <input type="text" [(ngModel)]="name"/>
@@ -27,7 +41,6 @@
     <p class="error">{{errors.password}}</p>
   </div>
 
-  <p>{{name}}</p>
-    <ion-button expand="block" color="secondary" class="sign-in-button" (click)="signUp()" [disabled]="!name || !email || !password || accountType == ''">Sign Up</ion-button>
+    <ion-button expand="block" color="secondary" class="sign-in-button" (click)="signUp()" [disabled]="!name || !email || !password || !accountType">Sign Up</ion-button>
     <p class="description">Already have an account? <a (click)="navigate('login')">Sign In.</a></p>
   </div>

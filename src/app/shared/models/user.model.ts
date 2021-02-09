@@ -3,6 +3,6 @@ export interface User {
     email: string;
     name: string;
     location: string;
-    accountType: 'donator' | 'food bank';
+    accountType: 'store' | 'foodbank';
     photoURL?: string;
   }
