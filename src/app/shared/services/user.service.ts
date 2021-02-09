@@ -34,11 +34,12 @@ export class UserService {
   async login(email, password){
     this.afAuth.signInWithEmailAndPassword(email, password).then((res) => {
       this.loggedIn = true;
-      this.router.navigate(['/profile']);
       console.log("Successful login")
+      this.router.navigate(['/profile']);
     })
     .catch((err) => {
-      alert("Something went wrong");
+      console.log(err)
+      throw new Error(err.code);
     })
   }
 

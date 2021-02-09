@@ -11,9 +11,12 @@
 <div class="main">
   <p class="content">Organization Email:</p>
   <input type="email" [(ngModel)]="email"/>
+  <p class="error">{{errors.email}}</p>
+
   <p class="content">Password:</p>
   <input type="password" [(ngModel)]="password" />
+  <p class="error">{{errors.password}}</p>
 </div>
-  <ion-button expand="block" color="secondary" class="sign-in-button" [disabled]="email == '' || password == ''">Sign In</ion-button>
+  <ion-button expand="block" color="secondary" class="sign-in-button" [disabled]="email == '' || password == ''" (click)="login()">Sign In</ion-button>
   <p class="description">Don't have an account? <a (click)="navigate('signup')">Sign Up.</a></p>
 </div>

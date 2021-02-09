@@ -11,6 +11,7 @@ export class SignInComponent implements OnInit {
 
   email: string = "";
   password: string = "";
+  errors = {email: "", password: ""};
 
   constructor(private router: Router, private userService: UserService) { }
 
@@ -22,7 +23,17 @@ export class SignInComponent implements OnInit {
 
   async login(){
     if(this.validateForm()){
-      await this.userService.login(this.email, this.password);
+      await this.userService.login(this.email, this.password).catch((err) => {
+        if(err == "auth/wrong-password"){
+          this.errors.password = "Incorrect password";
+          return;
+        }else if(err == "auth/user-not-found"){
+          this.errors.email = "User not found";
+          return;
+        }else{
+          alert("Error: " + err);
+        }
+      });
     }
   }
 
