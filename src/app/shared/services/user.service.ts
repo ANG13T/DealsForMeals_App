@@ -31,7 +31,7 @@ export class UserService {
     )
   }
 
-  async normalLogin(email, password){
+  async login(email, password){
     this.afAuth.signInWithEmailAndPassword(email, password).then((res) => {
       this.loggedIn = true;
       this.router.navigate(['/profile']);
@@ -42,7 +42,7 @@ export class UserService {
     })
   }
 
-  async normalSignin(displayName, accountType, userEmail, userPassword){
+  async signUp(displayName, accountType, userEmail, userPassword){
       let newUser : User = {
         name: displayName,
         uid: '',
@@ -60,7 +60,7 @@ export class UserService {
   }
 
   
-  async createUserData(user: User, password: string){
+  private async createUserData(user: User, password: string){
     if(user == null){
       console.log("Something went wrong.")
       return;
