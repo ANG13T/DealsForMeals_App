@@ -9,16 +9,23 @@
 
 <div class="form">
   <div class="main">
+    
     <p>Organization Type</p>
     <ion-checkbox color="primary">Foodbank</ion-checkbox>
     <ion-checkbox color="secondary">Grocery Store / Donater</ion-checkbox>
+
     <p class="content">Organization Name:</p>
-    <input type="text"/>
+    <input type="text" [(ngModel)]="name"/>
+    <p class="error">{{errors.name}}</p>
+
     <p class="content">Email:</p>
-    <input type="text"/>
+    <input type="email" [(ngModel)]="email"/>
+    <p class="error">{{errors.email}}</p>
+
     <p class="content">Password:</p>
-    <input type="text" />
+    <input type="password" [(ngModel)]="password" />
+    <p class="error">{{errors.password}}</p>
   </div>
-    <ion-button expand="block" color="secondary" class="sign-in-button">Sign In</ion-button>
+    <ion-button expand="block" color="secondary" class="sign-in-button" [disabled]="name == '' || password == '' || email == ''">Sign In</ion-button>
     <p class="description">Already have an account? <a (click)="navigate('login')">Sign In.</a></p>
   </div>

@@ -21,7 +21,18 @@ export class SignInComponent implements OnInit {
   }
 
   async login(){
-    await this.userService.login(this.email, this.password);
+    if(this.validateForm()){
+      await this.userService.login(this.email, this.password);
+    }
+  }
+
+  validateForm(){
+    return this.validateEmail(this.email);
+  }
+
+  validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
   }
 
 }
