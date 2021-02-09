@@ -26,6 +26,8 @@
     <input type="password" [(ngModel)]="password" />
     <p class="error">{{errors.password}}</p>
   </div>
-    <ion-button expand="block" color="secondary" class="sign-in-button" [disabled]="name == '' || password == '' || email == ''">Sign In</ion-button>
+
+  <p>{{name}}</p>
+    <ion-button expand="block" color="secondary" class="sign-in-button" (click)="signUp()" [disabled]="!name || !email || !password || accountType == ''">Sign Up</ion-button>
     <p class="description">Already have an account? <a (click)="navigate('login')">Sign In.</a></p>
   </div>
