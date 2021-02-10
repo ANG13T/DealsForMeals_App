@@ -1,21 +1,4 @@
-<ion-menu side="start" menuId="first" contentId="main">
-  <ion-header>
-    <ion-toolbar color="primary">
-      <ion-title>Profile</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>
-    <ion-list>
-      <ion-item>Menu Item</ion-item>
-      <ion-item>Menu Item</ion-item>
-      <ion-item>Menu Item</ion-item>
-      <ion-item>Menu Item</ion-item>
-      <ion-item>Menu Item</ion-item>
-    </ion-list>
-  </ion-content>
-</ion-menu>
-
-<div profile *ngIf="user">
+<div profile *ngIf="user" #content>
   <img src=`${user.photoURL}` alt="Profile Image" class="profile image" />
   <h2 class="profile-name">{{user.name}}</h2>
   <h2 class="profile-description">{{user.location}}</h2>
