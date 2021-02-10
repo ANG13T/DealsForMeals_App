@@ -24,12 +24,15 @@ export class SignInComponent implements OnInit {
   async login(){
     if(this.validateForm()){
       await this.userService.login(this.email, this.password).catch((err) => {
+        console.log("acheived error")
         if(err == "auth/wrong-password"){
           this.errors.password = "Incorrect password";
           return;
         }else if(err == "auth/user-not-found"){
           this.errors.email = "User not found";
           return;
+        }else if(err == "auth/invalid-email"){
+          this.errors.email = "Invalid email";
         }else{
           alert("Error: " + err);
         }
@@ -38,7 +41,12 @@ export class SignInComponent implements OnInit {
   }
 
   validateForm(){
-    return this.validateEmail(this.email);
+    if(!this.validateEmail(this.email)){
+      this.errors.email = "Invalid email";
+      return false;
+    }
+
+    return true;
   }
 
   validateEmail(email) {
