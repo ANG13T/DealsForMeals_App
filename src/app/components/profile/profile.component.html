@@ -1,4 +1,4 @@
-<ion-menu side="start" menuId="first" contentId="main">
+<ion-menu side="start" menuId="first" contentId="profile">
   <ion-header>
     <ion-toolbar color="primary">
       <ion-title>Profile</ion-title>
@@ -15,7 +15,7 @@
   </ion-content>
 </ion-menu>
 
-<div class="profile">
+<div profile *ngIf="user">
   <img src=`${user.photoURL}` alt="Profile Image" class="profile image" />
   <h2 class="profile-name">{{user.name}}</h2>
   <h2 class="profile-description">{{user.location}}</h2>
