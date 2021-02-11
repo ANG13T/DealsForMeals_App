@@ -1,4 +1,4 @@
-<ion-header translucent>
+<ion-header class="header">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button (click)="navigate('')" routerDirection="root"></ion-back-button>
@@ -8,6 +8,7 @@
 </ion-header>
 
 <div class="form">
+  <h1 class="title">Log Into <br /> Account</h1>
 <div class="main">
   <p class="content">Organization Email:</p>
   <input type="email" [(ngModel)]="email"/>
@@ -17,6 +18,6 @@
   <input type="password" [(ngModel)]="password" />
   <p class="error">{{errors.password}}</p>
 </div>
-  <ion-button expand="block" color="secondary" class="sign-in-button" [disabled]="email == '' || password == ''" (click)="login()">Sign In</ion-button>
+  <ion-button expand="block" class="sign-in-button" [disabled]="email == '' || password == ''" (click)="login()">Sign In</ion-button>
   <p class="description">Don't have an account? <a (click)="navigate('signup')">Sign Up.</a></p>
 </div>

@@ -1,0 +1,49 @@
+.form{
+    position: absolute;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    top: 20%;
+    width: 75%;
+    .main{
+
+    }
+}
+
+input{
+    width: 100%;
+    height: 2rem;
+    border-radius: 7px;
+    border-color: transparent;
+    background-color: #e3e4f9;
+    border: 1px solid #4043e1;
+}
+
+.header{
+    background-color: #4043E1;
+}
+
+.toolbar-background{
+    background-color: #4043E1;
+}
+
+.title{
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 2.8rem;
+    margin-bottom: 2rem;
+}
+
+.sign-in-button{
+    width: 100%;
+    margin: auto;
+    --background: #5979E9 !important;
+    --font-family: 'Roboto', sans-serif;
+    --color: white;
+    --text-align: center;
+    height: 2.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 2.5rem;
+    margin-bottom: 1.3rem;
+    --border-radius: 10px;
+  }
