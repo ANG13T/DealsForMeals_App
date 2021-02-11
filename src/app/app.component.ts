@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, NavController } from '@ionic/angular';
+import { HomePage } from './components/home/home.page';
+
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,18 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+
+
+  constructor(public platform: Platform) {
+    this.initializeApp();
+
+  }
+
+  initializeApp() {
+    this.platform.ready().then(() => {
+      // Okay, so the platform is ready and our plugins are available.
+      // Here you can do any higher level native things you might need.
+      
+    });
+  }
 }

@@ -31,16 +31,19 @@ export class UserService {
     )
   }
 
-  async login(email, password){
-    this.afAuth.signInWithEmailAndPassword(email, password).then((res) => {
+  async login(email, password): Promise<any>{
+    let promise = this.afAuth.signInWithEmailAndPassword(email, password).then((res) => {
       this.loggedIn = true;
       console.log("Successful login")
       this.router.navigate(['/profile']);
+      return;
     })
     .catch((err) => {
       console.log(err)
-      throw new Error(err.code);
+      return err;
     })
+
+    return promise;
   }
 
   async signUp(displayName, accountType, userEmail, userPassword){

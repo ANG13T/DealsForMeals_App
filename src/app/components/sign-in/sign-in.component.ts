@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -23,20 +24,22 @@ export class SignInComponent implements OnInit {
 
   async login(){
     if(this.validateForm()){
-      await this.userService.login(this.email, this.password).catch((err) => {
-        console.log("acheived error")
-        if(err == "auth/wrong-password"){
-          this.errors.password = "Incorrect password";
-          return;
-        }else if(err == "auth/user-not-found"){
-          this.errors.email = "User not found";
-          return;
-        }else if(err == "auth/invalid-email"){
-          this.errors.email = "Invalid email";
-        }else{
-          alert("Error: " + err);
-        }
-      });
+        await this.userService.login(this.email, this.password).then((data) => {
+          if(data){
+            if(data.code == "auth/user-not-found"){
+              alert("User not found. Please try signing in or trying again");
+            }
+
+            // if(data.code == "auth/user-not-found"){
+              
+            // }
+
+
+            // if(data.code == "auth/user-not-found"){
+              
+            // }
+          }
+        })
     }
   }
 
