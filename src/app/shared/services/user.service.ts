@@ -84,7 +84,7 @@ export class UserService {
           name: user.name,
           location: '',
           accountType: user.accountType,
-          photoURL: ''
+          photoURL: 'https://firebasestorage.googleapis.com/v0/b/deals2meals-4e239.appspot.com/o/default_user.jpg?alt=media&token=e1c97c88-5aab-487b-ae6d-878415e28b6a'
         }
 
         this.afs.firestore.collection("users").doc(newUser.uid).set(newUser)
