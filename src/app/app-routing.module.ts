@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { HomePage } from './components/home/home.page';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -22,6 +23,11 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'profile/edit',
+    component: EditProfileComponent,
     canActivate: [AuthGuard]
   },
 ];

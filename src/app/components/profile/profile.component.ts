@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import { MenuController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +15,7 @@ export class ProfileComponent implements OnInit {
   loading: boolean = true;
   isFoodbank: boolean = false;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.loading = true;
@@ -28,6 +29,10 @@ export class ProfileComponent implements OnInit {
       }
       this.loading = false;
     });
+  }
+
+  navigate(route: string){
+    this.router.navigate([`/${route}`]);
   }
 
 }
