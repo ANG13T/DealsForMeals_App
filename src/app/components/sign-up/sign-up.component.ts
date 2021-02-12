@@ -25,7 +25,17 @@ export class SignUpComponent implements OnInit {
 
   async signUp(){ 
     if(this.validateForm()){
-      await this.userService.signUp(this.name, this.accountType, this.email, this.password);
+      await this.userService.signUp(this.name, this.accountType, this.email, this.password).then((data) => {
+        console.log("dskjhdjks", data)
+        if(data){
+          if(data.code == "auth/email-already-in-use"){
+            alert("User already created. Please sign in");
+            this.email = "";
+            this.password = "";
+            this.navigate('login');
+          }
+        }
+      });
     }
   }
 

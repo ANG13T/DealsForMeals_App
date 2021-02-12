@@ -46,16 +46,55 @@ export class UserService {
     return promise;
   }
 
-  async signUp(displayName, accountType, userEmail, userPassword){
-      let newUser : User = {
-        name: displayName,
-        uid: '',
-        location: '',
-        accountType: accountType,
-        email: userEmail,
-        photoURL: ''
-      }
-      return await this.createUserData(newUser, userPassword);
+  async checkUserExsists(newUser: User): Promise<any>{
+    let userExists = await this.afAuth.fetchSignInMethodsForEmail(newUser.email);
+  
+    if(!userExists){
+      alert("User already exsists. Please log in.");
+      this.router.navigate(['/login']);
+    }
+  }
+
+  async signUp(newUser: User, userPassword: string): Promise<any>{
+      // let newUser : User = {
+      //   name: displayName,
+      //   uid: '',
+      //   location: '',
+      //   accountType: accountType,
+      //   email: userEmail,
+      //   photoURL: ''
+      // }
+
+      // if(newUser == null){
+      //   console.log("Something went wrong.")
+      //   return;
+      // }
+
+      //check user exists
+  
+      let promise = this.afAuth.createUserWithEmailAndPassword(newUser.email, userPassword).then((uData) => {
+          let userData: User = {
+            uid: uData.user.uid,
+            email: uData.user.email,
+            name: newUser.name,
+            location: '',
+            accountType: newUser.accountType,
+            photoURL: 'https://firebasestorage.googleapis.com/v0/b/deals2meals-4e239.appspot.com/o/default_user.jpg?alt=media&token=e1c97c88-5aab-487b-ae6d-878415e28b6a'
+          }
+  
+          this.afs.firestore.collection("users").doc(userData.uid).set(userData)
+          .then(() => {
+            this.loggedIn = true;
+            this.router.navigate(['/profile']);
+            return;
+          })
+          .catch((err) => {
+            alert("Error: " + err);
+            return err;
+          })
+  
+      })
+      return promise; 
   }
 
   async signOut(){
@@ -64,40 +103,8 @@ export class UserService {
   }
 
   
-  private async createUserData(user: User, password: string){
-    if(user == null){
-      console.log("Something went wrong.")
-      return;
-    }
-
-    let userExists = await this.afAuth.fetchSignInMethodsForEmail(user.email);
-
-    if(!userExists){
-      alert("User already exsists. Please log in.");
-      this.router.navigate(['/login']);
-    }
-
-    this.afAuth.createUserWithEmailAndPassword(user.email, password).then((userData) => {
-        let newUser: User = {
-          uid: userData.user.uid,
-          email: userData.user.email,
-          name: user.name,
-          location: '',
-          accountType: user.accountType,
-          photoURL: 'https://firebasestorage.googleapis.com/v0/b/deals2meals-4e239.appspot.com/o/default_user.jpg?alt=media&token=e1c97c88-5aab-487b-ae6d-878415e28b6a'
-        }
-
-        this.afs.firestore.collection("users").doc(newUser.uid).set(newUser)
-        .then(() => {
-          this.loggedIn = true;
-        })
-        .catch((err) => {
-          alert("Error: " + err);
-          this.router.navigate(['/']);
-        })
-
-    })
-    this.router.navigate(['/profile']);
+  private async createUserData(user: User, password: string): Promise<any>{
+    
   }
 
 }
