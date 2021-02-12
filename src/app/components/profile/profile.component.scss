@@ -72,3 +72,39 @@ ion-menu-button{
 .top-content{
     background-color: #5979E9;
 }
+
+.bottom-section{
+    text-align: center;
+    position: absolute;
+    top: 45%;
+    width: 100%;
+
+    h3{
+        font-size: 18px;
+    }
+
+    ion-button{
+        height: 4rem;
+    }
+}
+
+.bottom-title{
+    font-weight: bold;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+ion-button{
+    --background: #E5E5E5;
+    color: #232BDE;
+    font-size: 18px;
+    font-weight: bold;
+    width: 85%;
+    border-radius: 2px;
+    margin: auto;
+}
+
+.or{
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}

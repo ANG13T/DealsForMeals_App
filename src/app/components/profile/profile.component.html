@@ -9,7 +9,7 @@
         <img src={{user.photoURL}} alt="Profile Image" class="profile-image" />
         <div class="description">
           <h2 class="profile-name">{{user.name}}</h2>
-          <h2 class="profile-description">Los Angeles, California</h2>
+          <h2 class="profile-description">{{user.location}}</h2>
         </div>
       </div>
       <div class="bottom">
@@ -17,6 +17,19 @@
         <ion-button class="create-button">Create Post</ion-button>
       </div>
     </div> 
+  </div>
+
+
+  <div class="bottom-section">
+    <h3 class="bottom-title">Welcome, {{user.name}}!</h3>
+
+    <ion-button class="maps-button">View Foodbanks Near You</ion-button>
+  
+    <div class="or">
+      <h3>OR</h3>
+    </div>
+    
+    <ion-button class="search-button">Search Locations in your Area</ion-button>
   </div>
   
     
