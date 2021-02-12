@@ -48,29 +48,10 @@ export class UserService {
 
   async checkUserExsists(newUser: User): Promise<any>{
     let userExists = await this.afAuth.fetchSignInMethodsForEmail(newUser.email);
-  
-    if(!userExists){
-      alert("User already exsists. Please log in.");
-      this.router.navigate(['/login']);
-    }
+    return userExists;
   }
 
   async signUp(newUser: User, userPassword: string): Promise<any>{
-      // let newUser : User = {
-      //   name: displayName,
-      //   uid: '',
-      //   location: '',
-      //   accountType: accountType,
-      //   email: userEmail,
-      //   photoURL: ''
-      // }
-
-      // if(newUser == null){
-      //   console.log("Something went wrong.")
-      //   return;
-      // }
-
-      //check user exists
   
       let promise = this.afAuth.createUserWithEmailAndPassword(newUser.email, userPassword).then((uData) => {
           let userData: User = {

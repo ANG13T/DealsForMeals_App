@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class SignUpComponent implements OnInit {
   name: string = "";
   email: string = "";
   password: string = "";
-  accountType: string = "foodbank";
+  accountType : 'store' | 'foodbank' = "foodbank";
   errors = {password: "", name: "", email: ""};
 
   constructor(private router: Router, private userService: UserService) { }
@@ -23,19 +24,55 @@ export class SignUpComponent implements OnInit {
     this.router.navigate([`/${route}`]);
   }
 
+  resetState(){
+    this.name = "";
+    this.email = "";
+    this.password = "";
+    this.accountType = "foodbank";
+    this.errors.password = "";
+    this.errors.name = "";
+    this.errors.email = "";
+  }
+
   async signUp(){ 
     if(this.validateForm()){
-      await this.userService.signUp(this.name, this.accountType, this.email, this.password).then((data) => {
-        console.log("dskjhdjks", data)
-        if(data){
-          if(data.code == "auth/email-already-in-use"){
-            alert("User already created. Please sign in");
-            this.email = "";
-            this.password = "";
-            this.navigate('login');
-          }
+
+      let newUser : User = {
+        name: this.name,
+        uid: '',
+        location: '',
+        accountType: this.accountType,
+        email: this.email,
+        photoURL: ''
+      }
+
+      if(newUser == null){
+        alert("Something went wrong.");
+        this.resetState();
+      }
+
+
+      let validUser = await this.userService.checkUserExsists(newUser).then((result) => {
+         if(!result){
+          alert("User already exsists. Please log in.");
+          this.router.navigate(['/login']);
+          return false;
         }
-      });
+        return true;
+      })
+
+      if(validUser){
+        await this.userService.signUp(newUser, this.accountType).then((data) => {
+          if(data){
+            if(data.code == "auth/email-already-in-use"){
+              alert("User already created. Please sign in");
+              this.email = "";
+              this.password = "";
+              this.navigate('login');
+            }
+          }
+        });
+      }
     }
   }
 
