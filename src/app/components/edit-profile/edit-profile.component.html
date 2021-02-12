@@ -3,11 +3,44 @@
     <ion-buttons slot="start">
       <ion-back-button (click)="navigate('profile')" routerDirection="root"></ion-back-button>
     </ion-buttons>
-    <ion-title>Edit Profile</ion-title>
+    <ion-title class="nav-title">Edit Profile</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <div class="edit-section">
+  <div class="profile-container">
 
+    <div class="edit-button">
+
+    </div>
+  </div>
+
+    <p class="content">Organization Name:</p>
+    <input type="text" [(ngModel)]="name"/>
+    <p class="error">{{errors.name}}</p>
+
+    <p class="content">Email:</p>
+    <input type="email" [(ngModel)]="email"/>
+    <p class="error">{{errors.email}}</p>
+
+    <ion-list class="choice">
+      <ion-radio-group [(ngModel)]="accountType">
+        <ion-list-header>
+          <ion-label class="choice-option">Select an Option:</ion-label>
+        </ion-list-header>
+    
+        <ion-item>
+          <ion-label>Foodbank</ion-label>
+          <ion-radio slot="start" value="foodbank"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>Grocery Store / Donater</ion-label>
+          <ion-radio slot="start" value="store"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+    <button class="save-button">SAVE</button>
 </div>
 

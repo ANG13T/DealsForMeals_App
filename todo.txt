@@ -43,7 +43,7 @@ Today:
 
 - final overview
 - sendgrid implementation ? 
-
+- make welcome slideshow on first view
 
 
 

@@ -7,6 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./edit-profile.component.scss'],
 })
 export class EditProfileComponent implements OnInit {
+  name: string = "";
+  email: string = "";
+  password: string = "";
+  accountType : 'store' | 'foodbank' = "foodbank";
+  errors = {password: "", name: "", email: ""};
 
   constructor(private router: Router) { }
 
