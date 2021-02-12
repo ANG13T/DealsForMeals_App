@@ -1,2 +1,51 @@
-- make error codes for sign up and login
+Today:
+
 - style and edit profile (profile for foodbank and another one for grocery store)
+- hamburger menu
+- edit profile page
+
+2/13/21:
+
+- post modal (create functionality)
+- display posts on organization profile
+- view post on sepreate page
+
+
+2/14/21:
+
+- edit post
+- edit profile func
+- make list of food banks
+
+
+2/15/21:
+
+- view food bank info
+- start notifications
+- start google maps func
+
+
+2/16/21:
+
+- finish notifications
+- continue google maps func
+
+2/17/21:
+
+- finish website and finalize design board
+- continue google maps func
+
+
+2/18/21:
+
+- final touches
+- finish google maps func
+
+2/19/21: 
+
+- final overview
+- sendgrid implementation ? 
+
+
+
+
