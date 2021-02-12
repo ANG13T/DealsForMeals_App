@@ -52,7 +52,6 @@ export class UserService {
   }
 
   async signUp(newUser: User, userPassword: string): Promise<any>{
-  
       let promise = this.afAuth.createUserWithEmailAndPassword(newUser.email, userPassword).then((uData) => {
           let userData: User = {
             uid: uData.user.uid,
@@ -73,7 +72,8 @@ export class UserService {
             alert("Error: " + err);
             return err;
           })
-  
+      }).catch((err) => {
+        return err;
       })
       return promise; 
   }

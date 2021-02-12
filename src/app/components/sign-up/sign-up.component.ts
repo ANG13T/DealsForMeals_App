@@ -61,8 +61,11 @@ export class SignUpComponent implements OnInit {
         return true;
       })
 
+      console.log("is valid user", validUser)
+
       if(validUser){
         await this.userService.signUp(newUser, this.accountType).then((data) => {
+          console.log("got back data", data)
           if(data){
             if(data.code == "auth/email-already-in-use"){
               alert("User already created. Please sign in");
