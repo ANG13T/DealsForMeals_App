@@ -2,10 +2,23 @@
   <ion-menu-button></ion-menu-button>
 </ion-buttons>
 <div profile *ngIf="user" #content>
-  <img src={{user.photoURL}} alt="Profile Image" class="profile image" />
-  <h2 class="profile-name">{{user.name}}</h2>
-  <h2 class="profile-description">{{user.location}}</h2>
-  <ion-button color="primary">Edit Profile</ion-button>
-  <ion-button color="primary">Create Post</ion-button>
+
+  <div class="top-content">
+    <div class="profile-top">
+      <div class="top">
+        <img src={{user.photoURL}} alt="Profile Image" class="profile-image" />
+        <div class="description">
+          <h2 class="profile-name">{{user.name}}</h2>
+          <h2 class="profile-description">Los Angeles, California</h2>
+        </div>
+      </div>
+      <div class="bottom">
+        <ion-button class="edit-button">Edit Profile</ion-button>
+        <ion-button class="create-button">Create Post</ion-button>
+      </div>
+    </div> 
+  </div>
+  
+    
 </div>
 

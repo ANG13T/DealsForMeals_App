@@ -1,0 +1,74 @@
+.top-content{
+    position: absolute;
+    top: 0%;
+    background-color: #4043e1;
+    width: 100%;
+    border-radius: 10px;
+    .profile-top{
+        background-color: #ebe7e7;
+        position: relative;
+        margin-top:20%;
+        width: 82%;
+        margin-left: 11%;
+        margin-right: 11%;
+        border: 10px solid #ebe7e7;
+        border-radius: 8px;
+        box-shadow: 10px 10px 25px rgba(58, 56, 56, 0.25);
+    }
+
+}
+
+
+ion-menu-button{
+    color: white;
+}
+
+.bottom{
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-around;
+    .edit-button{
+        --background: #FBF8F8;
+        border: 1px solid #232BDE;
+        --box-sizing: border-box;
+        border-radius: 5px;
+        width: 8rem;
+        color: #464DF1;
+    }
+    
+    .create-button{
+        --background: #464DF1;
+        --border-radius: 5px;
+        width: 8rem;
+        --border: 1px solid #232BDE;
+        color: #FBF8F8;
+    }
+}
+
+.top{
+    display: flex;
+    margin-top: .5rem;
+}
+
+.profile-image{
+    width: 7rem;
+    height: 7rem;
+    border: 1px solid #7A7171;
+    border-radius: 8px;
+}
+
+.profile-description{
+    font-size: 14px;
+    color: #6C6565;
+    margin-left: 1rem;
+}
+
+.profile-name{
+    margin-left: 1rem;
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+}
+
+.top-content{
+    background-color: #5979E9;
+}
