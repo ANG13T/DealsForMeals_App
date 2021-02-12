@@ -1,5 +1,5 @@
-<ion-header translucent>
-  <ion-toolbar>
+<ion-header>
+  <ion-toolbar class="header" color="#4078e1">
     <ion-buttons slot="start">
       <ion-back-button (click)="navigate('')" routerDirection="root"></ion-back-button>
     </ion-buttons>
@@ -8,12 +8,12 @@
 </ion-header>
 
 <div class="form">
+  <h1 class="title">🛠 Create Account</h1>
   <div class="main">
-    
-    <ion-list>
+    <ion-list class="choice">
       <ion-radio-group [(ngModel)]="accountType">
         <ion-list-header>
-          <ion-label>Select an Option:</ion-label>
+          <ion-label class="choice-option">Select an Option:</ion-label>
         </ion-list-header>
     
         <ion-item>

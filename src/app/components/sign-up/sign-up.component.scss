@@ -3,4 +3,47 @@
     top: 10%;
     margin: auto;
     text-align: center;
+    width: 80%;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.header{
+    background-color: #4078e1;
+    color: white;
+}
+
+input{
+    width: 80%;
+}
+
+.content{
+    text-align: left;
+    margin-left: 2rem;
+}
+
+.title{
+    font-weight: bold;
+}
+
+.description{
+    margin-top: 1.5rem;
+}
+
+.sign-in-button{
+    margin-top: 1rem;
+}
+
+.choice{
+    margin-bottom: 2.2rem;
+}
+
+.choice-option{
+    text-align: left;
+    font-size: 1rem;
+    margin-bottom: .5rem;
+}
+
+.sign-in-button{
+    margin-top: 3rem;
 }
