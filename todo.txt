@@ -1,7 +1,5 @@
 Today:
-
 - style and edit profile (profile for foodbank and another one for grocery store)
-- hamburger menu
 - edit profile page
 
 2/13/21:

@@ -14,13 +14,14 @@
       </div>
       <div class="bottom">
         <ion-button class="edit-button">Edit Profile</ion-button>
-        <ion-button class="create-button">Create Post</ion-button>
+        <ion-button class="create-button" *ngIf="isFoodbank">Create Post</ion-button>
+        <ion-button class="create-button" *ngIf="!isFoodbank">Log Out</ion-button>
       </div>
     </div> 
   </div>
 
 
-  <div class="bottom-section">
+  <div class="bottom-section" *ngIf="!isFoodbank">
     <h3 class="bottom-title">Welcome, {{user.name}}!</h3>
 
     <ion-button class="maps-button">View Foodbanks Near You</ion-button>
@@ -30,6 +31,11 @@
     </div>
     
     <ion-button class="search-button">Search Locations in your Area</ion-button>
+  </div>
+
+  <div class="supplies" *ngIf="isFoodbank">
+    <h3 class="supply-title">Posted Supplies</h3>
+    <!-- Show posts here -->
   </div>
   
     

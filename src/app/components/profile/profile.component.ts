@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
 
   user: User;
   loading: boolean = true;
+  isFoodbank: boolean = false;
 
   constructor(private userService: UserService) { }
 
@@ -20,6 +21,11 @@ export class ProfileComponent implements OnInit {
     this.userService.user$.subscribe(async (userProfile) => {
       if(!userProfile) return;
       this.user = userProfile;
+      if(this.user.accountType == "foodbank"){
+        this.isFoodbank = true;
+      }else{
+        this.isFoodbank = false;
+      }
       this.loading = false;
     });
   }
