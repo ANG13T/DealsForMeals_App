@@ -1,15 +1,10 @@
 2/13/21:
-
-- post modal (create functionality)
-- display posts on organization profile
 - view post on sepreate page
 
 
 2/14/21:
-
 - edit post
 - create content for side nav
-- edit profile func
 - make list of food banks
 
 

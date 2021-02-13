@@ -1,6 +1,13 @@
-<ion-buttons slot="end">
-  <ion-menu-button></ion-menu-button>
-</ion-buttons>
+<ion-header>
+  <ion-toolbar class="header" color="#4078e1">
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
 <div profile *ngIf="user" #content>
 
   <div class="top-content">
@@ -33,28 +40,26 @@
   </div> -->
 
   <div class="supplies" *ngIf="!isFoodbank">
-    <h3 class="supply-title">Posted Supplies</h3>
     <!-- Show posts here -->
     <div class="posts">
-        <ion-card *ngFor="let post of posts">
+        <ion-card *ngFor="let post of posts" (click)="openPost(post)">
           <img src={{post.images[0]}} />
           <ion-card-header>
             <ion-card-subtitle>{{post.userProfile.location}}</ion-card-subtitle> 
             <ion-card-title>{{post.title}}</ion-card-title>
           </ion-card-header>
-          //TODO: only get a small portion of description
+          <!-- TODO: only get a small portion of description -->
           <ion-card-content>
            {{post.description}}
           </ion-card-content>
         </ion-card>
     </div>
-  </div>
-
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="presentModal()">
-    <ion-fab-button>
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-    
+  </div>    
 </div>
 
+<ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="presentModal()">
+  <ion-fab-button>
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+</ion-content>

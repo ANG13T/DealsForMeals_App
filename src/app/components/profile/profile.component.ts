@@ -59,4 +59,8 @@ export class ProfileComponent implements OnInit {
     return await modal.present();
   }
 
+  openPost(post: Post){
+    
+  }
+
 }
