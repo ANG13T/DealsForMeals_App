@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/shared/models/user.model';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -7,13 +9,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./edit-profile.component.scss'],
 })
 export class EditProfileComponent implements OnInit {
-  name: string = "";
-  email: string = "";
-  password: string = "";
-  accountType : 'store' | 'foodbank' = "foodbank";
+  userProfile: User = {name: "", email: "", accountType: "foodbank", photoURL: "", uid: "", location: ""};
   errors = {password: "", name: "", email: ""};
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userService: UserService) {
+    this.userService.user$.subscribe(async (userProfile) => {
+      if(userProfile){
+        console.log(userProfile)
+        this.userProfile.name = userProfile.name;
+        this.userProfile.email = userProfile.email;
+        this.userProfile.photoURL = userProfile.photoURL;
+        this.userProfile.accountType = userProfile.accountType;
+      }
+    })
+  }
 
   ngOnInit() {}
 

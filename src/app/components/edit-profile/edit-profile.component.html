@@ -7,40 +7,30 @@
   </ion-toolbar>
 </ion-header>
 
-<div class="edit-section">
+<div class="form" *ngIf="userProfile">
   <div class="profile-container">
-
+    <img src={{userProfile.photoURL}} alt="User Image"/>
     <div class="edit-button">
 
     </div>
   </div>
 
+<ion-item>
+  <ion-label>Select Account Type</ion-label>
+  <ion-select interface="popover" [(ngModel)]="userProfile.accountType">
+    <ion-select-option value="foodbank">Foodbank</ion-select-option>
+    <ion-select-option value="store">Grocery Store / Donater</ion-select-option>
+  </ion-select>
+</ion-item>
+
     <p class="content">Organization Name:</p>
-    <input type="text" [(ngModel)]="name"/>
+    <input matInput type="text" [(ngModel)]="userProfile.name" placeholder="Enter Name"/>
     <p class="error">{{errors.name}}</p>
 
     <p class="content">Email:</p>
-    <input type="email" [(ngModel)]="email"/>
+    <input matInput type="email" [(ngModel)]="userProfile.email" placeholder="Enter Email"/>
     <p class="error">{{errors.email}}</p>
 
-    <ion-list class="choice">
-      <ion-radio-group [(ngModel)]="accountType">
-        <ion-list-header>
-          <ion-label class="choice-option">Select an Option:</ion-label>
-        </ion-list-header>
-    
-        <ion-item>
-          <ion-label>Foodbank</ion-label>
-          <ion-radio slot="start" value="foodbank"></ion-radio>
-        </ion-item>
-    
-        <ion-item>
-          <ion-label>Grocery Store / Donater</ion-label>
-          <ion-radio slot="start" value="store"></ion-radio>
-        </ion-item>
-      </ion-radio-group>
-    </ion-list>
-
-    <button class="save-button">SAVE</button>
+    <button class="save-button" >SAVE</button>
 </div>
 
