@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-create-post',
@@ -7,8 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreatePostComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalController: ModalController, private router: Router) { }
 
   ngOnInit() {}
+
+  dismissModal(){
+    this.modalController.dismiss({
+      'dismissed': true
+    });
+  }
+
+  navigate(route: string){
+    this.router.navigate([`/${route}`]);
+  }
 
 }
