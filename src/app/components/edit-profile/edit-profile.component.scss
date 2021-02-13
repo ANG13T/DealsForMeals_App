@@ -61,3 +61,31 @@ input{
 .sign-in-button{
     margin-top: 3rem;
 }
+
+.user-image{
+    border: 2px solid black;
+    border-radius: 80px;
+    width: 10rem;
+    height: 10rem;
+}
+
+.profile-container, .form-item{
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+
+.save-button{
+    width: 100%;
+    margin: auto;
+    --background-color: #5979E9 !important;
+    --font-family: 'Roboto', sans-serif;
+    --color: white;
+    --text-align: center;
+    height: 2.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 2.5rem;
+    margin-bottom: 1.3rem;
+    --border-radius: 10px;
+  }

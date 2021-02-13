@@ -9,28 +9,32 @@
 
 <div class="form" *ngIf="userProfile">
   <div class="profile-container">
-    <img src={{userProfile.photoURL}} alt="User Image"/>
+    <img src={{userProfile.photoURL}} alt="User Image" class="user-image"/>
     <div class="edit-button">
 
     </div>
   </div>
 
 <ion-item>
-  <ion-label>Select Account Type</ion-label>
+  <ion-label>Select Account</ion-label>
   <ion-select interface="popover" [(ngModel)]="userProfile.accountType">
     <ion-select-option value="foodbank">Foodbank</ion-select-option>
-    <ion-select-option value="store">Grocery Store / Donater</ion-select-option>
+    <ion-select-option value="store">Grocery Store</ion-select-option>
   </ion-select>
 </ion-item>
 
+  <div class="form-item">
     <p class="content">Organization Name:</p>
     <input matInput type="text" [(ngModel)]="userProfile.name" placeholder="Enter Name"/>
     <p class="error">{{errors.name}}</p>
-
+  </div>
+   
+  <div class="form-item">
     <p class="content">Email:</p>
     <input matInput type="email" [(ngModel)]="userProfile.email" placeholder="Enter Email"/>
     <p class="error">{{errors.email}}</p>
-
-    <button class="save-button" >SAVE</button>
+  </div>
+  
+  <ion-button expand="block"  class="save-button">SAVE</ion-button>
 </div>
 
