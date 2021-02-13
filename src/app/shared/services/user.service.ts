@@ -83,9 +83,14 @@ export class UserService {
     this.router.navigate(['/']);
   }
 
-  
-  private async createUserData(user: User, password: string): Promise<any>{
-    
+  async updateUserData(user: User): Promise<any>{
+    this.afs.firestore.collection("users").doc(user.uid).update(user).then(() => {
+      console.log("user updated")
+      return;
+    }).catch((err) => {
+      console.log("err");
+      return err;
+    })
   }
 
 }

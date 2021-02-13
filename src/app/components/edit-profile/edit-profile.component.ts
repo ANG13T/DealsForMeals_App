@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { finalize } from 'rxjs/internal/operators/finalize';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-profile',
@@ -16,7 +17,7 @@ export class EditProfileComponent implements OnInit {
   profileLoading: boolean = false;
   errors = {password: "", name: "", email: ""};
 
-  constructor(private router: Router, private userService: UserService, private storage: AngularFireStorage) {
+  constructor(private router: Router, private userService: UserService, private storage: AngularFireStorage, public toastController: ToastController) {
     this.userService.user$.subscribe(async (userProfile) => {
       if(userProfile){
         console.log(userProfile)
@@ -24,6 +25,8 @@ export class EditProfileComponent implements OnInit {
         this.userProfile.email = userProfile.email;
         this.userProfile.photoURL = userProfile.photoURL;
         this.userProfile.accountType = userProfile.accountType;
+        this.userProfile.uid = userProfile.uid;
+        this.userProfile.location = userProfile.location;
 
         //init user profile
         this.initUserProfile.name = userProfile.name;
@@ -36,7 +39,13 @@ export class EditProfileComponent implements OnInit {
 
   editProfile(){
     if(this.validateForm()){
-      alert("Completed");
+    this.userService.updateUserData(this.userProfile).then((data) => {
+      if(data){
+        alert("Error: " + data.message);
+      }else{
+        this.presentToast();
+      }
+    })
     }
   }
 
@@ -113,5 +122,12 @@ export class EditProfileComponent implements OnInit {
   }
 
 
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Profile edited successfully.',
+      duration: 2000
+    });
+    toast.present();
+  }
 
 }
