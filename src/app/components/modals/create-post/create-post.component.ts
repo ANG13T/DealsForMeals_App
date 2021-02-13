@@ -11,7 +11,8 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class CreatePostComponent implements OnInit {
 
-  post: Post = {title: "", description: "", userProfile: null, images: [], amount: 0};
+  post: Post = {title: "", description: "", userProfile: null, images: [], amount: 1};
+  errors = {title: "", description: "", amount: ""};
 
   constructor(private modalController: ModalController, private router: Router, private userService: UserService) { 
     this.userService.user$.subscribe((userProfile) => {
@@ -35,5 +36,32 @@ export class CreatePostComponent implements OnInit {
   navigate(route: string){
     this.router.navigate([`/${route}`]);
   }
+
+  validateForm(){
+    if(this.post.title.length < 5){
+      this.errors.title = "Title must be longer than 5 letters";
+      return false;
+    }
+
+    if(this.post.title.length >= 80){
+      this.errors.title = "Title must be shorter than 80 letters";
+      return false;
+    }
+
+    if(this.post.description.length >= 200){
+      this.errors.description = "Title must be shorter than 200 letters";
+      return false;
+    }
+
+    if(this.post.description.length < 10){
+      this.errors.description = "Title must be longer than 10 letters";
+      return false;
+    }
+    return true;
+  }
+
+  compareWithFn = (o1, o2) => {
+    return o1 == o2;
+  };
 
 }

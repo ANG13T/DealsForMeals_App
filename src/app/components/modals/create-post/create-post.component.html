@@ -5,9 +5,9 @@
       <ion-button (click)="dismissModal()">Close</ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <div class="send">
+      <ion-button class="send" [disabled]="!post.amount || !post.title || !post.description || post.images == []">
         <ion-icon name="send"></ion-icon>
-      </div>
+      </ion-button>
     </ion-buttons>
     <ion-title class="nav-title">Create Post</ion-title>
   </ion-toolbar>
@@ -29,7 +29,7 @@
   <div class="main">
     <ion-item>
       <ion-label>Select Quantity</ion-label>
-      <ion-select interface="popover" [(ngModel)]="post.amount">
+      <ion-select interface="popover" [(ngModel)]="post.amount" [compareWith]="compareWithFn">
         <ion-select-option value={{num}} *ngFor="let num of [1,2,3,4,5,6,7,8,9,10]">{{num}}</ion-select-option>
       </ion-select>
     </ion-item>

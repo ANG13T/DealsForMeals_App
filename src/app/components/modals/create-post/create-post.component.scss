@@ -8,6 +8,16 @@
     }
 }
 
+.main{
+    width: 80%;
+    margin: auto;
+}
+
+ion-item{
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
 * { box-sizing:border-box; }
 
 /* basic stylings ------------------------------------------ */
@@ -134,13 +144,11 @@ input:focus ~ .highlight {
 .images{
     display: flex;
     flex-wrap: wrap;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-top: 1.5rem;
     .image{
         width: 5rem;
-        margin-right: 1rem;
         height: 5rem;
-        margin-bottom: 1rem;
+        margin-right: 1rem;
     }
 
     .image-add{
