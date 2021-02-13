@@ -19,7 +19,7 @@
     </div> 
   </div>
 
-
+<!-- 
   <div class="bottom-section" *ngIf="!isFoodbank">
     <h3 class="bottom-title">Welcome, {{user.name}}!</h3>
 
@@ -30,11 +30,24 @@
     </div>
     
     <ion-button class="search-button">Search Locations in your Area</ion-button>
-  </div>
+  </div> -->
 
-  <div class="supplies" *ngIf="isFoodbank">
+  <div class="supplies" *ngIf="!isFoodbank">
     <h3 class="supply-title">Posted Supplies</h3>
     <!-- Show posts here -->
+    <div class="posts">
+        <ion-card *ngFor="let post of posts">
+          <img src={{post.images[0]}} />
+          <ion-card-header>
+            <ion-card-subtitle>{{post.userProfile.location}}</ion-card-subtitle> 
+            <ion-card-title>{{post.title}}</ion-card-title>
+          </ion-card-header>
+          //TODO: only get a small portion of description
+          <ion-card-content>
+           {{post.description}}
+          </ion-card-content>
+        </ion-card>
+    </div>
   </div>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="presentModal()">
