@@ -49,19 +49,21 @@
     </div>
   </div>
 
-  <div class="spinner-content">
-    <!-- <div class="main-spinner">
+  <div class="spinner-content" [hidden]="!loading">
+    <div class="main-spinner">
       <ion-spinner name="bubbles"></ion-spinner>
       <h3>Creating Post...</h3>
-    </div> -->
+    </div> 
+  </div>
 
+  <div class="complete-content" [hidden]="!complete">
     <div class="completed">
       <div class="check-logo">
-
+        <ion-icon name="checkmark-outline"></ion-icon>
       </div>
       <h3>Congrats!</h3>
       <p>Your post was successfully posted!</p>
       <ion-button>Go to Profile</ion-button>
-    </div>  
+    </div> 
   </div>
 </ion-content>

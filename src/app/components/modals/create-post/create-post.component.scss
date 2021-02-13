@@ -166,7 +166,7 @@ input:focus ~ .highlight {
     }    
 }
 
-.spinner-content{
+.spinner-content, .complete-content{
     position: fixed; /* Sit on top of the page content */
     width: 100%; /* Full width (cover the whole page) */
     height: 100%; /* Full height (cover the whole page) */
@@ -183,6 +183,26 @@ input:focus ~ .highlight {
         top: 40%;
         margin: auto;
         position: relative;
+    }
+
+    .completed{
+        top: 35%;
+        margin-bottom: 2rem;
+        .check-logo{
+            font-size: 4rem;
+            margin-bottom: 1.3rem;
+            color: blue;
+        }
+
+        h3{
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        p{
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
     }
 
     .main-spinner{

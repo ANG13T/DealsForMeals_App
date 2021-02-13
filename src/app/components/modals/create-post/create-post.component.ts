@@ -15,6 +15,7 @@ export class CreatePostComponent implements OnInit {
   post: Post = {title: "", description: "", userProfile: null, images: [], amount: 1};
   errors = {title: "", description: "", amount: ""};
   loading: boolean = false;
+  complete: boolean = false;
 
   constructor(private modalController: ModalController, private router: Router, private userService: UserService, private postService: PostService) { 
     this.userService.user$.subscribe((userProfile) => {
@@ -55,6 +56,11 @@ export class CreatePostComponent implements OnInit {
       return false;
     }
 
+    if(this.post.userProfile == null){
+      alert("Something went wrong.");
+      return false;
+    }
+
     if(this.post.description.length < 10){
       this.errors.description = "Title must be longer than 10 letters";
       return false;
@@ -71,6 +77,7 @@ export class CreatePostComponent implements OnInit {
     if(this.validateForm()){
       this.postService.createPost(this.post).then((result) => {
         this.loading = false;
+        this.complete = true;
         if(result == "success"){
           this.dismissModal();
         }
