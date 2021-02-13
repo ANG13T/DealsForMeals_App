@@ -5,7 +5,7 @@
       <ion-button (click)="dismissModal()">Close</ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button class="send" [disabled]="!post.amount || !post.title || !post.description || post.images == []">
+      <ion-button class="send" [disabled]="!post.amount || !post.title || !post.description || post.images == []" (click)="createPost()">
         <ion-icon name="send"></ion-icon>
       </ion-button>
     </ion-buttons>
