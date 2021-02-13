@@ -2,10 +2,10 @@
 <ion-header>
   <ion-toolbar color="#4043E1" class="header">
     <ion-buttons slot="start">
-      <ion-button (click)="dismissModal()">Close</ion-button>
+      <ion-button (click)="dismissModal()" [disabled]="completed">Close</ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button class="send" [disabled]="!post.amount || !post.title || !post.description || post.images == []" (click)="createPost()">
+      <ion-button class="send" [disabled]="!post.amount || !post.title || !post.description || post.images == [] || loading || completed" (click)="createPost()">
         <ion-icon name="send"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -41,8 +41,9 @@
     </div>
     <div class="sub-content">
       <div class="images">
+        <input type="file" style="display: none" #file accept="image/jpeg,image/x-png" (change)="onDrop($event.target.files)">
         <img src={{image}} class="image" *ngFor="let image of post.images">
-        <div class="image-add">
+        <div class="image-add" (click)="file.click()">
           <ion-icon name="images-outline"></ion-icon>
         </div>
       </div>
@@ -63,7 +64,7 @@
       </div>
       <h3>Congrats!</h3>
       <p>Your post was successfully posted!</p>
-      <ion-button>Go to Profile</ion-button>
+      <ion-button (click)="goToProfile()">Go to Profile</ion-button>
     </div> 
   </div>
 </ion-content>
