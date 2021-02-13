@@ -6,6 +6,7 @@ import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ToastController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
@@ -33,17 +34,25 @@ export class EditProfileComponent implements OnInit {
         this.initUserProfile.email = userProfile.email;
         this.initUserProfile.photoURL = userProfile.photoURL;
         this.initUserProfile.accountType = userProfile.accountType;
+        this.initUserProfile.uid = userProfile.uid;
+        this.initUserProfile.location = userProfile.location;
+
       }
     })
   }
 
-  editProfile(){
+  async editProfile(){
     if(this.validateForm()){
-    this.userService.updateUserData(this.userProfile).then((data) => {
+    await this.userService.updateUserData(this.userProfile).then(async (data) => {
       if(data){
         alert("Error: " + data.message);
       }else{
-        this.presentToast();
+        console.log("presenting toast")
+        const toast = await this.toastController.create({
+          message: 'Profile edited successfully.',
+          duration: 2000
+        });
+        toast.present();
       }
     })
     }
@@ -119,15 +128,6 @@ export class EditProfileComponent implements OnInit {
          this.profileLoading = false;
        })
      ).subscribe();
-  }
-
-
-  async presentToast() {
-    const toast = await this.toastController.create({
-      message: 'Profile edited successfully.',
-      duration: 2000
-    });
-    toast.present();
   }
 
 }

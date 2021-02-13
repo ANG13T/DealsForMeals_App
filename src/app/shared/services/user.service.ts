@@ -84,13 +84,15 @@ export class UserService {
   }
 
   async updateUserData(user: User): Promise<any>{
-    this.afs.firestore.collection("users").doc(user.uid).update(user).then(() => {
+    let promise = this.afs.firestore.collection("users").doc(user.uid).update(user).then(() => {
       console.log("user updated")
       return;
     }).catch((err) => {
       console.log("err");
       return err;
     })
+
+    return promise;
   }
 
 }
