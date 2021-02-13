@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
-import { MenuController } from '@ionic/angular';
+import { MenuController, ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { CreatePostComponent } from '../modals/create-post/create-post.component';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +16,7 @@ export class ProfileComponent implements OnInit {
   loading: boolean = true;
   isFoodbank: boolean = false;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, public modalController: ModalController) { }
 
   ngOnInit() {
     this.loading = true;
@@ -37,6 +38,14 @@ export class ProfileComponent implements OnInit {
 
   logOut(){
     this.userService.signOut();
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: CreatePostComponent,
+      cssClass: 'my-custom-class'
+    });
+    return await modal.present();
   }
 
 }
