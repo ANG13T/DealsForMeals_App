@@ -1,21 +1,54 @@
-<!-- <ion-header translucent>
-  <ion-toolbar>
-    <ion-title>Create a Post</ion-title>
-    <ion-buttons slot="start">
-      <ion-button (click)="dismissModal()">Close</ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header> -->
+
 <ion-header>
   <ion-toolbar color="#4043E1" class="header">
     <ion-buttons slot="start">
-      <!-- <ion-back-button (click)="navigate('profile')" routerDirection="root"></ion-back-button> -->
       <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <div class="send">
+        <ion-icon name="send"></ion-icon>
+      </div>
     </ion-buttons>
     <ion-title class="nav-title">Create Post</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen>
-  <h1>Hello World</h1>
+  <div class="top">
+    <div class="container">
+        <div class="group">      
+          <input type="text" [(ngModel)]="post.title">
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Title</label>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="main">
+    <ion-item>
+      <ion-label>Select Quantity</ion-label>
+      <ion-select interface="popover" [(ngModel)]="post.amount">
+        <ion-select-option value={{num}} *ngFor="let num of [1,2,3,4,5,6,7,8,9,10]">{{num}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+    <div class="sub-content">
+      <h3 class="sub-title">Description</h3>
+      <textarea name="Text1" cols="40" rows="5" [(ngModel)]="post.description"></textarea>
+    </div>
+    <div class="sub-content">
+      <div class="images">
+        <img src={{image}} class="image" *ngFor="let image of post.images">
+        <div class="image-add">
+          <ion-icon name="images-outline"></ion-icon>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+  </div>
 </ion-content>
