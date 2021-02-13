@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Post } from 'src/app/shared/models/post.model';
+import { PostService } from 'src/app/shared/services/post.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -13,8 +14,9 @@ export class CreatePostComponent implements OnInit {
 
   post: Post = {title: "", description: "", userProfile: null, images: [], amount: 1};
   errors = {title: "", description: "", amount: ""};
+  loading: boolean = false;
 
-  constructor(private modalController: ModalController, private router: Router, private userService: UserService) { 
+  constructor(private modalController: ModalController, private router: Router, private userService: UserService, private postService: PostService) { 
     this.userService.user$.subscribe((userProfile) => {
       if(userProfile){
         this.post.userProfile = userProfile;
@@ -63,5 +65,17 @@ export class CreatePostComponent implements OnInit {
   compareWithFn = (o1, o2) => {
     return o1 == o2;
   };
+
+  createPost(){
+    this.loading = true;
+    if(this.validateForm()){
+      this.postService.createPost(this.post).then((result) => {
+        this.loading = false;
+        if(result == "success"){
+          this.dismissModal();
+        }
+      })  
+    }
+  }
 
 }

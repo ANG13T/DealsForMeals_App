@@ -163,7 +163,38 @@ input:focus ~ .highlight {
         ion-icon{
             margin-top: 25%;
         }
+    }    
+}
+
+.spinner-content{
+    position: fixed; /* Sit on top of the page content */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    text-align: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.897); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+
+    .main-spinner, .completed{
+        width: 50%;
+        top: 40%;
+        margin: auto;
+        position: relative;
     }
 
-    
+    .main-spinner{
+        color: blue;
+
+        ion-spinner{
+            color: blue;
+            transform: scale(3);
+        }
+
+        h3{
+            margin-top: 3rem;
+        }
+    }
 }
