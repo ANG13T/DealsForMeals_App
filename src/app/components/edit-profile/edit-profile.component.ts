@@ -44,7 +44,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   fieldsDifferent(){
-    return JSON.stringify(this.initUserProfile) === JSON.stringify(this.userProfile) ;
+    return JSON.stringify(this.initUserProfile) != JSON.stringify(this.userProfile);
   }
 
   validateForm(): boolean{

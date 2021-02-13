@@ -35,6 +35,6 @@
     <p class="error">{{errors.email}}</p>
   </div>
   
-  <ion-button expand="block" class="save-button" [disabled]="!fieldsDifferent || !userProfile.name || !userProfile.email || !userProfile.photoURL" (click)="editProfile()">SAVE</ion-button>
+  <ion-button expand="block" class="save-button" [disabled]="!fieldsDifferent() || !userProfile.name || !userProfile.email || !userProfile.photoURL" (click)="editProfile()">SAVE</ion-button>
 </div>
 
