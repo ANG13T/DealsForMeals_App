@@ -9,8 +9,9 @@
 
 <div class="form" *ngIf="userProfile">
   <div class="profile-container">
+    <input type="file" style="display: none" #file accept="image/jpeg,image/x-png" (change)="onDrop($event.target.files)">
     <img src={{userProfile.photoURL}} alt="User Image" class="user-image"/>
-    <button class="edit-button">
+    <button class="edit-button" (click)="file.click()">
       <ion-icon name="pencil-outline"></ion-icon>
     </button>
   </div>

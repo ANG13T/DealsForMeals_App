@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { Router } from '@angular/router';
+import { finalize } from 'rxjs/internal/operators/finalize';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 
@@ -11,9 +13,10 @@ import { UserService } from 'src/app/shared/services/user.service';
 export class EditProfileComponent implements OnInit {
   userProfile: User = {name: "", email: "", accountType: "foodbank", photoURL: "", uid: "", location: ""};
   initUserProfile: User = {name: "", email: "", accountType: "foodbank", photoURL: "", uid: "", location: ""};
+  profileLoading: boolean = false;
   errors = {password: "", name: "", email: ""};
 
-  constructor(private router: Router, private userService: UserService) {
+  constructor(private router: Router, private userService: UserService, private storage: AngularFireStorage) {
     this.userService.user$.subscribe(async (userProfile) => {
       if(userProfile){
         console.log(userProfile)
@@ -64,12 +67,49 @@ export class EditProfileComponent implements OnInit {
       result = false;
     }
 
+    if(this.profileLoading){
+      alert("Profile is loading...");
+      result = false;
+    }
+
     return result;
   }
 
   validateEmail(email) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
+  }
+
+  onDrop(files: FileList){
+    let profileImage = files[0];
+    this.uploadTask(profileImage);
+  }
+
+  uploadTask(file: File){
+    let task: AngularFireUploadTask;
+    let downloadURL;
+
+     //Sends data to loading bar
+    this.profileLoading = true;
+    this.userProfile.photoURL = "../../../assets/images/spinner.gif"
+     // The storage path
+    const path = `files/${Date.now()}_${file.name}`;
+     // Reference to storage bucket
+    const ref = this.storage.ref(path);
+    console.log(ref);
+
+     // The main task
+    task = this.storage.upload(path, file);
+
+
+    task.snapshotChanges().pipe(
+       // The file's download URL
+       finalize(async () =>  {
+         downloadURL = await ref.getDownloadURL().toPromise();
+         this.userProfile.photoURL = downloadURL;
+         this.profileLoading = false;
+       })
+     ).subscribe();
   }
 
 
