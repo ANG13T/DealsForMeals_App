@@ -42,7 +42,7 @@
   <div class="supplies" *ngIf="!isFoodbank">
     <!-- Show posts here -->
     <div class="posts">
-        <ion-card *ngFor="let post of posts" (click)="openPost(post)">
+        <ion-card *ngFor="let post of posts" (click)="presentPost(post)">
           <img src={{post.images[0]}} />
           <ion-card-header>
             <ion-card-subtitle>{{post.userProfile.location}}</ion-card-subtitle> 

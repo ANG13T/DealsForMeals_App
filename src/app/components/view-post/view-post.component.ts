@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from 'src/app/shared/models/post.model';
 
 @Component({
@@ -9,10 +9,20 @@ import { Post } from 'src/app/shared/models/post.model';
 })
 export class ViewPostComponent implements OnInit {
 
-  @Input() post: Post;
-  constructor(private router: Router) { }
+  post: Post;
+  origin: string;
+  postID: string;
+  isOwner: boolean = false;
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      if(this.post == null){
+        this.postID = params['id']; 
+        //get post data
+      }
+    });
+  }
 
   navigate(route: string){
     this.router.navigate([`/${route}`]);

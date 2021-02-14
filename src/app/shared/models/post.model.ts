@@ -6,4 +6,5 @@ export interface Post {
     description: string;
     images: string[];
     amount: number;
+    id: string;
   }

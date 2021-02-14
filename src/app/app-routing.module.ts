@@ -5,6 +5,7 @@ import { HomePage } from './components/home/home.page';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { ViewPostComponent } from './components/view-post/view-post.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
@@ -30,6 +31,11 @@ const routes: Routes = [
     component: EditProfileComponent,
     canActivate: [AuthGuard]
   },
+  {
+    path: 'post/:id',
+    component: ViewPostComponent,
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({

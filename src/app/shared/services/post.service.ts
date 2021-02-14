@@ -25,7 +25,7 @@ export class PostService {
     let promise = this.afs.firestore.collection("posts").where('userProfile.uid', '==', uid).get().then((snapshot) => {
       snapshot.forEach((doc) => {
         let docData = doc.data();
-        let newPost: Post = {userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, amount: docData.amount};
+        let newPost: Post = {userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, amount: docData.amount, id: doc.id};
         posts.push(newPost);
       })
       return posts;

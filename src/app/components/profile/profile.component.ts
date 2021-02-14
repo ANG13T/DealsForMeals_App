@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { CreatePostComponent } from '../modals/create-post/create-post.component';
 import { Post } from 'src/app/shared/models/post.model';
 import { PostService } from 'src/app/shared/services/post.service';
+import { ViewPostComponent } from '../view-post/view-post.component';
 
 @Component({
   selector: 'app-profile',
@@ -59,8 +60,17 @@ export class ProfileComponent implements OnInit {
     return await modal.present();
   }
 
-  openPost(post: Post){
-    
+  async presentPost(post: Post){
+    const modal = await this.modalController.create({
+      component: ViewPostComponent,
+      cssClass: 'my-custom-class',
+      componentProps: { 
+        origin: 'profile',
+        post: post,
+        isOwner: true
+      }
+    });
+    return await modal.present();
   }
 
 }
