@@ -32,4 +32,15 @@ export class PostService {
     });
     return promise;
   }
+
+  async deletePost(postID: string): Promise<any>{
+    let promise = this.afs.firestore.collection("posts").doc(postID).delete().then(() => {
+      return;
+    }).catch((err) => {
+      alert("Error: " + err.message);
+      return err;
+    });
+    return promise;
+  }
+  
 }

@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Post } from 'src/app/shared/models/post.model';
+import { AlertController } from '@ionic/angular';
+import { PostService } from 'src/app/shared/services/post.service';
 
 @Component({
   selector: 'app-view-post',
@@ -14,7 +16,8 @@ export class ViewPostComponent implements OnInit {
   origin: string;
   postID: string;
   isOwner: boolean = false;
-  constructor(private router: Router, private route: ActivatedRoute, private modalController: ModalController) { }
+
+  constructor(private router: Router, private route: ActivatedRoute, private modalController: ModalController, public alertController: AlertController, private postService: PostService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -25,14 +28,40 @@ export class ViewPostComponent implements OnInit {
     });
   }
 
-  dismissModal(){
+  dismissModal(status: string){
     this.modalController.dismiss({
-      'dismissed': true
+      'dismissed': true,
+      data: status
     });
   }
 
   navigate(route: string){
     this.router.navigate([`/${route}`]);
+  }
+
+  async confirmDelete() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Are you sure?',
+      message: 'Deleting this post is <strong>irreversible</strong>',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary'
+        }, {
+          text: 'Delete',
+          handler: () => {
+            console.log('Confirm Okay');
+            this.postService.deletePost(this.post.id).then(() => {
+              this.dismissModal('delete');
+            })
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
 }

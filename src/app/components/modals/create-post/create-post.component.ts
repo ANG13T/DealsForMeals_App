@@ -14,7 +14,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class CreatePostComponent implements OnInit {
 
-  post: Post = {title: "", description: "", userProfile: null, images: [], amount: 1};
+  post: Post = {title: "", description: "", userProfile: null, images: [], amount: 1, id: ""};
   errors = {title: "", description: "", amount: ""};
   loading: boolean = false;
   imageLoading: boolean = false;

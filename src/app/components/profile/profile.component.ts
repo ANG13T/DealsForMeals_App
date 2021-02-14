@@ -70,6 +70,11 @@ export class ProfileComponent implements OnInit {
         isOwner: true
       }
     });
+    modal.onDidDismiss()
+      .then((data) => {
+        console.log("got the data", data)
+    });
+
     return await modal.present();
   }
 
