@@ -32,15 +32,17 @@ export class CreatePostComponent implements OnInit {
     
   }
 
-  dismissModal(){
+  dismissModal(status?: string, post?: Post){
     this.modalController.dismiss({
-      'dismissed': true
+      'dismissed': true,
+      status: status,
+      data: post
     });
   }
 
   goToProfile(){
     //send eveent back with new post data
-    this.dismissModal();
+    this.dismissModal('create', this.post);
   }
 
   onDrop(files: FileList){

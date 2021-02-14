@@ -57,6 +57,11 @@ export class ProfileComponent implements OnInit {
       component: CreatePostComponent,
       cssClass: 'my-custom-class'
     });
+    modal.onDidDismiss()
+    .then((data) => {
+      console.log("got the data", data)
+    });
+
     return await modal.present();
   }
 

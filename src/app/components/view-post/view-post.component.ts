@@ -28,10 +28,11 @@ export class ViewPostComponent implements OnInit {
     });
   }
 
-  dismissModal(status: string){
+  dismissModal(status?: string, post?: Post){
     this.modalController.dismiss({
       'dismissed': true,
-      data: status
+      status: status,
+      data: post
     });
   }
 
@@ -54,7 +55,7 @@ export class ViewPostComponent implements OnInit {
           handler: () => {
             console.log('Confirm Okay');
             this.postService.deletePost(this.post.id).then(() => {
-              this.dismissModal('delete');
+              this.dismissModal('delete', this.post);
             })
           }
         }
