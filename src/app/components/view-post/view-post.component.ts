@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { Post } from 'src/app/shared/models/post.model';
 
 @Component({
@@ -13,7 +14,7 @@ export class ViewPostComponent implements OnInit {
   origin: string;
   postID: string;
   isOwner: boolean = false;
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute, private modalController: ModalController) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -21,6 +22,12 @@ export class ViewPostComponent implements OnInit {
         this.postID = params['id']; 
         //get post data
       }
+    });
+  }
+
+  dismissModal(){
+    this.modalController.dismiss({
+      'dismissed': true
     });
   }
 

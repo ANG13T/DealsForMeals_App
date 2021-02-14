@@ -1,11 +1,13 @@
+
 <ion-header>
   <ion-toolbar color="#4043E1" class="header">
     <ion-buttons slot="start">
-      <ion-back-button (click)="navigate(origin)" routerDirection="root"></ion-back-button>
+      <ion-button (click)="dismissModal()">Close</ion-button>
     </ion-buttons>
     <ion-title class="nav-title">View Post</ion-title>
   </ion-toolbar>
 </ion-header>
+
 
 <div class="main">
   <h1>{{post.title}}</h1>

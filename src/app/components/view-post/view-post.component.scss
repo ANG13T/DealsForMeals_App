@@ -1,0 +1,110 @@
+.nav-title{
+    font-weight: bold;
+}
+
+.header{
+    color: white;
+    background-color: #5979E9;
+}
+
+.form{
+    position: absolute;
+    top: 10%;
+    margin: auto;
+    text-align: center;
+    width: 80%;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.header{
+    background-color: #4078e1;
+    color: white;
+}
+
+input{
+    width: 80%;
+    height: 2rem;
+    border-radius: 7px;
+    border-color: transparent;
+    background-color: #e3e4f9;
+    border: 1px solid #4043e1;
+}
+
+.content{
+    text-align: left;
+    margin-left: 2rem;
+}
+
+.title{
+    font-weight: bold;
+}
+
+.description{
+    margin-top: 1.5rem;
+}
+
+.sign-in-button{
+    margin-top: 1rem;
+}
+
+.choice{
+    margin-bottom: 2.2rem;
+}
+
+.choice-option{
+    text-align: left;
+    font-size: 1rem;
+    margin-bottom: .5rem;
+}
+
+.sign-in-button{
+    margin-top: 3rem;
+}
+
+.user-image{
+    border: 2px solid black;
+    border-radius: 80px;
+    width: 10rem;
+    height: 10rem;
+}
+
+.profile-container, .form-item{
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.profile-container{
+    position: relative;
+}
+
+
+.save-button{
+    width: 100%;
+    margin: auto;
+    --background-color: #5979E9 !important;
+    --font-family: 'Roboto', sans-serif;
+    --color: white;
+    --text-align: center;
+    height: 2.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 2.5rem;
+    margin-bottom: 1.3rem;
+    --border-radius: 10px;
+  }
+
+  .edit-button{
+      background-color: rgb(0, 153, 255);
+      color: white;
+      font-size: 1.4rem;
+      border: 10px solid #0099ff;
+      border-radius: 40px;
+      position: absolute;
+      bottom: -6px;
+      right: 25%;
+
+    ion-icon{
+
+    }
+  }
