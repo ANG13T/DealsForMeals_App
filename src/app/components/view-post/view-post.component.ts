@@ -4,6 +4,7 @@ import { ModalController } from '@ionic/angular';
 import { Post } from 'src/app/shared/models/post.model';
 import { AlertController } from '@ionic/angular';
 import { PostService } from 'src/app/shared/services/post.service';
+import { EditPostComponent } from '../modals/edit-post/edit-post.component';
 
 @Component({
   selector: 'app-view-post',
@@ -38,6 +39,27 @@ export class ViewPostComponent implements OnInit {
 
   navigate(route: string){
     this.router.navigate([`/${route}`]);
+  }
+
+  async editPost(){
+    const modal = await this.modalController.create({
+      component: EditPostComponent,
+      cssClass: 'my-custom-class',
+      componentProps: { 
+        origin: 'profile',
+        post: this.post,
+        isOwner: true
+      }
+    });
+    modal.onDidDismiss()
+      .then((data) => {
+        console.log("got the data", data)
+        if(data.data.status == "edit"){
+          this.post = data.data.data;
+        }
+    });
+
+    return await modal.present();
   }
 
   async confirmDelete() {
