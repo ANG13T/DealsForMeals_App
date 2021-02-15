@@ -2,5 +2,26 @@
       <ion-menu contentId="menu-content" side="end">
         <app-side-nav></app-side-nav>
       </ion-menu>
+      <ion-tabs>
+        <ion-tab-bar slot="bottom">
+          <ion-tab-button tab="schedule">
+            <ion-icon name="storefront-outline"></ion-icon>
+            <ion-label>Foodbanks</ion-label>
+          </ion-tab-button>
+          <ion-tab-button>
+            <ion-icon name="add-outline"></ion-icon>
+            <ion-label>Create</ion-label>
+          </ion-tab-button>
+          <ion-tab-button tab="schedule">
+            <ion-icon name="person-circle-outline"></ion-icon>
+            <ion-label>Profile</ion-label>
+          </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
+      <ion-fab horizontal="center" vertical="bottom" edge class="create-post-button">
+        <ion-fab-button>
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
       <ion-router-outlet id="menu-content"></ion-router-outlet>
 </ion-app>
