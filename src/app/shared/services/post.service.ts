@@ -44,4 +44,14 @@ export class PostService {
     return promise;
   }
 
+  async updatePost(post: Post): Promise<any>{
+    let promise = this.afs.firestore.collection("posts").doc(post.id).update(post).then(() => {
+      return;
+    }).catch((err) => {
+      alert("Error: " + err.message);
+      return err;
+    });
+    return promise;
+  }
+
 }

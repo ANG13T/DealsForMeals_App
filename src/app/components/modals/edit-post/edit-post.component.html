@@ -5,7 +5,8 @@
       <ion-button (click)="dismissModal()" [disabled]="completed">Close</ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button class="send" [disabled]="!post.title || !post.description || post.images == [] || loading || completed" (click)="createPost()">
+    <!-- TODO: add is different field -->
+      <ion-button class="send" [disabled]="!post.title || !post.description || post.images == [] || loading || completed" (click)="updatePost()">
         <ion-icon name="checkmark-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -54,17 +55,6 @@
     <div class="main-spinner">
       <ion-spinner name="bubbles"></ion-spinner>
       <h3>Editing Post...</h3>
-    </div> 
-  </div>
-
-  <div class="complete-content" [hidden]="!complete">
-    <div class="completed">
-      <div class="check-logo">
-        <ion-icon name="checkmark-outline"></ion-icon>
-      </div>
-      <h3>Congrats!</h3>
-      <p>Your post was successfully edited!</p>
-      <ion-button (click)="goToProfile()">Done</ion-button>
     </div> 
   </div>
 </ion-content>
