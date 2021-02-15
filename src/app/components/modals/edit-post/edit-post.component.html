@@ -6,10 +6,10 @@
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-button class="send" [disabled]="!post.title || !post.description || post.images == [] || loading || completed" (click)="createPost()">
-        <ion-icon name="send"></ion-icon>
+        <ion-icon name="checkmark-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title class="nav-title">Create Post</ion-title>
+    <ion-title class="nav-title">Edit Post</ion-title>
   </ion-toolbar>
 </ion-header>
 

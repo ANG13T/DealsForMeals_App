@@ -46,9 +46,7 @@ export class ViewPostComponent implements OnInit {
       component: EditPostComponent,
       cssClass: 'my-custom-class',
       componentProps: { 
-        origin: 'profile',
-        post: this.post,
-        isOwner: true
+        post: this.post
       }
     });
     modal.onDidDismiss()
