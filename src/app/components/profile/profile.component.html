@@ -25,11 +25,18 @@
       </div>
     </div> 
   </div>
+ 
 
-
-  <div class="supplies" *ngIf="!isFoodbank">
+  <!-- <div class="profile-options" *ngIf="isFoodbank">
+    <h1 color="black">This is a foodbank page</h1>
+  </div> -->
+<div class="container">
+  <div class="supplies">
+    <div class="profile-options" *ngIf="isFoodbank">
+      <h5>Profile Options</h5>
+    </div>
     <!-- Show posts here -->
-    <div class="posts">
+    <div class="posts" *ngIf="!isFoodbank">
       <div class="posts" *ngIf="!loading">
         <ion-card *ngFor="let post of posts" (click)="presentPost(post)">
           <img src={{post.images[0]}} />
@@ -44,7 +51,7 @@
         </ion-card>
       </div>
 
-        <div class="loading-posts" *ngIf="loading">
+        <div class="loading-posts" *ngIf="loading && !isFoodbank" >
           <ion-card *ngFor="let post of [1,2]">
             <ion-skeleton-text animated class="skeleton-image" style="height: 25vh;"></ion-skeleton-text>
             <ion-card-header>
@@ -57,6 +64,9 @@
     </div>
   </div> 
 </div>
+
+</div>
+  
 </ion-content>
 
 <app-bottom-bar></app-bottom-bar>   

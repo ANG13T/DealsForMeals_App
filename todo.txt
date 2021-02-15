@@ -1,5 +1,4 @@
 2/14/21:
-- create content for side nav / bottom nav
 - make list of food banks
 
 
