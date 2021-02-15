@@ -123,6 +123,7 @@ export class CreatePostComponent implements OnInit {
       await this.postService.createPost(this.post).then((result) => {
         this.loading = false;
         this.complete = true;
+        this.post = result;
       })  
     }
   }

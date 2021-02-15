@@ -60,6 +60,9 @@ export class ProfileComponent implements OnInit {
     modal.onDidDismiss()
     .then((data) => {
       console.log("got the data", data)
+      if(data.data.status == "create"){
+        this.posts.push(data.data.data);
+      }
     });
 
     return await modal.present();
@@ -78,6 +81,9 @@ export class ProfileComponent implements OnInit {
     modal.onDidDismiss()
       .then((data) => {
         console.log("got the data", data)
+        if(data.data.status == "delete"){
+          this.posts = this.posts.filter((el) => {el.id != data.data.data.id});
+        }
     });
 
     return await modal.present();

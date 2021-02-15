@@ -10,9 +10,10 @@ export class PostService {
   constructor(private afs: AngularFirestore) { }
 
   async createPost(post: Post): Promise<any>{
-    this.afs.collection("posts").add(post).then(() => {
+    this.afs.collection("posts").add(post).then((doc) => {
       console.log("post ", post, "created");
-      return "success";
+      post.id = doc.id;
+      return post;
     }).catch((err) => {
       console.log(err)
       alert("Error: " + err);
@@ -42,5 +43,5 @@ export class PostService {
     });
     return promise;
   }
-  
+
 }
