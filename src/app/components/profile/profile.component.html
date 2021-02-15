@@ -42,6 +42,7 @@
   <div class="supplies" *ngIf="!isFoodbank">
     <!-- Show posts here -->
     <div class="posts">
+      <div class="posts" *ngIf="!loading">
         <ion-card *ngFor="let post of posts" (click)="presentPost(post)">
           <img src={{post.images[0]}} />
           <ion-card-header>
@@ -53,6 +54,18 @@
            {{post.description}}
           </ion-card-content>
         </ion-card>
+      </div>
+
+        <div class="loading-posts" *ngIf="loading">
+          <ion-card *ngFor="let post of [1,2]">
+            <ion-skeleton-text animated class="skeleton-image" style="height: 25vh;"></ion-skeleton-text>
+            <ion-card-header>
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-card-header>
+            <!-- TODO: only get a small portion of description -->
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-card>
+        </div>
     </div>
   </div>    
 </div>
