@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ActionSheetController, ModalController } from '@ionic/angular';
 import { Post } from 'src/app/shared/models/post.model';
 import { AlertController } from '@ionic/angular';
 import { PostService } from 'src/app/shared/services/post.service';
@@ -18,7 +18,7 @@ export class ViewPostComponent implements OnInit {
   postID: string;
   isOwner: boolean = false;
 
-  constructor(private router: Router, private route: ActivatedRoute, private modalController: ModalController, public alertController: AlertController, private postService: PostService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private modalController: ModalController, public alertController: AlertController, private postService: PostService, public actionSheetController: ActionSheetController) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -84,5 +84,31 @@ export class ViewPostComponent implements OnInit {
 
     await alert.present();
   }
+
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Post Actions',
+      cssClass: 'my-custom-class',
+      buttons: [{
+        text: 'Edit Post',
+        icon: 'create-outline',
+        handler: () => {
+          this.editPost()
+        }
+      }, {
+        text: 'Delete Post',
+        icon: 'trash-outline',
+        handler: () => {
+          this.confirmDelete();
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+      }]
+    });
+    await actionSheet.present();
+  }
+
 
 }
