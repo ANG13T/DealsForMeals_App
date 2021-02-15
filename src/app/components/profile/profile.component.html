@@ -26,18 +26,6 @@
     </div> 
   </div>
 
-<!-- 
-  <div class="bottom-section" *ngIf="!isFoodbank">
-    <h3 class="bottom-title">Welcome, {{user.name}}!</h3>
-
-    <ion-button class="maps-button">View Foodbanks Near You</ion-button>
-  
-    <div class="or">
-      <h3>OR</h3>
-    </div>
-    
-    <ion-button class="search-button">Search Locations in your Area</ion-button>
-  </div> -->
 
   <div class="supplies" *ngIf="!isFoodbank">
     <!-- Show posts here -->
@@ -67,7 +55,8 @@
           </ion-card>
         </div>
     </div>
-  </div>    
+  </div> 
 </div>
-
 </ion-content>
+
+<app-bottom-bar></app-bottom-bar>   
