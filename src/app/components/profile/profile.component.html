@@ -33,7 +33,12 @@
 <div class="container">
   <div class="supplies">
     <div class="profile-options" *ngIf="isFoodbank">
-      <h5>Profile Options</h5>
+      <h4 class="welcome-text">Welcome, {{user.name}}!</h4>
+      <ion-button>View Food Banks Near You</ion-button>
+      <div class="or-section">
+        <h3>OR</h3>
+      </div>
+      <ion-button>Search Locations in your Area</ion-button>
     </div>
     <!-- Show posts here -->
     <div class="posts" *ngIf="!isFoodbank">
