@@ -38,13 +38,15 @@ export class SignUpComponent implements OnInit {
     this.errors.location = "";
   }
 
-  getLocation(){
-    this.geolocation.getCurrentPosition().then((resp) => {
-        console.log(resp);
-     }).catch((error) => {
-       console.log('Error getting location', error);
-     });
+  async getLocation(){
+    await this.geolocation.getCurrentPosition().then((res) => {
+      console.log(res)
+    }).catch((err) => {
+      console.log(err);
+    })
   }
+
+
 
   async signUp(){ 
     if(this.validateForm()){
