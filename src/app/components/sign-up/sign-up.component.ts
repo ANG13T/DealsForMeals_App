@@ -96,14 +96,19 @@ export class SignUpComponent implements OnInit {
       console.log("is valid user", validUser)
 
       if(validUser){
-        await this.userService.signUp(newUser, this.accountType).then((data) => {
+        await this.userService.signUp(newUser, this.password).then((data) => {
           console.log("got back data", data)
           if(data){
+          
             if(data.code == "auth/email-already-in-use"){
               alert("User already created. Please sign in");
               this.email = "";
               this.password = "";
               this.navigate('login');
+            }else if(data.code == "auth/weak-password"){
+              this.password = "Weak Password";
+            }else{
+              alert(data.message);
             }
           }
         });
