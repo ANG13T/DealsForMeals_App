@@ -1,3 +1,5 @@
+import { Location } from "./location.model";
+
 export interface User {
     uid: string;
     email: string;

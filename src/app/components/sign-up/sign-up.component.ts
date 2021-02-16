@@ -4,6 +4,7 @@ import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
+import { Location } from 'src/app/shared/models/location.model';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,7 +14,7 @@ import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@io
 export class SignUpComponent implements OnInit {
 
   name: string = "";
-  location: string = "-- Choose a Location --";
+  location: Location;
   email: string = "";
   password: string = "";
   accountType : 'store' | 'foodbank' = "foodbank";
@@ -21,7 +22,9 @@ export class SignUpComponent implements OnInit {
 
   constructor(private router: Router, private userService: UserService, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.location.name = "-- Choose a Location --";
+  }
 
   navigate(route: string){
     this.router.navigate([`/${route}`]);
@@ -40,7 +43,9 @@ export class SignUpComponent implements OnInit {
 
   async getLocation(){
     await this.geolocation.getCurrentPosition().then(async(res) => {
-      console.log(res)
+      console.log(res);
+      this.location.latitude = res.coords.latitude;
+      this.location.longtude = res.coords.longitude;
       await this.getAddress(res.coords.latitude, res.coords.longitude);
     }).catch((err) => {
       console.log(err);
@@ -54,7 +59,7 @@ export class SignUpComponent implements OnInit {
       let resultLocation = result[0];
       let address = `${resultLocation.subThoroughfare}, ${resultLocation.subLocality} ${resultLocation.locality}, ${resultLocation.administrativeArea} ${resultLocation.postalCode}, ${resultLocation.countryCode}`;
       console.log("addess ", address)
-      this.location = address;
+      this.location.name = address;
     })
     .catch((error: any) => console.log(error));
   }
@@ -67,7 +72,7 @@ export class SignUpComponent implements OnInit {
       let newUser : User = {
         name: this.name,
         uid: '',
-        location: new Location(),
+        location: { latitude: this.location.latitude, longtude: this.location.longtude, name: this.name } as Location,
         accountType: this.accountType,
         email: this.email,
         photoURL: ''
@@ -126,6 +131,11 @@ export class SignUpComponent implements OnInit {
     if(this.password.length < 5){
       this.errors.password = "Password must be longer than 4 letters";
       result = false;
+    }
+
+    if(this.accountType == 'store' && this.location.name == '-- Choose a Location --'){
+      this.errors.location = "Please choose a location";
+      return false;
     }
 
     return result;

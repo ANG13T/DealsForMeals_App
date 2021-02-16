@@ -1,57 +1,59 @@
-<ion-header>
-  <ion-toolbar class="header" color="#4078e1">
-    <ion-buttons slot="start">
-      <ion-back-button (click)="navigate('')" routerDirection="root"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Sign Up</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<div class="form" scrollY="true">
-  <h1 class="title">🛠 Create Account</h1>
-  <div class="main">
-    <ion-list class="choice">
-      <ion-radio-group [(ngModel)]="accountType">
-        <ion-list-header>
-          <ion-label class="choice-option">Select an Option:</ion-label>
-        </ion-list-header>
-    
-        <ion-item>
-          <ion-label>Foodbank</ion-label>
-          <ion-radio slot="start" value="foodbank"></ion-radio>
-        </ion-item>
-    
-        <ion-item>
-          <ion-label>Grocery Store / Donater</ion-label>
-          <ion-radio slot="start" value="store"></ion-radio>
-        </ion-item>
-      </ion-radio-group>
-    </ion-list>
-
-    <p class="content">Organization Name:</p>
-    <input type="text" [(ngModel)]="name"/>
-    <p class="error">{{errors.name}}</p>
-
-    <div class="location" *ngIf="accountType == 'store'">
-      <p class="content">Location:</p>
-      <div class="location-container">
-        <input type="text" [(ngModel)]="location" (click)="getLocation()"/>
-        <button (click)="getLocation()">
-          <ion-icon name="location-outline"></ion-icon>
-        </button>
+<div class="sign-up-page">
+  <ion-header>
+    <ion-toolbar class="header" color="#4078e1">
+      <ion-buttons slot="start">
+        <ion-back-button (click)="navigate('')" routerDirection="root"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Sign Up</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <div class="form" scrollY="true">
+    <h1 class="title">🛠 Create Account</h1>
+    <div class="main">
+      <ion-list class="choice">
+        <ion-radio-group [(ngModel)]="accountType">
+          <ion-list-header>
+            <ion-label class="choice-option">Select an Option:</ion-label>
+          </ion-list-header>
+      
+          <ion-item>
+            <ion-label>Foodbank</ion-label>
+            <ion-radio slot="start" value="foodbank"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>Grocery Store / Donater</ion-label>
+            <ion-radio slot="start" value="store"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+  
+      <p class="content">Organization Name:</p>
+      <input type="text" [(ngModel)]="name"/>
+      <p class="error">{{errors.name}}</p>
+  
+      <div class="location" *ngIf="accountType == 'store'">
+        <p class="content">Location:</p>
+        <div class="location-container">
+          <input type="text" [(ngModel)]="location" (click)="getLocation()" [disabled]="true"/>
+          <button (click)="getLocation()">
+            <ion-icon name="location-outline"></ion-icon>
+          </button>
+        </div>
+        <p class="error">{{errors.location}}</p>
       </div>
-      <p class="error">{{errors.location}}</p>
+      
+      <p class="content">Email:</p>
+      <input type="email" [(ngModel)]="email"/>
+      <p class="error">{{errors.email}}</p>
+  
+      <p class="content">Password:</p>
+      <input type="password" [(ngModel)]="password" />
+      <p class="error">{{errors.password}}</p>
     </div>
-    
-    <p class="content">Email:</p>
-    <input type="email" [(ngModel)]="email"/>
-    <p class="error">{{errors.email}}</p>
-
-    <p class="content">Password:</p>
-    <input type="password" [(ngModel)]="password" />
-    <p class="error">{{errors.password}}</p>
-  </div>
-
-    <ion-button expand="block" color="secondary" class="sign-in-button" (click)="signUp()" [disabled]="!name || !email || !password || !accountType || (location == '-- Choose a Location --')">Sign Up</ion-button>
-    <p class="description">Already have an account? <a (click)="navigate('login')">Sign In.</a></p>
-  </div>
+  
+      <ion-button expand="block" color="secondary" class="sign-in-button" (click)="signUp()" [disabled]="!name || !email || !password || !accountType">Sign Up</ion-button>
+      <p class="description">Already have an account? <a (click)="navigate('login')">Sign In.</a></p>
+    </div>
+</div>
