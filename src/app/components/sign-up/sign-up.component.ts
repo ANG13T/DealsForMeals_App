@@ -39,16 +39,26 @@ export class SignUpComponent implements OnInit {
   }
 
   async getLocation(){
-    await this.geolocation.getCurrentPosition().then((res) => {
+    await this.geolocation.getCurrentPosition().then(async(res) => {
       console.log(res)
+      await this.getAddress(res.coords.latitude, res.coords.longitude);
     }).catch((err) => {
       console.log(err);
     })
   }
 
+  async getAddress(lat: number, long: number){
+    this.nativeGeocoder.reverseGeocode(lat, long)
+    .then((result: NativeGeocoderResult[]) => {
+      console.log(JSON.stringify(result[0]))
+      this.location = JSON.stringify(result[0]);
+    })
+    .catch((error: any) => console.log(error));
+  }
 
 
-  async signUp(){ 
+
+  async signUp(){
     if(this.validateForm()){
 
       let newUser : User = {
