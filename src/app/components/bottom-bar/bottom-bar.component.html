@@ -12,8 +12,8 @@
       <ion-label>Profile</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
-<ion-fab horizontal="center" vertical="bottom" edge class="create-post-button">
-  <ion-fab-button>
+<ion-fab horizontal="center" vertical="bottom" edge class="create-post-button" (click)="presentModal()" *ngIf="user">
+  <ion-fab-button [hidden]="user.accountType == 'foodbank'">
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>
 </ion-fab>

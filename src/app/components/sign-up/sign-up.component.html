@@ -36,7 +36,7 @@
       <div class="location" *ngIf="accountType == 'store'">
         <p class="content">Location:</p>
         <div class="location-container">
-          <input type="text" [(ngModel)]="location.name" (click)="getLocation()" />
+          <input type="text" [(ngModel)]="location.name" (click)="getLocation()" readonly/>
           <button (click)="getLocation()">
             <ion-icon name="location-outline"></ion-icon>
           </button>
