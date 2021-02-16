@@ -13,7 +13,7 @@ import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@io
 export class SignUpComponent implements OnInit {
 
   name: string = "";
-  location: string = "";
+  location: string = "-- Choose a Location --";
   email: string = "";
   password: string = "";
   accountType : 'store' | 'foodbank' = "foodbank";
@@ -51,7 +51,10 @@ export class SignUpComponent implements OnInit {
     this.nativeGeocoder.reverseGeocode(lat, long)
     .then((result: NativeGeocoderResult[]) => {
       console.log(JSON.stringify(result[0]))
-      this.location = JSON.stringify(result[0]);
+      let resultLocation = result[0];
+      let address = `${resultLocation.subThoroughfare}, ${resultLocation.subLocality} ${resultLocation.locality}, ${resultLocation.administrativeArea} ${resultLocation.postalCode}, ${resultLocation.countryCode}`;
+      console.log("addess ", address)
+      this.location = address;
     })
     .catch((error: any) => console.log(error));
   }

@@ -52,3 +52,41 @@ input{
 .sign-in-button{
     margin-top: 3rem;
 }
+
+.location-container{
+    margin:auto;
+    max-width:100%;
+    display: flex;
+}
+
+.location-container input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid #4043e1;
+    float: left;
+    width: 70%;
+    margin-left: 10% !important;
+    margin: auto;
+    margin-right: 0px;
+    border-radius: 0px;
+    background: #e3e4f9;
+  }
+  
+  .location-container button {
+    float: left;
+    width: 10%;
+    color: white;
+    background: #0b7dda;
+    font-size: 17px;
+    cursor: pointer;
+  }
+  
+  .location-container button:hover {
+    background: #0b7dda;
+  }
+  
+  .location-container::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
