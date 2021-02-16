@@ -5,12 +5,12 @@
 </ion-header>
 <ion-content class="content">
   <ion-list lines="none">
-    <ion-item>
-      <ion-icon name="person-circle-outline"></ion-icon>
+    <ion-item (click)="navigate('profile')">
+      <ion-icon name="person-circle-outline" ></ion-icon>
       Profile
     </ion-item>
-    <ion-item>
-      <ion-icon name="storefront-outline"></ion-icon>
+    <ion-item (click)="navigate('foodbanks')">
+      <ion-icon name="storefront-outline" ></ion-icon>
       Foodbanks
     </ion-item>
     <ion-item>

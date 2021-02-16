@@ -28,9 +28,10 @@ import { CreatePostComponent } from './components/modals/create-post/create-post
 import { ViewPostComponent } from './components/view-post/view-post.component';
 import { EditPostComponent } from './components/modals/edit-post/edit-post.component';
 import { BottomBarComponent } from './components/bottom-bar/bottom-bar.component';
+import { FoodbanksComponent } from './components/foodbanks/foodbanks.component';
 
 @NgModule({
-  declarations: [AppComponent, HomePage, SignUpComponent, SignInComponent, ProfileComponent, SideNavComponent, BaseNavComponent, EditProfileComponent, CreatePostComponent, ViewPostComponent, EditPostComponent, BottomBarComponent],
+  declarations: [AppComponent, HomePage, SignUpComponent, SignInComponent, ProfileComponent, SideNavComponent, BaseNavComponent, EditProfileComponent, CreatePostComponent, ViewPostComponent, EditPostComponent, BottomBarComponent, FoodbanksComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, AngularFireModule.initializeApp(environment.firebaseConfig),AngularFireAuthModule, AngularFireStorageModule, FormsModule, ReactiveFormsModule, CommonModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AngularFirestore, NativeGeocoder, Geolocation],
