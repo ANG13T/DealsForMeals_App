@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -13,7 +14,7 @@ export class BottomBarComponent implements OnInit {
 
   user: User;
 
-  constructor(public modalController: ModalController, private userService: UserService) {
+  constructor(public modalController: ModalController, private userService: UserService, private router: Router) {
     this.userService.user$.subscribe(async (userProfile) => {
       if(userProfile){
         this.user = userProfile;
@@ -38,6 +39,10 @@ export class BottomBarComponent implements OnInit {
     });
 
     return await modal.present();
+  }
+
+  navigate(route: string){
+    this.router.navigate([`/${route}`]);
   }
 
 }
