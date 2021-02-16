@@ -32,6 +32,12 @@
     <input type="text" [(ngModel)]="name"/>
     <p class="error">{{errors.name}}</p>
 
+    <div class="location" *ngIf="accountType == 'store'">
+      <p class="content">Location:</p>
+      <input type="text" [(ngModel)]="location" (click)="getLocation()"/>
+      <p class="error">{{errors.location}}</p>
+    </div>
+    
     <p class="content">Email:</p>
     <input type="email" [(ngModel)]="email"/>
     <p class="error">{{errors.email}}</p>
