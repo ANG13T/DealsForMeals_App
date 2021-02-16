@@ -1,11 +1,15 @@
 .form{
     position: absolute;
-    top: 10%;
+    margin-top: 2rem !important;
     margin: auto;
     text-align: center;
     width: 80%;
     margin-left: 2rem;
     margin-right: 2rem;
+}
+
+.error{
+    color: red;
 }
 
 .header{

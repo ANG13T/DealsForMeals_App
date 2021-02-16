@@ -14,7 +14,7 @@ import { Location } from 'src/app/shared/models/location.model';
 export class SignUpComponent implements OnInit {
 
   name: string = "";
-  location: Location;
+  location: Location = {name: "", longtude: 0, latitude: 0} as Location;
   email: string = "";
   password: string = "";
   accountType : 'store' | 'foodbank' = "foodbank";
