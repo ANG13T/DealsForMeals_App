@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { User } from '../models/user.model';
 import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,14 @@ export class UserService {
   public currentUser;
   user$: Observable<any>;
   loggedIn : boolean;
+  location: any;
   
-  constructor(private router: Router, private afAuth: AngularFireAuth, private afs: AngularFirestore) { 
+  constructor(private router: Router, private afAuth: AngularFireAuth, private afs: AngularFirestore, private geolocation: Geolocation) {
+    let watch = this.geolocation.watchPosition();
+    watch.subscribe((data: any) => {
+    this.location.latitude = data.coords.latitude;
+    this.location.longitude = data.coords.longitude;
+    }); 
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if(user){
