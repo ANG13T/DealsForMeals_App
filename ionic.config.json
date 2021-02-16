@@ -1,5 +1,7 @@
 {
   "name": "Deals2Meals",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
