@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { menuController } from "@ionic/core";
 
 @Component({
   selector: 'app-side-nav',
@@ -14,6 +15,7 @@ export class SideNavComponent implements OnInit {
 
   navigate(route: string){
     this.router.navigate([`/${route}`]);
+    menuController.toggle();
   }
 
 }
