@@ -26,6 +26,7 @@
     "@capacitor/core": "2.4.6",
     "@capacitor/ios": "^2.4.6",
     "@ionic-native/geolocation": "^5.31.1",
+    "@ionic-native/google-maps": "^5.5.0",
     "@ionic-native/native-geocoder": "^5.31.1",
     "@ionic/angular": "^5.5.2",
     "firebase": "^8.2.6",
