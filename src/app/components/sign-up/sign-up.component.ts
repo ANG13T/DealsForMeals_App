@@ -72,7 +72,7 @@ export class SignUpComponent implements OnInit {
       let newUser : User = {
         name: this.name,
         uid: '',
-        location: { latitude: this.location.latitude, longtude: this.location.longtude, name: this.name } as Location,
+        location: { latitude: this.location.latitude, longtude: this.location.longtude, name: this.location.name } as Location,
         accountType: this.accountType,
         email: this.email,
         photoURL: ''
