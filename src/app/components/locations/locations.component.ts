@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { Geolocation ,GeolocationOptions ,Geoposition ,PositionError } from '@ionic-native/geolocation'; 
-import { NavController } from '@ionic/angular/providers/nav-controller';
 
 declare var google;
 
@@ -16,7 +15,7 @@ export class LocationsComponent implements OnInit {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   
-  constructor(public navCtrl: NavController,private geolocation : Geolocation) { }
+  constructor(private geolocation : Geolocation) { }
   
 
   ngOnInit() {
