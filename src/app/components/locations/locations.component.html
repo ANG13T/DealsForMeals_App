@@ -4,6 +4,9 @@
       <ion-buttons slot="end">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
+      <ion-buttons end>
+        <button ion-button (click)="showNearbyResto()"><ion-icon name="list"></ion-icon>Restaurants</button>
+        </ion-buttons> 
       <ion-title>Locations Near You</ion-title>
     </ion-toolbar>
   </ion-header>
@@ -11,8 +14,6 @@
   
   <ion-content padding>
     <h3>Locations</h3>
-    <div id="map_canvas">
-      
-    </div>
+    <div #map id="map"></div> 
   </ion-content>
 </div>
