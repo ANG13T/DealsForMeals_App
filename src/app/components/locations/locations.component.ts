@@ -10,65 +10,37 @@ declare var google;
   styleUrls: ['./locations.component.scss'],
 })
 export class LocationsComponent implements OnInit {
-  options : GeolocationOptions;
-  currentPos : Geoposition;
-  @ViewChild('map') mapElement: ElementRef;
-  map: any;
+  latitude: any;
+  longitude: any;
+  @ViewChild('mapElement') mapNativeElement: ElementRef;
   
   constructor(private geolocation : Geolocation) { }
-  
+ 
 
   ngOnInit() {
   }
 
-  addMap(lat,long){
-
-    let latLng = new google.maps.LatLng(lat, long);
-
-    let mapOptions = {
-    center: latLng,
-    zoom: 15,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-
-    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-    this.addMarker();
-}
-
-addMarker(){
-
-  let marker = new google.maps.Marker({
-  map: this.map,
-  animation: google.maps.Animation.DROP,
-  position: this.map.getCenter()
-  });
-
-  let content = "<p>This is your current position !</p>";          
-  let infoWindow = new google.maps.InfoWindow({
-  content: content
-  });
-
-  google.maps.event.addListener(marker, 'click', () => {
-  infoWindow.open(this.map, marker);
-  });
-
-}
-
-getUserPosition(){
-  this.options = {
-  enableHighAccuracy : false
-  };
-  this.geolocation.getCurrentPosition(this.options).then((pos : Geoposition) => {
-
-      this.currentPos = pos;     
-
-      console.log(pos);
-      this.addMap(pos.coords.latitude,pos.coords.longitude);
-
-  },(err : PositionError)=>{
-      console.log("error : " + err.message);
-  ;
-  })
-}
+  
+  ngAfterViewInit(): void {
+    this.geolocation.getCurrentPosition().then((resp) => {
+      this.latitude = resp.coords.latitude;
+      this.longitude = resp.coords.longitude;
+      const map = new google.maps.Map(this.mapNativeElement.nativeElement, {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 6
+      });
+      const infoWindow = new google.maps.InfoWindow;
+      const pos = {
+        lat: this.latitude,
+        lng: this.longitude
+      };
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('Location found.');
+      infoWindow.open(map);
+      map.setCenter(pos);
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
+  }
 
 }

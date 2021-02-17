@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { IonicErrorHandler } from 'ionic-angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -31,12 +30,13 @@ import { ViewPostComponent } from './components/view-post/view-post.component';
 import { EditPostComponent } from './components/modals/edit-post/edit-post.component';
 import { BottomBarComponent } from './components/bottom-bar/bottom-bar.component';
 import { FoodbanksComponent } from './components/foodbanks/foodbanks.component';
+import { LocationsComponent } from './components/locations/locations.component';
 
 @NgModule({
-  declarations: [AppComponent, HomePage, SignUpComponent, SignInComponent, ProfileComponent, SideNavComponent, BaseNavComponent, EditProfileComponent, CreatePostComponent, ViewPostComponent, EditPostComponent, BottomBarComponent, FoodbanksComponent],
+  declarations: [AppComponent, HomePage, SignUpComponent, SignInComponent, ProfileComponent, SideNavComponent, BaseNavComponent, EditProfileComponent, CreatePostComponent, ViewPostComponent, EditPostComponent, BottomBarComponent, FoodbanksComponent, LocationsComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, AngularFireModule.initializeApp(environment.firebaseConfig),AngularFireAuthModule, AngularFireStorageModule, FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, {provide: ErrorHandler, useClass: IonicErrorHandler}, AngularFirestore, NativeGeocoder, Geolocation],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AngularFirestore, NativeGeocoder, Geolocation],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
