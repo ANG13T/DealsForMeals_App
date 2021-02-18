@@ -1,3 +1,19 @@
-<p>
-  stores works!
-</p>
+<div class="stores">
+  <ion-header>
+    <ion-toolbar class="header" color="#4078e1">
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Grocery Stores</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="stores">
+    <div class="store" *ngFor="let store of stores">
+      <h1>{{store.name}}</h1>
+    </div>
+  </div>
+
+</div>
+
+<app-bottom-bar></app-bottom-bar>   
