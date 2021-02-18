@@ -8,9 +8,11 @@
     </ion-toolbar>
   </ion-header>
 
-  <p>
-    foodbanks works!
-  </p>
+  <div class="foodbanks">
+    <div class="foodbank" *ngFor="let foodbank of foodbanks">
+      <h1>{{foodbank.name}}</h1>
+    </div>
+  </div>
 
 </div>
 
