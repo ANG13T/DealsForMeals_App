@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FoodbankService } from 'src/app/shared/services/foodbank.service';
+
 
 @Component({
   selector: 'app-foodbanks',
@@ -7,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FoodbanksComponent implements OnInit {
 
-  constructor() { }
+  constructor(private foodbankService: FoodbankService) { }
 
   ngOnInit() {}
+
+  
 
 }
