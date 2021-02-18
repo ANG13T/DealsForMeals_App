@@ -7,6 +7,7 @@ import { LocationsComponent } from './components/locations/locations.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { StoresComponent } from './components/stores/stores.component';
 import { ViewPostComponent } from './components/view-post/view-post.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 
@@ -31,6 +32,11 @@ const routes: Routes = [
   {
     path: 'foodbanks',
     component: FoodbanksComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'stores',
+    component: StoresComponent,
     canActivate: [AuthGuard]
   },
   {

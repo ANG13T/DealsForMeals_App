@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { menuController } from "@ionic/core";
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -9,9 +10,17 @@ import { menuController } from "@ionic/core";
 })
 export class SideNavComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  identifier:string;
 
-  ngOnInit() {}
+  constructor(private router: Router, private userService: UserService) { }
+
+  ngOnInit() {
+    this.userService.user$.subscribe((userProfile) => {
+      if(userProfile){
+        this.identifier = userProfile.accountType;
+      }
+    })
+  }
 
   navigate(route: string){
     this.router.navigate([`/${route}`]);

@@ -9,9 +9,13 @@
       <ion-icon name="person-circle-outline" ></ion-icon>
       Profile
     </ion-item>
-    <ion-item (click)="navigate('foodbanks')">
+    <ion-item (click)="navigate('foodbanks')" *ngIf="identifier == 'foodbank'">
       <ion-icon name="storefront-outline" ></ion-icon>
       Foodbanks
+    </ion-item>
+    <ion-item (click)="navigate('stores')" *ngIf="identifier == 'store'">
+      <ion-icon name="storefront-outline" ></ion-icon>
+      Grocery Stores
     </ion-item>
     <ion-item (click)="navigate('locations')">
       <ion-icon name="location-outline"></ion-icon>
