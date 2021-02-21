@@ -8,7 +8,7 @@
     </ion-toolbar>
   </ion-header>
   
-  <div class="form" scrollY="true">
+  <!-- <div class="form" scrollY="true">
     <h1 class="title">🛠 Create Account</h1>
     <div class="main">
       <ion-list class="choice">
@@ -56,4 +56,20 @@
       <ion-button expand="block" color="secondary" class="sign-in-button" (click)="signUp()" [disabled]="!name || !email || !password || !accountType">Sign Up</ion-button>
       <p class="description">Already have an account? <a (click)="navigate('login')">Sign In.</a></p>
     </div>
-</div>
+</div> -->
+
+
+<ion-stepper #stepper (selectIndexChange)="selectChange($event)">
+  <ion-step label="Step1"
+            description="Step1 description">
+    <h2>Step1 Content</h2>
+    <p>Step1 Content</p>
+    <button ion-button small ionicStepperNext>Next</button>
+  </ion-step>
+  <ion-step label="Step2 - Step2 - Step2"
+            description="Step1 description">
+    <h2>Step2 Content</h2>
+    <p>Step2 Content</p>
+    <button ion-button color="light" small ionicStepperPrevious>Previous</button>
+  </ion-step>
+</ion-stepper>
