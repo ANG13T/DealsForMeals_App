@@ -22,19 +22,13 @@ export class SignUpComponent implements OnInit {
   location: Location = {name: "", longtude: 0, latitude: 0} as Location;
   email: string = "";
   password: string = "";
-  accountType : 'store' | 'foodbank' = "foodbank";
+  accountType : 'foodie' | 'foodbank' | 'resturant' | 'other' = "foodbank";
   errors = {password: "", name: "", email: "", location: ""};
 
-  constructor(private router: Router, private userService: UserService, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder, private _formBuilder: FormBuilder) { }
+  constructor(private router: Router, private userService: UserService, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder) { }
 
   ngOnInit() {
     this.location.name = "-- Choose a Location --";
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
   }
 
   navigate(route: string){
@@ -86,7 +80,8 @@ export class SignUpComponent implements OnInit {
         location: { latitude: this.location.latitude, longtude: this.location.longtude, name: this.location.name } as Location,
         accountType: this.accountType,
         email: this.email,
-        photoURL: ''
+        photoURL: '',
+        isBusiness: false
       }
 
       if(newUser == null){
@@ -147,11 +142,6 @@ export class SignUpComponent implements OnInit {
     if(this.password.length < 5){
       this.errors.password = "Password must be longer than 4 letters";
       result = false;
-    }
-
-    if(this.accountType == 'store' && this.location.name == '-- Choose a Location --'){
-      this.errors.location = "Please choose a location";
-      return false;
     }
 
     return result;

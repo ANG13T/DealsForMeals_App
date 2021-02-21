@@ -4,7 +4,8 @@ export interface User {
     uid: string;
     email: string;
     name: string;
-    accountType: 'store' | 'foodbank';
+    accountType: 'foodie' | 'foodbank' | 'resturant' | 'other';
+    isBusiness:boolean;
     photoURL?: string;
-    location?: Location
+    location?: Location;
   }
