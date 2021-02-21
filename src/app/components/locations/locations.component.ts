@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { Geolocation ,GeolocationOptions ,Geoposition ,PositionError } from '@ionic-native/geolocation'; 
 
-declare var google;
+declare var google: any;
 
 @Component({
   selector: 'app-locations',
@@ -10,37 +10,31 @@ declare var google;
   styleUrls: ['./locations.component.scss'],
 })
 export class LocationsComponent implements OnInit {
-  latitude: any;
-  longitude: any;
-  @ViewChild('mapElement') mapNativeElement: ElementRef;
   
-  constructor(private geolocation : Geolocation) { }
+  map: any;
+
+  @ViewChild('map', {read: ElementRef, static: false}) mapRef: ElementRef;
+
+  
+  constructor() { }
+
+  ionViewDidEnter(){
+    this.showMap();
+  }
  
 
   ngOnInit() {
   }
 
-  
-  ngAfterViewInit(): void {
-    this.geolocation.getCurrentPosition().then((resp) => {
-      this.latitude = resp.coords.latitude;
-      this.longitude = resp.coords.longitude;
-      const map = new google.maps.Map(this.mapNativeElement.nativeElement, {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 6
-      });
-      const infoWindow = new google.maps.InfoWindow;
-      const pos = {
-        lat: this.latitude,
-        lng: this.longitude
-      };
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('Location found.');
-      infoWindow.open(map);
-      map.setCenter(pos);
-    }).catch((error) => {
-      console.log('Error getting location', error);
-    });
+  showMap(){
+    const location = new google.maps.LatLng(-17.824858, 31.053208);
+    const options = {
+      center: location,
+      zoom: 15,
+      disableDefaultUI: true
+    }
+    this.map = new google.maps.Map(this.mapRef.nativeElement, options);
+
   }
 
 }
