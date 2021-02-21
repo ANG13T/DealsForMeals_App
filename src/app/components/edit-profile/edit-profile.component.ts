@@ -13,8 +13,8 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./edit-profile.component.scss'],
 })
 export class EditProfileComponent implements OnInit {
-  userProfile: User = {name: "", email: "", accountType: "foodbank", photoURL: "", uid: "", location: null};
-  initUserProfile: User = {name: "", email: "", accountType: "foodbank", photoURL: "", uid: "", location: null};
+  userProfile: User = {name: "", email: "", accountType: "foodbank", photoURL: "", uid: "", location: null, isBusiness: false};
+  initUserProfile: User = {name: "", email: "", accountType: "foodbank", photoURL: "", uid: "", location: null, isBusiness: false};
   profileLoading: boolean = false;
   errors = {password: "", name: "", email: ""};
 

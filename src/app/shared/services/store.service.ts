@@ -18,7 +18,8 @@ export class StoreService {
           name: data.name,
           email: data.email,
           uid: data.uid,
-          accountType: data.accountType
+          accountType: data.accountType,
+          isBusiness: data.isBusiness
         }
         stores.push(store)
       })
