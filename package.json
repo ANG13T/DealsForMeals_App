@@ -32,7 +32,6 @@
     "cordova-browser": "6.0.0",
     "firebase": "^8.2.6",
     "ionic-angular": "^3.9.10",
-    "ionic-stepper": "^1.1.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

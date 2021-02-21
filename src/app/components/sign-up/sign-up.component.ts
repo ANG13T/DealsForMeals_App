@@ -5,6 +5,8 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { Location } from 'src/app/shared/models/location.model';
+import { FormBuilder, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,6 +14,9 @@ import { Location } from 'src/app/shared/models/location.model';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
+  isLinear = false;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
 
   name: string = "";
   location: Location = {name: "", longtude: 0, latitude: 0} as Location;
@@ -20,10 +25,16 @@ export class SignUpComponent implements OnInit {
   accountType : 'store' | 'foodbank' = "foodbank";
   errors = {password: "", name: "", email: "", location: ""};
 
-  constructor(private router: Router, private userService: UserService, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder) { }
+  constructor(private router: Router, private userService: UserService, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder, private _formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.location.name = "-- Choose a Location --";
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
   }
 
   navigate(route: string){
@@ -150,10 +161,5 @@ export class SignUpComponent implements OnInit {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   }
-
-  selectChange(e) {
-    console.log(e);
-  }
-  
 
 }

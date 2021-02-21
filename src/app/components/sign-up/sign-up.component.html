@@ -59,17 +59,39 @@
 </div> -->
 
 
-<ion-stepper #stepper (selectIndexChange)="selectChange($event)">
-  <ion-step label="Step1"
-            description="Step1 description">
-    <h2>Step1 Content</h2>
-    <p>Step1 Content</p>
-    <button ion-button small ionicStepperNext>Next</button>
-  </ion-step>
-  <ion-step label="Step2 - Step2 - Step2"
-            description="Step1 description">
-    <h2>Step2 Content</h2>
-    <p>Step2 Content</p>
-    <button ion-button color="light" small ionicStepperPrevious>Previous</button>
-  </ion-step>
-</ion-stepper>
+<mat-vertical-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Fill out your name</ng-template>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Fill out your address</ng-template>
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+               required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>
