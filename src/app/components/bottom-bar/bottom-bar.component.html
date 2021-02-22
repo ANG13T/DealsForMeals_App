@@ -1,4 +1,4 @@
-  <ion-tab-bar slot="bottom">
+  <ion-tab-bar slot="bottom" *ngIf="user">
     <ion-tab-button tab="schedule" (click)="navigate('foodbanks')">
       <ion-icon name="storefront-outline"></ion-icon>
       <ion-label>Foodbanks</ion-label>
@@ -12,8 +12,8 @@
       <ion-label>Profile</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
-<ion-fab horizontal="center" vertical="bottom" edge class="create-post-button" (click)="presentModal()" *ngIf="user.isBusiness">
-  <ion-fab-button [hidden]="user.accountType == 'foodbank'">
+<ion-fab horizontal="center" vertical="bottom" edge class="create-post-button" (click)="presentModal()" *ngIf="user">
+  <ion-fab-button [hidden]="user.accountType == 'foodbank'" *ngIf="user.isBusiness">
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>
 </ion-fab>

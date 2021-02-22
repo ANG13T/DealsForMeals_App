@@ -40,13 +40,13 @@
         <div class="deals" *ngIf="!showFoodbanks">
           <div class="foodbank" *ngFor="let deal of deals">
             <ion-card>
-              <img src={{foodbank.photoURL}} />
+              <img src={{deal.images[0]}} />
               <ion-card-header>
                 <ion-card-subtitle>{{foodbank.location}}</ion-card-subtitle>
-                <ion-card-title>{{foodbank.name}}</ion-card-title>
+                <ion-card-title>{{deal.title}}</ion-card-title>
               </ion-card-header>
               <ion-card-content>
-                Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+               {{deal.description}}
               </ion-card-content>
             </ion-card>
           </div>
