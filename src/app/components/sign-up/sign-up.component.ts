@@ -97,7 +97,6 @@ export class SignUpComponent implements OnInit {
 
 
   async signUp(){
-    console.log("signing up")
     if(this.validateForm()){
       let newUser : User = {
         name: this.name,

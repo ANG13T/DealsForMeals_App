@@ -88,19 +88,19 @@
         <mat-label>Full Name:</mat-label>
         <input matInput placeholder="Ex. John Doe"
                required [(ngModel)]="name">
-        <mat-error>{{errors.name}}</mat-error>
+      <mat-hint style="color:red;">{{errors.name}}</mat-hint>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Email: </mat-label>
         <input matInput placeholder="Ex. johndoe@gmail.com" type="email"
                required [(ngModel)]="email">
-      <mat-error>{{errors.email}}</mat-error>
+      <mat-hint style="color:red;">{{errors.email}}</mat-hint>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Password:</mat-label>
         <input matInput type="password"
                required [(ngModel)]="password">
-        <mat-error>{{errors.password}}</mat-error>
+      <mat-hint style="color:red;">{{errors.password}}</mat-hint> 
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
