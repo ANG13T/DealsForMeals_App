@@ -49,7 +49,14 @@ export class SignUpComponent implements OnInit {
 
   selectType(type: string){
     console.log("clicked", type);
-    this.isBusiness = (type == 'business');
+
+    if(type == 'business'){
+      this.isBusiness = true;
+    }else{
+      this.isBusiness = false;
+      this.accountType = "foodie";
+    }
+    
   }
 
   async getLocation(){
@@ -79,7 +86,6 @@ export class SignUpComponent implements OnInit {
 
   async signUp(){
     if(this.validateForm()){
-
       let newUser : User = {
         name: this.name,
         uid: '',
@@ -87,7 +93,7 @@ export class SignUpComponent implements OnInit {
         accountType: this.accountType,
         email: this.email,
         photoURL: '',
-        isBusiness: false
+        isBusiness: this.isBusiness
       }
 
       if(newUser == null){
