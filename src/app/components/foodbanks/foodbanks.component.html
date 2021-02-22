@@ -4,14 +4,31 @@
       <ion-buttons slot="end">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title>Foodbanks</ion-title>
+      <ion-title>Deals4Meals</ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-segment value="foodbanks" class="choices">
+        <ion-segment-button value="deals" (click)="toggleShowFoodbanks()">
+          <ion-label>Deals</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="foodbanks" checked (click)="toggleShowFoodbanks()">
+          <ion-label>Food Banks Near Me</ion-label>
+        </ion-segment-button>
+      </ion-segment>
     </ion-toolbar>
   </ion-header>
 
-  <div class="foodbanks">
+  <div class="foodbanks" *ngIf="showFoodbanks">
     <div class="foodbank" *ngFor="let foodbank of foodbanks">
       <h1>{{foodbank.name}}</h1>
     </div>
+  </div>
+
+  <div class="deals" *ngIf="!showFoodbanks">
+    <!-- <div class="foodbank" *ngFor="let foodbank of foodbanks">
+      <h1>{{foodbank.name}}</h1>
+    </div> -->
+    <h1>Some Deals Here</h1>
   </div>
 
 </div>

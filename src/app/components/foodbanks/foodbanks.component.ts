@@ -11,6 +11,7 @@ import { FoodbankService } from 'src/app/shared/services/foodbank.service';
 export class FoodbanksComponent implements OnInit {
 
   foodbanks: User[];
+  showFoodbanks: boolean = true;
 
   constructor(private foodbankService: FoodbankService) { }
 
@@ -18,6 +19,10 @@ export class FoodbanksComponent implements OnInit {
     this.foodbankService.getFoodbanks(5).then((data) => {
       this.foodbanks = data;
     })
+  }
+
+  toggleShowFoodbanks(){
+    this.showFoodbanks = !this.showFoodbanks;
   }
 
   
