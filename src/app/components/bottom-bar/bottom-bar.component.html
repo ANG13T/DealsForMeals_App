@@ -3,7 +3,7 @@
       <ion-icon name="storefront-outline"></ion-icon>
       <ion-label>Foodbanks</ion-label>
     </ion-tab-button>
-    <ion-tab-button>
+    <ion-tab-button *ngIf="user.isBusiness">
       <ion-icon name="add-outline"></ion-icon>
       <ion-label>Create</ion-label>
     </ion-tab-button>
@@ -12,7 +12,7 @@
       <ion-label>Profile</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
-<ion-fab horizontal="center" vertical="bottom" edge class="create-post-button" (click)="presentModal()" *ngIf="user">
+<ion-fab horizontal="center" vertical="bottom" edge class="create-post-button" (click)="presentModal()" *ngIf="user.isBusiness">
   <ion-fab-button [hidden]="user.accountType == 'foodbank'">
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>

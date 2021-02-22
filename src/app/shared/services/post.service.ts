@@ -9,8 +9,8 @@ export class PostService {
 
   constructor(private afs: AngularFirestore) { }
 
-  async createPost(post: Post): Promise<any>{
-    this.afs.collection("posts").add(post).then((doc) => {
+  async createDeal(post: Post): Promise<any>{
+    this.afs.collection("deals").add(post).then((doc) => {
       console.log("post ", post, "created");
       post.id = doc.id;
       return post;
@@ -21,9 +21,9 @@ export class PostService {
     })
   }
 
-  async getPosts(uid: string): Promise<any>{
+  async getDeals(uid: string): Promise<any>{
     let posts: Post[] = [];
-    let promise = this.afs.firestore.collection("posts").where('userProfile.uid', '==', uid).get().then((snapshot) => {
+    let promise = this.afs.firestore.collection("deals").where('userProfile.uid', '==', uid).get().then((snapshot) => {
       snapshot.forEach((doc) => {
         let docData = doc.data();
         let newPost: Post = {userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, amount: docData.amount, id: doc.id};
@@ -34,8 +34,8 @@ export class PostService {
     return promise;
   }
 
-  async deletePost(postID: string): Promise<any>{
-    let promise = this.afs.firestore.collection("posts").doc(postID).delete().then(() => {
+  async deleteDeal(postID: string): Promise<any>{
+    let promise = this.afs.firestore.collection("deals").doc(postID).delete().then(() => {
       return;
     }).catch((err) => {
       alert("Error: " + err.message);
@@ -44,8 +44,8 @@ export class PostService {
     return promise;
   }
 
-  async updatePost(post: Post): Promise<any>{
-    let promise = this.afs.firestore.collection("posts").doc(post.id).update(post).then(() => {
+  async updateDeal(post: Post): Promise<any>{
+    let promise = this.afs.firestore.collection("deals").doc(post.id).update(post).then(() => {
       return;
     }).catch((err) => {
       alert("Error: " + err.message);
