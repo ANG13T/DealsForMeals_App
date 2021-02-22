@@ -29,13 +29,13 @@ export class ProfileComponent implements OnInit {
       this.user = userProfile;
       if(this.user.accountType == "foodbank"){
         this.isFoodbank = true;
-        await this.postService.getPosts(this.user.uid).then((data) => {
+        await this.postService.getDealsForUser(this.user.uid).then((data) => {
           console.log("got the posts", data)
           this.posts = data;
         })
       }else{
         this.isFoodbank = false;
-        await this.postService.getPosts(this.user.uid).then((data) => {
+        await this.postService.getDealsForUser(this.user.uid).then((data) => {
           console.log("got the posts", data)
           this.posts = data;
         })

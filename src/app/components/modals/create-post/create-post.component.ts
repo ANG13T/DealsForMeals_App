@@ -120,7 +120,7 @@ export class CreatePostComponent implements OnInit {
   async createPost(){
     this.loading = true;
     if(this.validateForm()){
-      await this.postService.createPost(this.post).then((result) => {
+      await this.postService.createDeal(this.post).then((result) => {
         this.loading = false;
         this.complete = true;
         this.post = result;

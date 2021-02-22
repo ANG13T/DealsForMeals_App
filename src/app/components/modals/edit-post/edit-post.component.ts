@@ -40,7 +40,7 @@ export class EditPostComponent implements OnInit {
   updatePost(){
     if(this.validateForm()){
       this.loading = true;
-      this.postService.updatePost(this.post).then(() => {
+      this.postService.updateDeal(this.post).then(() => {
         this.loading = false;
         this.dismissModal('edit', this.post);
       })
