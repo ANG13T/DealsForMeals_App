@@ -18,19 +18,37 @@
     </ion-toolbar>
   </ion-header>
 
-  <div class="foodbanks" *ngIf="showFoodbanks">
-    <div class="foodbank" *ngFor="let foodbank of foodbanks">
-      <h1>{{foodbank.name}}</h1>
-    </div>
-  </div>
+  <ion-content class="content">
+    <ion-infinite-scroll>
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data…">
+        <div class="foodbanks" *ngIf="showFoodbanks">
+          <div class="foodbank" *ngFor="let foodbank of foodbanks">
+            <ion-card>
+              <img src={{foodbank.photoURL}} />
+              <ion-card-header>
+                <ion-card-subtitle>{{foodbank.location}}</ion-card-subtitle>
+                <ion-card-title>{{foodbank.name}}</ion-card-title>
+              </ion-card-header>
+              <!-- <ion-card-content>
+                Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.
+              </ion-card-content> -->
+            </ion-card>
+          </div>
+      
+        <div class="deals" *ngIf="!showFoodbanks">
+          <!-- <div class="foodbank" *ngFor="let foodbank of foodbanks">
+            <h1>{{foodbank.name}}</h1>
+          </div> -->
+          <h1>Some Deals Here</h1>
+        </div>
+      
+      </div>
+      
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-content>
 
-  <div class="deals" *ngIf="!showFoodbanks">
-    <!-- <div class="foodbank" *ngFor="let foodbank of foodbanks">
-      <h1>{{foodbank.name}}</h1>
-    </div> -->
-    <h1>Some Deals Here</h1>
-  </div>
-
-</div>
 
 <app-bottom-bar></app-bottom-bar>   

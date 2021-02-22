@@ -19,6 +19,7 @@ export class FoodbankService {
           email: data.email,
           uid: data.uid,
           accountType: data.accountType,
+          photoURL: data.photoURL,
           isBusiness: data.isBusiness
         }
         foodbanks.push(foodbank);

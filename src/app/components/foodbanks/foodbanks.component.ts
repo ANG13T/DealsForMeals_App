@@ -17,6 +17,7 @@ export class FoodbanksComponent implements OnInit {
 
   ngOnInit() {
     this.foodbankService.getFoodbanks(5).then((data) => {
+      console.log("got foodbanks", data)
       this.foodbanks = data;
     })
   }
