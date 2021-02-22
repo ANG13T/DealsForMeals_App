@@ -59,13 +59,25 @@
 </div> -->
 
 
-<mat-vertical-stepper [linear]="isLinear" #stepper>
+<mat-horizontal-stepper linear="true" #stepper>
   <mat-step>
     <form>
-      <ng-template matStepLabel>Select Account Type</ng-template>
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+      <ng-template matStepLabel>Step 1</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Account Type</mat-label>
+        <select matNativeControl required (change)="selectType($event.target.value)">
+          <option value="foodie">Foodie</option>
+          <option value="business">Business</option>
+        </select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" [hidden]="!isBusiness">
+        <mat-label>Buisness Type</mat-label>
+        <select matNativeControl required >
+          <option value="restaurant">Restaurant</option>
+          <option value="foodbank">Foodbank</option>
+          <option value="other">Other</option>
+        </select>
       </mat-form-field>
       <div>
         <button mat-button matStepperNext>Next</button>
@@ -74,24 +86,35 @@
   </mat-step>
   <mat-step>
     <form>
-      <ng-template matStepLabel>Enter Account Information</ng-template>
+      <ng-template matStepLabel>Step 2</ng-template>
       <mat-form-field>
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+        <mat-label>Full Name:</mat-label>
+        <input matInput placeholder="Ex. John Doe"
+               required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email: </mat-label>
+        <input matInput placeholder="Ex. johndoe@gmail.com" type="email"
+               required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password:</mat-label>
+        <input matInput type="password"
                required>
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button>Create Account</button>
+        <button mat-button [hidden]="isBusiness">Create Account</button>
+        <button matStepperNext [hidden]="!isBusiness">Next</button>
       </div>
     </form>
   </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Select Business Type</ng-template>
+  <mat-step *ngIf="isBusiness">
+    <ng-template matStepLabel>Step 3</ng-template>
     <p>Is your organization a restaurant or a food bank?</p>
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button >Create Account</button>
     </div>
   </mat-step>
-</mat-vertical-stepper>
+</mat-horizontal-stepper>

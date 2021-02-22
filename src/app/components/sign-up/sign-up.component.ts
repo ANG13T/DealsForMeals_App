@@ -14,7 +14,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-  isLinear = false;
+  isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
@@ -22,6 +22,7 @@ export class SignUpComponent implements OnInit {
   location: Location = {name: "", longtude: 0, latitude: 0} as Location;
   email: string = "";
   password: string = "";
+  isBusiness: boolean = false;
   accountType : 'foodie' | 'foodbank' | 'resturant' | 'other' = "foodbank";
   errors = {password: "", name: "", email: "", location: ""};
 
@@ -44,6 +45,11 @@ export class SignUpComponent implements OnInit {
     this.errors.name = "";
     this.errors.email = "";
     this.errors.location = "";
+  }
+
+  selectType(type: string){
+    console.log("clicked", type);
+    this.isBusiness = (type == 'business');
   }
 
   async getLocation(){
