@@ -59,6 +59,18 @@ export class SignUpComponent implements OnInit {
     
   }
 
+  async collectLocation(){
+    this.getLocation().then(() => {
+      this.getAddress(this.location.latitude, this.location.longtude).then(() => {
+        return;
+      }).catch((err) => {
+        console.log(err);
+      })
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+
   async getLocation(){
     await this.geolocation.getCurrentPosition().then(async(res) => {
       console.log(res);
@@ -85,6 +97,7 @@ export class SignUpComponent implements OnInit {
 
 
   async signUp(){
+    console.log("signing up")
     if(this.validateForm()){
       let newUser : User = {
         name: this.name,
@@ -163,5 +176,12 @@ export class SignUpComponent implements OnInit {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   }
+
+
+  validateSecond(){
+    return (this.name != "") && (this.email != "") && (this.password != "");
+  }
+
+
 
 }
