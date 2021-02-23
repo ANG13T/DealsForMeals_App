@@ -11,60 +11,25 @@
     height: 83vh;
 }
 
+.foodbanks{
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
 .card {
-    
     width: 80%;
-    height: 10rem;
-    position: absolute;
     background: white;
-    margin: 0 auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
-    transition: all 0.3s;
     
     &:hover {
       
       box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     
     }
-    
-    nav {
+
       
-      width: 100%;
-      color: #727272;
-      text-transform: uppercase;
-      padding: 20px;
-      border-bottom: 2px solid #efefef;
-      font-size: 12px;
-      
-      svg.heart {
-        
-        height: 24px;
-        width: 24px;
-        float: right;
-        margin-top: -3px;
-        transition: all 0.3s ease;
-        cursor: pointer;
-        
-        &:hover {
-          
-          fill: red;
-          
-        }
-        
-      }
-      svg.arrow {
-        
-        float: left;
-        height: 15px;
-        width: 15px;
-        margin-right: 10px;
-        
-      }
-      
-    }
+  
     
     .photo {
       
@@ -81,7 +46,7 @@
     
     .description {
       
-       padding: 30px;
+       padding: 10px;
        float: left;
        width: 55%;
        border-left: 2px solid #efefef;
@@ -98,6 +63,7 @@
        h2 {
         color: #515151;
         margin: 0;
+        font-size: .5rem;
         text-transform: uppercase;
         font-weight: 500;
        }
