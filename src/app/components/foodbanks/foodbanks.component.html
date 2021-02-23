@@ -24,7 +24,7 @@
         loadingSpinner="bubbles"
         loadingText="Loading more data…">
         <div class="foodbanks" *ngIf="showFoodbanks">
-          <div class="foodbank" *ngFor="let foodbank of foodbanks">
+          <div class="foodbank" *ngFor="let foodbank of foodbanks" (click)="openBuisness(foodbank)">
             <ion-card>
               <img src={{foodbank.photoURL}} />
               <ion-card-header>

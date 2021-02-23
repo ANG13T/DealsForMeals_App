@@ -10,7 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class ViewBuisnessComponent implements OnInit {
 
-  @Input() buisness: User;
+  buisness: User;
 
   constructor(private buisnessService: BuisnessService, private route:ActivatedRoute, private router: Router) { }
 
