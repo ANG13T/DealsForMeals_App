@@ -1,23 +1,38 @@
-<!-- <ion-header>
+<ion-header>
   <ion-toolbar color="#4043E1" class="header">
+    <ion-title></ion-title>
     <ion-buttons slot="start">
-      <ion-back-button (click)="navigate('foodbanks')" ></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content fullscreen>
-  <h1>{{buisness.name}}</h1>
-</ion-content> -->
-
-<ion-header translucent>
-  <ion-toolbar>
-    <ion-title>Modal Content</ion-title>
-    <ion-buttons slot="end">
-      <ion-button onclick="dismissModal()">Close</ion-button>
+      <ion-button (click)="dismissModal()">Back</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
-  <h1>{{buisness.name}}</h1>
+
+  <div class="top">
+    <img src={{buisness.photoURL}} alt="Buisness Image" class="profile-image">
+    <h1 class="name">{{buisness.name}}</h1>
+    <!-- TODO: show location data -->
+    <h3 class="location">Los Angeles, CA</h3>
+    <button class="message-button">Message</button>
+  </div>
+
+  <div class="bottom">
+    <div class="select-row">
+      <h3 class="row-item">DEALS</h3>
+      <h3 class="row-item">ABOUT</h3>
+      <h3 class="row-item">LOCATION</h3>
+    </div>
+    <div class="content">
+      <div class="posts" [hidden]="shownItem != 'posts'">
+
+      </div>
+      <div class="about" [hidden]="shownItem != 'about'">
+
+      </div>
+      <div class="location" [hidden]="shownItem != 'location'">
+
+      </div>
+    </div>
+  </div>
+  
 </ion-content>

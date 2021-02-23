@@ -1,0 +1,34 @@
+.header{
+    background-color: #4078e1;
+    color: white;
+}
+
+ion-content{
+    .top{
+        width: 100%;
+        text-align: center;
+
+        
+    }
+
+    .bottom{
+        .select-row{
+            display: flex;
+            justify-content: space-around;
+        }   
+
+        .content{
+            .posts{
+
+            }
+
+            .about{
+
+            }
+
+            .location{
+
+            }
+        }
+    }
+}

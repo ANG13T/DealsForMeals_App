@@ -12,6 +12,7 @@ import { ModalController } from '@ionic/angular';
 export class ViewBuisnessComponent implements OnInit {
 
   buisness: User;
+  shownItem: string = 'deals';
 
   constructor(private buisnessService: BuisnessService, private route:ActivatedRoute, private router: Router, private modalCtrl: ModalController) { }
 
