@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/shared/models/post.model';
 import { User } from 'src/app/shared/models/user.model';
-import { FoodbankService } from 'src/app/shared/services/foodbank.service';
+import { BuisnessService } from 'src/app/shared/services/buisness.service';
 import { PostService } from 'src/app/shared/services/post.service';
 
 
@@ -16,10 +16,10 @@ export class FoodbanksComponent implements OnInit {
   deals: Post[];
   showFoodbanks: boolean = true;
 
-  constructor(private foodbankService: FoodbankService, private postService: PostService) { }
+  constructor(private buisnessService: BuisnessService, private postService: PostService) { }
 
   ngOnInit() {
-    this.foodbankService.getFoodbanks(5).then((data) => {
+    this.buisnessService.getCategoryBuisnesses(5, 'foodbanks').then((data) => {
       console.log("got foodbanks", data)
       this.foodbanks = data;
     })
