@@ -1,11 +1,23 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar color="#4043E1" class="header">
     <ion-buttons slot="start">
       <ion-back-button (click)="navigate('foodbanks')" ></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
-
-  <h1>{{buisness.name}}</h1>
 </ion-header>
 
-<app-bottom-bar></app-bottom-bar>
+<ion-content fullscreen>
+  <h1>{{buisness.name}}</h1>
+</ion-content> -->
+
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Modal Content</ion-title>
+    <ion-buttons slot="end">
+      <ion-button onclick="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <h1>{{buisness.name}}</h1>
+</ion-content>

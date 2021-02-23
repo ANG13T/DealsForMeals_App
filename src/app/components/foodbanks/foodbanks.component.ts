@@ -22,7 +22,7 @@ export class FoodbanksComponent implements OnInit {
   constructor(private buisnessService: BuisnessService, private postService: PostService, private routerOutlet: IonRouterOutlet, private modalController: ModalController) { }
 
   ngOnInit() {
-    this.buisnessService.getCategoryBuisnesses(5, 'foodbanks').then((data) => {
+    this.buisnessService.getCategoryBuisnesses(5, 'foodbank').then((data) => {
       console.log("got foodbanks", data)
       this.foodbanks = data;
     })
@@ -41,7 +41,7 @@ export class FoodbanksComponent implements OnInit {
   async openBuisness(buisness: User) {
     const modal = await this.modalController.create({
       component: ViewBuisnessComponent,
-      cssClass: 'my-custom-class',
+      cssClass: 'modal-view',
       swipeToClose: true,
       componentProps: { 
        buisness: buisness

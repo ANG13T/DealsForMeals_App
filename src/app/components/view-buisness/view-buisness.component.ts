@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/shared/models/user.model';
 import { BuisnessService } from 'src/app/shared/services/buisness.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-view-buisness',
@@ -12,7 +13,7 @@ export class ViewBuisnessComponent implements OnInit {
 
   buisness: User;
 
-  constructor(private buisnessService: BuisnessService, private route:ActivatedRoute, private router: Router) { }
+  constructor(private buisnessService: BuisnessService, private route:ActivatedRoute, private router: Router, private modalCtrl: ModalController) { }
 
   ngOnInit() {
     if(!this.buisness){
@@ -25,6 +26,12 @@ export class ViewBuisnessComponent implements OnInit {
 
   navigate(route: string){
     this.router.navigate([`/${route}`]);
+  }
+
+   dismissModal() {
+    this.modalCtrl.dismiss({
+      'dismissed': true
+    });
   }
 
 }
