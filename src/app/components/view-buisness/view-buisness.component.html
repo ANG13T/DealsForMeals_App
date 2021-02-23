@@ -1,3 +1,11 @@
-<p>
-  view-buisness works!
-</p>
+<ion-header>
+  <ion-toolbar color="#4043E1" class="header">
+    <ion-buttons slot="start">
+      <ion-back-button (click)="navigate('foodbanks')" ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <h1>{{buisness.name}}</h1>
+</ion-header>
+
+<app-bottom-bar></app-bottom-bar>
