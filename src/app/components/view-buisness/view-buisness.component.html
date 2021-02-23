@@ -8,31 +8,35 @@
 </ion-header>
 <ion-content fullscreen>
 
-  <div class="top">
-    <img src={{buisness.photoURL}} alt="Buisness Image" class="profile-image">
-    <h1 class="name">{{buisness.name}}</h1>
-    <!-- TODO: show location data -->
-    <h3 class="location">Los Angeles, CA</h3>
-    <button class="message-button">Message</button>
-  </div>
-
-  <div class="bottom">
-    <div class="select-row">
-      <h3 class="row-item">DEALS</h3>
-      <h3 class="row-item">ABOUT</h3>
-      <h3 class="row-item">LOCATION</h3>
+  <div class="entire">
+    <div class="top">
+      <img src={{buisness.photoURL}} alt="Buisness Image" class="profile-image">
+      <h1 class="name">{{buisness.name}}</h1>
+      <!-- TODO: show location data -->
+      <h3 class="location">Los Angeles, CA</h3>
+      <button mat-button color="primary" class="message-button">Message</button>
     </div>
-    <div class="content">
-      <div class="posts" [hidden]="shownItem != 'posts'">
-
-      </div>
-      <div class="about" [hidden]="shownItem != 'about'">
-
-      </div>
-      <div class="location" [hidden]="shownItem != 'location'">
-
-      </div>
-    </div>
-  </div>
   
+    <div class="bottom">
+      <mat-tab-group>
+        <mat-tab label="DEALS">
+          <div class="posts">
+
+          </div>
+        </mat-tab>
+        <mat-tab label="ABOUT">
+          <div class="about">
+
+          </div>
+        </mat-tab>
+        <mat-tab label="LOCATION">
+          <div class="location">
+            
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+      
+    </div>
+    
+  </div>
 </ion-content>

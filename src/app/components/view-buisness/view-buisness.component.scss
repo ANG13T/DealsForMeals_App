@@ -4,30 +4,49 @@
 }
 
 ion-content{
-    .top{
-        width: 100%;
-        text-align: center;
-
-        
-    }
-
-    .bottom{
-        .select-row{
-            display: flex;
-            justify-content: space-around;
-        }   
-
-        .content{
-            .posts{
-
+    .entire{
+        margin-top: 2rem;
+        .top{
+            width: 100%;
+            text-align: center;
+    
+            .profile-image{
+                width: 10rem;
+                height: 10rem;
+                border: 2px solid darkblue;
+                border-radius: 5px;
             }
 
-            .about{
-
+            .name{
+                margin-top: 1rem;
+                margin-bottom: 5px;
             }
 
-            .location{
+            
 
+            .message-button{
+                margin-bottom: 2rem;
+            }
+        }
+    
+        .bottom{
+            .select-row{
+                display: flex;
+                justify-content: space-around;
+            }   
+    
+            .content{
+                .posts{
+    
+                }
+    
+                .about{
+    
+                }
+    
+                .location{
+    
+                }
             }
         }
     }
