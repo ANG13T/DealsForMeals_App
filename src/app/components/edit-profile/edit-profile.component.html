@@ -19,8 +19,10 @@
 <ion-item>
   <ion-label>Select Account</ion-label>
   <ion-select interface="popover" [(ngModel)]="userProfile.accountType">
+    <ion-select-option value="foodie">Foodie</ion-select-option>
     <ion-select-option value="foodbank">Foodbank</ion-select-option>
-    <ion-select-option value="store">Grocery Store</ion-select-option>
+    <ion-select-option value="restaurant">Restaurant</ion-select-option>
+    <ion-select-option value="other">Other</ion-select-option>
   </ion-select>
 </ion-item>
 

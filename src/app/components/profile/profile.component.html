@@ -33,7 +33,7 @@
     </div> -->
   <div class="container">
     <div class="supplies">
-      <div class="profile-options" *ngIf="isFoodbank">
+      <div class="profile-options" *ngIf="!user.isBusiness">
         <h4 class="welcome-text">Welcome, {{user.name}}!</h4>
         <ion-button>View Food Banks Near You</ion-button>
         <div class="or-section">

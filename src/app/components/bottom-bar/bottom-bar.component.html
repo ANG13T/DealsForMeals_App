@@ -13,7 +13,7 @@
     </ion-tab-button>
   </ion-tab-bar>
 <ion-fab horizontal="center" vertical="bottom" edge class="create-post-button" (click)="presentModal()" *ngIf="user">
-  <ion-fab-button [hidden]="user.accountType == 'foodbank'" *ngIf="user.isBusiness">
+  <ion-fab-button [hidden]="!user.isBusiness">
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>
 </ion-fab>

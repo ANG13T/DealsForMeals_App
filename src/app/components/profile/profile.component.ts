@@ -18,23 +18,21 @@ export class ProfileComponent implements OnInit {
   user: User;
   loading: boolean = true;
   posts: Post[] = [];
-  isFoodbank: boolean = false;
 
   constructor(private userService: UserService, private router: Router, public modalController: ModalController, private postService: PostService) { }
 
   ngOnInit() {
     this.loading = true;
     this.userService.user$.subscribe(async (userProfile) => {
+      console.log(userProfile)
       if(!userProfile) return;
       this.user = userProfile;
-      if(this.user.accountType == "foodbank"){
-        this.isFoodbank = true;
+      if(this.user.isBusiness){
         await this.postService.getDealsForUser(this.user.uid).then((data) => {
           console.log("got the posts", data)
           this.posts = data;
         })
       }else{
-        this.isFoodbank = false;
         await this.postService.getDealsForUser(this.user.uid).then((data) => {
           console.log("got the posts", data)
           this.posts = data;

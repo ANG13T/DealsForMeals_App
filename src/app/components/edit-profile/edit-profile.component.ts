@@ -43,6 +43,7 @@ export class EditProfileComponent implements OnInit {
 
   async editProfile(){
     if(this.validateForm()){
+    this.userProfile.isBusiness = (this.userProfile.accountType !='foodie');
     await this.userService.updateUserData(this.userProfile).then(async (data) => {
       if(data){
         alert("Error: " + data.message);
