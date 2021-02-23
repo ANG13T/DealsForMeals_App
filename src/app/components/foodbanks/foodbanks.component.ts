@@ -6,6 +6,7 @@ import { PostService } from 'src/app/shared/services/post.service';
 import { ViewBuisnessComponent } from '../view-buisness/view-buisness.component';
 import { IonRouterOutlet } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
+import { MbscFormOptions } from '@mobiscroll/angular-lite';
 
 
 @Component({
@@ -18,6 +19,11 @@ export class FoodbanksComponent implements OnInit {
   foodbanks: User[];
   deals: Post[];
   showFoodbanks: boolean = true;
+
+  settings: MbscFormOptions = {
+    theme: 'ios',
+    themeVariant: 'light'
+};
 
   constructor(private buisnessService: BuisnessService, private postService: PostService, private routerOutlet: IonRouterOutlet, private modalController: ModalController) { }
 
