@@ -25,23 +25,13 @@
         loadingText="Loading more data…">
         <div class="foodbanks" *ngIf="showFoodbanks">
           <div class="foodbank" *ngFor="let foodbank of foodbanks" (click)="openBuisness(foodbank)">
-            <!-- <ion-card>
+            <ion-card>
               <img src={{foodbank.photoURL}} />
               <ion-card-header>
                 <ion-card-subtitle>{{foodbank.location}}</ion-card-subtitle>
                 <ion-card-title>{{foodbank.name}}</ion-card-title>
               </ion-card-header>
-            </ion-card> -->
-
-            <mbsc-card [options]="settings">
-              <img class="mbsc-img-thumbnail mbsc-pull-right" width="90" height="90" src="https://img.mobiscroll.com/demos/card_3.png">
-              <mbsc-card-header>
-                  <mbsc-card-title>Best places</mbsc-card-title>
-              </mbsc-card-header>
-              <mbsc-card-content>
-                  A view across the Turnagain Arm on Alaska's Kenai Peninsula.
-              </mbsc-card-content>
-            </mbsc-card>
+            </ion-card>
           </div>
       
         <div class="deals" *ngIf="!showFoodbanks">
