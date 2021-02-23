@@ -41,6 +41,26 @@
         </div>
         <ion-button>Search Locations in your Area</ion-button>
       </div>
+
+      <div class="profile-options" *ngIf="user.isBusiness">
+        <mat-tab-group>
+          <mat-tab label="DEALS">
+            <div class="posts">
+  
+            </div>
+          </mat-tab>
+          <mat-tab label="ABOUT">
+            <div class="about">
+  
+            </div>
+          </mat-tab>
+          <mat-tab label="LOCATION">
+            <div class="location">
+              <div #map id="map"></div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
       <!-- Show posts here -->
       <div class="posts" *ngIf="!isFoodbank">
         <div class="posts" *ngIf="!loading">

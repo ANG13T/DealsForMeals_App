@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import { MenuController, ModalController } from '@ionic/angular';
@@ -7,6 +7,7 @@ import { CreatePostComponent } from '../modals/create-post/create-post.component
 import { Post } from 'src/app/shared/models/post.model';
 import { PostService } from 'src/app/shared/services/post.service';
 import { ViewPostComponent } from '../view-post/view-post.component';
+declare var google: any;
 
 @Component({
   selector: 'app-profile',
@@ -18,6 +19,9 @@ export class ProfileComponent implements OnInit {
   user: User;
   loading: boolean = true;
   posts: Post[] = [];
+
+  map: any;
+  @ViewChild('map', {read: ElementRef, static: false}) mapRef: ElementRef;
 
   constructor(private userService: UserService, private router: Router, public modalController: ModalController, private postService: PostService) { }
 
@@ -44,6 +48,21 @@ export class ProfileComponent implements OnInit {
 
   navigate(route: string){
     this.router.navigate([`/${route}`]);
+  }
+
+  ionViewDidEnter(){
+    this.showMap();
+  }
+
+  showMap(){
+    const location = new google.maps.LatLng(-17.824858, 31.053208);
+    const options = {
+      center: location,
+      zoom: 15,
+      disableDefaultUI: true
+    }
+    this.map = new google.maps.Map(this.mapRef.nativeElement, options);
+
   }
 
   logOut(){
