@@ -7,5 +7,6 @@ export interface User {
     accountType: 'foodie' | 'foodbank' | 'resturant' | 'other';
     isBusiness:boolean;
     photoURL?: string;
+    description?:string;
     location?: Location;
   }

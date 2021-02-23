@@ -8,6 +8,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { StoresComponent } from './components/stores/stores.component';
+import { ViewBuisnessComponent } from './components/view-buisness/view-buisness.component';
 import { ViewPostComponent } from './components/view-post/view-post.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 
@@ -47,6 +48,11 @@ const routes: Routes = [
   {
     path: 'profile/edit',
     component: EditProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'buisness/:id',
+    component: ViewBuisnessComponent,
     canActivate: [AuthGuard]
   },
   {
