@@ -1,16 +1,15 @@
+<ion-header>
+  <ion-toolbar class="header" color="#4078e1">
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <ion-header>
-    <ion-toolbar class="header" color="#4078e1">
-      <ion-buttons slot="end">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title>Profile</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true">
   <div profile *ngIf="user" #content>
-  
+
     <div class="top-content">
       <div class="profile-top">
         <div class="top">
@@ -24,76 +23,75 @@
           <ion-button class="edit-button" (click)="navigate('profile/edit')">Edit Profile</ion-button>
           <ion-button class="create-button" (click)="logOut()">Log Out</ion-button>
         </div>
-      </div> 
+      </div>
     </div>
-   
-  
+
+
     <!-- <div class="profile-options" *ngIf="isFoodbank">
       <h1 color="black">This is a foodbank page</h1>
     </div> -->
-  <div class="container">
-    <div class="supplies">
-      <div class="profile-options" *ngIf="!user.isBusiness">
-        <h4 class="welcome-text">Welcome, {{user.name}}!</h4>
-        <ion-button>View Food Banks Near You</ion-button>
-        <div class="or-section">
-          <h3>OR</h3>
-        </div>
-        <ion-button>Search Locations in your Area</ion-button>
-      </div>
-
-      <div class="profile-options" *ngIf="user.isBusiness">
-        <mat-tab-group>
-          <mat-tab label="DEALS">
-            <div class="posts">
-  
-            </div>
-          </mat-tab>
-          <mat-tab label="ABOUT">
-            <div class="about">
-  
-            </div>
-          </mat-tab>
-          <mat-tab label="LOCATION">
-            <div class="location">
-              <div #map id="map"></div>
-            </div>
-          </mat-tab>
-        </mat-tab-group>
-      </div>
-      <!-- Show posts here -->
-      <div class="posts" *ngIf="!isFoodbank">
-        <div class="posts" *ngIf="!loading">
-          <ion-card *ngFor="let post of posts" (click)="presentPost(post)">
-            <img src={{post.images[0]}} />
-            <ion-card-header>
-              <ion-card-subtitle>{{post.userProfile.location}}</ion-card-subtitle> 
-              <ion-card-title>{{post.title}}</ion-card-title>
-            </ion-card-header>
-            <!-- TODO: only get a small portion of description -->
-            <ion-card-content>
-             {{post.description}}
-            </ion-card-content>
-          </ion-card>
-        </div>
-  
-          <div class="loading-posts" *ngIf="loading && !isFoodbank" >
-            <ion-card *ngFor="let post of [1,2]">
-              <ion-skeleton-text animated class="skeleton-image" style="height: 25vh;"></ion-skeleton-text>
-              <ion-card-header>
-                <ion-skeleton-text animated></ion-skeleton-text>
-              </ion-card-header>
-              <!-- TODO: only get a small portion of description -->
-              <ion-skeleton-text animated></ion-skeleton-text>
-            </ion-card>
+    <div class="container">
+      <div class="supplies">
+        <div class="profile-options" *ngIf="!user.isBusiness">
+          <h4 class="welcome-text">Welcome, {{user.name}}!</h4>
+          <ion-button>View Food Banks Near You</ion-button>
+          <div class="or-section">
+            <h3>OR</h3>
           </div>
+          <ion-button>Search Locations in your Area</ion-button>
+        </div>
+
+        <div class="profile-options" *ngIf="user.isBusiness">
+          <mat-tab-group>
+            <mat-tab label="DEALS">
+              <div class="posts" *ngIf="!isFoodbank">
+                <div class="posts" *ngIf="!loading">
+                  <ion-card *ngFor="let post of posts" (click)="presentPost(post)">
+                    <img src={{post.images[0]}} />
+                    <ion-card-header>
+                      <ion-card-subtitle>{{post.userProfile.location}}</ion-card-subtitle>
+                      <ion-card-title>{{post.title}}</ion-card-title>
+                    </ion-card-header>
+                    <!-- TODO: only get a small portion of description -->
+                    <ion-card-content>
+                      {{post.description}}
+                    </ion-card-content>
+                  </ion-card>
+                </div>
+
+                <div class="loading-posts" *ngIf="loading && !isFoodbank">
+                  <ion-card *ngFor="let post of [1,2]">
+                    <ion-skeleton-text animated class="skeleton-image" style="height: 25vh;"></ion-skeleton-text>
+                    <ion-card-header>
+                      <ion-skeleton-text animated></ion-skeleton-text>
+                    </ion-card-header>
+                    <!-- TODO: only get a small portion of description -->
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                  </ion-card>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab label="ABOUT">
+              <div class="about">
+                  <h3>Buisness Description:</h3>
+                  <p>Lorem ipsum sdahjdashkjdsh adshsdjkhdasjkh dassdajkhdasjk</p>
+              </div>
+            </mat-tab>
+            <mat-tab label="LOCATION">
+              <div class="location">
+                <div #map id="map"></div>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+        <!-- Show posts here -->
+
       </div>
-    </div> 
+    </div>
+
   </div>
-  
-  </div>
-    
-  </ion-content>
+
+</ion-content>
 
 
-<app-bottom-bar></app-bottom-bar> 
+<app-bottom-bar></app-bottom-bar>
