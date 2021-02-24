@@ -4,19 +4,19 @@
     <ion-buttons slot="start">
       <ion-button (click)="dismissModal()" [disabled]="completed">Close</ion-button>
     </ion-buttons>
-    <ion-buttons slot="end">
+    <ion-buttons slot="end" *ngIf="post">
       <ion-button class="send" [disabled]="!post.title || !post.description || post.images == [] || loading || completed" (click)="createPost()">
         <ion-icon name="send"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title class="nav-title">Create Post</ion-title>
+    <ion-title class="nav-title">Create Deal</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen>
   <div class="top">
     <div class="container">
-        <div class="group">      
+        <div class="group" *ngIf="post">      
           <input type="text" [(ngModel)]="post.title">
           <span class="highlight"></span>
           <span class="bar"></span>
@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  <div class="main">
+  <div class="main" *ngIf="post">
     <ion-item>
       <ion-label>Select Quantity</ion-label>
       <ion-select interface="popover" [(ngModel)]="post.amount" [compareWith]="compareWithFn">
@@ -53,7 +53,7 @@
   <div class="spinner-content" [hidden]="!loading">
     <div class="main-spinner">
       <ion-spinner name="bubbles"></ion-spinner>
-      <h3>Creating Post...</h3>
+      <h3>Creating Deal...</h3>
     </div> 
   </div>
 
@@ -63,7 +63,7 @@
         <ion-icon name="checkmark-outline"></ion-icon>
       </div>
       <h3>Congrats!</h3>
-      <p>Your post was successfully posted!</p>
+      <p>Your deal was successfully posted!</p>
       <ion-button (click)="goToProfile()">Go to Profile</ion-button>
     </div> 
   </div>
