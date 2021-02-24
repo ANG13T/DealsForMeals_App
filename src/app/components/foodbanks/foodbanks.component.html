@@ -39,23 +39,21 @@
             </div>
             
           </div>
-      
-        <div class="deals" *ngIf="!showFoodbanks">
-          <div class="foodbank" *ngFor="let deal of deals">
-            <ion-card>
-              <img src={{deal.images[0]}} />
-              <ion-card-header>
-                <ion-card-subtitle>{{foodbank.location}}</ion-card-subtitle>
-                <ion-card-title>{{deal.title}}</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-               {{deal.description}}
-              </ion-card-content>
-            </ion-card>
-          </div>
-          <h1>Some Deals Here</h1>
+      </div>
+
+      <div class="deals" *ngIf="!showFoodbanks">
+        <div class="foodbank" *ngFor="let deal of deals">
+          <ion-card>
+            <img src={{deal.images[0]}} />
+            <ion-card-header>
+              <ion-card-subtitle>{{deal.userProfile.email}}</ion-card-subtitle>
+              <ion-card-title>{{deal.title}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+             {{deal.description}}
+            </ion-card-content>
+          </ion-card>
         </div>
-      
       </div>
       
       </ion-infinite-scroll-content>
