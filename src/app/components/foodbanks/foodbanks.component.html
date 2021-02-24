@@ -41,17 +41,44 @@
           </div>
       </div>
 
-      <div class="deals" *ngIf="!showFoodbanks">
-        <div class="foodbank" *ngFor="let deal of deals">
+      <div class="loading-foodbanks" [hidden]="!loadingFoodbanks">
+        <div class="foodbank" *ngFor="let post of loadPosts">
           <ion-card>
-            <img src={{deal.images[0]}} />
+            <ion-skeleton-text animated class="skeleton-image" style="height: 25vh;"></ion-skeleton-text>
             <ion-card-header>
-              <ion-card-subtitle>{{deal.userProfile.email}}</ion-card-subtitle>
-              <ion-card-title>{{deal.title}}</ion-card-title>
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-card-header>
+            <!-- TODO: only get a small portion of description -->
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-card>
+        </div>
+      </div>
+
+      <div class="deals" *ngIf="!showFoodbanks">
+        <div class="foodbank" *ngFor="let deal of loadDeals">
+          <ion-card>
+            <img src={{deal.deal.images[0]}} [hidden]="!deal.showImage" (load)="deal.showImage = true"/>
+            <ion-skeleton-text animated class="skeleton-image" style="height: 25vh;" [hidden]="deal.showImage"></ion-skeleton-text>
+            <ion-card-header>
+              <ion-card-subtitle>{{deal.deal.userProfile.email}}</ion-card-subtitle>
+              <ion-card-title>{{deal.deal.title}}</ion-card-title>
             </ion-card-header>
             <ion-card-content>
-             {{deal.description}}
+             {{deal.deal.description}}
             </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
+
+      <div class="loading-deals" [hidden]="!loadingDeals">
+        <div class="foodbank" *ngFor="let post of loadPosts">
+          <ion-card>
+            <ion-skeleton-text animated class="skeleton-image" style="height: 25vh;"></ion-skeleton-text>
+            <ion-card-header>
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </ion-card-header>
+            <!-- TODO: only get a small portion of description -->
+            <ion-skeleton-text animated></ion-skeleton-text>
           </ion-card>
         </div>
       </div>
