@@ -55,6 +55,7 @@ export class ProfileComponent implements OnInit {
   }
 
   showMap(){
+    console.log("showing the map");
     const location = new google.maps.LatLng(-17.824858, 31.053208);
     const options = {
       center: location,
