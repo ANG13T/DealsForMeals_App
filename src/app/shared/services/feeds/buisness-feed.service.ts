@@ -7,7 +7,7 @@ import { map } from 'rxjs/internal/operators/map';
 import { take } from 'rxjs/internal/operators/take';
 import { User } from '../../models/user.model';
 
-interface Item {
+export interface Item {
   id: string;
   ref: DocumentReference;
   data: User;
