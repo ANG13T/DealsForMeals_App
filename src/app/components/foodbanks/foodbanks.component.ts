@@ -6,7 +6,6 @@ import { PostService } from 'src/app/shared/services/post.service';
 import { ViewBuisnessComponent } from '../view-buisness/view-buisness.component';
 import { IonRouterOutlet } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
-import { BuisnessFeedService, Item } from 'src/app/shared/services/feeds/buisness-feed.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { Observable } from 'rxjs/internal/Observable';
 import { IonInfiniteScroll } from '@ionic/angular';
@@ -21,11 +20,6 @@ import { take } from 'rxjs/internal/operators/take';
   styleUrls: ['./foodbanks.component.scss'],
 })
 export class FoodbanksComponent implements OnInit {
-  @ViewChild(IonInfiniteScroll, { static: false })
-  infiniteScroll: IonInfiniteScroll;
-  items$: Observable<Item[]>;
-  loaded = false;
-  private lastPageReachedSub: Subscription;
 
   foodbanks: User[];
   deals: Post[];
@@ -35,7 +29,7 @@ export class FoodbanksComponent implements OnInit {
   loadingDeals: boolean = false;
   showFoodbanks: boolean = true;
 
-  constructor(private buisnessService: BuisnessService, private postService: PostService, private routerOutlet: IonRouterOutlet, private modalController: ModalController, private buisnessFeedService: BuisnessFeedService) { }
+  constructor(private buisnessService: BuisnessService, private postService: PostService, private routerOutlet: IonRouterOutlet, private modalController: ModalController) { }
 
   async ngOnInit() {
     this.loadingDeals = true;
@@ -47,38 +41,12 @@ export class FoodbanksComponent implements OnInit {
     // })
 
     // Getting Buisness Data from Buisness Feed Service
-    this.items$ = this.buisnessFeedService.watchItems();
 
-    this.lastPageReachedSub =
-      this.buisnessFeedService.watchLastPageReached()
-        .subscribe((reached: boolean) => {
-          if (reached && this.infiniteScroll) {
-            this.loaded = true;
-            this.infiniteScroll.disabled = true;
-          }
-        });
 
     console.log("currently watching items")
-    this.buisnessFeedService.watchItems().pipe(
-      filter(flats => flats !== undefined),
-      take(1)).subscribe((_items: Item[]) => {
-        this.loaded = true;
-      });
-
-    // this.postService.getDeals(5).then((data) => {
-    //   console.log("got deals", data);
-    //   this.deals = data;
-    //   this.setLoadDeals();
-    //   this.loadingDeals = false;
-    // })
   }
 
-  async findNext($event) {
-    setTimeout(async () => {
-      await this.buisnessFeedService.find();
-      $event.target.complete();
-    }, 500);
-  }
+
 
   toggleShowFoodbanks() {
     this.showFoodbanks = !this.showFoodbanks;
@@ -104,10 +72,5 @@ export class FoodbanksComponent implements OnInit {
     return await modal.present();
   }
 
-  ngOnDestroy() {
-    if (this.lastPageReachedSub) {
-      this.lastPageReachedSub.unsubscribe();
-    }
-  }
 
 }
