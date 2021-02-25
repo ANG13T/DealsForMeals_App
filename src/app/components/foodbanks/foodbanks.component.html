@@ -1,4 +1,4 @@
-<!-- <div class="foodbanks">
+<div class="foodbanks">
   <ion-header>
     <ion-toolbar class="header" color="#4078e1">
       <ion-buttons slot="end">
@@ -16,22 +16,14 @@
         </ion-segment-button>
       </ion-segment>
     </ion-toolbar>
-  </ion-header> -->
+  </ion-header>
 
   <!-- TODO for cards: Add small portion to description -->
 
   <ion-content class="content">
 
-    <div *ngFor="let post of buisnessFeedService.data | async">
-      <!-- <app-post [mobileShow]="isMobile" [post]="post"></app-post> -->
-      <h1>{{post.name}}</h1>
-    </div>
 
-    <div class="spinner-content">
-      <h1 *ngIf="buisnessFeedService.loading | async">Loading...</h1>
-    </div>
-
-    <!-- <ion-infinite-scroll>
+    <ion-infinite-scroll>
       <ion-infinite-scroll-content
         loadingSpinner="bubbles"
         loadingText="Loading more data…">
@@ -51,9 +43,9 @@
             </div>
             
           </div>
-      </div> -->
+      </div>
 
-      <!-- <div class="loading-foodbanks" [hidden]="!loadingFoodbanks">
+      <div class="loading-foodbanks" [hidden]="!loadingFoodbanks">
         <div class="foodbank" *ngFor="let post of loadPosts">
           <ion-card>
             <ion-skeleton-text animated class="skeleton-image" style="height: 25vh;"></ion-skeleton-text>
@@ -63,7 +55,7 @@
             <ion-skeleton-text animated></ion-skeleton-text>
           </ion-card>
         </div>
-      </div> -->
+      </div>
 
       <!-- <div class="deals" *ngIf="!showFoodbanks">
         <div class="foodbank" *ngFor="let deal of loadDeals">
@@ -93,8 +85,8 @@
         </div>
       </div> -->
       
-      <!-- </ion-infinite-scroll-content>
-    </ion-infinite-scroll> -->
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 
     
   </ion-content>
@@ -103,4 +95,4 @@
 
 
 
-<!-- <app-bottom-bar></app-bottom-bar>    -->
+<app-bottom-bar></app-bottom-bar>   

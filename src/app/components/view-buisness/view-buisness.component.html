@@ -21,17 +21,28 @@
       <mat-tab-group>
         <mat-tab label="DEALS">
           <div class="posts">
-
+            <ion-card *ngFor="let post of posts" (click)="presentPost(post)">
+              <img src={{post.images[0]}} />
+              <ion-card-header>
+                <ion-card-subtitle>{{post.userProfile.location}}</ion-card-subtitle>
+                <ion-card-title>{{post.title}}</ion-card-title>
+              </ion-card-header>
+              <!-- TODO: only get a small portion of description -->
+              <ion-card-content>
+                {{post.description}}
+              </ion-card-content>
+            </ion-card>
           </div>
         </mat-tab>
         <mat-tab label="ABOUT">
           <div class="about">
-
-          </div>
+            <h3>Buisness Description:</h3>
+            <p>Lorem ipsum sdahjdashkjdsh adshsdjkhdasjkh dassdajkhdasjk</p>
+        </div>
         </mat-tab>
         <mat-tab label="LOCATION">
           <div class="location">
-            
+            <div #map id="map"></div>
           </div>
         </mat-tab>
       </mat-tab-group>
