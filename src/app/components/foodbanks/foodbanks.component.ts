@@ -9,6 +9,7 @@ import { ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { Observable } from 'rxjs/internal/Observable';
 import { IonInfiniteScroll } from '@ionic/angular';
+import * as firebase from "firebase";
 import { filter } from 'rxjs/internal/operators/filter';
 import { take } from 'rxjs/internal/operators/take';
 
@@ -20,6 +21,8 @@ import { take } from 'rxjs/internal/operators/take';
   styleUrls: ['./foodbanks.component.scss'],
 })
 export class FoodbanksComponent implements OnInit {
+
+
 
   foodbanks: User[];
   deals: Post[];
@@ -41,9 +44,7 @@ export class FoodbanksComponent implements OnInit {
     // })
 
     // Getting Buisness Data from Buisness Feed Service
-
-
-    console.log("currently watching items")
+   
   }
 
 
@@ -71,6 +72,7 @@ export class FoodbanksComponent implements OnInit {
     });
     return await modal.present();
   }
+
 
 
 }
