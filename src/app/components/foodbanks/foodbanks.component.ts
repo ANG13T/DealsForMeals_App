@@ -6,10 +6,12 @@ import { PostService } from 'src/app/shared/services/post.service';
 import { ViewBuisnessComponent } from '../view-buisness/view-buisness.component';
 import { IonRouterOutlet } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
-import { BuisnessFeedService, Item} from 'src/app/shared/services/feeds/buisness-feed.service';
+import { BuisnessFeedService, Item } from 'src/app/shared/services/feeds/buisness-feed.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { Observable } from 'rxjs/internal/Observable';
-import {IonInfiniteScroll} from '@ionic/angular';
+import { IonInfiniteScroll } from '@ionic/angular';
+import { filter } from 'rxjs/internal/operators/filter';
+import { take } from 'rxjs/internal/operators/take';
 
 
 
@@ -19,7 +21,7 @@ import {IonInfiniteScroll} from '@ionic/angular';
   styleUrls: ['./foodbanks.component.scss'],
 })
 export class FoodbanksComponent implements OnInit {
-  @ViewChild(IonInfiniteScroll, {static: false}) 
+  @ViewChild(IonInfiniteScroll, { static: false })
   infiniteScroll: IonInfiniteScroll;
   items$: Observable<Item[]>;
   loaded = false;
@@ -27,7 +29,7 @@ export class FoodbanksComponent implements OnInit {
 
   foodbanks: User[];
   deals: Post[];
-  loadPosts: any[] = [{id: 1, imageLoaded: false}, {id: 2, imageLoaded: false}, {id: 3, imageLoaded: false}]
+  loadPosts: any[] = [{ id: 1, imageLoaded: false }, { id: 2, imageLoaded: false }, { id: 3, imageLoaded: false }]
   loadDeals: any[] = [];
   loadingFoodbanks: boolean = false;
   loadingDeals: boolean = false;
@@ -35,14 +37,32 @@ export class FoodbanksComponent implements OnInit {
 
   constructor(private buisnessService: BuisnessService, private postService: PostService, private routerOutlet: IonRouterOutlet, private modalController: ModalController, private buisnessFeedService: BuisnessFeedService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.loadingDeals = true;
     this.loadingFoodbanks = true;
-    this.buisnessService.getCategoryBuisnesses(5, 'foodbank').then((data) => {
-      console.log("got foodbanks", data)
-      this.foodbanks = data;
-      this.loadingFoodbanks = false;
-    })
+    // this.buisnessService.getCategoryBuisnesses(5, 'foodbank').then((data) => {
+    //   console.log("got foodbanks", data)
+    //   this.foodbanks = data;
+    //   this.loadingFoodbanks = false;
+    // })
+
+    // Getting Buisness Data from Buisness Feed Service
+    this.items$ = this.buisnessFeedService.watchItems();
+
+    this.lastPageReachedSub =
+      this.buisnessFeedService.watchLastPageReached()
+        .subscribe((reached: boolean) => {
+          if (reached && this.infiniteScroll) {
+            this.loaded = true;
+            this.infiniteScroll.disabled = true;
+          }
+        });
+
+    this.buisnessFeedService.watchItems().pipe(
+      filter(flats => flats !== undefined),
+      take(1)).subscribe((_items: Item[]) => {
+        this.loaded = true;
+      });
 
     this.postService.getDeals(5).then((data) => {
       console.log("got deals", data);
@@ -52,13 +72,20 @@ export class FoodbanksComponent implements OnInit {
     })
   }
 
-  toggleShowFoodbanks(){
+  async findNext($event) {
+    setTimeout(async () => {
+      await this.buisnessFeedService.find();
+      $event.target.complete();
+    }, 500);
+  }
+
+  toggleShowFoodbanks() {
     this.showFoodbanks = !this.showFoodbanks;
   }
 
-  setLoadDeals(){
+  setLoadDeals() {
     this.deals.forEach((deal) => {
-      this.loadDeals.push({showImage: false, deal: deal});
+      this.loadDeals.push({ showImage: false, deal: deal });
     })
   }
 
@@ -68,8 +95,8 @@ export class FoodbanksComponent implements OnInit {
       component: ViewBuisnessComponent,
       cssClass: 'modal-view',
       swipeToClose: true,
-      componentProps: { 
-       buisness: buisness
+      componentProps: {
+        buisness: buisness
       },
       presentingElement: this.routerOutlet.nativeEl
     });
