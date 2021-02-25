@@ -20,7 +20,17 @@
 
   <!-- TODO for cards: Add small portion to description -->
 
-  <!-- <ion-content class="content"> -->
+  <ion-content class="content">
+
+    <div *ngFor="let post of buisnessFeedService.data | async">
+      <!-- <app-post [mobileShow]="isMobile" [post]="post"></app-post> -->
+      <h1>{{post.name}}</h1>
+    </div>
+
+    <div class="spinner-content">
+      <h1 *ngIf="buisnessFeedService.loading | async">Loading...</h1>
+    </div>
+
     <!-- <ion-infinite-scroll>
       <ion-infinite-scroll-content
         loadingSpinner="bubbles"
@@ -41,9 +51,9 @@
             </div>
             
           </div>
-      </div>
+      </div> -->
 
-      <div class="loading-foodbanks" [hidden]="!loadingFoodbanks">
+      <!-- <div class="loading-foodbanks" [hidden]="!loadingFoodbanks">
         <div class="foodbank" *ngFor="let post of loadPosts">
           <ion-card>
             <ion-skeleton-text animated class="skeleton-image" style="height: 25vh;"></ion-skeleton-text>
@@ -53,9 +63,9 @@
             <ion-skeleton-text animated></ion-skeleton-text>
           </ion-card>
         </div>
-      </div>
+      </div> -->
 
-      <div class="deals" *ngIf="!showFoodbanks">
+      <!-- <div class="deals" *ngIf="!showFoodbanks">
         <div class="foodbank" *ngFor="let deal of loadDeals">
           <ion-card>
             <img src={{deal.deal.images[0]}} [hidden]="!deal.showImage" (load)="deal.showImage = true"/>
@@ -81,37 +91,16 @@
             <ion-skeleton-text animated></ion-skeleton-text>
           </ion-card>
         </div>
-      </div>
+      </div> -->
       
-      </ion-infinite-scroll-content>
+      <!-- </ion-infinite-scroll-content>
     </ion-infinite-scroll> -->
 
     
-  <!-- </ion-content> -->
+  </ion-content>
 
   
 
-  <ng-container *ngIf="loaded; else feedLoading;">
-    <ion-card *ngFor="let item of (items$ | async);">
-      <ion-card-header>
-        <ion-card-title>{{item.data.title}}</ion-card-title>
-      </ion-card-header>
-  
-      <ion-card-content>
-        <p>{{item.data.content}}</p>
-      </ion-card-content>
-    </ion-card>
-  
-    <ion-infinite-scroll (ionInfinite)="findNext($event)">
-      <ion-infinite-scroll-content>
-      </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
-  </ng-container>
-  
-  <ng-template #feedLoading>
-    <main>
-      Initializing your feed...
-    </main>
-  </ng-template>
+
 
 <!-- <app-bottom-bar></app-bottom-bar>    -->

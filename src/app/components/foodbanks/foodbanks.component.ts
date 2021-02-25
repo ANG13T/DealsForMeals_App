@@ -44,7 +44,6 @@ export class FoodbanksComponent implements OnInit {
     // })
 
     // Getting Buisness Data from Buisness Feed Service
-   
   }
 
 
@@ -52,6 +51,7 @@ export class FoodbanksComponent implements OnInit {
   toggleShowFoodbanks() {
     this.showFoodbanks = !this.showFoodbanks;
   }
+
 
   setLoadDeals() {
     this.deals.forEach((deal) => {
