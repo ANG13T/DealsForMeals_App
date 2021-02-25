@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Post } from 'src/app/shared/models/post.model';
 import { PostService } from 'src/app/shared/services/post.service';
+import { ViewPostComponent } from '../view-post/view-post.component';
 declare var google: any;
 
 @Component({
@@ -21,22 +22,45 @@ export class ViewBuisnessComponent implements OnInit {
   map: any;
   @ViewChild('map', {read: ElementRef, static: false}) mapRef: ElementRef;
 
-  constructor(private buisnessService: BuisnessService, private route:ActivatedRoute, private router: Router, private modalCtrl: ModalController, private postService: PostService) { }
+  constructor(private buisnessService: BuisnessService, private route:ActivatedRoute, private router: Router, private modalCtrl: ModalController, private postService: PostService, private modalController: ModalController) { }
 
   ngOnInit() {
     if(!this.buisness){
       let buisnessID = this.route.snapshot.params['id'];
       this.buisnessService.getBuisnessByID(buisnessID).then((buisness) => {
         this.buisness = buisness;
-        this.postService.getDealsForUser(buisnessID).then((postData) => {
-          this.posts = postData;
-        })
       })
     }
+
+    this.postService.getDealsForUser(this.buisness.uid).then((postData) => {
+      console.log("got the posts", postData)
+      this.posts = postData;
+    })
   }
 
   ionViewDidEnter(){
     this.showMap();
+  }
+
+  async presentPost(post: Post){
+    const modal = await this.modalController.create({
+      component: ViewPostComponent,
+      cssClass: 'my-custom-class',
+      componentProps: { 
+        origin: 'profile',
+        post: post,
+        isOwner: true
+      }
+    });
+    modal.onDidDismiss()
+      .then((data) => {
+        console.log("got the data", data)
+        if(data.data.status == "delete"){
+          this.posts = this.posts.filter((el) => {el.id != data.data.data.id});
+        }
+    });
+
+    return await modal.present();
   }
 
   showMap(){
