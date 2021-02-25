@@ -35,6 +35,7 @@ export class BuisnessFeedService {
 
   find() {
     try {
+      console.log("finding")
       const collection: AngularFirestoreCollection<User> = 
                         this.getCollectionQuery();
   
@@ -52,20 +53,24 @@ export class BuisnessFeedService {
     }
   }
   
+
+  // TODO: use closeset to you instead of created at to order by
   private getCollectionQuery(): AngularFirestoreCollection<User> {
+    console.log("getting collection query")
     if (this.nextQueryAfter) {
-      return this.fireStore.collection<User>('/items/', ref =>
-             ref.orderBy('created_at', 'desc')
+      return this.fireStore.collection<User>('/users/', ref =>
+             ref.orderBy('name', 'desc')
                .startAfter(this.nextQueryAfter)
                .limit(10));
     } else {
-      return this.fireStore.collection<User>('/items/', ref =>
-             ref.orderBy('created_at', 'desc')
+      return this.fireStore.collection<User>('/users/', ref =>
+             ref.orderBy('name', 'desc')
                .limit(10));
     }
   }
 
   private unsubscribe() {
+    console.log("unsubscribing")
     if (this.paginationSub) {
       this.paginationSub.unsubscribe();
     }
@@ -76,6 +81,7 @@ export class BuisnessFeedService {
   }
 
   private query(collection: AngularFirestoreCollection<User>): Promise<void> {
+    console.log("querying")
     return new Promise<void>((resolve, reject) => {
       try {
         this.findSub = collection.snapshotChanges().pipe(
@@ -107,11 +113,13 @@ export class BuisnessFeedService {
   private addItems(items: Item[]): Promise<void> {
     return new Promise<void>((resolve) => {
       if (!items || items.length <= 0) {
+        console.log("no items here")
         this.lastPageReached.next(true);
   
         resolve();
         return;
       }
+      console.log("some items here")
       this.itemsSubject.asObservable().pipe(take(1))
                        .subscribe((currentItems: Item[]) => {
         this.itemsSubject.next(currentItems !== undefined ? 
@@ -123,10 +131,12 @@ export class BuisnessFeedService {
   }
 
   watchItems(): Observable<Item[]> {
+    console.log("watching items")
     return this.itemsSubject.asObservable();
   }
 
   watchLastPageReached(): Observable<boolean> {
+    console.log("watching items last page")
     return this.lastPageReached.asObservable();
   }
 }

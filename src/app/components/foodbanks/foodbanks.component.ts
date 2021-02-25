@@ -58,18 +58,19 @@ export class FoodbanksComponent implements OnInit {
           }
         });
 
+    console.log("currently watching items")
     this.buisnessFeedService.watchItems().pipe(
       filter(flats => flats !== undefined),
       take(1)).subscribe((_items: Item[]) => {
         this.loaded = true;
       });
 
-    this.postService.getDeals(5).then((data) => {
-      console.log("got deals", data);
-      this.deals = data;
-      this.setLoadDeals();
-      this.loadingDeals = false;
-    })
+    // this.postService.getDeals(5).then((data) => {
+    //   console.log("got deals", data);
+    //   this.deals = data;
+    //   this.setLoadDeals();
+    //   this.loadingDeals = false;
+    // })
   }
 
   async findNext($event) {
