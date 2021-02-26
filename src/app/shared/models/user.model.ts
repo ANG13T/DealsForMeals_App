@@ -8,5 +8,5 @@ export interface User {
     isBusiness:boolean;
     photoURL?: string;
     description?:string;
-    location?: Location;
+    location?: Location; 
   }
