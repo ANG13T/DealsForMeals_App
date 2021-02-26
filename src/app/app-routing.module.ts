@@ -5,6 +5,7 @@ import { FoodbanksComponent } from './components/foodbanks/foodbanks.component';
 import { HomePage } from './components/home/home.page';
 import { LocationsComponent } from './components/locations/locations.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { SettingsComponent } from './components/settings/settings.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { StoresComponent } from './components/stores/stores.component';
@@ -48,6 +49,11 @@ const routes: Routes = [
   {
     path: 'profile/edit',
     component: EditProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent,
     canActivate: [AuthGuard]
   },
   {

@@ -2,7 +2,7 @@
   <div profile *ngIf="user" #content>
 
     <div class="top-content">
-      <div class="settings-button">
+      <div class="settings-button" (click)="navigate('settings')">
         <mat-icon>settings</mat-icon>
       </div>
       <div class="profile-top">
