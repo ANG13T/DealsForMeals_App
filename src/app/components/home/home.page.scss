@@ -2,11 +2,6 @@
   text-align: center;
   margin-left: 1.5rem;
   margin-right: 1.5rem;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 45%;
-  transform: translateY(-50%);
 }
 
 #container strong {
@@ -26,10 +21,11 @@
 }
 
 .home-image{
-  margin-top: 3rem;
+  height: 45vh;
+  width: 100%;
 }
 
-.title{
+.home-title{
   margin-top: 1rem;
   text-align: center;
   font-weight: bold;
@@ -39,7 +35,7 @@
 .sign-in-button{
   width: 80%;
   margin: auto;
-  --background: #5979E9 !important;
+  --background: #666A86 !important;
   --font-family: 'Roboto', sans-serif;
   --color: white;
   --text-align: center;
