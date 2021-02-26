@@ -37,10 +37,16 @@ export class FoodbanksComponent implements OnInit {
   async ngOnInit() {
     this.loadingDeals = true;
     this.loadingFoodbanks = true;
+
     this.buisnessService.getCategoryBuisnesses(5, 'foodbank').then((data) => {
       console.log("got foodbanks", data)
       this.foodbanks = data;
       this.loadingFoodbanks = false;
+    })
+
+    this.postService.getDeals(5).then((dealsData) => {
+      this.deals = dealsData;
+      this.loadingDeals = false;
     })
 
     // Getting Buisness Data from Buisness Feed Service

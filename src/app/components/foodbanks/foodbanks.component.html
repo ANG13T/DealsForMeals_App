@@ -27,7 +27,7 @@
       <ion-infinite-scroll-content
         loadingSpinner="bubbles"
         loadingText="Loading more data…">
-        <div class="foodbanks" *ngIf="showFoodbanks">
+        <div class="foodbanks" *ngIf="showFoodbanks" [hidden]="loadingFoodbanks">
           <div class="foodbank" *ngFor="let foodbank of foodbanks" (click)="openBuisness(foodbank)">
 
             <div class="card">
@@ -57,7 +57,7 @@
         </div>
       </div>
 
-      <!-- <div class="deals" *ngIf="!showFoodbanks">
+      <div class="deals" *ngIf="!showFoodbanks">
         <div class="foodbank" *ngFor="let deal of loadDeals">
           <ion-card>
             <img src={{deal.deal.images[0]}} [hidden]="!deal.showImage" (load)="deal.showImage = true"/>
@@ -83,7 +83,7 @@
             <ion-skeleton-text animated></ion-skeleton-text>
           </ion-card>
         </div>
-      </div> -->
+      </div>
       
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
