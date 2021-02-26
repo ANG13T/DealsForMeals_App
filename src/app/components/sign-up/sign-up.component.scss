@@ -19,8 +19,13 @@
 }
 
 .header{
-    color: #4078e1;
+    color: #666A86;
     --border-width: 0px !important;
+    margin-bottom: 2rem;
+}
+
+ion-back-button{
+   color: #7d89e0;
 }
 
 mat-form-field{

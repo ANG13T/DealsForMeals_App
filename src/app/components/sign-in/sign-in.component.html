@@ -1,23 +1,28 @@
 <ion-header>
   <ion-toolbar color="#4043E1" class="header">
     <ion-buttons slot="start">
-      <ion-back-button (click)="navigate('')" routerDirection="root"></ion-back-button>
+      <ion-back-button  defaultHref=""></ion-back-button>
     </ion-buttons>
-    <ion-title>Sign In</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <div class="form">
   <h1 class="title">Log Into <br /> Account</h1>
 <div class="main">
-  <p class="content">Organization Email:</p>
-  <input type="email" [(ngModel)]="email"/>
-  <p class="error">{{errors.email}}</p>
+  <mat-form-field appearance="outline">
+    <mat-label>Email: </mat-label>
+    <input matInput placeholder="Ex. johndoe@gmail.com" type="email"
+           required [(ngModel)]="email">
+  <mat-hint style="color:red;">{{errors.email}}</mat-hint>
+  </mat-form-field>
 
-  <p class="content">Password:</p>
-  <input type="password" [(ngModel)]="password" />
-  <p class="error">{{errors.password}}</p>
+  <mat-form-field appearance="outline">
+    <mat-label>Password:</mat-label>
+    <input matInput type="password"
+           required [(ngModel)]="password">
+  <mat-hint style="color:red;">{{errors.password}}</mat-hint> 
+  </mat-form-field>
 </div>
-  <ion-button expand="block" class="sign-in-button" [disabled]="email == '' || password == ''" (click)="login()">Sign In</ion-button>
+  <button mat-button [disabled]="email == '' || password == ''" (click)="login()" class="login-button">Login</button>
   <p class="description">Don't have an account? <a (click)="navigate('signup')">Sign Up.</a></p>
 </div>
