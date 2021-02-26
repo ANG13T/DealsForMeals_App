@@ -6,13 +6,14 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  
 
-<div class="sign-up-form">
-  <h1 class="title">Create an Account</h1>
 
-  <mat-horizontal-stepper linear="true" #stepper>
-    <mat-step [completed]="accountType != ''">
+
+  <div class="sign-up-form">
+    <h1 class="title">Create an Account</h1>
+
+    <mat-horizontal-stepper linear="true" #stepper>
+      <mat-step [completed]="accountType != ''">
         <ng-template matStepLabel>Step 1</ng-template>
         <mat-form-field appearance="fill">
           <mat-label>Account Type</mat-label>
@@ -21,7 +22,7 @@
             <option value="business">Business</option>
           </select>
         </mat-form-field>
-  
+
         <mat-form-field appearance="fill" [hidden]="!isBusiness">
           <mat-label>Buisness Type</mat-label>
           <select matNativeControl required [(ngModel)]="accountType">
@@ -33,44 +34,43 @@
         <div>
           <button mat-button matStepperNext [disabled]="accountType == ''" class="continue-button">Next</button>
         </div>
-    </mat-step>
-    <mat-step [completed]="validateSecond()">
+      </mat-step>
+      <mat-step [completed]="validateSecond()">
         <ng-template matStepLabel>Step 2</ng-template>
         <mat-form-field appearance="outline">
           <mat-label>Full Name:</mat-label>
-          <input matInput placeholder="Ex. John Doe"
-                 required [(ngModel)]="name">
+          <input matInput placeholder="Ex. John Doe" required [(ngModel)]="name">
           <mat-icon matPrefix>person_outline</mat-icon>
-        <mat-hint style="color:red;">{{errors.name}}</mat-hint>
+          <mat-hint style="color:red;">{{errors.name}}</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Email: </mat-label>
-          <input matInput placeholder="Ex. johndoe@gmail.com" type="email"
-                 required [(ngModel)]="email">
+          <input matInput placeholder="Ex. johndoe@gmail.com" type="email" required [(ngModel)]="email">
           <mat-icon matPrefix>mail_outline</mat-icon>
-        <mat-hint style="color:red;">{{errors.email}}</mat-hint>
+          <mat-hint style="color:red;">{{errors.email}}</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Password:</mat-label>
-          <input matInput type="password"
-                 required [(ngModel)]="password">
+          <input matInput type="password" required [(ngModel)]="password">
           <mat-icon matPrefix>visibility_outline</mat-icon>
-        <mat-hint style="color:red;">{{errors.password}}</mat-hint> 
+          <mat-hint style="color:red;">{{errors.password}}</mat-hint>
         </mat-form-field>
         <div class="buttons">
           <button mat-button matStepperPrevious class="continue-button back-button">Back</button>
-          <button mat-button [hidden]="isBusiness" [disabled]="email == '' || password == '' || name == ''" (click)="signUp()" class="continue-button">Create Account</button>
-          <button matStepperNext [hidden]="!isBusiness" [disabled]="email == '' || password == '' || name == ''" class="continue-button">Next</button>
+          <button mat-button [hidden]="isBusiness" [disabled]="email == '' || password == '' || name == ''"
+            (click)="signUp()" class="continue-button">Create Account</button>
+          <button matStepperNext [hidden]="!isBusiness" [disabled]="email == '' || password == '' || name == ''"
+            class="continue-button">Next</button>
         </div>
-    </mat-step>
-    <mat-step *ngIf="isBusiness">
-      <ng-template matStepLabel>Step 3</ng-template>
-      <p>Select your Buisness Location</p>
-      <button (click)="collectLocation()">Select Location</button>
-      <div class="buttons">
-        <button mat-button matStepperPrevious class="continue-button back-button">Back</button>
-        <button mat-button (click)="signUp()" class="continue-button">Create</button>
-      </div>
-    </mat-step>
-  </mat-horizontal-stepper>
-</div>
+      </mat-step>
+      <mat-step *ngIf="isBusiness">
+        <ng-template matStepLabel>Step 3</ng-template>
+        <p>Select your Buisness Location</p>
+        <button (click)="collectLocation()">Select Location</button>
+        <div class="buttons">
+          <button mat-button matStepperPrevious class="continue-button back-button">Back</button>
+          <button mat-button (click)="signUp()" class="continue-button">Create</button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>

@@ -68,4 +68,10 @@ mat-form-field{
 .sign-up-form{
     margin-left: 2rem;
     margin-right: 2rem;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+mat-step{
+    overflow-y: scroll;
 }
