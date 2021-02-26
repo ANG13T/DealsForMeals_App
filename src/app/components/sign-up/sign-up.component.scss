@@ -31,6 +31,34 @@ mat-form-field{
     height: 8vh;
 }
 
+.continue-button{
+    background: #666A86;
+    color: white !important;
+    font-size: 1.1rem !important;
+    border: 5px solid #666A86 !important;
+    border-radius: 20px !important;
+    width: 7rem !important;
+    text-align: center !important;
+    margin-top: 1.5rem !important;
+    height: 3rem !important;
+}
+
+.back-button{
+    background: #9a9db8 !important;
+    border: 5px solid #9a9db8 !important;
+    border-radius: 20px !important;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, 
+.mat-step-header .mat-step-icon-state-edit {
+    background-color: #666A86 !important;
+}
 
 .sign-up-form{
     margin-left: 2rem;
