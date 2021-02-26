@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import { MenuController, ModalController } from '@ionic/angular';
@@ -12,6 +12,7 @@ declare var google: any;
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
