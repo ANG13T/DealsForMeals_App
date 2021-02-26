@@ -74,7 +74,8 @@
             <mat-tab label="ABOUT">
               <div class="about">
                   <h3>Buisness Description:</h3>
-                  <p>{{user.description}}</p>
+                  <p *ngIf="user.description != ''">{{user.description}}</p>
+                  <p *ngIf="user.description == ''">No description written yet.</p>
               </div>
             </mat-tab>
             <mat-tab label="LOCATION">

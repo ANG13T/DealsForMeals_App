@@ -31,9 +31,6 @@ export class ProfileComponent implements OnInit {
       console.log(userProfile)
       if(!userProfile) return;
       this.user = userProfile;
-      if(this.user.description == ""){
-        this.user.description = "No description written yet.";
-      }
       if(this.user.isBusiness){
         await this.postService.getDealsForUser(this.user.uid).then((data) => {
           console.log("got the posts", data)

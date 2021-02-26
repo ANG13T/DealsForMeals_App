@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { User } from 'src/app/shared/models/user.model';
@@ -13,6 +13,7 @@ import { CreatePostComponent } from '../modals/create-post/create-post.component
 export class BottomBarComponent implements OnInit {
 
   user: User;
+  @Input() selected: string;
 
   constructor(public modalController: ModalController, private userService: UserService, private router: Router) {
     this.userService.user$.subscribe(async (userProfile) => {

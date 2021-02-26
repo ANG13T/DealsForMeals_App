@@ -1,13 +1,13 @@
   <ion-tab-bar slot="bottom" *ngIf="user">
-    <ion-tab-button tab="schedule" (click)="navigate('foodbanks')">
+    <ion-tab-button tab="schedule" (click)="navigate('foodbanks')" [class.highlighted]="selected === 'foodbanks'">
       <ion-icon name="storefront-outline"></ion-icon>
       <ion-label>Foodbanks</ion-label>
     </ion-tab-button>
-    <ion-tab-button *ngIf="user.isBusiness">
+    <ion-tab-button *ngIf="user.isBusiness" [class.highlighted]="selected === 'create'">
       <ion-icon name="add-outline"></ion-icon>
       <ion-label>Create</ion-label>
     </ion-tab-button>
-    <ion-tab-button tab="schedule" (click)="navigate('profile')">
+    <ion-tab-button tab="schedule" (click)="navigate('profile')" [class.highlighted]="selected === 'profile'">
       <ion-icon name="person-circle-outline"></ion-icon>
       <ion-label>Profile</ion-label>
     </ion-tab-button>
