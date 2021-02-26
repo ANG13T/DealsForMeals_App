@@ -12,10 +12,9 @@
 .profile-top{
     width: 100%;
 	height: 100%;
-	padding: 50px;
-	color: #FFF;
-	text-shadow: 1px 1px 1px #333;
-  background-image: linear-gradient( 135deg, #9f05ff69 10%, #fd5e086b 100%);
+	padding: 20px;
+	color: rgb(43, 41, 41);
+  background-image: linear-gradient( 135deg, #0971c769 10%, #08afb46b 100%);
 }
 
 .ion-page{
@@ -35,12 +34,12 @@ ion-menu-button{
     display: flex;
     justify-content: space-around;
     .edit-button{
-        --background: #FBF8F8;
-        border: 1px solid #232BDE;
+        --background: #3880ff;
         --box-sizing: border-box;
-        border-radius: 5px;
-        width: 8rem;
-        color: #464DF1;
+        border-radius: 25px;
+        width: 12rem;
+        color: #ffffff;
+        border: 5px solid #3880ff;
     }
     
     .create-button{
@@ -54,7 +53,6 @@ ion-menu-button{
 
 
 .top{
-    display: flex;
     margin-top: .5rem;
 }
 
@@ -64,19 +62,14 @@ ion-menu-button{
     border: 1px solid #7A7171;
     border-radius: 60px;
     margin: auto;
-    margin-top: 3rem;
-}
-
-.profile-description{
-    font-size: 14px;
-    color: #6C6565;
-    margin-left: 1rem;
+    margin-top: 2rem;
 }
 
 .profile-name{
-    margin-left: 1rem;
-    margin-top: 1rem;
-    margin-bottom: .5rem;
+    font-size: 1.4rem !important;
+    font-weight: bold !important;
+    margin-bottom: .5rem !important;
+    margin-top: 1rem !important;
 }
 
 
@@ -140,7 +133,7 @@ ion-card{
 }
 
 .profile-options{
-    margin-top: 7vh;
+    margin-top: 18vh;
 
     .welcome-text{
         font-size: 1.2rem;
@@ -154,6 +147,12 @@ ion-card{
     }
 }
 
+.settings-button{
+    position: absolute;
+    top: 5%;
+    color: #203088;
+    right: 5%;
+}
 
 #map {
     height: 100vh;

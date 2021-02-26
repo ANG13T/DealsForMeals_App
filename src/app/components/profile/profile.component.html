@@ -1,27 +1,23 @@
-<!-- <ion-header>
-  <ion-toolbar class="header" color="#4078e1">
-    <ion-buttons slot="end">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Profile</ion-title>
-  </ion-toolbar>
-</ion-header> -->
-
 <ion-content [fullscreen]="true">
   <div profile *ngIf="user" #content>
 
     <div class="top-content">
+      <div class="settings-button">
+        <mat-icon>settings</mat-icon>
+      </div>
       <div class="profile-top">
         <div class="top">
           <img src={{user.photoURL}} alt="Profile Image" class="profile-image" />
-          <!-- <div class="description">
+          <div class="description">
             <h2 class="profile-name">{{user.name}}</h2>
-            <h2 class="profile-description">{{user.location}}</h2>
-          </div> -->
+            <h2 class="profile-description">
+              <mat-icon>location_on</mat-icon>
+              Los Angeles, CA {{user.location}}
+            </h2>
+          </div>
         </div>
         <div class="bottom">
           <ion-button class="edit-button" (click)="navigate('profile/edit')">Edit Profile</ion-button>
-
         </div>
       </div>
     </div>
