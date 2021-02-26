@@ -1,120 +1,73 @@
 <div class="sign-up-page">
   <ion-header>
-    <ion-toolbar class="header" color="#4078e1">
+    <ion-toolbar class="header">
       <ion-buttons slot="start">
-        <ion-back-button (click)="navigate('')" routerDirection="root"></ion-back-button>
+        <ion-back-button (click)="navigate('')" routerDirection="root">Back</ion-back-button>
       </ion-buttons>
-      <ion-title>Sign Up</ion-title>
     </ion-toolbar>
   </ion-header>
   
-  <!-- <div class="form" scrollY="true">
-    <h1 class="title">🛠 Create Account</h1>
-    <div class="main">
-      <ion-list class="choice">
-        <ion-radio-group [(ngModel)]="accountType">
-          <ion-list-header>
-            <ion-label class="choice-option">Select an Option:</ion-label>
-          </ion-list-header>
-      
-          <ion-item>
-            <ion-label>Foodbank</ion-label>
-            <ion-radio slot="start" value="foodbank"></ion-radio>
-          </ion-item>
-      
-          <ion-item>
-            <ion-label>Grocery Store / Donater</ion-label>
-            <ion-radio slot="start" value="store"></ion-radio>
-          </ion-item>
-        </ion-radio-group>
-      </ion-list>
+
+<div class="sign-up-form">
+  <h1 class="title">Create an Account</h1>
+
+  <mat-horizontal-stepper linear="true" #stepper>
+    <mat-step [completed]="accountType != ''">
+        <ng-template matStepLabel>Step 1</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Account Type</mat-label>
+          <select matNativeControl required (change)="selectType($event.target.value)">
+            <option value="foodie">Foodie</option>
+            <option value="business">Business</option>
+          </select>
+        </mat-form-field>
   
-      <p class="content">Organization Name:</p>
-      <input type="text" [(ngModel)]="name"/>
-      <p class="error">{{errors.name}}</p>
-  
-      <div class="location" *ngIf="accountType == 'store'">
-        <p class="content">Location:</p>
-        <div class="location-container">
-          <input type="text" [(ngModel)]="location.name" (click)="getLocation()" readonly/>
-          <button (click)="getLocation()">
-            <ion-icon name="location-outline"></ion-icon>
-          </button>
+        <mat-form-field appearance="fill" [hidden]="!isBusiness">
+          <mat-label>Buisness Type</mat-label>
+          <select matNativeControl required [(ngModel)]="accountType">
+            <option value="restaurant">Restaurant</option>
+            <option value="foodbank">Foodbank</option>
+            <option value="other">Other</option>
+          </select>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext [disabled]="accountType == ''">Next</button>
         </div>
-        <p class="error">{{errors.location}}</p>
-      </div>
-      
-      <p class="content">Email:</p>
-      <input type="email" [(ngModel)]="email"/>
-      <p class="error">{{errors.email}}</p>
-  
-      <p class="content">Password:</p>
-      <input type="password" [(ngModel)]="password" />
-      <p class="error">{{errors.password}}</p>
-    </div>
-  
-      <ion-button expand="block" color="secondary" class="sign-in-button" (click)="signUp()" [disabled]="!name || !email || !password || !accountType">Sign Up</ion-button>
-      <p class="description">Already have an account? <a (click)="navigate('login')">Sign In.</a></p>
-    </div>
-</div> -->
-
-
-<mat-horizontal-stepper linear="true" #stepper>
-  <mat-step [completed]="accountType != ''">
-      <ng-template matStepLabel>Step 1</ng-template>
-      <mat-form-field appearance="fill">
-        <mat-label>Account Type</mat-label>
-        <select matNativeControl required (change)="selectType($event.target.value)">
-          <option value="foodie">Foodie</option>
-          <option value="business">Business</option>
-        </select>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill" [hidden]="!isBusiness">
-        <mat-label>Buisness Type</mat-label>
-        <select matNativeControl required [(ngModel)]="accountType">
-          <option value="restaurant">Restaurant</option>
-          <option value="foodbank">Foodbank</option>
-          <option value="other">Other</option>
-        </select>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext [disabled]="accountType == ''">Next</button>
-      </div>
-  </mat-step>
-  <mat-step [completed]="validateSecond()">
-      <ng-template matStepLabel>Step 2</ng-template>
-      <mat-form-field>
-        <mat-label>Full Name:</mat-label>
-        <input matInput placeholder="Ex. John Doe"
-               required [(ngModel)]="name">
-      <mat-hint style="color:red;">{{errors.name}}</mat-hint>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Email: </mat-label>
-        <input matInput placeholder="Ex. johndoe@gmail.com" type="email"
-               required [(ngModel)]="email">
-      <mat-hint style="color:red;">{{errors.email}}</mat-hint>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Password:</mat-label>
-        <input matInput type="password"
-               required [(ngModel)]="password">
-      <mat-hint style="color:red;">{{errors.password}}</mat-hint> 
-      </mat-form-field>
+    </mat-step>
+    <mat-step [completed]="validateSecond()">
+        <ng-template matStepLabel>Step 2</ng-template>
+        <mat-form-field>
+          <mat-label>Full Name:</mat-label>
+          <input matInput placeholder="Ex. John Doe"
+                 required [(ngModel)]="name">
+        <mat-hint style="color:red;">{{errors.name}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Email: </mat-label>
+          <input matInput placeholder="Ex. johndoe@gmail.com" type="email"
+                 required [(ngModel)]="email">
+        <mat-hint style="color:red;">{{errors.email}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Password:</mat-label>
+          <input matInput type="password"
+                 required [(ngModel)]="password">
+        <mat-hint style="color:red;">{{errors.password}}</mat-hint> 
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button [hidden]="isBusiness" [disabled]="email == '' || password == '' || name == ''" (click)="signUp()">Create Account</button>
+          <button matStepperNext [hidden]="!isBusiness" [disabled]="email == '' || password == '' || name == ''">Next</button>
+        </div>
+    </mat-step>
+    <mat-step *ngIf="isBusiness">
+      <ng-template matStepLabel>Step 3</ng-template>
+      <p>Select your Buisness Location</p>
+      <button (click)="collectLocation()">Select Location</button>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button [hidden]="isBusiness" [disabled]="email == '' || password == '' || name == ''" (click)="signUp()">Create Account</button>
-        <button matStepperNext [hidden]="!isBusiness" [disabled]="email == '' || password == '' || name == ''">Next</button>
+        <button mat-button (click)="signUp()">Create Account</button>
       </div>
-  </mat-step>
-  <mat-step *ngIf="isBusiness">
-    <ng-template matStepLabel>Step 3</ng-template>
-    <p>Select your Buisness Location</p>
-    <button (click)="collectLocation()">Select Location</button>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="signUp()">Create Account</button>
-    </div>
-  </mat-step>
-</mat-horizontal-stepper>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

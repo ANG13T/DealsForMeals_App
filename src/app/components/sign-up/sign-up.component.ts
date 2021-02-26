@@ -7,10 +7,12 @@ import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@io
 import { Location } from 'src/app/shared/models/location.model';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
+import { ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
