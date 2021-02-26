@@ -68,7 +68,7 @@ export class UserService {
             accountType: newUser.accountType,
             photoURL: 'https://firebasestorage.googleapis.com/v0/b/deals2meals-4e239.appspot.com/o/default_user.jpg?alt=media&token=e1c97c88-5aab-487b-ae6d-878415e28b6a',
             isBusiness: newUser.isBusiness,
-            description: 'No description written yet'
+            description: ''
           }
   
           this.afs.firestore.collection("users").doc(userData.uid).set(userData)

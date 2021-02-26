@@ -29,8 +29,11 @@ export class ViewBuisnessComponent implements OnInit {
       let buisnessID = this.route.snapshot.params['id'];
       this.buisnessService.getBuisnessByID(buisnessID).then((buisness) => {
         this.buisness = buisness;
+
       })
     }
+
+   
 
     this.postService.getDealsForUser(this.buisness.uid).then((postData) => {
       console.log("got the posts", postData)
