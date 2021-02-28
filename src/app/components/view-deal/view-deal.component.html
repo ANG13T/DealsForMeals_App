@@ -1,8 +1,10 @@
 
 <ion-header>
-  <ion-toolbar color="#4043E1" class="header">
+  <ion-toolbar class="header">
     <ion-buttons slot="start">
-      <ion-button (click)="dismissModal()">Close</ion-button>
+      <ion-button (click)="dismissModal()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
       <!-- TODO: make it back button -->
     </ion-buttons><ion-buttons slot="end">
       <ion-button (click)="presentActionSheet()"><ion-icon name="ellipsis-vertical"></ion-icon></ion-button>

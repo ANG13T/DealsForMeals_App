@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ActionSheetController, ModalController } from '@ionic/angular';
 import { Post } from 'src/app/shared/models/post.model';
@@ -9,6 +9,7 @@ import { EditPostComponent } from '../modals/edit-post/edit-post.component';
 @Component({
   selector: 'app-view-deal',
   templateUrl: './view-deal.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./view-deal.component.scss'],
 })
 export class ViewDealComponent implements OnInit {

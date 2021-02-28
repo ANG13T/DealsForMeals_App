@@ -3,8 +3,13 @@
 }
 
 .header{
-    color: white;
-    background-color: #5979E9;
+    color: black !important;
+    background-color: white;
+    --border-width: 0 0 0px !important;
+
+    ion-icon{
+        color: black;
+    }
 }
 
 .form{
@@ -17,10 +22,6 @@
     margin-right: 2rem;
 }
 
-.header{
-    background-color: #4078e1;
-    color: white;
-}
 
 input{
     width: 80%;
