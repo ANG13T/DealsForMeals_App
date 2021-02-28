@@ -23,7 +23,7 @@ export class SignUpComponent implements OnInit {
   name: string = "";
   firstName: string = "";
   lastName: string = "";
-  // location: Location = {name: "", longtude: 0, latitude: 0} as Location;
+  location: Location = {fullAddress: "", longitude: 0, latitude: 0} as Location;
   email: string = "";
   password: string = "";
   isBusiness: boolean = false;
@@ -49,7 +49,6 @@ export class SignUpComponent implements OnInit {
   constructor(private router: Router, private userService: UserService, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder) { }
 
   ngOnInit() {
-    this.location.name = "-- Choose a Location --";
   }
 
   navigate(route: string){
@@ -96,7 +95,7 @@ export class SignUpComponent implements OnInit {
       let newUser : User = {
         name: this.name,
         uid: '',
-        location: { latitude: this.location.latitude, longtude: this.location.longtude, name: this.location.name } as Location,
+        location: { latitude: this.location.latitude, longitude: this.location.longitude, fullAddress: this.location.fullAddress } as Location,
         accountType: this.accountType,
         email: this.email,
         photoURL: '',
@@ -199,15 +198,30 @@ export class SignUpComponent implements OnInit {
 
   //geocoder method to fetch address from coordinates passed as arguments
   getGeoencoder(latitude, longitude) {
+    this.location.latitude = latitude;
+    this.location.longitude = longitude;
     this.nativeGeocoder.reverseGeocode(latitude, longitude, this.geoencoderOptions)
       .then((result: NativeGeocoderResult[]) => {
         this.address = this.generateAddress(result[0]);
+        this.location.fullAddress = this.generateAddress(result[0]);
+        this.updateLocation(result[0]);
 
         console.log("the address", this.address)
       })
       .catch((error: any) => {
         alert('Error getting location' + JSON.stringify(error));
       });
+  }
+
+  updateLocation(locationData: NativeGeocoderResult){
+    this.location.countryCode = locationData.countryCode;
+    this.location.postalCode = locationData.postalCode;
+    this.location.administrativeArea = locationData.administrativeArea;
+    this.location.subAdministrativeArea	 = locationData.subAdministrativeArea;
+    this.location.locality = locationData.locality;
+    this.location.subLocality = locationData.subLocality;
+    this.location.thoroughfare = locationData.thoroughfare;
+    this.location.subThoroughfare = locationData.subThoroughfare;
   }
 
   //Return Comma saperated address
