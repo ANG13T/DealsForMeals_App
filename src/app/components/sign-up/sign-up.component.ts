@@ -23,7 +23,7 @@ export class SignUpComponent implements OnInit {
   name: string = "";
   firstName: string = "";
   lastName: string = "";
-  location: Location = {name: "", longtude: 0, latitude: 0} as Location;
+  // location: Location = {name: "", longtude: 0, latitude: 0} as Location;
   email: string = "";
   password: string = "";
   isBusiness: boolean = false;
@@ -202,6 +202,8 @@ export class SignUpComponent implements OnInit {
     this.nativeGeocoder.reverseGeocode(latitude, longitude, this.geoencoderOptions)
       .then((result: NativeGeocoderResult[]) => {
         this.address = this.generateAddress(result[0]);
+
+        console.log("the address", this.address)
       })
       .catch((error: any) => {
         alert('Error getting location' + JSON.stringify(error));
