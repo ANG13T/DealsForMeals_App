@@ -16,11 +16,11 @@
             </h2>
           </div>
         </div>
-
-        <div class="bottom">
-          <ion-button class="edit-button button" (click)="navigate('profile/edit')">Edit Profile</ion-button>
-        </div>
+        
+       
       </div>
+
+      
     </div>
 
 
@@ -38,7 +38,7 @@
           <ion-button class="button">Search Locations in your Area</ion-button>
         </div>
 
-        <div class="profile-options" *ngIf="user.isBusiness">
+        <!-- <div class="profile-options" *ngIf="user.isBusiness">
           <mat-tab-group>
             <mat-tab label="DEALS">
               <div class="posts" *ngIf="!isFoodbank">
@@ -49,7 +49,7 @@
                       <ion-card-subtitle>{{post.userProfile.location}}</ion-card-subtitle>
                       <ion-card-title>{{post.title}}</ion-card-title>
                     </ion-card-header>
-                    <!-- TODO: only get a small portion of description -->
+                    
                     <ion-card-content>
                       {{post.description}}
                     </ion-card-content>
@@ -62,7 +62,6 @@
                     <ion-card-header>
                       <ion-skeleton-text animated></ion-skeleton-text>
                     </ion-card-header>
-                    <!-- TODO: only get a small portion of description -->
                     <ion-skeleton-text animated></ion-skeleton-text>
                   </ion-card>
                 </div>
@@ -81,7 +80,7 @@
               </div>
             </mat-tab>
           </mat-tab-group>
-        </div>
+        </div> -->
         <!-- Show posts here -->
 
       </div>
