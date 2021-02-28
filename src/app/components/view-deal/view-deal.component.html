@@ -6,7 +6,8 @@
         <ion-icon name="chevron-back-outline"></ion-icon>
       </ion-button>
       <!-- TODO: make it back button -->
-    </ion-buttons><ion-buttons slot="end">
+    </ion-buttons>
+    <ion-buttons slot="end" [hidden]="!isOwner">
       <ion-button (click)="presentActionSheet()"><ion-icon name="ellipsis-vertical"></ion-icon></ion-button>
     </ion-buttons>
 

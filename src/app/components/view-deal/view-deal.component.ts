@@ -5,6 +5,7 @@ import { Post } from 'src/app/shared/models/post.model';
 import { AlertController } from '@ionic/angular';
 import { PostService } from 'src/app/shared/services/post.service';
 import { EditPostComponent } from '../modals/edit-post/edit-post.component';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-view-deal',
@@ -18,15 +19,23 @@ export class ViewDealComponent implements OnInit {
   origin: string;
   postID: string;
   isOwner: boolean = false;
+  uid: string;
 
-  constructor(private router: Router, private route: ActivatedRoute, private modalController: ModalController, public alertController: AlertController, private postService: PostService, public actionSheetController: ActionSheetController) { }
+  constructor(private router: Router, private route: ActivatedRoute, private modalController: ModalController, public alertController: AlertController, private postService: PostService, public actionSheetController: ActionSheetController, private userService: UserService) { }
 
   ngOnInit() {
+    this.userService.user$.subscribe((userProfile) => {
+      if(userProfile){
+        this.uid = userProfile.uid;
+      }
+    })
     this.route.params.subscribe(params => {
       if(this.post == null){
         this.postID = params['id']; 
         //get post data
       }
+
+      this.isOwner = (this.post.userProfile.uid == this.uid);
     });
   }
 
