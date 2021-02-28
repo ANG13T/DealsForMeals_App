@@ -77,8 +77,11 @@
     </mat-step>
     <mat-step *ngIf="isBusiness">
       <ng-template matStepLabel>Step 3</ng-template>
-      <p>Select your Buisness Location</p>
       <ion-button (click)="getGeolocation()" color="success" expand="full">Get Location</ion-button>
+      <h3>Street Address: {{location.subAdministrativeArea}}</h3>
+      <h3>State: {{location.administrativeArea}}</h3>
+      <h3>Country: {{location.thoroughfare}}</h3>
+      <h3>PIN: {{location.postalCode}}</h3>
       <div class="buttons">
         <button mat-button matStepperPrevious class="continue-button back-button">Back</button>
         <button mat-button (click)="signUp()" class="continue-button">Create</button>

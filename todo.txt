@@ -1,2 +1,5 @@
-- style foodbank popup
-- get location when create user
+- make location class
+- improve location sign up
+- improve for more mobile devices
+- improve mobile animations
+

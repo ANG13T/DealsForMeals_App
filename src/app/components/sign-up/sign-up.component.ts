@@ -23,7 +23,7 @@ export class SignUpComponent implements OnInit {
   name: string = "";
   firstName: string = "";
   lastName: string = "";
-  location: Location = {fullAddress: "", longitude: 0, latitude: 0} as Location;
+  location: Location = {fullAddress: "", longitude: 0, latitude: 0, locality: "", subLocality: "", thoroughfare: "", subThoroughfare: "", administrativeArea: "", subAdministrativeArea: "", postalCode: "", countryCode: ""} as Location;
   email: string = "";
   password: string = "";
   isBusiness: boolean = false;
@@ -86,7 +86,7 @@ export class SignUpComponent implements OnInit {
       let newUser : User = {
         name: this.name,
         uid: '',
-        location: { latitude: this.location.latitude, longitude: this.location.longitude, fullAddress: this.location.fullAddress } as Location,
+        location: { latitude: this.location.latitude, longitude: this.location.longitude, fullAddress: this.location.fullAddress,  } as Location,
         accountType: this.accountType,
         email: this.email,
         photoURL: '',
@@ -204,6 +204,7 @@ export class SignUpComponent implements OnInit {
   }
 
   updateLocation(locationData: NativeGeocoderResult){
+    console.log("the location data", locationData);
     this.location.countryCode = locationData.countryCode;
     this.location.postalCode = locationData.postalCode;
     this.location.administrativeArea = locationData.administrativeArea;
