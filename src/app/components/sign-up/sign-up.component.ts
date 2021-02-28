@@ -31,15 +31,6 @@ export class SignUpComponent implements OnInit {
   errors = {password: "", name: "", email: "", location: ""};
 
   // Location Variables
-
-  // Readable Address
-  address: string;
-
-  // Location coordinates
-  latitude: number;
-  longitude: number;
-  accuracy: number;
-
   //Geocoder configuration
   geoencoderOptions: NativeGeocoderOptions = {
     useLocale: true,
@@ -185,9 +176,8 @@ export class SignUpComponent implements OnInit {
 
       console.log("got the location");
 
-      this.latitude = resp.coords.latitude;
-      this.longitude = resp.coords.longitude;
-      this.accuracy = resp.coords.accuracy;
+      this.location.latitude = resp.coords.latitude;
+      this.location.longitude = resp.coords.longitude;
 
       this.getGeoencoder(resp.coords.latitude, resp.coords.longitude);
 
@@ -202,11 +192,11 @@ export class SignUpComponent implements OnInit {
     this.location.longitude = longitude;
     this.nativeGeocoder.reverseGeocode(latitude, longitude, this.geoencoderOptions)
       .then((result: NativeGeocoderResult[]) => {
-        this.address = this.generateAddress(result[0]);
+        this.location.fullAddress = this.generateAddress(result[0]);
         this.location.fullAddress = this.generateAddress(result[0]);
         this.updateLocation(result[0]);
 
-        console.log("the address", this.address)
+        console.log("the address", this.location.fullAddress)
       })
       .catch((error: any) => {
         alert('Error getting location' + JSON.stringify(error));
