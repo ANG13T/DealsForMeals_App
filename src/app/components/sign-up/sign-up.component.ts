@@ -91,10 +91,6 @@ export class SignUpComponent implements OnInit {
     
   }
 
-
-
-
-
   async signUp(){
     if(this.validateForm()){
       let newUser : User = {
@@ -180,6 +176,52 @@ export class SignUpComponent implements OnInit {
     return (this.name != "") && (this.email != "") && (this.password != "");
   }
 
+
+  // Location functionality
+
+  //Get current coordinates of device
+  getGeolocation() {
+    console.log("getting the location");
+    this.geolocation.getCurrentPosition().then((resp) => {
+
+      console.log("got the location");
+
+      this.latitude = resp.coords.latitude;
+      this.longitude = resp.coords.longitude;
+      this.accuracy = resp.coords.accuracy;
+
+      this.getGeoencoder(resp.coords.latitude, resp.coords.longitude);
+
+    }).catch((error) => {
+      alert('Error getting location' + JSON.stringify(error));
+    });
+  }
+
+  //geocoder method to fetch address from coordinates passed as arguments
+  getGeoencoder(latitude, longitude) {
+    this.nativeGeocoder.reverseGeocode(latitude, longitude, this.geoencoderOptions)
+      .then((result: NativeGeocoderResult[]) => {
+        this.address = this.generateAddress(result[0]);
+      })
+      .catch((error: any) => {
+        alert('Error getting location' + JSON.stringify(error));
+      });
+  }
+
+  //Return Comma saperated address
+  generateAddress(addressObj) {
+    let obj = [];
+    let address = "";
+    for (let key in addressObj) {
+      obj.push(addressObj[key]);
+    }
+    obj.reverse();
+    for (let val in obj) {
+      if (obj[val].length)
+        address += obj[val] + ', ';
+    }
+    return address.slice(0, -2);
+  }
 
 
 }

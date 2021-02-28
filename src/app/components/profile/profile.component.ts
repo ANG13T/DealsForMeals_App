@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { CreatePostComponent } from '../modals/create-post/create-post.component';
 import { Post } from 'src/app/shared/models/post.model';
 import { PostService } from 'src/app/shared/services/post.service';
-import { ViewPostComponent } from '../view-post/view-post.component';
+import { ViewDealComponent } from '../view-deal/view-deal.component';
 declare var google: any;
 
 @Component({
@@ -89,7 +89,7 @@ export class ProfileComponent implements OnInit {
 
   async presentPost(post: Post){
     const modal = await this.modalController.create({
-      component: ViewPostComponent,
+      component: ViewDealComponent,
       cssClass: 'my-custom-class',
       componentProps: { 
         origin: 'profile',

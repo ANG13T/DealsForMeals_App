@@ -8,9 +8,62 @@
   </ion-header>
 
 
+  <ion-content [fullscreen]="true" class="ion-padding">
 
-  <div class="sign-up-form">
-    <h1 class="title">Create an Account</h1>
+    <h4>Geolocation & Gecoder App</h4>
+  
+    <ion-grid>
+  
+      <!-- Latitude -->
+      <ion-row>
+        <ion-col size="4" class="ion-text-center">
+          Latitue
+        </ion-col>
+        <ion-col>
+          <ion-badge class="ion-text-wrap" color="medium">{{latitude}}</ion-badge>
+        </ion-col>
+      </ion-row>
+  
+      <!-- Longitude -->
+      <ion-row>
+        <ion-col size="4" class="ion-text-center">
+          longitude
+        </ion-col>
+        <ion-col>
+          <ion-badge class="ion-text-wrap" color="medium">{{longitude}}</ion-badge>
+        </ion-col>
+      </ion-row>
+  
+      <!-- Accuracy -->
+      <ion-row>
+        <ion-col size="4" class="ion-text-center" color="medium">
+          Accuracy
+        </ion-col>
+        <ion-col>
+          <ion-badge class="ion-text-wrap" color="medium">{{accuracy}}</ion-badge>
+        </ion-col>
+      </ion-row>
+  
+      <!-- Address -->
+      <ion-row>
+        <ion-col size="4" class="ion-text-center">
+          Address
+        </ion-col>
+        <ion-col>
+          <ion-badge class="ion-text-wrap" color="medium">{{address}}</ion-badge>
+        </ion-col>
+      </ion-row>
+  
+    </ion-grid>
+  
+    <ion-button (click)="getGeolocation()" color="success" expand="full">Get Location</ion-button>
+  
+  </ion-content>
+
+
+  <!-- <div class="sign-up-form"> -->
+
+    <!-- <h1 class="title">Create an Account</h1>
 
     <mat-horizontal-stepper linear="true" #stepper>
       <mat-step [completed]="accountType != ''">
@@ -85,5 +138,5 @@
           <button mat-button (click)="signUp()" class="continue-button">Create</button>
         </div>
       </mat-step>
-    </mat-horizontal-stepper>
-  </div>
+    </mat-horizontal-stepper> -->
+  <!-- </div> -->
