@@ -1,16 +1,17 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { User } from 'src/app/shared/models/user.model';
 import { BuisnessService } from 'src/app/shared/services/buisness.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Post } from 'src/app/shared/models/post.model';
 import { PostService } from 'src/app/shared/services/post.service';
-import { ViewPostComponent } from '../view-post/view-post.component';
+import { ViewDealComponent } from '../view-deal/view-deal.component';
 declare var google: any;
 
 @Component({
   selector: 'app-view-buisness',
   templateUrl: './view-buisness.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./view-buisness.component.scss'],
 })
 export class ViewBuisnessComponent implements OnInit {
@@ -46,7 +47,7 @@ export class ViewBuisnessComponent implements OnInit {
 
   async presentPost(post: Post){
     const modal = await this.modalController.create({
-      component: ViewPostComponent,
+      component: ViewDealComponent,
       cssClass: 'my-custom-class',
       componentProps: { 
         origin: 'profile',
