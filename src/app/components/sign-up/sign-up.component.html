@@ -37,28 +37,41 @@
       </mat-step>
       <mat-step [completed]="validateSecond()">
         <ng-template matStepLabel>Step 2</ng-template>
-        <mat-form-field appearance="outline">
-          <mat-label>Full Name:</mat-label>
-          <input matInput placeholder="Ex. John Doe" required [(ngModel)]="name">
-          <mat-icon matPrefix>person_outline</mat-icon>
+        <mat-form-field appearance="outline" [hidden]="!isBusiness">
+          <mat-label>Organization Name:</mat-label>
+          <input matInput placeholder="Ex. Whole Foods" required [(ngModel)]="name">
+          <mat-icon matSuffix>person_outline</mat-icon>
+          <mat-hint style="color:red;">{{errors.name}}</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" [hidden]="isBusiness">
+          <mat-label>First Name:</mat-label>
+          <input matInput placeholder="Ex. John" required (input)="changeName($event.target.value, 'first')">
+          <mat-icon matSuffix>person_outline</mat-icon>
+          <mat-hint style="color:red;">{{errors.name}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" [hidden]="isBusiness">
+          <mat-label>Last Name:</mat-label>
+          <input matInput placeholder="Ex. Doe" required (input)="changeName($event.target.value, 'last')">
+          <mat-icon matSuffix>person_outline</mat-icon>
           <mat-hint style="color:red;">{{errors.name}}</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Email: </mat-label>
           <input matInput placeholder="Ex. johndoe@gmail.com" type="email" required [(ngModel)]="email">
-          <mat-icon matPrefix>mail_outline</mat-icon>
+          <mat-icon matSuffix>mail_outline</mat-icon>
           <mat-hint style="color:red;">{{errors.email}}</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Password:</mat-label>
           <input matInput type="password" required [(ngModel)]="password">
-          <mat-icon matPrefix>visibility_outline</mat-icon>
+          <mat-icon matSuffix>visibility_outline</mat-icon>
           <mat-hint style="color:red;">{{errors.password}}</mat-hint>
         </mat-form-field>
         <div class="buttons">
           <button mat-button matStepperPrevious class="continue-button back-button">Back</button>
           <button mat-button [hidden]="isBusiness" [disabled]="email == '' || password == '' || name == ''"
-            (click)="signUp()" class="continue-button">Create Account</button>
+            (click)="signUp()" class="continue-button">Create</button>
           <button matStepperNext [hidden]="!isBusiness" [disabled]="email == '' || password == '' || name == ''"
             class="continue-button">Next</button>
         </div>

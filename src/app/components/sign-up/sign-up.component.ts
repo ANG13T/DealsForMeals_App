@@ -21,12 +21,30 @@ export class SignUpComponent implements OnInit {
   secondFormGroup: FormGroup;
 
   name: string = "";
+  firstName: string = "";
+  lastName: string = "";
   location: Location = {name: "", longtude: 0, latitude: 0} as Location;
   email: string = "";
   password: string = "";
   isBusiness: boolean = false;
   accountType : 'foodie' | 'foodbank' | 'resturant' | 'other' = "foodbank";
   errors = {password: "", name: "", email: "", location: ""};
+
+  // Location Variables
+
+  // Readable Address
+  address: string;
+
+  // Location coordinates
+  latitude: number;
+  longitude: number;
+  accuracy: number;
+
+  //Geocoder configuration
+  geoencoderOptions: NativeGeocoderOptions = {
+    useLocale: true,
+    maxResults: 5
+  };
 
   constructor(private router: Router, private userService: UserService, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder) { }
 
@@ -39,6 +57,8 @@ export class SignUpComponent implements OnInit {
   }
 
   resetState(){
+    this.firstName = "";
+    this.lastName = "";
     this.name = "";
     this.email = "";
     this.password = "";
@@ -47,6 +67,16 @@ export class SignUpComponent implements OnInit {
     this.errors.name = "";
     this.errors.email = "";
     this.errors.location = "";
+  }
+
+  changeName(content: string, identifier: string){
+    if(identifier == "first"){
+      this.firstName = content;
+    }else{
+      this.lastName = content;
+    }
+
+    this.name = `${this.firstName} ${this.lastName}`;
   }
 
   selectType(type: string){
@@ -61,40 +91,7 @@ export class SignUpComponent implements OnInit {
     
   }
 
-  async collectLocation(){
-    this.getLocation().then(() => {
-      this.getAddress(this.location.latitude, this.location.longtude).then(() => {
-        return;
-      }).catch((err) => {
-        console.log(err);
-      })
-    }).catch((err) => {
-      console.log(err);
-    })
-  }
 
-  async getLocation(){
-    await this.geolocation.getCurrentPosition().then(async(res) => {
-      console.log(res);
-      this.location.latitude = res.coords.latitude;
-      this.location.longtude = res.coords.longitude;
-      await this.getAddress(res.coords.latitude, res.coords.longitude);
-    }).catch((err) => {
-      console.log(err);
-    })
-  }
-
-  async getAddress(lat: number, long: number){
-    this.nativeGeocoder.reverseGeocode(lat, long)
-    .then((result: NativeGeocoderResult[]) => {
-      console.log(JSON.stringify(result[0]))
-      let resultLocation = result[0];
-      let address = `${resultLocation.subThoroughfare}, ${resultLocation.subLocality} ${resultLocation.locality}, ${resultLocation.administrativeArea} ${resultLocation.postalCode}, ${resultLocation.countryCode}`;
-      console.log("addess ", address)
-      this.location.name = address;
-    })
-    .catch((error: any) => console.log(error));
-  }
 
 
 
