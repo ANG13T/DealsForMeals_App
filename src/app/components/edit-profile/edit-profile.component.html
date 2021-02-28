@@ -1,47 +1,4 @@
-<!-- <ion-header>
-  <ion-toolbar color="#4043E1" class="header">
-    <ion-buttons slot="start">
-      <ion-back-button (click)="navigate('profile')" routerDirection="root"></ion-back-button>
-    </ion-buttons>
-    <ion-title class="nav-title">Edit Profile</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<div class="form" *ngIf="userProfile">
-  <div class="profile-container">
-    <input type="file" style="display: none" #file accept="image/jpeg,image/x-png" (change)="onDrop($event.target.files)">
-    <img src={{userProfile.photoURL}} alt="User Image" class="user-image"/>
-    <button class="edit-button" (click)="file.click()">
-      <ion-icon name="pencil-outline"></ion-icon>
-    </button>
-  </div>
-
-<ion-item>
-  <ion-label>Select Account</ion-label>
-  <ion-select interface="popover" [(ngModel)]="userProfile.accountType">
-    <ion-select-option value="foodie">Foodie</ion-select-option>
-    <ion-select-option value="foodbank">Foodbank</ion-select-option>
-    <ion-select-option value="restaurant">Restaurant</ion-select-option>
-    <ion-select-option value="other">Other</ion-select-option>
-  </ion-select>
-</ion-item>
-
-  <div class="form-item">
-    <p class="content">Organization Name:</p>
-    <input matInput type="text" [(ngModel)]="userProfile.name" placeholder="Enter Name"/>
-    <p class="error">{{errors.name}}</p>
-  </div>
-
-  <div class="form-item" *ngIf="userProfile.isBuisness">
-    <p class="content">Buisness Description:</p>
-    <input matInput type="text" [(ngModel)]="userProfile.description" placeholder="Enter Description"/>
-  </div>
-   
-   
-  
-  <ion-button expand="block" class="save-button" [disabled]="!fieldsDifferent() || !userProfile.name || !userProfile.email || !userProfile.photoURL || profileLoading" (click)="editProfile()">SAVE</ion-button>
-</div>
- -->
 
  <ion-header>
   <ion-toolbar class="header">
@@ -51,7 +8,7 @@
     </ion-buttons>
 
     <ion-buttons slot="end">
-      <ion-button (click)="navigate('profile')">Done</ion-button>
+      <ion-button [disabled]="!fieldsDifferent() || !userProfile.name || !userProfile.email || !userProfile.photoURL || profileLoading" (click)="editProfile()">Done</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -59,22 +16,23 @@
 <ion-content [fullscreen]="true">
   <div class="settings-form">
     <div class="top-section">
-      <div class="profile-input">
+      <div class="profile-input" (click)="file.click()">
+        <input type="file" style="display: none" #file accept="image/jpeg,image/x-png" (change)="onDrop($event.target.files)">
         <img src={{userProfile.photoURL}} class="profile-image"/>
       </div>
 
-      <ion-button  class="edit-image-button">Upload Image</ion-button>
+      <ion-button  class="edit-image-button" (click)="file.click()">Upload Image</ion-button>
     </div>
 
-    <div class="bottom-section">
+    <div class="bottom-section" *ngIf="userProfile.isBuisness">
       <ion-item>
-        <ion-label>Name:</ion-label>
-        <ion-input [(ngModel)]="userProfile.name" placeholder="eg. John Doe"></ion-input>
+        <ion-label>Buisness Name:</ion-label>
+        <ion-input [(ngModel)]="userProfile.name" placeholder="eg. Walgreens"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label>Description: </ion-label>
-        <ion-textarea placeholder="Enter more information here..." [(ngModel)]="userProfile.description"></ion-textarea>
+        <ion-label>Buisness Description: </ion-label>
+        <ion-textarea maxlength="140" placeholder="Enter more information here..." [(ngModel)]="userProfile.description"></ion-textarea>
       </ion-item>
 
       <ion-item>
@@ -87,5 +45,29 @@
         </ion-select>
       </ion-item>
     </div>
+
+
+    <div class="bottom-section" *ngIf="!userProfile.isBuisness">
+      <ion-item>
+        <ion-label>First Name:</ion-label>
+        <ion-input placeholder="eg. John"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Last Name:</ion-label>
+        <ion-input placeholder="eg. Doe"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Account Type:</ion-label>
+        <ion-select interface="popover" [(ngModel)]="userProfile.accountType">
+          <ion-select-option value="foodie">Foodie</ion-select-option>
+          <ion-select-option value="foodbank">Foodbank</ion-select-option>
+          <ion-select-option value="restaurant">Restaurant</ion-select-option>
+          <ion-select-option value="other">Other</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
   </div>
 </ion-content>
