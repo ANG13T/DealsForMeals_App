@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar color="#4043E1" class="header">
     <ion-buttons slot="start">
       <ion-back-button (click)="navigate('profile')" routerDirection="root"></ion-back-button>
@@ -41,4 +41,51 @@
   
   <ion-button expand="block" class="save-button" [disabled]="!fieldsDifferent() || !userProfile.name || !userProfile.email || !userProfile.photoURL || profileLoading" (click)="editProfile()">SAVE</ion-button>
 </div>
+ -->
 
+ <ion-header>
+  <ion-toolbar class="header">
+    <ion-title>Edit profile</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="navigate('profile')">Cancel</ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="navigate('profile')">Done</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="settings-form">
+    <div class="top-section">
+      <div class="profile-input">
+        <img src={{userProfile.photoURL}} class="profile-image"/>
+      </div>
+
+      <ion-button  class="edit-image-button">Upload Image</ion-button>
+    </div>
+
+    <div class="bottom-section">
+      <ion-item>
+        <ion-label>Name:</ion-label>
+        <ion-input [(ngModel)]="userProfile.name" placeholder="eg. John Doe"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Description: </ion-label>
+        <ion-textarea placeholder="Enter more information here..." [(ngModel)]="userProfile.description"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Account Type:</ion-label>
+        <ion-select interface="popover" [(ngModel)]="userProfile.accountType">
+          <ion-select-option value="foodie">Foodie</ion-select-option>
+          <ion-select-option value="foodbank">Foodbank</ion-select-option>
+          <ion-select-option value="restaurant">Restaurant</ion-select-option>
+          <ion-select-option value="other">Other</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+  </div>
+</ion-content>
