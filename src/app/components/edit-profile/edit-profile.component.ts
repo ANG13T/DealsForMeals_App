@@ -15,6 +15,10 @@ import { ToastController } from '@ionic/angular';
 })
 export class EditProfileComponent implements OnInit {
   userProfile: User = {name: "", email: "", accountType: "foodbank", photoURL: "", uid: "", location: null, isBusiness: false};
+  firstName: string = "";
+  lastName: string = "";
+  initFirstName: string = "";
+  initLastName: string = "";
   initUserProfile: User = {name: "", email: "", accountType: "foodbank", photoURL: "", uid: "", location: null, isBusiness: false};
   profileLoading: boolean = false;
   errors = {password: "", name: "", email: ""};
@@ -37,6 +41,13 @@ export class EditProfileComponent implements OnInit {
         this.initUserProfile.accountType = userProfile.accountType;
         this.initUserProfile.uid = userProfile.uid;
         this.initUserProfile.location = userProfile.location;
+
+        if(!userProfile.isBuisness){
+          this.initFirstName = this.userProfile.name.split(" ")[0];
+          this.initLastName = this.userProfile.name.split(" ")[1];
+          this.firstName = this.initFirstName;
+          this.lastName = this.initLastName;
+        }
 
       }
     })
@@ -68,6 +79,16 @@ export class EditProfileComponent implements OnInit {
 
   fieldsDifferent(){
     return JSON.stringify(this.initUserProfile) != JSON.stringify(this.userProfile);
+  }
+
+  editUserName(content: string, location: string){
+    if(location == "first"){
+      this.firstName = content;
+    }else{
+      this.lastName = content;
+    }
+
+    this.userProfile.name = `${this.firstName} ${this.lastName}`;
   }
 
   validateForm(): boolean{

@@ -50,12 +50,12 @@
     <div class="bottom-section" *ngIf="!userProfile.isBuisness">
       <ion-item>
         <ion-label>First Name:</ion-label>
-        <ion-input placeholder="eg. John"></ion-input>
+        <ion-input placeholder="eg. John" [(ngModel)]="firstName" (input)="editUserName($event.target.value, 'first')"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Last Name:</ion-label>
-        <ion-input placeholder="eg. Doe"></ion-input>
+        <ion-input placeholder="eg. Doe" [(ngModel)]="lastName" (input)="editUserName($event.target.value, 'last')"></ion-input>
       </ion-item>
 
       <ion-item>

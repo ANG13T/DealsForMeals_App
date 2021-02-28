@@ -47,13 +47,22 @@
 
       <div class="loading-foodbanks" [hidden]="!loadingFoodbanks">
         <div class="foodbank" *ngFor="let post of loadPosts">
-          <ion-card>
-            <ion-skeleton-text animated class="skeleton-image" style="height: 25vh;"></ion-skeleton-text>
-            <ion-card-header>
-              <ion-skeleton-text animated></ion-skeleton-text>
-            </ion-card-header>
-            <ion-skeleton-text animated></ion-skeleton-text>
-          </ion-card>
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <ion-skeleton-text></ion-skeleton-text>
+            </ion-thumbnail>
+            <ion-label>
+              <h3>
+                <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+              </h3>
+              <p>
+                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+              </p>
+              <p>
+                <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+              </p>
+            </ion-label>
+          </ion-item>
         </div>
       </div>
 
@@ -75,13 +84,22 @@
 
       <div class="loading-deals" [hidden]="!loadingDeals">
         <div class="foodbank" *ngFor="let post of loadPosts">
-          <ion-card>
-            <ion-skeleton-text animated class="skeleton-image" style="height: 25vh;"></ion-skeleton-text>
-            <ion-card-header>
-              <ion-skeleton-text animated></ion-skeleton-text>
-            </ion-card-header>
-            <ion-skeleton-text animated></ion-skeleton-text>
-          </ion-card>
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <ion-skeleton-text></ion-skeleton-text>
+            </ion-thumbnail>
+            <ion-label>
+              <h3>
+                <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+              </h3>
+              <p>
+                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+              </p>
+              <p>
+                <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+              </p>
+            </ion-label>
+          </ion-item>
         </div>
       </div>
       
