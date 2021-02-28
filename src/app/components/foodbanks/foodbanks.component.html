@@ -23,94 +23,102 @@
   <ion-content class="content">
 
 
+  <div class="foodbanks-section" [hidden]="!showFoodbanks">
     <ion-infinite-scroll>
-      <ion-infinite-scroll-content
-        loadingSpinner="bubbles"
-        loadingText="Loading more data…">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data…">
         <div class="foodbanks" *ngIf="showFoodbanks" [hidden]="loadingFoodbanks">
           <div class="foodbank" *ngFor="let foodbank of foodbanks" (click)="openBuisness(foodbank)">
-
-            <div class="card">
-              <div class="photo">
+            <ion-item>
+              <ion-thumbnail slot="start">
                 <img src={{foodbank.photoURL}}>
-              </div>
-              <div class="description">
-                <h2>{{foodbank.accountType}}</h2>
-                <h4>{{foodbank.name}}</h4>
-                <p>Located at {{foodbank.location}}</p>
-            
-              </div>
-            </div>
-            
+              </ion-thumbnail>
+              <ion-label>
+                <h3>{{foodbank.name}}</h3>
+                <!-- {{foodbank.accountType}} -->
+                <!-- {{foodbank.location}} -->
+                <p>Manhattan Beach, Los Angeles</p>
+                <p>CA, 90266</p>
+              </ion-label>
+            </ion-item>
+
           </div>
-      </div>
-
-      <div class="loading-foodbanks" [hidden]="!loadingFoodbanks">
-        <div class="foodbank" *ngFor="let post of loadPosts">
-          <ion-item>
-            <ion-thumbnail slot="start">
-              <ion-skeleton-text></ion-skeleton-text>
-            </ion-thumbnail>
-            <ion-label>
-              <h3>
-                <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
-              </h3>
-              <p>
-                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
-              </p>
-              <p>
-                <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
-              </p>
-            </ion-label>
-          </ion-item>
         </div>
-      </div>
 
-      <div class="deals" *ngIf="!showFoodbanks">
-        <div class="foodbank" *ngFor="let deal of loadDeals">
-          <ion-card>
-            <img src={{deal.deal.images[0]}} [hidden]="!deal.showImage" (load)="deal.showImage = true"/>
-            <ion-skeleton-text animated class="skeleton-image" style="height: 25vh;" [hidden]="deal.showImage"></ion-skeleton-text>
-            <ion-card-header>
-              <ion-card-subtitle>{{deal.deal.userProfile.email}}</ion-card-subtitle>
-              <ion-card-title>{{deal.deal.title}}</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-             {{deal.deal.description}}
-            </ion-card-content>
-          </ion-card>
+        <div class="loading-foodbanks" [hidden]="!loadingFoodbanks">
+          <div class="foodbank" *ngFor="let post of [1,2]">
+            <ion-item>
+              <ion-thumbnail slot="start">
+                <ion-skeleton-text></ion-skeleton-text>
+              </ion-thumbnail>
+              <ion-label>
+                <h3>
+                  <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                </h3>
+                <p>
+                  <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                </p>
+                <p>
+                  <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+                </p>
+              </ion-label>
+            </ion-item>
+          </div>
         </div>
-      </div>
 
-      <div class="loading-deals" [hidden]="!loadingDeals">
-        <div class="foodbank" *ngFor="let post of loadPosts">
-          <ion-item>
-            <ion-thumbnail slot="start">
-              <ion-skeleton-text></ion-skeleton-text>
-            </ion-thumbnail>
-            <ion-label>
-              <h3>
-                <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
-              </h3>
-              <p>
-                <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
-              </p>
-              <p>
-                <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
-              </p>
-            </ion-label>
-          </ion-item>
-        </div>
-      </div>
-      
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
+  </div>
 
+  <div class="deals-section" [hidden]="showFoodbanks">
+    <ion-infinite-scroll>
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data…">
+        <div class="foodbanks" *ngIf="!showFoodbanks" [hidden]="loadingDeals">
+          <div class="foodbank" *ngFor="let deal of deals" (click)="openBuisness(deal)">
+            <ion-item>
+              <ion-thumbnail slot="start">
+                <img src={{deal.images[0]}}>
+              </ion-thumbnail>
+              <ion-label>
+                <h3>{{deal.title}}</h3>
+                <p>Manhattan Beach, Los Angeles</p>
+                <p>CA, 90266</p>
+              </ion-label>
+            </ion-item>
+
+          </div>
+        </div>
+
+        <div class="loading-foodbanks" [hidden]="!loadingDeals">
+          <div class="foodbank" *ngFor="let post of [1,2]">
+            <ion-item>
+              <ion-thumbnail slot="start">
+                <ion-skeleton-text></ion-skeleton-text>
+              </ion-thumbnail>
+              <ion-label>
+                <h3>
+                  <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                </h3>
+                <p>
+                  <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                </p>
+                <p>
+                  <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+                </p>
+              </ion-label>
+            </ion-item>
+          </div>
+        </div>
+
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
     
+
+
   </ion-content>
 
-  
 
 
 
-<app-bottom-bar></app-bottom-bar>   
+
+  <app-bottom-bar></app-bottom-bar>

@@ -25,18 +25,18 @@ export class FoodbanksComponent implements OnInit {
 
 
   foodbanks: User[];
-  deals: Post[];
-  loadPosts: any[] = [{ id: 1, imageLoaded: false }, { id: 2, imageLoaded: false }, { id: 3, imageLoaded: false }]
-  loadDeals: any[] = [];
+  deals: Post[] = [];
   loadingFoodbanks: boolean = false;
   loadingDeals: boolean = false;
   showFoodbanks: boolean = true;
+
 
   constructor(private buisnessService: BuisnessService, private postService: PostService, private routerOutlet: IonRouterOutlet, private modalController: ModalController) { }
 
   async ngOnInit() {
     this.loadingDeals = true;
     this.loadingFoodbanks = true;
+    this.showFoodbanks = true;
 
     this.buisnessService.getCategoryBuisnesses(5, 'foodbank').then((data) => {
       console.log("got foodbanks", data)
@@ -46,6 +46,7 @@ export class FoodbanksComponent implements OnInit {
 
     this.postService.getDeals(5).then((dealsData) => {
       this.deals = dealsData;
+      console.log("got thne deals", dealsData)
       this.loadingDeals = false;
     })
 
@@ -55,15 +56,11 @@ export class FoodbanksComponent implements OnInit {
 
 
   toggleShowFoodbanks() {
+    console.log("toggled foodbanks")
     this.showFoodbanks = !this.showFoodbanks;
   }
 
 
-  setLoadDeals() {
-    this.deals.forEach((deal) => {
-      this.loadDeals.push({ showImage: false, deal: deal });
-    })
-  }
 
 
   async openBuisness(buisness: User) {
