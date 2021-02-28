@@ -49,6 +49,23 @@ input{
     text-align: center;
 }
 
+.mat-tab-header{
+    border-bottom: 0px;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.mat-tab-label{
+    font-family: 'Poppins', sans-serif;
+}
+
+.mat-tab-label-active{
+    font-weight: bold;
+}
+
+
 .title{
     font-family: 'Poppins', sans-serif;
     font-weight: 600 !important;
