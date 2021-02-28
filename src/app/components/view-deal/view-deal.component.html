@@ -11,7 +11,7 @@
       <ion-button (click)="presentActionSheet()"><ion-icon name="ellipsis-vertical"></ion-icon></ion-button>
     </ion-buttons>
 
-    <ion-title class="nav-title">View Post</ion-title>
+    <ion-title class="nav-title">View Deal</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -24,14 +24,18 @@
   <img src={{post.images[0]}} alt="Post Image" class="post-image"/>
   <!-- TODO: add location, address, and phone number + google maps location view -->
   <mat-tab-group>
-    <mat-tab label="Product">
+    <mat-tab label="Details">
       <p class="description">{{post.description}}</p>
-      <h3 class="quantity">Only {{post.amount}} left in stock</h3>
+      
     </mat-tab>
     <mat-tab label="Location">Location</mat-tab>
   </mat-tab-group>
 
-  <ion-button class="contact-button" *ngIf="!isOwner">Contact Supplier</ion-button>
+  <div class="bottom-section">
+    <h3 class="quantity">Only {{post.amount}} left in stock</h3>
+    <ion-button class="contact-button" *ngIf="!isOwner">Contact Supplier</ion-button>
+  </div>
+  
   <ion-button class="contact-button" *ngIf="isOwner" (click)="editPost()">Edit Post</ion-button>
   <ion-button class="delete-button" *ngIf="isOwner" color="danger" (click)="confirmDelete()">Delete Post</ion-button>
 

@@ -46,6 +46,7 @@ input{
     margin: auto;
     width: 100%;
     top: 10%;
+    height: 100%;
     text-align: center;
 }
 
@@ -89,18 +90,23 @@ input{
 }
 
 
+.bottom-section{
+    position: absolute;
+    width: 100%;
+    top: 70%;
+}
+
+
 .contact-button{
-    width: 80%;
+    width: 65%;
     margin: auto;
-    --background-color: #5979E9 !important;
+    --background-color: #0038ff !important;
     --font-family: 'Roboto', sans-serif;
     --color: white;
     --text-align: center;
-    height: 2.5rem;
+    height: 3.5rem;
     font-size: 1.1rem;
     font-weight: bold;
-    margin-top: 2.5rem;
-    margin-bottom: 1.3rem;
     --border-radius: 10px;
   }
 
