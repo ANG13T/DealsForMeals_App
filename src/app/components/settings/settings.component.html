@@ -1,12 +1,30 @@
 <ion-header>
-  <ion-toolbar color="#4043E1" class="header">
-    <ion-title></ion-title>
+  <ion-toolbar class="header">
+    <ion-title>Edit profile</ion-title>
     <ion-buttons slot="start">
-      <ion-button (click)="dismissModal()">Back</ion-button>
+      <ion-button (click)="navigate('profile')">Cancel</ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="navigate('profile')">Done</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <h1>Profile Settings</h1>
+
+  <div class="settings-form">
+    <div class="top-section">
+      <div class="profile-input">
+        <img src="" class="profile-image"/>
+      </div>
+
+      <ion-button  class="edit-image-button">Upload Image</ion-button>
+    </div>
+
+    <div class="bottom-section">
+      
+    </div>
+  </div>
 </ion-content>
