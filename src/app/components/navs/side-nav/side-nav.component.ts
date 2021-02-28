@@ -27,4 +27,8 @@ export class SideNavComponent implements OnInit {
     menuController.toggle();
   }
 
+  logOut(){
+    this.userService.signOut();
+  }
+
 }
