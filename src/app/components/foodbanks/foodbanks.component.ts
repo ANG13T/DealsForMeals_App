@@ -76,6 +76,19 @@ export class FoodbanksComponent implements OnInit {
     return await modal.present();
   }
 
+  async openPost(post: Post){
+    const modal = await this.modalController.create({
+      component: ViewBuisnessComponent,
+      cssClass: 'modal-view',
+      swipeToClose: true,
+      componentProps: {
+        post: post
+      },
+      presentingElement: this.routerOutlet.nativeEl
+    });
+    return await modal.present();
+  }
+
 
 
 }

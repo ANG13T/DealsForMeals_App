@@ -73,7 +73,7 @@
     <ion-infinite-scroll>
       <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data…">
         <div class="foodbanks" *ngIf="!showFoodbanks" [hidden]="loadingDeals">
-          <div class="foodbank" *ngFor="let deal of deals" (click)="openBuisness(deal)">
+          <div class="foodbank" *ngFor="let deal of deals" (click)="openPost(deal)">
             <ion-item>
               <ion-thumbnail slot="start">
                 <img src={{deal.images[0]}}>
