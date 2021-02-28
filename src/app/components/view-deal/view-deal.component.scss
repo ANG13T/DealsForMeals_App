@@ -45,13 +45,21 @@ input{
     position: absolute;
     margin: auto;
     width: 100%;
-    top: 15%;
+    top: 10%;
     text-align: center;
 }
 
 .title{
     font-family: 'Poppins', sans-serif;
-    font-weight: 600;
+    font-weight: 600 !important;
+    text-align: left;
+    margin-left: 2rem !important;
+    text-transform: capitalize !important;
+}
+
+.location{
+    text-align: left;
+    margin-left: 2rem !important;
 }
 
 .description{

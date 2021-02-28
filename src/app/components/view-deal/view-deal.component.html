@@ -17,7 +17,9 @@
 
 
 <div class="main">
-  <h1 class="title">{{post.title}}</h1>
+  <h1 class="title">{{post.title | uppercase}}</h1>
+  <!-- TODO: put location here -->
+  <h3 class="location">Santa Monica, Los Angeles CA, 90266</h3>
   <!-- TODO: make a image gallery and skeleton for on loading -->
   <img src={{post.images[0]}} alt="Post Image" class="post-image"/>
   <!-- TODO: add location, address, and phone number + google maps location view -->
