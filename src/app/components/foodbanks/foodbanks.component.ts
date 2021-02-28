@@ -12,6 +12,7 @@ import { IonInfiniteScroll } from '@ionic/angular';
 import * as firebase from "firebase";
 import { filter } from 'rxjs/internal/operators/filter';
 import { take } from 'rxjs/internal/operators/take';
+import { ViewDealComponent } from '../view-deal/view-deal.component';
 
 
 
@@ -21,8 +22,6 @@ import { take } from 'rxjs/internal/operators/take';
   styleUrls: ['./foodbanks.component.scss'],
 })
 export class FoodbanksComponent implements OnInit {
-
-
 
   foodbanks: User[];
   deals: Post[] = [];
@@ -78,7 +77,7 @@ export class FoodbanksComponent implements OnInit {
 
   async openPost(post: Post){
     const modal = await this.modalController.create({
-      component: ViewBuisnessComponent,
+      component: ViewDealComponent,
       cssClass: 'modal-view',
       swipeToClose: true,
       componentProps: {
