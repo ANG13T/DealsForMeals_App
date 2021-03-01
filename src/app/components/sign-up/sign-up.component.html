@@ -91,4 +91,11 @@
       </div>
     </mat-step>
   </mat-horizontal-stepper>
+
+  <div class="spinner-content" [hidden]="!loading">
+    <div class="main-spinner">
+      <ion-spinner name="bubbles"></ion-spinner>
+      <h3>Creating Account...</h3>
+    </div> 
+  </div>
 </div>

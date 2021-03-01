@@ -20,6 +20,7 @@ export class SignUpComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
+  loading: boolean = false;
   name: string = "";
   firstName: string = "";
   lastName: string = "";
@@ -111,6 +112,7 @@ export class SignUpComponent implements OnInit {
       console.log("is valid user", validUser)
 
       if(validUser){
+        this.loading = true;
         await this.userService.signUp(newUser, this.password).then((data) => {
           console.log("got back data", data)
           if(data){
