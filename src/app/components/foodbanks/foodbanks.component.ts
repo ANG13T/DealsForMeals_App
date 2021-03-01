@@ -6,13 +6,11 @@ import { PostService } from 'src/app/shared/services/post.service';
 import { ViewBuisnessComponent } from '../view-buisness/view-buisness.component';
 import { IonRouterOutlet } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
-import { Subscription } from 'rxjs/internal/Subscription';
 import { Observable } from 'rxjs/internal/Observable';
-import { IonInfiniteScroll } from '@ionic/angular';
-import * as firebase from "firebase";
-import { filter } from 'rxjs/internal/operators/filter';
-import { take } from 'rxjs/internal/operators/take';
 import { ViewDealComponent } from '../view-deal/view-deal.component';
+import * as firebase from 'firebase/app';
+import { GeoFirestore } from 'geofirestore';
+
 
 
 
@@ -28,6 +26,7 @@ export class FoodbanksComponent implements OnInit {
   loadingFoodbanks: boolean = false;
   loadingDeals: boolean = false;
   showFoodbanks: boolean = true;
+
 
 
   constructor(private buisnessService: BuisnessService, private postService: PostService, private routerOutlet: IonRouterOutlet, private modalController: ModalController) { }
@@ -60,7 +59,10 @@ export class FoodbanksComponent implements OnInit {
   }
 
 
-
+  loadGeoFire(){
+    const geoFire = new GeoFirestore(firebase.default.firestore())  
+    geoFire.collection("RetailersCoords")
+  }
 
   async openBuisness(buisness: User) {
     const modal = await this.modalController.create({
