@@ -18,6 +18,7 @@ declare var google: any;
 export class ProfileComponent implements OnInit {
 
   user: User;
+  userAddress: string = "";
   loading: boolean = true;
   posts: Post[] = [];
 
@@ -43,6 +44,7 @@ export class ProfileComponent implements OnInit {
           this.posts = data;
         })
       }
+      this.userAddress = `${this.user.location.subThoroughfare} ${this.user.location.thoroughfare} ${this.user.location.subLocality}, ${this.user.location.locality}, ${this.user.location.administrativeArea}  ${this.user.location.postalCode}`;
       this.loading = false;
     });
   }
