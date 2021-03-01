@@ -43,6 +43,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
 import { ViewBuisnessComponent } from './components/view-buisness/view-buisness.component';
 import { ViewDealComponent } from './components/view-deal/view-deal.component';
+import { GoogleMaps } from '@ionic-native/google-maps';
 
 
 @NgModule({

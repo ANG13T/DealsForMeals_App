@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -8,6 +8,7 @@ import { Location } from 'src/app/shared/models/location.model';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { ViewEncapsulation } from '@angular/core';
+import { GoogleMaps, GoogleMap, CameraPosition, LatLng, GoogleMapsEvent } from '@ionic-native/google-maps';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,6 +17,9 @@ import { ViewEncapsulation } from '@angular/core';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
+  @ViewChild('map') mapElement: ElementRef;
+  map: GoogleMap;
+  
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -38,7 +42,7 @@ export class SignUpComponent implements OnInit {
     maxResults: 5
   };
 
-  constructor(private router: Router, private userService: UserService, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder) { }
+  constructor(private router: Router, private userService: UserService, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder, private _googleMaps: GoogleMaps) { }
 
   ngOnInit() {
   }
@@ -231,6 +235,33 @@ export class SignUpComponent implements OnInit {
     }
     return address.slice(0, -2);
   }
+
+
+  // Setting Up Google Maps
+  ngAfterViewInit(){
+    this.initMap();
+  }
+
+  initMap(){
+    let element = this.mapElement.nativeElement;
+    let loc: LatLng = new LatLng(40.7128, -74.0059);
+
+    this.map = this._googleMaps.create(element,{ styles: []});
+
+    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
+        this.moveCamera(loc);
+    });
+  }
+
+  moveCamera(loc: LatLng){
+      let options: any = {
+        target: loc,
+        zoom: 15,
+        tilt: 10
+      }
+      this.map.moveCamera(options);
+  }
+
 
 
 }
