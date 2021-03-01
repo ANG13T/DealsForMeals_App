@@ -12,8 +12,6 @@ import * as firebase from 'firebase/app';
 import { GeoFirestore } from 'geofirestore';
 
 
-
-
 @Component({
   selector: 'app-foodbanks',
   templateUrl: './foodbanks.component.html',

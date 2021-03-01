@@ -1,13 +1,22 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { User } from '../models/user.model';
+import * as firebase from 'firebase/app';
+import { GeoFirestore } from 'geofirestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BuisnessService {
 
-  constructor(private afs: AngularFirestore) { }
+  loadGeoFire(){
+    const geoFire = new GeoFirestore(firebase.default.firestore());  
+    geoFire.collection("users")
+  }
+
+  constructor(private afs: AngularFirestore) { 
+    this.loadGeoFire();
+  }
 
   async getBuisnesses(amount: number){
     let buisnesses: User[] = [];

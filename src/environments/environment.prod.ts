@@ -7,5 +7,6 @@ export const environment = {
     storageBucket: "deals2meals-4e239.appspot.com",
     messagingSenderId: "869957170925",
     appId: "1:869957170925:web:066d1c19f6d9171f11fee4"
-  }
+  },
+  googleMapsAPIKey: "AIzaSyD8EAfruPq4aPtywJUv6I0LwLXfJSuqqC0"
 };
