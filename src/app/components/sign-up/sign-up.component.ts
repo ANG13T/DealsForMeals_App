@@ -238,24 +238,24 @@ export class SignUpComponent implements OnInit {
 
 
   
-  ngAfterViewInit(): void {
-    this.geolocation.getCurrentPosition().then((resp) => {
-      const map = new google.maps.Map(this.mapElement.nativeElement, {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 6
-      });
-      const infoWindow = new google.maps.InfoWindow;
-      const pos = {
-        lat: -34.397, lng: 150.644
-      };
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('Location found.');
-      infoWindow.open(map);
-      map.setCenter(pos);
-    }).catch((error) => {
-      console.log('Error getting location', error);
-    });
-  }
+  // ngAfterViewInit(): void {
+  //   this.geolocation.getCurrentPosition().then((resp) => {
+  //     const map = new google.maps.Map(this.mapElement.nativeElement, {
+  //       center: {lat: -34.397, lng: 150.644},
+  //       zoom: 6
+  //     });
+  //     const infoWindow = new google.maps.InfoWindow;
+  //     const pos = {
+  //       lat: -34.397, lng: 150.644
+  //     };
+  //     infoWindow.setPosition(pos);
+  //     infoWindow.setContent('Location found.');
+  //     infoWindow.open(map);
+  //     map.setCenter(pos);
+  //   }).catch((error) => {
+  //     console.log('Error getting location', error);
+  //   });
+  // }
 
 
 

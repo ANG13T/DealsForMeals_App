@@ -81,14 +81,16 @@
         <ion-icon name="location-outline"></ion-icon>
         Get Location
       </ion-button>
-      <!-- <h3>Street Address: {{location.subAdministrativeArea}}</h3>
+      <h3>Street Address: {{location.subAdministrativeArea}}</h3>
       <h3>State: {{location.administrativeArea}}</h3>
       <h3>Country: {{location.thoroughfare}}</h3>
-      <h3>PIN: {{location.postalCode}}</h3> -->
+      <h3>PIN: {{location.postalCode}}</h3>
+
+      <!-- <div #map id="map" style="height:20vh;width:100%"></div> -->
       
       <div class="buttons">
         <button mat-button matStepperPrevious class="continue-button back-button">Back</button>
-        <button mat-button (click)="signUp()" class="continue-button">Create</button>
+        <button mat-button (click)="signUp()" class="continue-button" [disabled]="location.fullAddress == ''">Create</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>
@@ -100,5 +102,4 @@
     </div> 
   </div>
 
-  <div #map id="map" style="height:20vh;width:100%"></div>
 </div>
