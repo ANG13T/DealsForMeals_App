@@ -8,7 +8,7 @@ import { Location } from 'src/app/shared/models/location.model';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { ViewEncapsulation } from '@angular/core';
-import { GoogleMaps, GoogleMap, CameraPosition, LatLng, GoogleMapsEvent } from '@ionic-native/google-maps';
+declare var google;
 
 @Component({
   selector: 'app-sign-up',
@@ -18,8 +18,8 @@ import { GoogleMaps, GoogleMap, CameraPosition, LatLng, GoogleMapsEvent } from '
 })
 export class SignUpComponent implements OnInit {
   @ViewChild('map') mapElement: ElementRef;
-  map: GoogleMap;
-  
+
+
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -28,12 +28,12 @@ export class SignUpComponent implements OnInit {
   name: string = "";
   firstName: string = "";
   lastName: string = "";
-  location: Location = {fullAddress: "", longitude: 0, latitude: 0, locality: "", subLocality: "", thoroughfare: "", subThoroughfare: "", administrativeArea: "", subAdministrativeArea: "", postalCode: "", countryCode: ""} as Location;
+  location: Location = { fullAddress: "", longitude: 0, latitude: 0, locality: "", subLocality: "", thoroughfare: "", subThoroughfare: "", administrativeArea: "", subAdministrativeArea: "", postalCode: "", countryCode: "" } as Location;
   email: string = "";
   password: string = "";
   isBusiness: boolean = false;
-  accountType : 'foodie' | 'foodbank' | 'resturant' | 'other' = "foodbank";
-  errors = {password: "", name: "", email: "", location: ""};
+  accountType: 'foodie' | 'foodbank' | 'resturant' | 'other' = "foodbank";
+  errors = { password: "", name: "", email: "", location: "" };
 
   // Location Variables
   //Geocoder configuration
@@ -42,16 +42,16 @@ export class SignUpComponent implements OnInit {
     maxResults: 5
   };
 
-  constructor(private router: Router, private userService: UserService, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder, private _googleMaps: GoogleMaps) { }
+  constructor(private router: Router, private userService: UserService, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder) { }
 
   ngOnInit() {
   }
 
-  navigate(route: string){
+  navigate(route: string) {
     this.router.navigate([`/${route}`]);
   }
 
-  resetState(){
+  resetState() {
     this.firstName = "";
     this.lastName = "";
     this.name = "";
@@ -64,31 +64,31 @@ export class SignUpComponent implements OnInit {
     this.errors.location = "";
   }
 
-  changeName(content: string, identifier: string){
-    if(identifier == "first"){
+  changeName(content: string, identifier: string) {
+    if (identifier == "first") {
       this.firstName = content;
-    }else{
+    } else {
       this.lastName = content;
     }
 
     this.name = `${this.firstName} ${this.lastName}`;
   }
 
-  selectType(type: string){
+  selectType(type: string) {
     console.log("clicked", type);
 
-    if(type == 'business'){
+    if (type == 'business') {
       this.isBusiness = true;
-    }else{
+    } else {
       this.isBusiness = false;
       this.accountType = "foodie";
     }
-    
+
   }
 
-  async signUp(){
-    if(this.validateForm()){
-      let newUser : User = {
+  async signUp() {
+    if (this.validateForm()) {
+      let newUser: User = {
         name: this.name,
         uid: '',
         location: this.location,
@@ -98,14 +98,14 @@ export class SignUpComponent implements OnInit {
         isBusiness: this.isBusiness
       }
 
-      if(newUser == null){
+      if (newUser == null) {
         alert("Something went wrong.");
         this.resetState();
       }
 
 
       let validUser = await this.userService.checkUserExsists(newUser).then((result) => {
-         if(!result){
+        if (!result) {
           alert("User already exsists. Please log in.");
           this.router.navigate(['/login']);
           return false;
@@ -115,20 +115,20 @@ export class SignUpComponent implements OnInit {
 
       console.log("is valid user", validUser)
 
-      if(validUser){
+      if (validUser) {
         this.loading = true;
         await this.userService.signUp(newUser, this.password).then((data) => {
           console.log("got back data", data)
-          if(data){
-          
-            if(data.code == "auth/email-already-in-use"){
+          if (data) {
+
+            if (data.code == "auth/email-already-in-use") {
               alert("User already created. Please sign in");
               this.email = "";
               this.password = "";
               this.navigate('login');
-            }else if(data.code == "auth/weak-password"){
+            } else if (data.code == "auth/weak-password") {
               this.password = "Weak Password";
-            }else{
+            } else {
               alert(data.message);
             }
           }
@@ -137,24 +137,24 @@ export class SignUpComponent implements OnInit {
     }
   }
 
-  validateForm(): boolean{
+  validateForm(): boolean {
     let result = true;
-    if(this.name.length > 30){
+    if (this.name.length > 30) {
       this.errors.name = "Name must be shorter than 30 letters";
       result = false;
     }
 
-    if(this.name.length < 5){
+    if (this.name.length < 5) {
       this.errors.name = "Name must be longer than 5 letters";
       result = false;
     }
 
-    if(!this.validateEmail(this.email)){
+    if (!this.validateEmail(this.email)) {
       this.errors.email = "Invalid Email";
       result = false;
     }
 
-    if(this.password.length < 5){
+    if (this.password.length < 5) {
       this.errors.password = "Password must be longer than 4 letters";
       result = false;
     }
@@ -168,7 +168,7 @@ export class SignUpComponent implements OnInit {
   }
 
 
-  validateSecond(){
+  validateSecond() {
     return (this.name != "") && (this.email != "") && (this.password != "");
   }
 
@@ -209,12 +209,12 @@ export class SignUpComponent implements OnInit {
       });
   }
 
-  updateLocation(locationData: NativeGeocoderResult){
+  updateLocation(locationData: NativeGeocoderResult) {
     console.log("the location data", locationData);
     this.location.countryCode = locationData.countryCode;
     this.location.postalCode = locationData.postalCode;
     this.location.administrativeArea = locationData.administrativeArea;
-    this.location.subAdministrativeArea	 = locationData.subAdministrativeArea;
+    this.location.subAdministrativeArea = locationData.subAdministrativeArea;
     this.location.locality = locationData.locality;
     this.location.subLocality = locationData.subLocality;
     this.location.thoroughfare = locationData.thoroughfare;
@@ -237,29 +237,24 @@ export class SignUpComponent implements OnInit {
   }
 
 
-  // Setting Up Google Maps
-  ngAfterViewInit(){
-    this.initMap();
-  }
-
-  initMap(){
-    let element = this.mapElement.nativeElement;
-    let loc: LatLng = new LatLng(40.7128, -74.0059);
-
-    this.map = this._googleMaps.create(element,{ styles: []});
-
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-        this.moveCamera(loc);
+  
+  ngAfterViewInit(): void {
+    this.geolocation.getCurrentPosition().then((resp) => {
+      const map = new google.maps.Map(this.mapElement.nativeElement, {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 6
+      });
+      const infoWindow = new google.maps.InfoWindow;
+      const pos = {
+        lat: -34.397, lng: 150.644
+      };
+      infoWindow.setPosition(pos);
+      infoWindow.setContent('Location found.');
+      infoWindow.open(map);
+      map.setCenter(pos);
+    }).catch((error) => {
+      console.log('Error getting location', error);
     });
-  }
-
-  moveCamera(loc: LatLng){
-      let options: any = {
-        target: loc,
-        zoom: 15,
-        tilt: 10
-      }
-      this.map.moveCamera(options);
   }
 
 
