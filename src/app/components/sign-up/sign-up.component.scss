@@ -75,3 +75,13 @@ mat-form-field{
 mat-step{
     overflow-y: scroll;
 }
+
+.location-button{
+    background-color: #7d89e0 !important; 
+    color: white;
+    font-weight: bold;
+
+    ion-icon{
+        margin-right: 1rem;
+    }
+}
