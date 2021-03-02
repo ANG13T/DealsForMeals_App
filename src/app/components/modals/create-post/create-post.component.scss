@@ -215,3 +215,19 @@ input:focus ~ .highlight {
   font-weight: bold;
   --border-radius: 20px;
 }
+
+.image-option{
+  padding: 1rem;
+    text-align: center;
+    border: 2px dashed #3171e0;
+    border-radius: 10px;
+
+    ion-icon{
+      font-size: 3rem;
+      color: #3171e0;
+    }
+
+    h2{
+      margin-bottom: 8px;
+    }
+}
