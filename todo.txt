@@ -12,3 +12,16 @@ NOW:
 - set limits on post info and buisness info
 
 - get locations by closest to your location
+
+- make maps of closest 30 locations
+
+NEXT STEPS:
+ - make splash screen
+ - make start up tutorial slideshow
+ - add margin to the top of dialogs + profile
+-  make search and filter?
+- fix create button
+- make loading image div to create post dialog
+- fix description box on create post
+- remove header on create post complete + loading
+- fix intermittent header styles problem
