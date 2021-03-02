@@ -14,8 +14,7 @@
     <div class="top">
       <img src={{buisness.photoURL}} alt="Buisness Image" class="profile-image">
       <h1 class="name">{{buisness.name}}</h1>
-      <!-- TODO: show location data -->
-      <h3 class="location">Los Angeles, CA</h3>
+      <h3 class="location">{{displayLocation}}</h3>
       <button mat-button class="message-button">Send Message</button>
     </div>
   
@@ -26,7 +25,6 @@
             <ion-card *ngFor="let post of posts" (click)="presentPost(post)">
               <img src={{post.images[0]}} />
               <ion-card-header>
-                <ion-card-subtitle>{{post.userProfile.location}}</ion-card-subtitle>
                 <ion-card-title>{{post.title}}</ion-card-title>
               </ion-card-header>
               <!-- TODO: only get a small portion of description -->

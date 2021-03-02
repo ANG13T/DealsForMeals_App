@@ -19,6 +19,7 @@ export class ViewBuisnessComponent implements OnInit {
   buisness: User;
   posts: Post[] = [];
   shownItem: string = 'deals';
+  displayLocation: string;
 
   map: any;
   @ViewChild('map', {read: ElementRef, static: false}) mapRef: ElementRef;
@@ -33,12 +34,12 @@ export class ViewBuisnessComponent implements OnInit {
       })
     }
 
-   
-
     this.postService.getDealsForUser(this.buisness.uid).then((postData) => {
-      console.log("got the posts", postData)
       this.posts = postData;
-    })
+    });
+
+    let location = this.buisness.location;
+    this.displayLocation = `${location.subThoroughfare} ${location.thoroughfare}, ${location.subLocality} ${location.locality}, ${location.administrativeArea}`;
   }
 
   ionViewDidEnter(){

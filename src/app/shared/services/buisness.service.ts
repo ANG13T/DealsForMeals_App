@@ -29,7 +29,8 @@ export class BuisnessService {
           uid: data.uid,
           accountType: data.accountType,
           photoURL: data.photoURL,
-          isBusiness: data.isBusiness
+          isBusiness: data.isBusiness,
+          location: data.location
         }
         buisnesses.push(foodbank);
       })
@@ -50,7 +51,8 @@ export class BuisnessService {
           uid: data.uid,
           accountType: data.accountType,
           photoURL: data.photoURL,
-          isBusiness: data.isBusiness
+          isBusiness: data.isBusiness,
+          location: data.location
         }
         buisnesses.push(foodbank);
       })
@@ -69,7 +71,8 @@ export class BuisnessService {
           uid: data.uid,
           accountType: data.accountType,
           photoURL: data.photoURL,
-          isBusiness: data.isBusiness
+          isBusiness: data.isBusiness,
+          location: data.location
         } 
         return buisness;
     })
