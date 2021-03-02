@@ -2,13 +2,8 @@
 - improve mobile animations
 
 NOW: 
-- improve deal popup
-    - make image carasouel
+- improve mobile animations
+- improve home user page
+    - UI top
 
-- improve buisness popup
-    - show address text
-    - remove top margin above image
-    - show location on google maps
-
-- improve create deal popup
-
+- get locations by closest to your location

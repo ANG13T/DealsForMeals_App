@@ -1,3 +1,8 @@
+
+h1, h2{
+    font-family: 'poppins', sans-serif !important;
+}
+
 .top-content{
 	text-align: center;
 	width: 100%;
@@ -6,7 +11,7 @@
 	background-attachment: fixed;
 	position: relative;
 	overflow: hidden;
-	border-radius: 0 0 85% 85% / 30%;
+    font-family: 'poppins', sans-serif !important;
 }
 
 .profile-top{
@@ -50,11 +55,6 @@ ion-menu-button{
         --border: 1px solid #232BDE;
         color: #FBF8F8;
     }
-}
-
-
-.top{
-    margin-top: .5rem;
 }
 
 .profile-image{
@@ -152,8 +152,11 @@ ion-card{
     top: 5%;
     color: #203088;
     right: 5%;
+    font-size: 1.5rem;
 }
 
 #map {
     height: 100vh;
 }
+
+

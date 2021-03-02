@@ -26,6 +26,12 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 
+@font-face {
+    font-family: poppins;
+    src: url(assets/Poppins/Poppins-Regular.ttf) format("opentype");
+}
+
+
 .modal-view{
     width: 100%;
     height: 100%;
