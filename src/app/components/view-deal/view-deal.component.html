@@ -18,10 +18,14 @@
 
 <div class="main">
   <h1 class="title">{{post.title | uppercase}}</h1>
-  <!-- TODO: put location here -->
   <h3 class="location">{{displayLocation}}</h3>
-  <!-- TODO: make a image gallery and skeleton for on loading -->
-  <img src={{post.images[0]}} alt="Post Image" class="post-image"/>
+  <!-- TODO: skeleton for on loading -->
+  <ion-slides pager>
+    <ion-slide *ngFor="let image of post.images">
+      <img src={{image}} alt="Post Image" class="post-image"/>
+    </ion-slide>
+  </ion-slides>
+
   <!-- TODO: add location, address, and phone number + google maps location view -->
   <mat-tab-group (selectedTabChange)="tabChanged($event)">
     <mat-tab label="Details">

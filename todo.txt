@@ -3,8 +3,6 @@
 
 NOW: 
 - improve deal popup
-    - show addresss
-    - show location at top
     - make image carasouel
 
 - improve buisness popup
