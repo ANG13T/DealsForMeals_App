@@ -34,10 +34,8 @@
               </ion-thumbnail>
               <ion-label>
                 <h3>{{foodbank.name}}</h3>
-                <!-- {{foodbank.accountType}} -->
-                <!-- {{foodbank.location}} -->
-                <p>Manhattan Beach, Los Angeles</p>
-                <p>CA, 90266</p>
+                <p>{{getLocation(foodbank.location)}}</p>
+                <p>{{getSubLocation(foodbank.location)}}</p>
               </ion-label>
             </ion-item>
 
@@ -80,8 +78,8 @@
               </ion-thumbnail>
               <ion-label>
                 <h3>{{deal.title}}</h3>
-                <p>Manhattan Beach, Los Angeles</p>
-                <p>CA, 9026</p>
+                <p>{{getLocation(deal.userProfile.location)}}</p>
+                <p>{{getSubLocation(deal.userProfile.location)}}</p>
               </ion-label>
             </ion-item>
 

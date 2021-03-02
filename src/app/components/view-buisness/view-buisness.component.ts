@@ -6,7 +6,6 @@ import { ModalController } from '@ionic/angular';
 import { Post } from 'src/app/shared/models/post.model';
 import { PostService } from 'src/app/shared/services/post.service';
 import { ViewDealComponent } from '../view-deal/view-deal.component';
-declare var google: any;
 
 @Component({
   selector: 'app-view-buisness',
@@ -20,9 +19,6 @@ export class ViewBuisnessComponent implements OnInit {
   posts: Post[] = [];
   shownItem: string = 'deals';
   displayLocation: string;
-
-  map: any;
-  @ViewChild('map', {read: ElementRef, static: false}) mapRef: ElementRef;
 
   constructor(private buisnessService: BuisnessService, private route:ActivatedRoute, private router: Router, private modalCtrl: ModalController, private postService: PostService, private modalController: ModalController) { }
 
@@ -40,10 +36,6 @@ export class ViewBuisnessComponent implements OnInit {
 
     let location = this.buisness.location;
     this.displayLocation = `${location.subThoroughfare} ${location.thoroughfare}, ${location.subLocality} ${location.locality}, ${location.administrativeArea}`;
-  }
-
-  ionViewDidEnter(){
-    this.showMap();
   }
 
   async presentPost(post: Post){
@@ -65,18 +57,6 @@ export class ViewBuisnessComponent implements OnInit {
     });
 
     return await modal.present();
-  }
-
-  showMap(){
-    console.log("showing the map");
-    const location = new google.maps.LatLng(-17.824858, 31.053208);
-    const options = {
-      center: location,
-      zoom: 15,
-      disableDefaultUI: true
-    }
-    this.map = new google.maps.Map(this.mapRef.nativeElement, options);
-
   }
 
   navigate(route: string){

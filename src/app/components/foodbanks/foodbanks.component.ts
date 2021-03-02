@@ -10,6 +10,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { ViewDealComponent } from '../view-deal/view-deal.component';
 import * as firebase from 'firebase/app';
 import { GeoFirestore } from 'geofirestore';
+import { Location } from 'src/app/shared/models/location.model';
 
 
 @Component({
@@ -88,6 +89,15 @@ export class FoodbanksComponent implements OnInit {
     return await modal.present();
   }
 
+  getLocation(location: Location){
+      let result = `${location.subThoroughfare} ${location.thoroughfare}, ${location.subLocality}`;
+      return result;
+  }
+
+  getSubLocation(location: Location){
+      let result = `${location.locality} ${location.administrativeArea}, ${location.postalCode}`;
+      return result;
+  }
 
 
 }
