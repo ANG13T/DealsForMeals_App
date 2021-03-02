@@ -40,6 +40,10 @@ export class CreatePostComponent implements OnInit {
     });
   }
 
+  removeImage(image: string){
+    this.post.images = this.post.images.filter((url) => url != image);
+  }
+
   goToProfile(){
     //send eveent back with new post data
     this.dismissModal('create', this.post);
