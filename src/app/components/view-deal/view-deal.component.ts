@@ -6,6 +6,7 @@ import { AlertController } from '@ionic/angular';
 import { PostService } from 'src/app/shared/services/post.service';
 import { EditPostComponent } from '../modals/edit-post/edit-post.component';
 import { UserService } from 'src/app/shared/services/user.service';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-view-deal',
@@ -21,6 +22,7 @@ export class ViewDealComponent implements OnInit {
   displayLocation: string;
   isOwner: boolean = false;
   uid: string;
+  selectedTabIndex: number = 0;
 
   constructor(private router: Router, private route: ActivatedRoute, private modalController: ModalController, public alertController: AlertController, private postService: PostService, public actionSheetController: ActionSheetController, private userService: UserService) { }
 
@@ -48,6 +50,10 @@ export class ViewDealComponent implements OnInit {
       status: status,
       data: post
     });
+  }
+
+  tabChanged(tabChangeEvent: MatTabChangeEvent): void {
+    this.selectedTabIndex = tabChangeEvent.index;
   }
 
   navigate(route: string){
