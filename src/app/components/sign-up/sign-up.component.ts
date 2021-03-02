@@ -19,7 +19,6 @@ declare var google;
 export class SignUpComponent implements OnInit {
   @ViewChild('map') mapElement: ElementRef;
 
-
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -41,6 +40,7 @@ export class SignUpComponent implements OnInit {
     useLocale: true,
     maxResults: 5
   };
+
 
   constructor(private router: Router, private userService: UserService, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder) { }
 

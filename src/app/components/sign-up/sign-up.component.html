@@ -81,13 +81,9 @@
         <ion-icon name="location-outline"></ion-icon>
         Get Location
       </ion-button>
-      <!-- <h3>Street Address: {{location.subAdministrativeArea}}</h3>
-      <h3>State: {{location.administrativeArea}}</h3>
-      <h3>Country: {{location.thoroughfare}}</h3>
-      <h3>PIN: {{location.postalCode}}</h3> -->
-
       <agm-map [latitude]="location.latitude" [longitude]="location.longitude" [hidden]="location.fullAddress == ''">
-        
+        <agm-marker [latitude]="location.latitude"
+                [longitude]="location.longitude"></agm-marker>
       </agm-map>
       
       
