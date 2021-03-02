@@ -15,9 +15,9 @@
               {{userAddress}}
             </span>
           </h2>
-          <hr>
+
           <div class="description">
-            User has not written a description yet.
+            {{user.description}}
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@
           <ion-button class="profile-button">Search Locations in your Area</ion-button>
         </div>
 
-        <!-- <div class="profile-options" *ngIf="user.isBusiness">
+        <div class="profile-options" *ngIf="user.isBusiness">
           <mat-tab-group>
             <mat-tab label="DEALS">
               <div class="posts" *ngIf="!isFoodbank">
@@ -42,7 +42,6 @@
                   <ion-card *ngFor="let post of posts" (click)="presentPost(post)">
                     <img src={{post.images[0]}} />
                     <ion-card-header>
-                      <ion-card-subtitle>{{post.userProfile.location}}</ion-card-subtitle>
                       <ion-card-title>{{post.title}}</ion-card-title>
                     </ion-card-header>
                     
@@ -63,20 +62,13 @@
                 </div>
               </div>
             </mat-tab>
-            <mat-tab label="ABOUT">
-              <div class="about">
-                  <h3>Buisness Description:</h3>
-                  <p *ngIf="user.description != ''">{{user.description}}</p>
-                  <p *ngIf="user.description == ''">No description written yet.</p>
-              </div>
-            </mat-tab>
             <mat-tab label="LOCATION">
               <div class="location">
                 <div #map id="map"></div>
               </div>
             </mat-tab>
           </mat-tab-group>
-        </div> -->
+        </div>
         <!-- Show posts here -->
 
       </div>

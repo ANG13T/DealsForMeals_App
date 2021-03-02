@@ -146,8 +146,12 @@ ion-card{
     }
 }
 
+.mat-tab-labels {
+    justify-content: center;
+}
+
 .profile-options{
-    margin-top: 10vh;
+    margin-top: 1vh;
 
     .welcome-text{
         font-size: 1.2rem;

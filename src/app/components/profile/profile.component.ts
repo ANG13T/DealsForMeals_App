@@ -45,6 +45,9 @@ export class ProfileComponent implements OnInit {
         })
       }
       this.userAddress = `${this.user.location.locality}, ${this.user.location.administrativeArea}`;
+      if(this.user.description == ""){
+        this.user.description = "User has not written a description yet.";
+      }
       this.loading = false;
     });
   }
