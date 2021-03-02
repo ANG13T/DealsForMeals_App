@@ -18,8 +18,9 @@ h1, h2{
     width: 100%;
 	height: 100%;
 	padding: 20px;
-	color: rgb(43, 41, 41);
-  background-image: linear-gradient( 135deg, #0971c769 10%, #08afb46b 100%);
+	color:white;
+//   background-image: linear-gradient( 135deg, #0971c769 10%, #08afb46b 100%);
+background: #2858CD;
 }
 
 .ion-page{
@@ -67,10 +68,23 @@ ion-menu-button{
 }
 
 .profile-name{
-    font-size: 1.4rem !important;
+    font-size: 1.6rem !important;
     font-weight: bold !important;
     margin-bottom: .5rem !important;
     margin-top: 1rem !important;
+}
+
+.profile-description{
+    font-size: 1rem !important;
+
+    mat-icon, span{
+        vertical-align: middle !important;
+        display: inline-block;
+    }
+
+   span{
+       margin-left: 3px;
+   }
 }
 
 
@@ -150,7 +164,7 @@ ion-card{
 .settings-button{
     position: absolute;
     top: 5%;
-    color: #203088;
+    color: white;
     right: 5%;
     font-size: 1.5rem;
 }

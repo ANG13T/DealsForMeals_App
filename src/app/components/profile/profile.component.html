@@ -7,12 +7,17 @@
       <div class="profile-top">
         <div class="top">
           <img src={{user.photoURL}} alt="Profile Image" class="profile-image" />
-          <div class="description">
-            <h2 class="profile-name">{{user.name}}</h2>
-            <h2 class="profile-description">
-              <mat-icon>location_on</mat-icon>
+
+          <h2 class="profile-name">{{user.name}}</h2>
+          <h2 class="profile-description">
+            <mat-icon>location_on</mat-icon>
+            <span>
               {{userAddress}}
-            </h2>
+            </span>
+          </h2>
+          <hr>
+          <div class="description">
+            User has not written a description yet.
           </div>
         </div>
       </div>

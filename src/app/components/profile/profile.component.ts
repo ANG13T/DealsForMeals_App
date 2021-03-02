@@ -44,7 +44,7 @@ export class ProfileComponent implements OnInit {
           this.posts = data;
         })
       }
-      this.userAddress = `${this.user.location.subThoroughfare} ${this.user.location.thoroughfare} ${this.user.location.subLocality}, ${this.user.location.locality}, ${this.user.location.administrativeArea}  ${this.user.location.postalCode}`;
+      this.userAddress = `${this.user.location.locality}, ${this.user.location.administrativeArea}`;
       this.loading = false;
     });
   }
