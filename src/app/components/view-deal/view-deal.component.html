@@ -19,7 +19,7 @@
 <div class="main">
   <h1 class="title">{{post.title | uppercase}}</h1>
   <!-- TODO: put location here -->
-  <h3 class="location">Santa Monica, Los Angeles CA, 90266</h3>
+  <h3 class="location">{{displayLocation}}</h3>
   <!-- TODO: make a image gallery and skeleton for on loading -->
   <img src={{post.images[0]}} alt="Post Image" class="post-image"/>
   <!-- TODO: add location, address, and phone number + google maps location view -->
@@ -28,9 +28,15 @@
       <p class="description">{{post.description}}</p>
       
     </mat-tab>
-    <mat-tab label="Location">Location</mat-tab>
+    <mat-tab label="Location">
+      <agm-map [latitude]="post.userProfile.location.latitude" [longitude]="post.userProfile.location.longitude">
+        <agm-marker [latitude]="post.userProfile.location.latitude"
+                [longitude]="post.userProfile.location.longitude"></agm-marker>
+      </agm-map>
+    </mat-tab>
   </mat-tab-group>
 
+  <!-- TODO: show bottom section only on details tab -->
   <div class="bottom-section">
     <h3 class="quantity">Only {{post.amount}} left in stock</h3>
     <ion-button class="contact-button" *ngIf="!isOwner">Contact Supplier</ion-button>

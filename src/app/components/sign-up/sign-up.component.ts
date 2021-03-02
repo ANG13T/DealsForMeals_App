@@ -8,7 +8,6 @@ import { Location } from 'src/app/shared/models/location.model';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { ViewEncapsulation } from '@angular/core';
-declare var google;
 
 @Component({
   selector: 'app-sign-up',
@@ -172,9 +171,6 @@ export class SignUpComponent implements OnInit {
     return (this.name != "") && (this.email != "") && (this.password != "");
   }
 
-
-  // Location functionality
-
   //Get current coordinates of device
   getGeolocation() {
     console.log("getting the location");
@@ -235,28 +231,6 @@ export class SignUpComponent implements OnInit {
     }
     return address.slice(0, -2);
   }
-
-
-  
-  // ngAfterViewInit(): void {
-  //   this.geolocation.getCurrentPosition().then((resp) => {
-  //     const map = new google.maps.Map(this.mapElement.nativeElement, {
-  //       center: {lat: -34.397, lng: 150.644},
-  //       zoom: 6
-  //     });
-  //     const infoWindow = new google.maps.InfoWindow;
-  //     const pos = {
-  //       lat: -34.397, lng: 150.644
-  //     };
-  //     infoWindow.setPosition(pos);
-  //     infoWindow.setContent('Location found.');
-  //     infoWindow.open(map);
-  //     map.setCenter(pos);
-  //   }).catch((error) => {
-  //     console.log('Error getting location', error);
-  //   });
-  // }
-
 
 
 }

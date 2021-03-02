@@ -18,6 +18,7 @@ export class ViewDealComponent implements OnInit {
   post: Post;
   origin: string;
   postID: string;
+  displayLocation: string;
   isOwner: boolean = false;
   uid: string;
 
@@ -36,6 +37,8 @@ export class ViewDealComponent implements OnInit {
       }
 
       this.isOwner = (this.post.userProfile.uid == this.uid);
+      let location = this.post.userProfile.location;
+      this.displayLocation = `${location.subThoroughfare} ${location.thoroughfare}, ${location.subLocality} ${location.locality}, ${location.administrativeArea}`;
     });
   }
 
