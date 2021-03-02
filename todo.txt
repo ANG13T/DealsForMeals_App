@@ -1,5 +1,16 @@
-- make location class
-- improve location sign up
 - improve for more mobile devices
 - improve mobile animations
+
+NOW: 
+- improve deal popup
+    - show addresss
+    - show location at top
+    - make image carasouel
+
+- improve buisness popup
+    - show address text
+    - remove top margin above image
+    - show location on google maps
+
+- improve create deal popup
 

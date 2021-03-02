@@ -1,11 +1,11 @@
 .header{
-    background-color: #4078e1;
-    color: white;
+  color: black !important;
+  background-color: white;
+  --border-width: 0 0 0px !important;
 
-    .send{
-        font-size: 1.5rem;
-        margin-right: .5rem;
-    }
+  ion-icon{
+      color: black;
+  }
 }
 
 .main{
@@ -50,16 +50,6 @@ h2 small {
   margin-bottom:45px; 
   margin-top: 2rem;
 }
-input 				{
-  font-size:18px;
-  padding:10px 10px 10px 5px;
-  display:block;
-  color: black;
-  width:300px;
-  border:none;
-  border-bottom:1px solid #757575;
-}
-input:focus 		{ outline:none; }
 
 /* LABEL ======================================= */
 label 				 {
@@ -217,4 +207,11 @@ input:focus ~ .highlight {
             margin-top: 3rem;
         }
     }
+}
+
+.block-button{
+  --background: #313131;
+  color: white;
+  font-weight: bold;
+  --border-radius: 20px;
 }
