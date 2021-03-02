@@ -86,7 +86,9 @@
       <h3>Country: {{location.thoroughfare}}</h3>
       <h3>PIN: {{location.postalCode}}</h3> -->
 
-      <agm-map [latitude]="location.latitude" [longitude]="location.longitude" [hidden]="location.fullAddress == ''"></agm-map>
+      <agm-map [latitude]="location.latitude" [longitude]="location.longitude" [hidden]="location.fullAddress == ''">
+        
+      </agm-map>
       
       
       <div class="buttons">
