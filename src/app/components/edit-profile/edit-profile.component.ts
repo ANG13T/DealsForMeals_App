@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { finalize } from 'rxjs/internal/operators/finalize';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
-import { ToastController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -23,7 +23,7 @@ export class EditProfileComponent implements OnInit {
   profileLoading: boolean = false;
   errors = {password: "", name: "", email: ""};
 
-  constructor(private router: Router, private userService: UserService, private storage: AngularFireStorage, public toastController: ToastController) {
+  constructor(private router: Router, private userService: UserService, private storage: AngularFireStorage, public toastController: ToastController, private navCtrl: NavController) {
     this.userService.user$.subscribe(async (userProfile) => {
       if(userProfile){
         console.log(userProfile)
@@ -51,6 +51,10 @@ export class EditProfileComponent implements OnInit {
 
       }
     })
+  }
+
+  goBack(){
+    this.navCtrl.back();
   }
 
   async editProfile(){

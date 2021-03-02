@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -10,12 +11,16 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(private router: Router, private userService: UserService, private navCtrl: NavController) { }
 
   ngOnInit() {}
 
   navigate(route: string){
     this.router.navigate([`/${route}`]);
+  }
+
+  goBack(){
+    this.navCtrl.back();
   }
 
   logOut(){

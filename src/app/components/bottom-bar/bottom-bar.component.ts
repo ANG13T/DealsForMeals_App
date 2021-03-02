@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, RouterEvent } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import { CreatePostComponent } from '../modals/create-post/create-post.component';
@@ -16,7 +16,7 @@ export class BottomBarComponent implements OnInit {
   user: User;
   selectedPath: string;
 
-  constructor(public modalController: ModalController, private userService: UserService, private router: Router) {
+  constructor(public modalController: ModalController, private userService: UserService, public navCtrl: NavController, private router: Router) {
     this.userService.user$.subscribe(async (userProfile) => {
       if(userProfile){
         this.user = userProfile;
@@ -50,7 +50,7 @@ export class BottomBarComponent implements OnInit {
   }
 
   navigate(route: string){
-    this.router.navigate([`/${route}`]);
+    this.navCtrl.navigateForward(route, { animated: false });
   }
 
 }
