@@ -7,7 +7,6 @@ import { CreatePostComponent } from '../modals/create-post/create-post.component
 import { Post } from 'src/app/shared/models/post.model';
 import { PostService } from 'src/app/shared/services/post.service';
 import { ViewDealComponent } from '../view-deal/view-deal.component';
-declare var google: any;
 
 @Component({
   selector: 'app-profile',
@@ -23,7 +22,6 @@ export class ProfileComponent implements OnInit {
   posts: Post[] = [];
 
   map: any;
-  @ViewChild('map', {read: ElementRef, static: false}) mapRef: ElementRef;
 
   constructor(private userService: UserService, private router: Router, public modalController: ModalController, private postService: PostService) { }
 
@@ -54,22 +52,6 @@ export class ProfileComponent implements OnInit {
 
   navigate(route: string){
     this.router.navigate([`/${route}`]);
-  }
-
-  ionViewDidEnter(){
-    this.showMap();
-  }
-
-  showMap(){
-    console.log("showing the map");
-    const location = new google.maps.LatLng(-17.824858, 31.053208);
-    const options = {
-      center: location,
-      zoom: 15,
-      disableDefaultUI: true
-    }
-    this.map = new google.maps.Map(this.mapRef.nativeElement, options);
-
   }
 
   logOut(){

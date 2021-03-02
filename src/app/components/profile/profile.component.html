@@ -36,20 +36,32 @@
 
         <div class="profile-options" *ngIf="user.isBusiness">
           <mat-tab-group>
+            <!-- TODO: display deals in a gallery -->
             <mat-tab label="DEALS">
+              <h3 class="content-header">Your Deals</h3>
               <div class="posts" *ngIf="!isFoodbank">
                 <div class="posts" *ngIf="!loading">
                   <ion-card *ngFor="let post of posts" (click)="presentPost(post)">
-                    <img src={{post.images[0]}} />
-                    <ion-card-header>
-                      <ion-card-title>{{post.title}}</ion-card-title>
-                    </ion-card-header>
+                    <div class="card-main">
+                      <img src={{post.images[0]}} />
+
+                      <div class="card-content">
+                        <ion-card-header>
+                          <ion-card-title>{{post.title}}</ion-card-title>
+                          <ion-card-subtitle>{{post.userProfile.name}}</ion-card-subtitle>
+                        </ion-card-header>
+                        
+                        <ion-card-content>
+                          {{post.description}}
+                        </ion-card-content>
+                      </div>
+                     
+                    </div>
                     
-                    <ion-card-content>
-                      {{post.description}}
-                    </ion-card-content>
                   </ion-card>
                 </div>
+
+                <!-- TODO: add next steps for account -->
 
                 <div class="loading-posts" *ngIf="loading && !isFoodbank">
                   <ion-card *ngFor="let post of [1,2]">

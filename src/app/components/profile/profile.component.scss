@@ -129,8 +129,7 @@ ion-menu-button{
 }
 
 ion-card{
-    width: 80vw;
-    height: 80vw;
+    width: 90vw;
     margin: auto;
     margin-top: 1rem;
     margin-bottom: 2rem;
@@ -177,4 +176,29 @@ ion-card{
     height: 100vh;
 }
 
+.content-header{
+    text-align: left;
+    font-weight: bold;
+    font-family: 'poppins', sans-serif !important;
+    margin-left: 2rem !important;
+    margin-top: 1rem !important;
+    margin-bottom: 5px !important; 
+}
 
+
+.card-main{
+    display: flex;
+
+    img{
+        max-width: 8rem;
+        max-height: 8rem;
+        display: block;
+        width: auto;
+        height: auto;
+    }
+
+    ion-card-title{
+        font-size: 1rem;
+        margin-top: 1rem;
+    }
+}
