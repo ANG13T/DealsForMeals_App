@@ -7,3 +7,8 @@ NOW:
     - UI top
 
 - get locations by closest to your location
+
+- buisness tweaks
+ - set default placeholder for about and deals when no data exsists
+
+- set zoom in on view buisness location maps
