@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   userAddress: string = "";
   loading: boolean = true;
   posts: Post[] = [];
+  steps: any[] = [];
 
   map: any;
 
@@ -46,6 +47,8 @@ export class ProfileComponent implements OnInit {
       if(this.user.description == ""){
         this.user.description = "User has not written a description yet.";
       }
+
+      this.findNextSteps();
       this.loading = false;
     });
   }
@@ -64,6 +67,24 @@ export class ProfileComponent implements OnInit {
 
   logOut(){
     this.userService.signOut();
+  }
+
+  findNextSteps(){
+    if(this.user.isBusiness){ 
+      if(this.user.photoURL == "https://firebasestorage.googleapis.com/v0/b/deals2meals-4e239.appspot.com/o/default_user.jpg?alt=media&token=e1c97c88-5aab-487b-ae6d-878415e28b6a"){
+        this.steps.push({content: 'Enter a Profile Image', link: 'profile/edit'});
+      }
+
+      if(this.user.description == ""){
+        this.steps.push({content: 'Enter a Buisness Description', link: 'profile/edit'});
+      }
+
+      if(this.posts == []){
+        this.steps.push({content: 'Make your First Deal', link: 'profile/edit'});
+      }
+    }else{
+      this.steps.concat([{content: 'Find a Buisness Near You', link: 'foodbanks'}, {content: 'Contact the Buisness', link: ''}, {content: 'Receive your Donation', link: ''}]);
+    }
   }
 
   async presentModal() {
