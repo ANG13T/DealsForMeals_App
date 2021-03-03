@@ -9,7 +9,6 @@ import { ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs/internal/Observable';
 import { ViewDealComponent } from '../view-deal/view-deal.component';
 import * as firebase from 'firebase/app';
-import { GeoFirestore } from 'geofirestore';
 import { Location } from 'src/app/shared/models/location.model';
 
 
@@ -58,10 +57,7 @@ export class FoodbanksComponent implements OnInit {
   }
 
 
-  loadGeoFire(){
-    const geoFire = new GeoFirestore(firebase.default.firestore())  
-    geoFire.collection("RetailersCoords")
-  }
+
 
   async openBuisness(buisness: User) {
     const modal = await this.modalController.create({

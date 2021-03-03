@@ -17,13 +17,13 @@ export class LocationsComponent implements OnInit {
   testDoc;
 
   path: 'positions';
-  collection: firebase.default.firestore.CollectionReference;
+  collection: firebase.firestore.CollectionReference;
   geoQuery: GeoFireQuery;
   clicked = false;
   docId = 'testPoint' + Date.now();
 
   constructor() {
-    this.collection = firebase.default.firestore().collection('positions');
+    this.collection = firebase.firestore().collection('positions');
     window.onbeforeunload = () => {
       this.collection.doc(this.docId).delete();
     };
