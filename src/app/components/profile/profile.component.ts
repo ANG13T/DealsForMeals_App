@@ -59,7 +59,9 @@ export class ProfileComponent implements OnInit {
   }
 
   navigate(route: string){
-    this.router.navigate([`/${route}`]);
+    if(route != ""){
+      this.router.navigate([`/${route}`]);
+    }
   }
 
   viewDescription(description: string){
@@ -75,6 +77,7 @@ export class ProfileComponent implements OnInit {
   }
 
   findNextSteps(){
+    this.steps = [];
     if(this.user.isBusiness){ 
       if(this.user.photoURL == "https://firebasestorage.googleapis.com/v0/b/deals2meals-4e239.appspot.com/o/default_user.jpg?alt=media&token=e1c97c88-5aab-487b-ae6d-878415e28b6a"){
         this.steps.push({content: 'Enter a Profile Image', link: 'profile/edit'});

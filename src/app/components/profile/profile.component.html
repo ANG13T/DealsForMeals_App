@@ -75,7 +75,7 @@
                 <div class="steps">
                   <ion-slides pager>
                     <ion-slide *ngFor="let step of steps">
-                      <ion-card>
+                      <ion-card (click)="navigate(step.link)">
                         <div class="step-card-main">
                           <!-- <img src={{post.images[0]}} /> -->
                           <ion-avatar item-start>
