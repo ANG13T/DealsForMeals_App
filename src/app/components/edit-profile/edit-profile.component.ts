@@ -14,7 +14,7 @@ import { NavController, ToastController } from '@ionic/angular';
   styleUrls: ['./edit-profile.component.scss'],
 })
 export class EditProfileComponent implements OnInit {
-  userProfile: User = {name: "", email: "", accountType: "foodbank", photoURL: "", uid: "", location: null, isBusiness: false};
+  userProfile: User = {name: "", email: "", accountType: "foodbank", photoURL: "", uid: "", location: null, isBusiness: false, description: ""};
   firstName: string = "";
   lastName: string = "";
   initFirstName: string = "";
@@ -33,6 +33,8 @@ export class EditProfileComponent implements OnInit {
         this.userProfile.accountType = userProfile.accountType;
         this.userProfile.uid = userProfile.uid;
         this.userProfile.location = userProfile.location;
+        this.userProfile.description = userProfile.description;
+        this.userProfile.isBusiness = userProfile.isBusiness;
 
         //init user profile
         this.initUserProfile.name = userProfile.name;
@@ -41,6 +43,8 @@ export class EditProfileComponent implements OnInit {
         this.initUserProfile.accountType = userProfile.accountType;
         this.initUserProfile.uid = userProfile.uid;
         this.initUserProfile.location = userProfile.location;
+        this.initUserProfile.description = userProfile.description;
+        this.initUserProfile.isBusiness = userProfile.isBusiness;
 
         if(!userProfile.isBuisness){
           this.initFirstName = this.userProfile.name.split(" ")[0];
@@ -51,6 +55,8 @@ export class EditProfileComponent implements OnInit {
 
       }
     })
+
+    console.log("done", this.userProfile)
   }
 
   goBack(){

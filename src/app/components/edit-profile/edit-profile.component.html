@@ -24,15 +24,10 @@
       <ion-button  class="edit-image-button" (click)="file.click()">Upload Image</ion-button>
     </div>
 
-    <div class="bottom-section" *ngIf="userProfile.isBuisness">
+    <div class="bottom-section" *ngIf="userProfile.accountType !== 'foodie'">
       <ion-item>
         <ion-label>Buisness Name:</ion-label>
         <ion-input [(ngModel)]="userProfile.name" placeholder="eg. Walgreens"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Buisness Description: </ion-label>
-        <ion-textarea maxlength="140" placeholder="Enter more information here..." [(ngModel)]="userProfile.description"></ion-textarea>
       </ion-item>
 
       <ion-item>
@@ -44,10 +39,15 @@
           <ion-select-option value="other">Other</ion-select-option>
         </ion-select>
       </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Buisness Description:</ion-label>
+        <ion-textarea placeholder="Describe your buisness..." [(ngModel)]="userProfile.description" maxlength="140" ></ion-textarea>
+      </ion-item>
     </div>
 
 
-    <div class="bottom-section" *ngIf="!userProfile.isBuisness">
+    <div class="bottom-section" *ngIf="userProfile.accountType == 'foodie'">
       <ion-item>
         <ion-label>First Name:</ion-label>
         <ion-input placeholder="eg. John" [(ngModel)]="firstName" (input)="editUserName($event.target.value, 'first')"></ion-input>
