@@ -2,16 +2,18 @@
 - improve mobile animations
 
 NOW: 
-- improve mobile animations
-
 - buisness tweaks
- - set default placeholder for about and deals when no data exsists
+ - set default placeholder for deals when no data exsists
 
 - set zoom in on view buisness location maps
 
 - set limits on post info and buisness info
 
 - get locations by closest to your location
+
+- get deals from stores near you
+
+- load more data when scroll to bottom
 
 - make maps of closest 30 locations
 
@@ -25,3 +27,9 @@ NEXT STEPS:
 - fix description box on create post
 - remove header on create post complete + loading
 - fix intermittent header styles problem
+
+DO RIGHT NOW:
+- make loading image div to create post dialog
+- fix description box on create post
+- remove header on create post complete + loading
+- get locations by closest to your location

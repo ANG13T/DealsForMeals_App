@@ -30,6 +30,7 @@
     <div class="images">
       <input type="file" style="display: none" #file accept="image/jpeg,image/x-png" (change)="onDrop($event.target.files)">
       <img src={{image}} class="image" *ngFor="let image of post.images" (click)="removeImage(image)">
+      <img src="../../../../assets/images/spinner.gif" class="spinner" [hidden]="!imageLoading" /> 
     </div>
 
     <ion-item>
@@ -46,7 +47,7 @@
     </div>
  
     <section>
-      <ion-button expand="block" class="block-button" (click)="createPost()">PUBLISH YOUR DEAL</ion-button>
+      <ion-button expand="block" class="block-button" [disabled]="post.title == '' || post.images == [] || imageLoading" (click)="createPost()">PUBLISH YOUR DEAL</ion-button>
     </section>
   </div>
 
