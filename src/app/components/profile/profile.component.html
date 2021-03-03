@@ -76,10 +76,10 @@
                   <ion-slides pager>
                     <ion-slide *ngFor="let step of steps">
                       <ion-card>
-                        <div class="card-main">
+                        <div class="step-card-main">
                           <!-- <img src={{post.images[0]}} /> -->
                           <ion-avatar item-start>
-                           
+                            <ngx-avatar value={{findStepIndex(step.content)}}></ngx-avatar>
                           </ion-avatar>
     
                           <div class="card-content">
@@ -88,9 +88,9 @@
                             </ion-card-header>
                             
                             <!-- TODO: make into button to go to step link if have link -->
-                            <ion-card-content>
+                            <!-- <ion-card-content>
                               {{viewDescription(post.description)}}
-                            </ion-card-content>
+                            </ion-card-content> -->
                           </div>
                          
                         </div>

@@ -186,7 +186,7 @@ ion-card{
 }
 
 
-.card-main{
+.card-main, .step-card-main{
     display: flex;
 
     img{
@@ -200,6 +200,14 @@ ion-card{
     ion-card-title{
         font-size: 1rem;
         margin-top: 1rem;
+    }
+}
+
+.step-card-main{
+    margin: 1rem;
+
+    ion-card-title{
+        margin-top: 10px !important;
     }
 }
 

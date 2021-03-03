@@ -44,17 +44,18 @@ export class ProfileComponent implements OnInit {
         })
       }
       this.userAddress = `${this.user.location.locality}, ${this.user.location.administrativeArea}`;
+
+      this.findNextSteps();
       if(this.user.description == ""){
         this.user.description = "User has not written a description yet.";
       }
-
-      this.findNextSteps();
+      
       this.loading = false;
     });
   }
 
   findStepIndex(content: string){
-    return this.steps.findIndex(step => step.content == content);
+    return this.steps.findIndex(step => step.content == content) + 1;
   }
 
   navigate(route: string){
@@ -80,7 +81,7 @@ export class ProfileComponent implements OnInit {
       }
 
       if(this.user.description == ""){
-        this.steps.push({content: 'Enter a Buisness Description', link: 'profile/edit'});
+        this.steps.push({content: 'Enter a Description', link: 'profile/edit'});
       }
 
       if(this.posts == []){
