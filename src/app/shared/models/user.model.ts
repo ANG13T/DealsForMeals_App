@@ -9,4 +9,5 @@ export interface User {
     photoURL?: string;
     description?:string;
     location?: Location; 
+    position?: any;
   }

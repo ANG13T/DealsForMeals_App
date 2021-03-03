@@ -7,6 +7,9 @@ import { User } from '../models/user.model';
 import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { MapsService } from './maps.service';
+import * as geofirex from 'geofirex';
+import * as firebase from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +19,7 @@ export class UserService {
   user$: Observable<any>;
   loggedIn : boolean;
   location: any;
+  geo = geofirex.init(firebase);
   
   constructor(private router: Router, private afAuth: AngularFireAuth, private afs: AngularFirestore, private geolocation: Geolocation) {
     let watch = this.geolocation.watchPosition();
@@ -68,7 +72,13 @@ export class UserService {
             accountType: newUser.accountType,
             photoURL: 'https://firebasestorage.googleapis.com/v0/b/deals2meals-4e239.appspot.com/o/default_user.jpg?alt=media&token=e1c97c88-5aab-487b-ae6d-878415e28b6a',
             isBusiness: newUser.isBusiness,
-            description: ''
+            description: '',
+            position: null
+          }
+
+          if(userData.isBusiness){
+            let position =  this.geo.point(newUser.location.latitude, newUser.location.longitude);
+            userData.position = position;
           }
   
           this.afs.firestore.collection("users").doc(userData.uid).set(userData)

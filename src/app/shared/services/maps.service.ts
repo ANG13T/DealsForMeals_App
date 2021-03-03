@@ -9,6 +9,8 @@ import { Observable } from 'rxjs/internal/Observable';
 export class MapsService {
   geo = geofirex.init(firebase);
   points: Observable<any>;
+  buisnesses = firebase.default.firestore().collection('users');
+
   
   constructor() { }
 }
