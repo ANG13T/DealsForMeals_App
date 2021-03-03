@@ -71,6 +71,36 @@
 
                 <!-- TODO: add next steps for account -->
 
+                <h3 class="content-header">Next Steps</h3>
+                <div class="steps">
+                  <ion-slides pager>
+                    <ion-slide *ngFor="let step of steps">
+                      <ion-card>
+                        <div class="card-main">
+                          <!-- <img src={{post.images[0]}} /> -->
+                          <ion-avatar item-start>
+                            <ion-text-avatar>{{findStepIndex(step.content)}}</ion-text-avatar>
+                          </ion-avatar>
+    
+                          <div class="card-content">
+                            <ion-card-header>
+                              <ion-card-title>{{step.content}}</ion-card-title>
+                            </ion-card-header>
+                            
+                            <!-- TODO: make into button to go to step link if have link -->
+                            <ion-card-content>
+                              {{viewDescription(post.description)}}
+                            </ion-card-content>
+                          </div>
+                         
+                        </div>
+                        
+                      </ion-card>
+                    </ion-slide>
+                  </ion-slides>
+                </div>
+
+                <!-- TODO: restyle loading posts to image gallery of skeleton with one post -->
                 <div class="loading-posts" *ngIf="loading && !isFoodbank">
                   <ion-card *ngFor="let post of [1,2]">
                     <ion-skeleton-text animated class="skeleton-image" style="height: 25vh;"></ion-skeleton-text>

@@ -53,6 +53,10 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  findStepIndex(content: string){
+    return this.steps.findIndex(step => step.content == content);
+  }
+
   navigate(route: string){
     this.router.navigate([`/${route}`]);
   }
