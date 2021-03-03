@@ -54,6 +54,14 @@ export class ProfileComponent implements OnInit {
     this.router.navigate([`/${route}`]);
   }
 
+  viewDescription(description: string){
+    if(description.length > 36){
+      let result = description.trim().substr(0, 36).concat("...");
+      return result;
+    }
+    return description.trim();
+  }
+
   logOut(){
     this.userService.signOut();
   }
