@@ -1,8 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Observable, interval } from 'rxjs';
+import { tap, map, take, finalize } from 'rxjs/operators';
+import * as firebase from 'firebase/app';
+import * as geofirex from 'geofirex';
+import { GeoFireQuery } from 'geofirex';
 
-import { Geolocation ,GeolocationOptions ,Geoposition ,PositionError } from '@ionic-native/geolocation'; 
-
-declare var google: any;
 
 @Component({
   selector: 'app-locations',
@@ -10,31 +12,71 @@ declare var google: any;
   styleUrls: ['./locations.component.scss'],
 })
 export class LocationsComponent implements OnInit {
-  
-  map: any;
+  geo = geofirex.init(firebase);
+  points: Observable<any[]>;
+  testDoc;
 
-  @ViewChild('map', {read: ElementRef, static: false}) mapRef: ElementRef;
+  path: 'positions';
+  collection: firebase.default.firestore.CollectionReference;
+  geoQuery: GeoFireQuery;
+  clicked = false;
+  docId = 'testPoint' + Date.now();
 
-  
-  constructor() { }
-
-  ionViewDidEnter(){
-    this.showMap();
+  constructor() {
+    this.collection = firebase.default.firestore().collection('positions');
+    window.onbeforeunload = () => {
+      this.collection.doc(this.docId).delete();
+    };
   }
- 
 
   ngOnInit() {
-  }
+    this.geoQuery = this.geo.query('positions');
+    const center = this.geo.point(34, -113);
 
-  showMap(){
-    const location = new google.maps.LatLng(-17.824858, 31.053208);
-    const options = {
-      center: location,
-      zoom: 15,
-      disableDefaultUI: true
-    }
-    this.map = new google.maps.Map(this.mapRef.nativeElement, options);
+    this.points = this.geoQuery.within(center, 200, 'pos');
+    this.testDoc = this.points.pipe(
+      map(arr => arr.find(o => o.id === this.docId))
+    );
 
   }
 
+  start() {
+    this.clicked = true;
+    let lat = 34 + this.rand();
+    let lng = -113 + this.rand();
+
+    const randA = this.rand();
+    const randB = this.rand();
+
+    interval(700)
+      .pipe(
+        take(30),
+        tap(v => {
+          lat += randA * Math.random();
+          lng += randB * Math.random();
+
+          const point = this.geo.point(lat, lng);
+          const data = { name: 'testPoint', pos: point, allow: true };
+          this.collection.doc(this.docId).set(data);
+
+        }),
+        finalize(() => {
+          this.clicked = false;
+          this.collection.doc(this.docId).delete();
+        })
+      )
+      .subscribe();
+  }
+
+  trackByFn(_, doc) {
+    return doc.id;
+  }
+  icon(id) {
+    return id.includes('testPoint') ? 'https://goo.gl/dGBkRz' : null;
+  }
+
+  rand() {
+    const arr = [0.15, -0.15];
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
 }

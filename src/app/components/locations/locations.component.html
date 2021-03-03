@@ -13,6 +13,20 @@
   
   
   <ion-content [fullscreen]="true">
-    <div #map id="map"></div>
+    <agm-map [latitude]="34" [longitude]="-113" [zoom]="8">
+
+      <agm-marker 
+        *ngFor="let point of points | async; trackBy: trackByFn" 
+        [latitude]="point.position.geopoint.latitude" 
+        [longitude]="point.position.geopoint.longitude">
+  
+          <agm-info-window>
+  
+              <h1>This point is {{ point.queryMetadata.distance }} kilometers from the center</h1>
+  
+          </agm-info-window>
+      </agm-marker>
+  
+  </agm-map>
   </ion-content>
 </div>
