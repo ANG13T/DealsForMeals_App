@@ -29,7 +29,5 @@ NEXT STEPS:
 - fix intermittent header styles problem
 
 DO RIGHT NOW:
-- make loading image div to create post dialog
-- fix description box on create post
 - remove header on create post complete + loading
 - get locations by closest to your location

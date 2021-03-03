@@ -1,5 +1,5 @@
 
-<ion-header>
+<ion-header [hidden]="loading || complete">
   <ion-toolbar color="#4043E1" class="header">
     <ion-buttons slot="start">
       <ion-button (click)="dismissModal()" [disabled]="completed">
@@ -23,7 +23,7 @@
         <ion-icon name="cloud-upload-outline"></ion-icon>
       </div>
       <h2>Upload a Photo</h2>
-      <h5>Supported formats are PNG, GIF, or JPG</h5>
+      <h5 class="top-image">Supported formats are PNG, GIF, or JPG</h5>
       <h5>Photos are usually 400 x 300 or 800 x 600</h5>
     </div>
 
@@ -43,7 +43,7 @@
 
     <div class="sub-content">
       <h3 class="sub-title">Description</h3>
-      <textarea name="Text1" cols="40" rows="5" [(ngModel)]="post.description"></textarea>
+      <textarea name="Text1" cols="40" rows="5" [(ngModel)]="post.description" placeholder="Enter a description..."></textarea>
     </div>
  
     <section>
