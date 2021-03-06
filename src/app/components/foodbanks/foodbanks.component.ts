@@ -10,6 +10,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { ViewDealComponent } from '../view-deal/view-deal.component';
 import * as firebase from 'firebase/app';
 import { Location } from 'src/app/shared/models/location.model';
+import { UserService } from 'src/app/shared/services/user.service';
 
 
 @Component({
@@ -20,6 +21,7 @@ import { Location } from 'src/app/shared/models/location.model';
 export class FoodbanksComponent implements OnInit {
 
   foodbanks: User[];
+  user: User;
   deals: Post[] = [];
   loadingFoodbanks: boolean = false;
   loadingDeals: boolean = false;
@@ -27,12 +29,22 @@ export class FoodbanksComponent implements OnInit {
 
 
 
-  constructor(private buisnessService: BuisnessService, private postService: PostService, private routerOutlet: IonRouterOutlet, private modalController: ModalController) { }
+  constructor(private buisnessService: BuisnessService, private postService: PostService, private routerOutlet: IonRouterOutlet, private modalController: ModalController, private userService: UserService) { }
 
   async ngOnInit() {
     this.loadingDeals = true;
     this.loadingFoodbanks = true;
     this.showFoodbanks = true;
+
+    this.userService.user$.subscribe(async (userProfile) => {
+      if(userProfile){
+        this.user = userProfile;
+      }
+    });
+
+    this.buisnessService.getBuisnessesNearLocation(this.user.location).then(() => {
+      console.log("done");
+    })
 
     this.buisnessService.getCategoryBuisnesses(5, 'foodbank').then((data) => {
       console.log("got foodbanks", data)

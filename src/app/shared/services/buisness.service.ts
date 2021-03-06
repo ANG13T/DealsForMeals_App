@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { User } from '../models/user.model';
 import * as firebase from 'firebase/app';
+import { Location } from '../models/location.model';
+// import geofire = require('geofire-common');
+import * as geofire from 'geofire-common';
 // import { GeoFirestore } from 'geofirestore';
 
 @Injectable({
@@ -14,7 +17,48 @@ export class BuisnessService {
   
   }
 
-  async getBuisnessesNearLocation(loca){
+  async getBuisnessesNearLocation(location: Location){
+    let center = [location.latitude, location.longitude];
+    const radiusInM = 50 * 1000;
+
+    const bounds = geofire.geohashQueryBounds(center, radiusInM);
+const promises = [];
+for (const b of bounds) {
+  let entireRef = this.afs.collection('users', ref => {
+    const q = ref.orderBy('location')
+    .startAt(b[0])
+    .endAt(b[1]);
+    promises.push(q.get());
+    return q;
+  })
+}
+
+// Collect all the query results together into a single list
+Promise.all(promises).then((snapshots) => {
+  const matchingDocs = [];
+
+  for (const snap of snapshots) {
+    for (const doc of snap.docs) {
+      const lat = doc.get('lat');
+      const lng = doc.get('lng');
+
+      // We have to filter out a few false positives due to GeoHash
+      // accuracy, but most will match
+      const distanceInKm = geofire.distanceBetween([lat, lng], center);
+      const distanceInM = distanceInKm * 1000;
+      if (distanceInM <= radiusInM) {
+        matchingDocs.push(doc);
+      }
+    }
+  }
+
+  return matchingDocs;
+}).then((matchingDocs) => {
+  // Process the matching documents
+  // ...
+  console.log("the matching docs are", matchingDocs)
+});
+
 
   }
 
