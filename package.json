@@ -35,7 +35,6 @@
     "cordova-browser": "6.0.0",
     "firebase": "^8.2.6",
     "geofirestore": "^4.4.1",
-    "geofirex": "^0.1.0",
     "ionic-angular": "^3.9.10",
     "ngx-avatar": "^4.0.0",
     "rxjs": "~6.6.0",
