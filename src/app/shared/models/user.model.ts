@@ -9,4 +9,7 @@ export interface User {
     photoURL?: string;
     description?:string;
     location?: Location; 
+    lat?: any;
+    lng?: any;
+    hash?: any;
   }

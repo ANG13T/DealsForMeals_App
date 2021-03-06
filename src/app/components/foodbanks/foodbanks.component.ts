@@ -39,13 +39,14 @@ export class FoodbanksComponent implements OnInit {
     this.userService.user$.subscribe(async (userProfile) => {
       if(userProfile){
         this.user = userProfile;
+        console.log("got user", userProfile);
+        this.buisnessService.getBuisnessesNearLocation(this.user.location).then(() => {
+          console.log("done");
+        })
       }
     });
 
-    this.buisnessService.getBuisnessesNearLocation(this.user.location).then(() => {
-      console.log("done");
-    })
-
+    
     this.buisnessService.getCategoryBuisnesses(5, 'foodbank').then((data) => {
       console.log("got foodbanks", data)
       this.foodbanks = data;

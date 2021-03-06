@@ -8,6 +8,7 @@ import { Location } from 'src/app/shared/models/location.model';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { ViewEncapsulation } from '@angular/core';
+import * as geofire from 'geofire-common';
 
 @Component({
   selector: 'app-sign-up',
@@ -91,6 +92,9 @@ export class SignUpComponent implements OnInit {
         name: this.name,
         uid: '',
         location: this.location,
+        lat: this.location.latitude,
+        lng: this.location.longitude,
+        hash: geofire.geohashForLocation([this.location.latitude, this.location.longitude]),
         accountType: this.accountType,
         email: this.email,
         photoURL: '',
