@@ -22,9 +22,7 @@ NEXT STEPS:
  - make start up tutorial slideshow
  - add margin to the top of dialogs + profile
 -  make search and filter?
-- fix create button
-- fix description box on create post
-- remove header on create post complete + loading
+- make share option + Ask for Help
 - fix intermittent header styles problem
 
 DO RIGHT NOW:

@@ -9,21 +9,40 @@
 
 <ion-content [fullscreen]="true">
   <div class="settings-form">
-    <!-- Account Settings -->
+    <!-- Profile -->
     <ion-item detail (click)="navigate('profile/edit')">
+      <ion-label>
+        Profile Details
+      </ion-label>
+    </ion-item>
+    <!-- Account Settings -->
+    <ion-item detail (click)="navigate('profile/settings')">
       <ion-label>
         Account Settings
       </ion-label>
     </ion-item>
+
     <!-- Get Notifications Settings -->
-    <ion-item>
+    <!-- <ion-item>
       <ion-label>
         Receive Notifications
       </ion-label>
       <ion-toggle slot="end" name="blueberry" checked></ion-toggle>
+    </ion-item> -->
+    <!-- Share -->
+    <ion-item detail>
+      <ion-label>
+        Share and Rate App
+      </ion-label>   
+    </ion-item>
+    <!-- Get Help -->
+    <ion-item detail>
+      <ion-label>
+       Get Help and FAQ
+      </ion-label>   
     </ion-item>
     <!-- Delete All Posts Settings -->
-
+    
     <!-- Delete Account Settings -->
 
     <!-- Log Out Settings -->
