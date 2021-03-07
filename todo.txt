@@ -23,7 +23,6 @@ NEXT STEPS:
  - add margin to the top of dialogs + profile
 -  make search and filter?
 - fix create button
-- make loading image div to create post dialog
 - fix description box on create post
 - remove header on create post complete + loading
 - fix intermittent header styles problem

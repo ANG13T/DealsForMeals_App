@@ -31,6 +31,7 @@ for (const b of bounds) {
     promises.push(q.get());
     return q;
   })
+  await entireRef;
 }
 
 // Collect all the query results together into a single list
