@@ -36,6 +36,10 @@ export class ViewBuisnessComponent implements OnInit {
 
     let location = this.buisness.location;
     this.displayLocation = `${location.subThoroughfare} ${location.thoroughfare}, ${location.subLocality} ${location.locality}, ${location.administrativeArea}`;
+
+    if(this.buisness.description == ""){
+      this.buisness.description = "Buisness has not written a description yet.";
+    }
   }
 
   async presentPost(post: Post){

@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
   loading: boolean = true;
   posts: Post[] = [];
   steps: any[] = [];
-
+  showDealsInfo: boolean = false;
   map: any;
 
   constructor(private userService: UserService, private router: Router, public modalController: ModalController, private postService: PostService) { }
@@ -49,6 +49,8 @@ export class ProfileComponent implements OnInit {
       if(this.user.description == ""){
         this.user.description = "User has not written a description yet.";
       }
+        
+      this.showDealsInfo = (this.posts == []);
       
       this.loading = false;
     });
