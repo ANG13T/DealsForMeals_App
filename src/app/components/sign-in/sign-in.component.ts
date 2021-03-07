@@ -30,17 +30,12 @@ export class SignInComponent implements OnInit {
               alert("User not found. Please try signing in or trying again");
               this.email = "";
               this.password = "";
-            }
-
-            if(data.code == "auth/wrong-password"){
+            }else if(data.code == "auth/wrong-password"){
               this.password = "";
               this.errors.password = "Invalid password";
+            }else{
+              alert(data.message);
             }
-
-
-            // if(data.code == "auth/user-not-found"){
-              
-            // }
           }
         })
     }
