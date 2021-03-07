@@ -43,6 +43,7 @@
       <ion-item>
         <ion-label position="stacked">Buisness Description:</ion-label>
         <ion-textarea placeholder="Describe your buisness..." [(ngModel)]="userProfile.description" maxlength="140" ></ion-textarea>
+        <p class="form-context">{{charsLeft(userProfile.description, 140)}} out of 140 chars left.</p>
       </ion-item>
     </div>
 

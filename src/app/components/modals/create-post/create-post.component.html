@@ -15,7 +15,8 @@
 
     <mat-form-field class="deal-title">
       <mat-label>Deal Title</mat-label>
-      <input matInput placeholder="Ex. New Deal" [(ngModel)]="post.title">
+      <input matInput placeholder="Ex. New Deal" [(ngModel)]="post.title" maxlength="30">
+      <mat-hint align="end">{{post.title.length}} / 30</mat-hint>
     </mat-form-field>
 
     <div class="image-option" (click)="file.click()">
@@ -43,11 +44,12 @@
 
     <div class="sub-content">
       <h3 class="sub-title">Description</h3>
-      <textarea name="Text1" cols="40" rows="5" [(ngModel)]="post.description" placeholder="Enter a description..."></textarea>
+      <textarea name="Text1" cols="40" rows="5" [(ngModel)]="post.description" placeholder="Enter a description..." maxlength="240"></textarea>
+      <p class="form-context">{{post.description.length}} / 240</p>
     </div>
  
     <section>
-      <ion-button expand="block" class="block-button" [disabled]="post.title == '' || post.images == [] || imageLoading" (click)="createPost()">PUBLISH YOUR DEAL</ion-button>
+      <ion-button expand="block" class="block-button" [disabled]="post.title == '' || post.images.length == 0 || imageLoading" (click)="createPost()">PUBLISH YOUR DEAL</ion-button>
     </section>
   </div>
 

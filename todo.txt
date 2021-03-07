@@ -3,7 +3,6 @@
 
 NOW: 
 - buisness tweaks
- - set default placeholder for deals when no data exsists
 
 - set zoom in on view buisness location maps
 

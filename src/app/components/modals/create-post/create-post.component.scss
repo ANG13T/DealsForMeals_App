@@ -161,6 +161,11 @@ input:focus ~ label, input:valid ~ label 		{
   --border-radius: 20px;
 }
 
+.form-context{
+  text-align: right;
+  color: rgba(0,0,0,.54);
+}
+
 .deal-title{
   width: 100%;
   font-size: 1.2rem;
