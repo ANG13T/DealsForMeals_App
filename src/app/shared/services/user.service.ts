@@ -69,7 +69,7 @@ export class UserService {
             location: newUser.location,
             lng: newUser.location.longitude,
             lat: newUser.location.latitude,
-            hash: geofire.geohashForLocation([this.location.latitude, this.location.longitude]),
+            hash: geofire.geohashForLocation([newUser.location.latitude, newUser.location.longitude]),
             accountType: newUser.accountType,
             photoURL: 'https://firebasestorage.googleapis.com/v0/b/deals2meals-4e239.appspot.com/o/default_user.jpg?alt=media&token=e1c97c88-5aab-487b-ae6d-878415e28b6a',
             isBusiness: newUser.isBusiness,
