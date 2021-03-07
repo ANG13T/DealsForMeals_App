@@ -88,6 +88,7 @@ export class SignUpComponent implements OnInit {
 
   async signUp() {
     if (this.validateForm()) {
+      console.log("the location for validation is: ", this.location);
       let newUser: User = {
         name: this.name,
         uid: '',

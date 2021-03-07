@@ -7,6 +7,7 @@ import { User } from '../models/user.model';
 import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import * as geofire from 'geofire-common';
 
 @Injectable({
   providedIn: 'root'
@@ -41,8 +42,8 @@ export class UserService {
   async login(email, password): Promise<any>{
     let promise = this.afAuth.signInWithEmailAndPassword(email, password).then((res) => {
       this.loggedIn = true;
-      console.log("Successful login")
       this.router.navigate(['/profile']);
+      console.log("Success");
       return;
     })
     .catch((err) => {
@@ -58,6 +59,33 @@ export class UserService {
     return userExists;
   }
 
+  // private upsertUserData(user){
+  //   const userRef = this.afs.firestore.doc(`users/${user.uid}`);
+  //   const data = {
+  //     uid: user.user.uid,
+  //     email: user.user.email,
+  //     name: user.name,
+  //     location: null,
+  //     lng: null,
+  //     lat: null,
+  //     hash: null,
+  //     accountType: 'foodbank',
+  //     photoURL: 'https://firebasestorage.googleapis.com/v0/b/deals2meals-4e239.appspot.com/o/default_user.jpg?alt=media&token=e1c97c88-5aab-487b-ae6d-878415e28b6a',
+  //     isBusiness: true,
+  //     description: ''
+  //   } as User;
+
+  //   userRef.get().then((doc) => {
+  //     if(!doc.exists){
+  //       userRef.set(data, {merge: true});
+  //     }
+  //   })
+
+  //   this.loggedIn = true;
+  //   this.router.navigate(['/profile']);
+  //   return;
+  // }
+
   async signUp(newUser: User, userPassword: string): Promise<any>{
       let promise = this.afAuth.createUserWithEmailAndPassword(newUser.email, userPassword).then((uData) => {
           let userData: User = {
@@ -65,6 +93,9 @@ export class UserService {
             email: uData.user.email,
             name: newUser.name,
             location: newUser.location,
+            lng: newUser.location.longitude,
+            lat: newUser.location.latitude,
+            hash: geofire.geohashForLocation([this.location.latitude, this.location.longitude]),
             accountType: newUser.accountType,
             photoURL: 'https://firebasestorage.googleapis.com/v0/b/deals2meals-4e239.appspot.com/o/default_user.jpg?alt=media&token=e1c97c88-5aab-487b-ae6d-878415e28b6a',
             isBusiness: newUser.isBusiness,
