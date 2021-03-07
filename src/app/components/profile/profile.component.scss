@@ -17,10 +17,10 @@ h1, h2{
 .profile-top{
     width: 100%;
 	height: 100%;
-	padding: 20px;
+    padding: 20px;
+    padding-top: 3rem !important;
 	color:white;
-//   background-image: linear-gradient( 135deg, #0971c769 10%, #08afb46b 100%);
-background: #2858CD;
+    background: #2858CD;
 }
 
 .ion-page{
@@ -166,7 +166,7 @@ ion-card{
 
 .settings-button{
     position: absolute;
-    top: 5%;
+    top: 10%;
     color: white;
     right: 5%;
     font-size: 1.5rem;

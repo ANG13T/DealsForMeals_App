@@ -6,7 +6,7 @@ NOW:
 
 - set zoom in on view buisness location maps
 
-- set limits on post info and buisness info
+- set limits on signup form
 
 - get locations by closest to your location
 
@@ -24,5 +24,4 @@ NEXT STEPS:
 - fix intermittent header styles problem
 
 DO RIGHT NOW:
-- remove header on create post complete + loading
 - get locations by closest to your location

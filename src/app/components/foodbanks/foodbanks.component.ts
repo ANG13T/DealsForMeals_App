@@ -26,6 +26,7 @@ export class FoodbanksComponent implements OnInit {
   loadingFoodbanks: boolean = false;
   loadingDeals: boolean = false;
   showFoodbanks: boolean = true;
+  search: boolean = false;
 
 
 
@@ -63,6 +64,9 @@ export class FoodbanksComponent implements OnInit {
   }
 
 
+  toggleSearch(){
+    this.search = !this.search;
+  }
 
   toggleShowFoodbanks() {
     console.log("toggled foodbanks")
