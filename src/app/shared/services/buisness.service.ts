@@ -22,17 +22,14 @@ export class BuisnessService {
     const radiusInM = 50 * 1000;
 
     const bounds = geofire.geohashQueryBounds(center, radiusInM);
-const promises = [];
-for (const b of bounds) {
-  let entireRef = this.afs.collection('users', ref => {
-    const q = ref.orderBy('location')
-    .startAt(b[0])
-    .endAt(b[1]);
-    promises.push(q.get());
-    return q;
-  })
-  await entireRef;
-}
+    const promises = [];
+    for (const b of bounds) {
+      const q = this.afs.collection('users').ref.orderBy('hash')
+        .startAt(b[0])
+        .endAt(b[1]);
+      
+      promises.push(q.get());
+    }
 
 // Collect all the query results together into a single list
 Promise.all(promises).then((snapshots) => {
@@ -42,6 +39,8 @@ Promise.all(promises).then((snapshots) => {
     for (const doc of snap.docs) {
       const lat = doc.get('lat');
       const lng = doc.get('lng');
+
+      console.log("doc is ", doc, "lat: ", lat, "long: ", lng)
 
       // We have to filter out a few false positives due to GeoHash
       // accuracy, but most will match
