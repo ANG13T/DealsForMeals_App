@@ -11,8 +11,13 @@
   
   <ion-content [fullscreen]="true" *ngIf="user">
     <agm-map [latitude]="user.location.latitude" [longitude]="user.location.longitude">
-      <agm-marker *ngFor="let buisness of buisnesses" [latitude]="buisness.location.latitude"
-              [longitude]="buisness.location.longitude"></agm-marker>
+      <agm-marker *ngFor="let buisness of buisnesses" 
+      [latitude]="buisness.location.latitude"
+      [longitude]="buisness.location.longitude"
+      [iconHeight]="20"
+      [iconWidth]="20"
+      [iconUrl]='{"url": buisness.photoURL,"scaledSize": {"height": 30, "width": 30}}'
+      ></agm-marker>
     </agm-map>
   </ion-content>
 </div>
