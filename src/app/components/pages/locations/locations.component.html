@@ -17,6 +17,8 @@
       [iconHeight]="20"
       [iconWidth]="20"
       [iconUrl]='{"url": buisness.photoURL,"scaledSize": {"height": 30, "width": 30}}'
+      [markerClickable]="true"
+      (markerClick)="openBuisnessDialog(buisness)"
       ></agm-marker>
     </agm-map>
   </ion-content>

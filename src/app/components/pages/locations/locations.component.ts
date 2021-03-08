@@ -1,9 +1,11 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { Geolocation, GeolocationOptions, Geoposition, PositionError } from '@ionic-native/geolocation';
+import { IonRouterOutlet, ModalController } from '@ionic/angular';
 import { User } from 'src/app/shared/models/user.model';
 import { BuisnessService } from 'src/app/shared/services/buisness.service';
 import { UserService } from 'src/app/shared/services/user.service';
+import { ViewBuisnessComponent } from '../../modals/view-buisness/view-buisness.component';
 
 declare var google: any;
 
@@ -21,7 +23,7 @@ export class LocationsComponent implements OnInit {
   @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
 
 
-  constructor(private businessService: BuisnessService, private userService: UserService) {
+  constructor(private businessService: BuisnessService, private userService: UserService, private routerOutlet: IonRouterOutlet, private modalController: ModalController) {
   }
 
   ngOnInit() {
@@ -34,6 +36,19 @@ export class LocationsComponent implements OnInit {
         })
       }
     })
+  }
 
+
+  async openBuisnessDialog(buisness: User) {
+    const modal = await this.modalController.create({
+      component: ViewBuisnessComponent,
+      cssClass: 'modal-view',
+      swipeToClose: true,
+      componentProps: {
+        buisness: buisness
+      },
+      presentingElement: this.routerOutlet.nativeEl
+    });
+    return await modal.present();
   }
 }
