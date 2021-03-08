@@ -27,7 +27,15 @@ export class FoodbanksComponent implements OnInit {
   loadingDeals: boolean = false;
   showFoodbanks: boolean = true;
   search: boolean = false;
-
+  filter: boolean = false;
+  public skillInput: string = '';
+  public skillList: any[] = [];
+  
+  addSkill(formValue) {
+    console.log()
+    this.skillList.push(formValue.skillValue)
+    this.skillInput = ''
+  }
 
 
   constructor(private buisnessService: BuisnessService, private postService: PostService, private routerOutlet: IonRouterOutlet, private modalController: ModalController, private userService: UserService) { }
@@ -66,6 +74,10 @@ export class FoodbanksComponent implements OnInit {
 
   toggleSearch(){
     this.search = !this.search;
+  }
+
+  toggleFilter(){
+    this.filter = !this.filter;
   }
 
   toggleShowFoodbanks() {

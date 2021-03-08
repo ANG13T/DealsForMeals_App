@@ -5,7 +5,7 @@
         <button ion-button (click)="toggleSearch()">
           <ion-icon name="search-outline"></ion-icon>
         </button>
-        <button ion-button (click)="toggleSearch()">
+        <button ion-button (click)="toggleFilter()">
           <ion-icon name="funnel-outline"></ion-icon>
         </button>
       </ion-buttons>
@@ -26,6 +26,9 @@
     </ion-toolbar>
     <ion-toolbar class="search-toolbar" [hidden]="!showFoodbanks || !search">
       <ion-searchbar></ion-searchbar>
+    </ion-toolbar>
+    <ion-toolbar [hidden]="!showFoodbanks || !filter">
+      
     </ion-toolbar>
   </ion-header>
 
