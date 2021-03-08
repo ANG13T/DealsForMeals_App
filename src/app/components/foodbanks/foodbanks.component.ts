@@ -38,13 +38,6 @@ export class FoodbanksComponent implements OnInit {
 
   disabledControl = new FormControl(false);
 
-  setChipsValue() {
-    this.categoryControl.setValue(["Foodbanks", "Restaurants"]);
-  }
-
-
-
-
   constructor(private buisnessService: BuisnessService, private postService: PostService, private routerOutlet: IonRouterOutlet, private modalController: ModalController, private userService: UserService) { }
 
   async ngOnInit() {
@@ -88,22 +81,22 @@ export class FoodbanksComponent implements OnInit {
 
   toggleSearch(){
     this.search = !this.search;
+    if(this.search){
+      this.filter = false;
+    }
   }
 
   toggleFilter(){
     this.filter = !this.filter;
+    if(this.filter){
+      this.search = false;
+    }
   }
 
   toggleShowFoodbanks() {
-    console.log("toggled foodbanks")
     this.showFoodbanks = !this.showFoodbanks;
   }
 
-
-  // loadGeoFire(){
-  //   const geoFire = new GeoFirestore(firebase.default.firestore())  
-  //   geoFire.collection("RetailersCoords")
-  // }
 
   async openBuisness(buisness: User) {
     const modal = await this.modalController.create({
