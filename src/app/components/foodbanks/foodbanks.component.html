@@ -28,7 +28,8 @@
       <ion-searchbar></ion-searchbar>
     </ion-toolbar>
     <ion-toolbar [hidden]="!showFoodbanks || !filter">
-      
+      <app-chips-select [options]="buisnessOptions" [formControl]="categoryControl">
+      </app-chips-select>
     </ion-toolbar>
   </ion-header>
 

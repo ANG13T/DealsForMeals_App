@@ -46,12 +46,14 @@ import { ViewDealComponent } from './components/view-deal/view-deal.component';
 import { AgmCoreModule } from '@agm/core';
 import { AvatarModule } from 'ngx-avatar';
 import { SettingsComponent } from './components/settings/settings.component';
+import { ChipsSelectComponent } from './components/chips-select/chips-select.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 @NgModule({
-  declarations: [AppComponent, HomePage, SignUpComponent, SignInComponent, ProfileComponent, SideNavComponent, BaseNavComponent, EditProfileComponent, CreatePostComponent, EditPostComponent, BottomBarComponent, FoodbanksComponent, LocationsComponent, StoresComponent, ViewBuisnessComponent, ViewDealComponent, SettingsComponent, CreatePostComponent],
+  declarations: [AppComponent, HomePage, SignUpComponent, SignInComponent, ProfileComponent, SideNavComponent, BaseNavComponent, EditProfileComponent, CreatePostComponent, EditPostComponent, BottomBarComponent, FoodbanksComponent, LocationsComponent, StoresComponent, ViewBuisnessComponent, ViewDealComponent, SettingsComponent, CreatePostComponent, ChipsSelectComponent],
   entryComponents: [CreatePostComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, AngularFireModule.initializeApp(environment.firebaseConfig),AngularFireAuthModule, AngularFireStorageModule, FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule, MatStepperModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatTabsModule, MatIconModule, AgmCoreModule.forRoot({
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, AngularFireModule.initializeApp(environment.firebaseConfig),AngularFireAuthModule, AngularFireStorageModule, FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule, MatStepperModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatTabsModule, MatIconModule, MatChipsModule, AgmCoreModule.forRoot({
     apiKey: environment.googleMapsAPIKey
   }), AvatarModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AngularFirestore, NativeGeocoder, Geolocation, MatTabsModule],

@@ -11,8 +11,10 @@ import { ViewDealComponent } from '../view-deal/view-deal.component';
 import * as firebase from 'firebase/app';
 import { Location } from 'src/app/shared/models/location.model';
 import { UserService } from 'src/app/shared/services/user.service';
+import { FormControl } from '@angular/forms';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
-
+@UntilDestroy()
 @Component({
   selector: 'app-foodbanks',
   templateUrl: './foodbanks.component.html',
@@ -28,14 +30,19 @@ export class FoodbanksComponent implements OnInit {
   showFoodbanks: boolean = true;
   search: boolean = false;
   filter: boolean = false;
-  public skillInput: string = '';
-  public skillList: any[] = [];
-  
-  addSkill(formValue) {
-    console.log()
-    this.skillList.push(formValue.skillValue)
-    this.skillInput = ''
+  buisnessOptions = ["Foodbanks", "Restaurants", "Other"];
+
+  categoryControl = new FormControl(['Foodbanks']);
+
+  chipsControlValue$ = this.categoryControl.valueChanges;
+
+  disabledControl = new FormControl(false);
+
+  setChipsValue() {
+    this.categoryControl.setValue(["Foodbanks", "Restaurants"]);
   }
+
+
 
 
   constructor(private buisnessService: BuisnessService, private postService: PostService, private routerOutlet: IonRouterOutlet, private modalController: ModalController, private userService: UserService) { }
@@ -44,6 +51,13 @@ export class FoodbanksComponent implements OnInit {
     this.loadingDeals = true;
     this.loadingFoodbanks = true;
     this.showFoodbanks = true;
+
+    this.disabledControl.valueChanges
+      .pipe(untilDestroyed(this))
+      .subscribe((val) => {
+        if (val) this.categoryControl.disable();
+        else this.categoryControl.enable();
+      });
 
     this.userService.user$.subscribe(async (userProfile) => {
       if(userProfile){

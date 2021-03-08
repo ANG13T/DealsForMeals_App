@@ -10,6 +10,7 @@ import { MatChip, MatChipList } from '@angular/material/chips';
 import { map } from 'rxjs/operators';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
   selector: 'app-chips-select',
   templateUrl: './chips-select.component.html',
