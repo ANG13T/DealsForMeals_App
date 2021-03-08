@@ -4,7 +4,7 @@ import { ActionSheetController, ModalController } from '@ionic/angular';
 import { Post } from 'src/app/shared/models/post.model';
 import { AlertController } from '@ionic/angular';
 import { PostService } from 'src/app/shared/services/post.service';
-import { EditPostComponent } from '../modals/edit-post/edit-post.component';
+import { EditPostComponent } from '../edit-post/edit-post.component';
 import { UserService } from 'src/app/shared/services/user.service';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 

@@ -3,10 +3,10 @@ import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import { MenuController, ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { CreatePostComponent } from '../modals/create-post/create-post.component';
+import { CreatePostComponent } from '../../modals/create-post/create-post.component';
 import { Post } from 'src/app/shared/models/post.model';
 import { PostService } from 'src/app/shared/services/post.service';
-import { ViewDealComponent } from '../view-deal/view-deal.component';
+import { ViewDealComponent } from '../../modals/view-deal/view-deal.component';
 
 @Component({
   selector: 'app-profile',

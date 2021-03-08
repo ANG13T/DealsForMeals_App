@@ -3,7 +3,7 @@ import { Router, RouterEvent } from '@angular/router';
 import { ModalController, NavController } from '@ionic/angular';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
-import { CreatePostComponent } from '../modals/create-post/create-post.component';
+import { CreatePostComponent } from '../../modals/create-post/create-post.component';
 
 @Component({
   selector: 'app-bottom-bar',
