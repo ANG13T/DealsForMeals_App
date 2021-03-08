@@ -12,8 +12,6 @@ NOW:
 
 - load more data when scroll to bottom
 
-- make maps of closest 30 locations
-
 - restyle to figma design
 
 - change header component orientation
@@ -29,6 +27,5 @@ NEXT STEPS:
 
 DO RIGHT NOW:
 - get deals from stores near you
-- make maps of closest 30 locations
 - set zoom in on view buisness location maps
 - set limits on signup form

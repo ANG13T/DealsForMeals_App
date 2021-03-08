@@ -14,7 +14,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class CreatePostComponent implements OnInit {
 
-  post: Post = {title: "", description: "", userProfile: null, images: [], amount: 1, id: ""};
+  post: Post = {title: "", description: "", userProfile: null, images: [], amount: 1, id: "", location: null, lat: "", lng: "", hash: ""};
   errors = {title: "", description: "", amount: ""};
   loading: boolean = false;
   imageLoading: boolean = false;
@@ -24,6 +24,9 @@ export class CreatePostComponent implements OnInit {
     this.userService.user$.subscribe((userProfile) => {
       if(userProfile){
         this.post.userProfile = userProfile;
+        this.post.location = userProfile.location;
+        this.post.lat = userProfile.lat;
+        this.post.lng = userProfile.lng;
       }
     })
   }

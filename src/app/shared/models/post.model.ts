@@ -7,4 +7,8 @@ export interface Post {
     images: string[];
     amount: number;
     id: string;
+    location?: Location; 
+    lat?: any;
+    lng?: any;
+    hash?: any;
   }

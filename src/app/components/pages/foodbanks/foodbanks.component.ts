@@ -61,6 +61,10 @@ export class FoodbanksComponent implements OnInit {
           this.buisnesses = result;
           this.loadingFoodbanks = false;
         })
+
+        this.postService.getDealsNearLocation(this.user.location).then((result) => {
+          console.log("resultant deals", result)
+        })
       }
     });
 
