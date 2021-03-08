@@ -8,7 +8,6 @@ import { ProfileComponent } from './components/pages/profile/profile.component';
 import { SettingsComponent } from './components/pages/settings/settings.component';
 import { SignInComponent } from './components/pages/sign-in/sign-in.component';
 import { SignUpComponent } from './components/pages/sign-up/sign-up.component';
-import { StoresComponent } from './components/pages/stores/stores.component';
 import { ViewBuisnessComponent } from './components/modals/view-buisness/view-buisness.component';
 import { ViewDealComponent } from './components/modals/view-deal/view-deal.component';
 import { AuthGuard } from './shared/guards/auth.guard';
@@ -34,11 +33,6 @@ const routes: Routes = [
   {
     path: 'foodbanks',
     component: FoodbanksComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'stores',
-    component: StoresComponent,
     canActivate: [AuthGuard]
   },
   {

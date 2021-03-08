@@ -37,7 +37,6 @@ import { EditPostComponent } from './components/modals/edit-post/edit-post.compo
 import { BottomBarComponent } from './components/accessories/bottom-bar/bottom-bar.component';
 import { FoodbanksComponent } from './components/pages/foodbanks/foodbanks.component';
 import { LocationsComponent } from './components/pages/locations/locations.component';
-import { StoresComponent } from './components/pages/stores/stores.component';
 import { ViewBuisnessComponent } from './components/modals/view-buisness/view-buisness.component';
 import { ViewDealComponent } from './components/modals/view-deal/view-deal.component';
 import { SettingsComponent } from './components/pages/settings/settings.component';
@@ -46,7 +45,7 @@ import { ChipsSelectComponent } from './components/accessories/chips-select/chip
 
 
 @NgModule({
-  declarations: [AppComponent, HomePage, SignUpComponent, SignInComponent, ProfileComponent, SideNavComponent, BaseNavComponent, EditProfileComponent, CreatePostComponent, EditPostComponent, BottomBarComponent, FoodbanksComponent, LocationsComponent, StoresComponent, ViewBuisnessComponent, ViewDealComponent, SettingsComponent, CreatePostComponent, ChipsSelectComponent],
+  declarations: [AppComponent, HomePage, SignUpComponent, SignInComponent, ProfileComponent, SideNavComponent, BaseNavComponent, EditProfileComponent, CreatePostComponent, EditPostComponent, BottomBarComponent, FoodbanksComponent, LocationsComponent, ViewBuisnessComponent, ViewDealComponent, SettingsComponent, CreatePostComponent, ChipsSelectComponent],
   entryComponents: [CreatePostComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, AngularFireModule.initializeApp(environment.firebaseConfig), AngularFireAuthModule, AngularFireStorageModule, FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule, MaterialModule, AgmCoreModule.forRoot({
     apiKey: environment.googleMapsAPIKey
