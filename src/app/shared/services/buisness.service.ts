@@ -33,12 +33,13 @@ export class BuisnessService {
 
 // Collect all the query results together into a single list
 Promise.all(promises).then((snapshots) => {
-  const matchingDocs = [];
+  const matchingDocs: User[] = [];
 
   for (const snap of snapshots) {
     for (const doc of snap.docs) {
-      const lat = doc.get('lat');
-      const lng = doc.get('lng');
+      const userData = doc.data();
+      const lat = userData.lat;
+      const lng = userData.lng;
 
       console.log("doc is ", doc, "lat: ", lat, "long: ", lng)
 
@@ -47,7 +48,8 @@ Promise.all(promises).then((snapshots) => {
       const distanceInKm = geofire.distanceBetween([lat, lng], center);
       const distanceInM = distanceInKm * 1000;
       if (distanceInM <= radiusInM) {
-        matchingDocs.push(doc);
+        // let userDoc = {doc.data().uid, } as User;
+        matchingDocs.push(userData);
       }
     }
   }
