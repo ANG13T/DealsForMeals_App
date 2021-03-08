@@ -13,11 +13,11 @@ import * as geofire from 'geofire-common';
 export class BuisnessService {
 
 
-  constructor(private afs: AngularFirestore) { 
-  
+  constructor(private afs: AngularFirestore) {
+
   }
 
-  async getBuisnessesNearLocation(location: Location){
+  async getBuisnessesNearLocation(location: Location): Promise<any> {
     let center = [location.latitude, location.longitude];
     const radiusInM = 50 * 1000;
 
@@ -27,44 +27,44 @@ export class BuisnessService {
       const q = this.afs.collection('users').ref.orderBy('hash')
         .startAt(b[0])
         .endAt(b[1]);
-      
+
       promises.push(q.get());
     }
 
-// Collect all the query results together into a single list
-Promise.all(promises).then((snapshots) => {
-  const matchingDocs: User[] = [];
+    // Collect all the query results together into a single list
+    let result = Promise.all(promises).then((snapshots) => {
+      const matchingDocs: User[] = [];
 
-  for (const snap of snapshots) {
-    for (const doc of snap.docs) {
-      const userData = doc.data();
-      const lat = userData.lat;
-      const lng = userData.lng;
+      for (const snap of snapshots) {
+        for (const doc of snap.docs) {
+          const userData = doc.data();
+          const lat = userData.lat;
+          const lng = userData.lng;
 
-      console.log("doc is ", doc, "lat: ", lat, "long: ", lng)
+          console.log("doc is ", doc, "lat: ", lat, "long: ", lng)
 
-      // We have to filter out a few false positives due to GeoHash
-      // accuracy, but most will match
-      const distanceInKm = geofire.distanceBetween([lat, lng], center);
-      const distanceInM = distanceInKm * 1000;
-      if (distanceInM <= radiusInM) {
-        // let userDoc = {doc.data().uid, } as User;
-        matchingDocs.push(userData);
+          // We have to filter out a few false positives due to GeoHash
+          // accuracy, but most will match
+          const distanceInKm = geofire.distanceBetween([lat, lng], center);
+          const distanceInM = distanceInKm * 1000;
+          if (distanceInM <= radiusInM) {
+            // let userDoc = {doc.data().uid, } as User;
+            matchingDocs.push(userData);
+          }
+        }
       }
-    }
+
+      return matchingDocs;
+    }).then((matchingDocs) => {
+      // Process the matching documents
+      // ...
+      console.log("the matching docs are", matchingDocs)
+      return matchingDocs;
+    });
+    return result;
   }
 
-  return matchingDocs;
-}).then((matchingDocs) => {
-  // Process the matching documents
-  // ...
-  console.log("the matching docs are", matchingDocs)
-});
-
-
-  }
-
-  async getBuisnesses(amount: number){
+  async getBuisnesses(amount: number) {
     let buisnesses: User[] = [];
     let promise = this.afs.firestore.collection("users").limit(amount).get().then((snapshot) => {
       snapshot.forEach((doc) => {
@@ -86,7 +86,7 @@ Promise.all(promises).then((snapshots) => {
   }
 
   // TODO: make category type specific
-  async getCategoryBuisnesses(amount: number, category: string){
+  async getCategoryBuisnesses(amount: number, category: string) {
     let buisnesses: User[] = [];
     let promise = this.afs.firestore.collection("users").where("accountType", "==", category).limit(amount).get().then((snapshot) => {
       snapshot.forEach((doc) => {
@@ -107,20 +107,20 @@ Promise.all(promises).then((snapshots) => {
     return promise;
   }
 
-  async getBuisnessByID(id: string){
+  async getBuisnessByID(id: string) {
     let buisness: User;
     let promise = this.afs.firestore.collection("users").doc(id).get().then((doc: any) => {
-        let data = doc.data();
-        buisness = {
-          name: data.name,
-          email: data.email,
-          uid: data.uid,
-          accountType: data.accountType,
-          photoURL: data.photoURL,
-          isBusiness: data.isBusiness,
-          location: data.location
-        } 
-        return buisness;
+      let data = doc.data();
+      buisness = {
+        name: data.name,
+        email: data.email,
+        uid: data.uid,
+        accountType: data.accountType,
+        photoURL: data.photoURL,
+        isBusiness: data.isBusiness,
+        location: data.location
+      }
+      return buisness;
     })
     return promise;
   }

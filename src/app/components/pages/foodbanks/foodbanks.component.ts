@@ -22,7 +22,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 })
 export class FoodbanksComponent implements OnInit {
 
-  foodbanks: User[];
+  buisnesses: User[];
   user: User;
   deals: Post[] = [];
   loadingFoodbanks: boolean = false;
@@ -56,18 +56,13 @@ export class FoodbanksComponent implements OnInit {
       if(userProfile){
         this.user = userProfile;
         console.log("got user", userProfile);
-        this.buisnessService.getBuisnessesNearLocation(this.user.location).then(() => {
-          console.log("done");
+        this.buisnessService.getBuisnessesNearLocation(this.user.location).then((result) => {
+          console.log("done with result", result);
+          this.buisnesses = result;
+          this.loadingFoodbanks = false;
         })
       }
     });
-
-    
-    this.buisnessService.getCategoryBuisnesses(5, 'foodbank').then((data) => {
-      console.log("got foodbanks", data)
-      this.foodbanks = data;
-      this.loadingFoodbanks = false;
-    })
 
     this.postService.getDeals(5).then((dealsData) => {
       this.deals = dealsData;

@@ -20,7 +20,7 @@
           <ion-label>Deals</ion-label>
         </ion-segment-button>
         <ion-segment-button value="foodbanks" checked (click)="toggleShowFoodbanks()">
-          <ion-label>Food Banks Near Me</ion-label>
+          <ion-label>Buisnessses Near Me</ion-label>
         </ion-segment-button>
       </ion-segment>
     </ion-toolbar>
@@ -42,7 +42,7 @@
     <ion-infinite-scroll>
       <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data…">
         <div class="foodbanks" *ngIf="showFoodbanks" [hidden]="loadingFoodbanks">
-          <div class="foodbank" *ngFor="let foodbank of foodbanks" (click)="openBuisness(foodbank)">
+          <div class="foodbank" *ngFor="let foodbank of buisnesses" (click)="openBuisness(foodbank)">
             <ion-item>
               <ion-thumbnail slot="start">
                 <img src={{foodbank.photoURL}}>
@@ -58,7 +58,7 @@
         </div>
 
         <div class="loading-foodbanks" [hidden]="!loadingFoodbanks">
-          <div class="foodbank" *ngFor="let post of [1,2]">
+          <div class="foodbank" *ngFor="let post of [1,2,3,4,5]">
             <ion-item>
               <ion-thumbnail slot="start">
                 <ion-skeleton-text></ion-skeleton-text>
@@ -102,7 +102,7 @@
         </div>
 
         <div class="loading-foodbanks" [hidden]="!loadingDeals">
-          <div class="foodbank" *ngFor="let post of [1,2]">
+          <div class="foodbank" *ngFor="let post of [1,2,3,4,5]">
             <ion-item>
               <ion-thumbnail slot="start">
                 <ion-skeleton-text></ion-skeleton-text>
