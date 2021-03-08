@@ -4,15 +4,15 @@
       <ion-buttons slot="end">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-buttons end>
-        <button ion-button (click)="showNearbyResto()"><ion-icon name="list"></ion-icon>Restaurants</button>
-        </ion-buttons> 
       <ion-title>Locations Near You</ion-title>
     </ion-toolbar>
   </ion-header>
   
   
-  <ion-content [fullscreen]="true">
-    <div #map id="map"></div>
+  <ion-content [fullscreen]="true" *ngIf="user">
+    <agm-map [latitude]="user.location.latitude" [longitude]="user.location.longitude">
+      <agm-marker *ngFor="let buisness of buisnesses" [latitude]="buisness.location.latitude"
+              [longitude]="buisness.location.longitude"></agm-marker>
+    </agm-map>
   </ion-content>
 </div>

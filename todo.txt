@@ -8,13 +8,17 @@ NOW:
 
 - set limits on signup form
 
-- get locations by closest to your location
-
 - get deals from stores near you
 
 - load more data when scroll to bottom
 
 - make maps of closest 30 locations
+
+- restyle to figma design
+
+- change header component orientation
+
+- email supplier form
 
 NEXT STEPS:
  - make splash screen
@@ -24,4 +28,7 @@ NEXT STEPS:
 - fix intermittent header styles problem
 
 DO RIGHT NOW:
-- get locations by closest to your location
+- get deals from stores near you
+- make maps of closest 30 locations
+- set zoom in on view buisness location maps
+- set limits on signup form

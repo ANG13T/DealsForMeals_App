@@ -1,6 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
-import { Geolocation ,GeolocationOptions ,Geoposition ,PositionError } from '@ionic-native/geolocation'; 
+import { Geolocation, GeolocationOptions, Geoposition, PositionError } from '@ionic-native/geolocation';
+import { User } from 'src/app/shared/models/user.model';
+import { BuisnessService } from 'src/app/shared/services/buisness.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 declare var google: any;
 
@@ -10,31 +13,27 @@ declare var google: any;
   styleUrls: ['./locations.component.scss'],
 })
 export class LocationsComponent implements OnInit {
-  
+
   map: any;
+  user: User;
+  buisnesses: User[] = [];
 
-  @ViewChild('map', {read: ElementRef, static: false}) mapRef: ElementRef;
+  @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
 
-  
-  constructor() { }
 
-  ionViewDidEnter(){
-    this.showMap();
+  constructor(private businessService: BuisnessService, private userService: UserService) {
   }
- 
 
   ngOnInit() {
+    this.userService.user$.subscribe((userProfile) => {
+      if (userProfile) {
+        this.user = userProfile;
+
+        this.businessService.getBuisnessesNearLocation(this.user.location).then((result) => {
+          this.buisnesses = result;
+        })
+      }
+    })
+
   }
-
-  showMap(){
-    const location = new google.maps.LatLng(-17.824858, 31.053208);
-    const options = {
-      center: location,
-      zoom: 15,
-      disableDefaultUI: true
-    }
-    this.map = new google.maps.Map(this.mapRef.nativeElement, options);
-
-  }
-
 }
