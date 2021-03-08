@@ -13,7 +13,7 @@ import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [],
-  imports: [
+  exports: [
     CommonModule,
     MatTabsModule,
     MatStepperModule,

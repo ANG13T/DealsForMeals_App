@@ -8,7 +8,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 // Modules
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -53,5 +53,6 @@ import { ChipsSelectComponent } from './components/accessories/chips-select/chip
   }), AvatarModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AngularFirestore, NativeGeocoder, Geolocation],
   bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
