@@ -16,6 +16,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { MaterialModule } from './shared/modules/material/material.module';
 import { HttpClientModule } from '@angular/common/http'; 
 import { AngularFirestore } from '@angular/fire/firestore';
 import { HomePage } from './components/home/home.page';
@@ -33,30 +34,22 @@ import { LocationsComponent } from './components/locations/locations.component';
 import { StoresComponent } from './components/stores/stores.component';
 
 // Material Imports
-// TODO: make material module for all material imports
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatIconModule} from '@angular/material/icon';
 import { ViewBuisnessComponent } from './components/view-buisness/view-buisness.component';
 import { ViewDealComponent } from './components/view-deal/view-deal.component';
 import { AgmCoreModule } from '@agm/core';
 import { AvatarModule } from 'ngx-avatar';
 import { SettingsComponent } from './components/settings/settings.component';
 import { ChipsSelectComponent } from './components/chips-select/chips-select.component';
-import { MatChipsModule } from '@angular/material/chips';
+
 
 
 @NgModule({
   declarations: [AppComponent, HomePage, SignUpComponent, SignInComponent, ProfileComponent, SideNavComponent, BaseNavComponent, EditProfileComponent, CreatePostComponent, EditPostComponent, BottomBarComponent, FoodbanksComponent, LocationsComponent, StoresComponent, ViewBuisnessComponent, ViewDealComponent, SettingsComponent, CreatePostComponent, ChipsSelectComponent],
   entryComponents: [CreatePostComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, AngularFireModule.initializeApp(environment.firebaseConfig),AngularFireAuthModule, AngularFireStorageModule, FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule, MatStepperModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatTabsModule, MatIconModule, MatChipsModule, AgmCoreModule.forRoot({
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, AngularFireModule.initializeApp(environment.firebaseConfig),AngularFireAuthModule, AngularFireStorageModule, FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule, MaterialModule, AgmCoreModule.forRoot({
     apiKey: environment.googleMapsAPIKey
   }), AvatarModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AngularFirestore, NativeGeocoder, Geolocation, MatTabsModule],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AngularFirestore, NativeGeocoder, Geolocation],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
