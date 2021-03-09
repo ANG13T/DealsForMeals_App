@@ -8,11 +8,7 @@ NOW:
 
 - set limits on signup form
 
-- get deals from stores near you
-
 - load more data when scroll to bottom
-
-- restyle to figma design
 
 - change header component orientation
 
@@ -26,6 +22,6 @@ NEXT STEPS:
 - fix intermittent header styles problem
 
 DO RIGHT NOW:
-- get deals from stores near you
+- get deals from stores near you display
 - set zoom in on view buisness location maps
-- set limits on signup form
+- restyle to figma design
