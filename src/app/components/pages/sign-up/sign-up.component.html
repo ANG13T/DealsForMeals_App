@@ -56,22 +56,25 @@
         <ng-template matStepLabel>Step 3</ng-template>
         <mat-form-field appearance="outline" [hidden]="!isBusiness">
           <mat-label>Organization Name:</mat-label>
-          <input matInput placeholder="Ex. Whole Foods" required [(ngModel)]="name">
+          <input matInput placeholder="Ex. Whole Foods" required [(ngModel)]="name" maxlength="30">
           <mat-icon matSuffix>person_outline</mat-icon>
           <mat-hint style="color:red;">{{errors.name}}</mat-hint>
+          <mat-hint align="end">{{name.length}} / 30</mat-hint>
         </mat-form-field>
   
         <mat-form-field appearance="outline" [hidden]="isBusiness">
           <mat-label>First Name:</mat-label>
-          <input matInput placeholder="Ex. John" required (input)="changeName($event.target.value, 'first')">
+          <input matInput placeholder="Ex. John" required (input)="changeName($event.target.value, 'first')" maxlength="20">
           <mat-icon matSuffix>person_outline</mat-icon>
           <mat-hint style="color:red;">{{errors.name}}</mat-hint>
+          <mat-hint align="end">{{firstName.length}} / 20</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="outline" [hidden]="isBusiness">
           <mat-label>Last Name:</mat-label>
-          <input matInput placeholder="Ex. Doe" required (input)="changeName($event.target.value, 'last')">
+          <input matInput placeholder="Ex. Doe" required (input)="changeName($event.target.value, 'last')" maxlength="20"> 
           <mat-icon matSuffix>person_outline</mat-icon>
           <mat-hint style="color:red;">{{errors.name}}</mat-hint>
+          <mat-hint align="end">{{lastName.length}} / 20</mat-hint>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Email: </mat-label>

@@ -27,7 +27,8 @@
     <div class="bottom-section" *ngIf="userProfile.accountType !== 'foodie'">
       <ion-item>
         <ion-label>Buisness Name:</ion-label>
-        <ion-input [(ngModel)]="userProfile.name" placeholder="eg. Walgreens"></ion-input>
+        <ion-input [(ngModel)]="userProfile.name" placeholder="eg. Walgreens" maxlength="30"></ion-input>
+        <ion-label color="primary" stacked>{{userProfile.name.length}} / 30</ion-label>
       </ion-item>
 
       <ion-item>
@@ -51,12 +52,14 @@
     <div class="bottom-section" *ngIf="userProfile.accountType == 'foodie'">
       <ion-item>
         <ion-label>First Name:</ion-label>
-        <ion-input placeholder="eg. John" [(ngModel)]="firstName" (input)="editUserName($event.target.value, 'first')"></ion-input>
+        <ion-input placeholder="eg. John" [(ngModel)]="firstName" (input)="editUserName($event.target.value, 'first')" maxlength="20"></ion-input>
+        <ion-label color="primary" stacked>{{firstName.length}} / 20</ion-label>
       </ion-item>
 
       <ion-item>
         <ion-label>Last Name:</ion-label>
-        <ion-input placeholder="eg. Doe" [(ngModel)]="lastName" (input)="editUserName($event.target.value, 'last')"></ion-input>
+        <ion-input placeholder="eg. Doe" [(ngModel)]="lastName" (input)="editUserName($event.target.value, 'last')" maxlength="20"></ion-input>
+        <ion-label color="primary" stacked>{{lastName.length}} / 20</ion-label>
       </ion-item>
 
       <ion-item>

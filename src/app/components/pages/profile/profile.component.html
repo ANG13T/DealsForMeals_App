@@ -8,8 +8,11 @@
         <ion-icon name="ellipsis-horizontal"></ion-icon>
       </div>
       <div class="profile-top">
-        <div class="top">
-          <img src={{user.photoURL}} alt="Profile Image" class="profile-image" />
+        <div class="topDisplay">
+            <img src={{user.photoURL}} alt="Profile Image" class="profile-image" />
+            <button mat-mini-fab class="edit-profile" (click)="navigate('profile/edit')">
+              <mat-icon>edit</mat-icon>
+            </button>
         </div>
       </div>
     </div>

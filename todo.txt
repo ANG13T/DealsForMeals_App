@@ -24,4 +24,3 @@ NEXT STEPS:
 DO RIGHT NOW:
 - get deals from stores near you display
 - set zoom in on view buisness location maps
-- restyle to figma design
