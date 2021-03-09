@@ -10,10 +10,17 @@
   background-color: rgb(255 255 255 / 77%);
   color: black;
   width: 90%;
-  height: 60vh;
+  height: 73vh;
   text-align: center;
   margin: auto;
   margin-top: 10vh;
+  border: 5px solid white;
+  border-radius: 10px;
+
+  .logo-image{
+    width: 12rem;
+    margin-top: 2rem;
+  }
 }
 
 #container {
@@ -29,7 +36,7 @@
 
 #container p {
   font-size: 16px;
-  color: #8c8c8c;
+  color: #483e3ede;
   margin-top: 1.5rem;
   line-height: 2rem;
 }
@@ -48,10 +55,11 @@
   text-align: center;
   font-weight: bold;
   font-size: 2rem;
+  font-family: 'poppins', sans-serif;
 }
 
 .sign-in-button{
-  width: 80%;
+  width: 90%;
   margin: auto;
   --background: #666A86 !important;
   --font-family: 'Roboto', sans-serif;
@@ -61,6 +69,7 @@
   font-size: 1.1rem;
   font-weight: bold;
   --border-radius: 20px;
+  margin-bottom: 1.5rem;
 }
 
 .context{
