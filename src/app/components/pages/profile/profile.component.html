@@ -9,6 +9,9 @@
           <img src={{user.photoURL}} alt="Profile Image" class="profile-image" />
         </div>
       </div>
+    </div>
+
+    <div class="container">
 
       <div class="transition-info">
         <!-- TODO: placeholder skeletom loader -->
@@ -19,16 +22,14 @@
             {{userAddress}}
           </span>
         </h2>
-
+  
         <!-- TODO: placeholder skeletom loader -->
         <!-- TODO: only show short description  -->
         <div class="description">
           {{user.description}}
         </div>
       </div>
-    </div>
-
-    <div class="container">
+      
       <div class="supplies">
         <div class="profile-options" *ngIf="!user.isBusiness">
           <h4 class="welcome-text">Welcome, {{user.name}}!</h4>

@@ -11,6 +11,7 @@ background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA3AAAAKMCAY
 
 .transition-info{
     width: 100%;
+    text-align: center;
     margin: auto;
     border: 20px solid white;
     background: white;
@@ -87,7 +88,7 @@ ion-menu-button{
     font-size: 1.6rem !important;
     font-weight: bold !important;
     margin-bottom: .5rem !important;
-    margin-top: 1rem !important;
+    margin-top: .5rem !important;
     padding-top: 1rem;
 }
 
@@ -107,7 +108,6 @@ ion-menu-button{
 
 .bottom-section, .supplies{
     text-align: center;
-    margin-top: 2vh;
     width: 100%;
 
     h3{
@@ -167,7 +167,7 @@ ion-card{
 }
 
 .profile-options{
-    margin-top: 1vh;
+    background: white;
 
     .welcome-text{
         font-size: 1.2rem;
