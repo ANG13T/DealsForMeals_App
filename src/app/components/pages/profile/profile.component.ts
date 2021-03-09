@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit {
   steps: any[] = [];
   showDealsInfo: boolean = false;
   map: any;
+  selectedIndex: string = "deals";
 
   constructor(private userService: UserService, private router: Router, public modalController: ModalController, private postService: PostService) { }
 

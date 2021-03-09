@@ -182,12 +182,20 @@ ion-card{
     }
 }
 
-.settings-button{
+.settings-button, .menu-button{
     position: absolute;
-    top: 10%;
     color: white;
-    right: 5%;
     font-size: 1.5rem;
+}
+
+.settings-button{
+    top: 10%;
+    right: 5%;
+}
+
+.menu-button{
+    top: 10%;
+    left: 5%;
 }
 
 #map {

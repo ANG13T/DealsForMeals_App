@@ -1,6 +1,9 @@
 <ion-content [fullscreen]="true">
   <div profile *ngIf="user" #content class="full-profile">
     <div class="top-content">
+      <div class="menu-button">
+        <ion-menu-button></ion-menu-button>
+      </div>
       <div class="settings-button" (click)="navigate('settings')">
         <ion-icon name="ellipsis-horizontal"></ion-icon>
       </div>
@@ -29,7 +32,7 @@
           {{user.description}}
         </div>
       </div>
-      
+
       <div class="supplies">
         <div class="profile-options" *ngIf="!user.isBusiness">
           <h4 class="welcome-text">Welcome, {{user.name}}!</h4>
@@ -41,9 +44,17 @@
         </div>
 
         <div class="profile-options" *ngIf="user.isBusiness">
-          <mat-tab-group>
+          <ion-segment value="deals" [(ngModel)]="selectedIndex">
+            <ion-segment-button value="deals">
+              <ion-label>DEALS</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="location">
+              <ion-label>LOCATION</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+    
             <!-- TODO: display deals in a gallery -->
-            <mat-tab label="DEALS">
+            <div class="deals" [hidden]="selectedIndex != 'deals'">
               <h3 class="content-header">Your Deals</h3>
               <div class="posts">
                 <div class="dealDisplay">
@@ -120,16 +131,16 @@
                   </ion-card>
                 </div>
               </div>
-            </mat-tab>
-            <mat-tab label="LOCATION">
-              <div class="location">
-                <agm-map [latitude]="user.location.latitude" [longitude]="user.location.longitude">
-                  <agm-marker [latitude]="user.location.latitude"
-                          [longitude]="user.location.longitude"></agm-marker>
-                </agm-map>
-              </div>
-            </mat-tab>
-          </mat-tab-group>
+            </div>
+            
+          <div class="location" [hidden]="selectedIndex != 'location'">
+            <agm-map [latitude]="user.location.latitude" [longitude]="user.location.longitude">
+              <agm-marker [latitude]="user.location.latitude"
+                      [longitude]="user.location.longitude"></agm-marker>
+            </agm-map>
+          </div>
+    
+      
         </div>
         <!-- Show posts here -->
 
