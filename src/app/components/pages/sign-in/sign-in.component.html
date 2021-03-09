@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true" class="entire-page">
+<ion-content [fullscreen]="true">
   <div class="top">
     <div style="color: transparent; padding-top: 8vh;">content</div>
     <svg width="100%" height="139" viewBox="0 0 100% 150" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;">
@@ -14,6 +14,7 @@
       <mat-label>Email: </mat-label>
       <input matInput placeholder="Ex. johndoe@gmail.com" type="email"
              required [(ngModel)]="email">
+      <mat-icon matSuffix>mail_outline</mat-icon>
     <mat-hint style="color:red;">{{errors.email}}</mat-hint>
     </mat-form-field>
   
@@ -21,6 +22,7 @@
       <mat-label>Password:</mat-label>
       <input matInput type="password"
              required [(ngModel)]="password">
+      <mat-icon matSuffix>lock</mat-icon>
     <mat-hint style="color:red;">{{errors.password}}</mat-hint> 
     </mat-form-field>
   </div>

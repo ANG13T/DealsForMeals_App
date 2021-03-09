@@ -1,104 +1,106 @@
-<div class="sign-up-page">
-  <ion-header>
-    <ion-toolbar class="header">
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="">Back</ion-back-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
 
+<ion-content [fullscreen]="true">
 
+  <div class="sign-up-page">
 
-  <h1 class="title">Create an Account</h1>
-
-  <mat-horizontal-stepper linear="true" #stepper>
-    <mat-step [completed]="accountType != ''">
-      <ng-template matStepLabel>Step 1</ng-template>
-      <mat-form-field appearance="fill">
-        <mat-label>Account Type</mat-label>
-        <select matNativeControl required (change)="selectType($event.target.value)">
-          <option value="foodie">Foodie</option>
-          <option value="business">Business</option>
-        </select>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill" [hidden]="!isBusiness">
-        <mat-label>Buisness Type</mat-label>
-        <select matNativeControl required [(ngModel)]="accountType">
-          <option value="restaurant">Restaurant</option>
-          <option value="foodbank">Foodbank</option>
-          <option value="other">Other</option>
-        </select>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext [disabled]="accountType == ''" class="continue-button">Next</button>
-      </div>
-    </mat-step>
-    <mat-step [completed]="validateSecond()">
-      <ng-template matStepLabel>Step 2</ng-template>
-      <mat-form-field appearance="outline" [hidden]="!isBusiness">
-        <mat-label>Organization Name:</mat-label>
-        <input matInput placeholder="Ex. Whole Foods" required [(ngModel)]="name">
-        <mat-icon matSuffix>person_outline</mat-icon>
-        <mat-hint style="color:red;">{{errors.name}}</mat-hint>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline" [hidden]="isBusiness">
-        <mat-label>First Name:</mat-label>
-        <input matInput placeholder="Ex. John" required (input)="changeName($event.target.value, 'first')">
-        <mat-icon matSuffix>person_outline</mat-icon>
-        <mat-hint style="color:red;">{{errors.name}}</mat-hint>
-      </mat-form-field>
-      <mat-form-field appearance="outline" [hidden]="isBusiness">
-        <mat-label>Last Name:</mat-label>
-        <input matInput placeholder="Ex. Doe" required (input)="changeName($event.target.value, 'last')">
-        <mat-icon matSuffix>person_outline</mat-icon>
-        <mat-hint style="color:red;">{{errors.name}}</mat-hint>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Email: </mat-label>
-        <input matInput placeholder="Ex. johndoe@gmail.com" type="email" required [(ngModel)]="email">
-        <mat-icon matSuffix>mail_outline</mat-icon>
-        <mat-hint style="color:red;">{{errors.email}}</mat-hint>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Password:</mat-label>
-        <input matInput type="password" required [(ngModel)]="password">
-        <mat-icon matSuffix>visibility_outline</mat-icon>
-        <mat-hint style="color:red;">{{errors.password}}</mat-hint>
-      </mat-form-field>
-      <div class="buttons">
-        <button mat-button matStepperPrevious class="continue-button back-button">Back</button>
-        <button mat-button [hidden]="isBusiness" [disabled]="email == '' || password == '' || name == ''"
-          (click)="signUp()" class="continue-button">Create</button>
-        <button matStepperNext [hidden]="!isBusiness" [disabled]="email == '' || password == '' || name == ''"
-          class="continue-button">Next</button>
-      </div>
-    </mat-step>
-    <mat-step *ngIf="isBusiness">
-      <ng-template matStepLabel>Step 3</ng-template>
-      <ion-button (click)="getGeolocation()" class="location-button" expand="full">
-        <ion-icon name="location-outline"></ion-icon>
-        Get Location
-      </ion-button>
-      <agm-map [latitude]="location.latitude" [longitude]="location.longitude" [hidden]="location.fullAddress == ''">
-        <agm-marker [latitude]="location.latitude"
-                [longitude]="location.longitude"></agm-marker>
-      </agm-map>
-      
-      
-      <div class="buttons">
-        <button mat-button matStepperPrevious class="continue-button back-button">Back</button>
-        <button mat-button (click)="signUp()" class="continue-button" [disabled]="location.fullAddress == ''">Create</button>
-      </div>
-    </mat-step>
-  </mat-horizontal-stepper>
-
-  <div class="spinner-content" [hidden]="!loading">
-    <div class="main-spinner">
-      <ion-spinner name="bubbles"></ion-spinner>
-      <h3>Creating Account...</h3>
-    </div> 
+    <div class="top">
+      <div style="color: transparent; padding-top: 8vh;">content</div>
+      <svg width="100%" height="139" viewBox="0 0 100% 150" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+        <path d="M25.5653 45C9.571 31.7408 1 1 1 1V150H377C377 150 374.519 136.242 364.968 121C354.941 105 355.47 105.186 339.901 94C324.53 82.9551 310.142 80.1822 291.272 78.5C201.533 70.5 173.207 77.6457 99.2613 71.5C69.1813 69 45.9452 61.8948 25.5653 45Z" fill="white" stroke="white"/>
+      </svg>
+    </div>
+  
+    <h1 class="title">Create an Account</h1>
+  
+    <mat-horizontal-stepper linear="true" #stepper>
+      <mat-step [completed]="accountType != ''">
+        <ng-template matStepLabel>Step 1</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>Account Type</mat-label>
+          <select matNativeControl required (change)="selectType($event.target.value)">
+            <option value="foodie">Foodie</option>
+            <option value="business">Business</option>
+          </select>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill" [hidden]="!isBusiness">
+          <mat-label>Buisness Type</mat-label>
+          <select matNativeControl required [(ngModel)]="accountType">
+            <option value="restaurant">Restaurant</option>
+            <option value="foodbank">Foodbank</option>
+            <option value="other">Other</option>
+          </select>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext [disabled]="accountType == ''" class="continue-button">Next</button>
+        </div>
+      </mat-step>
+      <mat-step *ngIf="isBusiness">
+        <ng-template matStepLabel>Step 2</ng-template>
+        <ion-button (click)="getGeolocation()" class="location-button" expand="full">
+          <ion-icon name="location-outline"></ion-icon>
+          Get Location
+        </ion-button>
+        <agm-map [latitude]="location.latitude" [longitude]="location.longitude" [hidden]="location.fullAddress == ''">
+          <agm-marker [latitude]="location.latitude"
+                  [longitude]="location.longitude"></agm-marker>
+        </agm-map>
+        
+        
+        <div class="buttons">
+          <button mat-button matStepperPrevious class="continue-button back-button">Back</button>
+          <button mat-button matStepperNext class="continue-button" [disabled]="location.fullAddress == ''">Next</button>
+        </div>
+      </mat-step>
+      <mat-step [completed]="validateSecond()">
+        <ng-template matStepLabel>Step 3</ng-template>
+        <mat-form-field appearance="outline" [hidden]="!isBusiness">
+          <mat-label>Organization Name:</mat-label>
+          <input matInput placeholder="Ex. Whole Foods" required [(ngModel)]="name">
+          <mat-icon matSuffix>person_outline</mat-icon>
+          <mat-hint style="color:red;">{{errors.name}}</mat-hint>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" [hidden]="isBusiness">
+          <mat-label>First Name:</mat-label>
+          <input matInput placeholder="Ex. John" required (input)="changeName($event.target.value, 'first')">
+          <mat-icon matSuffix>person_outline</mat-icon>
+          <mat-hint style="color:red;">{{errors.name}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" [hidden]="isBusiness">
+          <mat-label>Last Name:</mat-label>
+          <input matInput placeholder="Ex. Doe" required (input)="changeName($event.target.value, 'last')">
+          <mat-icon matSuffix>person_outline</mat-icon>
+          <mat-hint style="color:red;">{{errors.name}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email: </mat-label>
+          <input matInput placeholder="Ex. johndoe@gmail.com" type="email" required [(ngModel)]="email">
+          <mat-icon matSuffix>mail_outline</mat-icon>
+          <mat-hint style="color:red;">{{errors.email}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password:</mat-label>
+          <input matInput type="password" required [(ngModel)]="password">
+          <mat-icon matSuffix>visibility_outline</mat-icon>
+          <mat-hint style="color:red;">{{errors.password}}</mat-hint>
+        </mat-form-field>
+        <div class="buttons">
+          <button mat-button matStepperPrevious class="continue-button back-button">Back</button>
+          <button mat-button [hidden]="isBusiness" [disabled]="email == '' || password == '' || name == ''"
+            (click)="signUp()" class="continue-button">Create</button>
+          <button (click)="signUp()" [hidden]="!isBusiness" [disabled]="email == '' || password == '' || name == ''"
+            class="continue-button">Create</button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  
+    <div class="spinner-content" [hidden]="!loading">
+      <div class="main-spinner">
+        <ion-spinner name="bubbles"></ion-spinner>
+        <h3>Creating Account...</h3>
+      </div> 
+    </div>
+  
   </div>
-
-</div>
+</ion-content>
