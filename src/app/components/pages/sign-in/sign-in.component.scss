@@ -33,7 +33,7 @@ ion-back-button{
  }
 
  mat-form-field{
-    width: 15rem;
+    width: 16rem;
     margin-bottom: 1rem;
  }
 
@@ -43,19 +43,20 @@ ion-back-button{
     font-size: 1.1rem !important;
     border: 5px solid #666A86 !important;
     border-radius: 20px !important;
-    width: 7rem !important;
+    width: 10rem !important;
     text-align: center !important;
     margin-top: 1.5rem !important;
     margin-bottom: 1.5rem !important;
     height: 3rem !important;
+    filter: drop-shadow(10px 10px 9px rgba(0, 0, 0, 0.1)) !important;
 }
 
  .title{
      font-family: 'Poppins', sans-serif !important;
      width: 14rem !important;
-     font-weight: bold !important;
      margin-left: 1rem !important;
      font-size: 1.8rem !important;
+     text-align: left !important;
      line-height: 2.5rem !important;
  }
 
@@ -75,6 +76,5 @@ ion-back-button{
   }
 
   .main{
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-top: 2rem;
   }
