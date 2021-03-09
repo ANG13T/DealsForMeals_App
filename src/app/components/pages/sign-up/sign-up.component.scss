@@ -3,7 +3,6 @@
 .title{
     font-family: 'Poppins', sans-serif !important;
     width: 14rem !important;
-    font-weight: bold !important;
     margin-left: 1rem !important;
     font-size: 1.8rem !important;
     line-height: 2.5rem !important;
@@ -28,6 +27,15 @@ ion-back-button{
    color: #7d89e0;
 }
 
+.sign-in-container{
+    text-align: center;
+    margin-top: 1.5rem;
+    .description{
+        font-size: 1rem;
+    }
+}
+
+
 mat-form-field{
     margin-top: 1rem; 
     margin-bottom: 1rem; 
@@ -42,10 +50,11 @@ mat-form-field{
     font-size: 1.1rem !important;
     border: 5px solid #666A86 !important;
     border-radius: 20px !important;
-    width: 7rem !important;
+    width: 10rem !important;
     text-align: center !important;
     margin-top: 1.5rem !important;
     height: 3rem !important;
+    filter: drop-shadow(10px 10px 9px rgba(0, 0, 0, 0.1)) !important;
 }
 
 .back-button{

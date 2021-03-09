@@ -10,7 +10,7 @@
       </svg>
     </div>
   
-    <h1 class="title">Create an Account</h1>
+    <h1 class="title">Create an <b>Account</b></h1>
   
     <mat-horizontal-stepper linear="true" #stepper>
       <mat-step [completed]="accountType != ''">
@@ -94,6 +94,10 @@
         </div>
       </mat-step>
     </mat-horizontal-stepper>
+
+    <div class="sign-in-container">
+      <p class="description">Already have an account? <a (click)="navigate('login')">Sign In.</a></p>
+    </div>
   
     <div class="spinner-content" [hidden]="!loading">
       <div class="main-spinner">
