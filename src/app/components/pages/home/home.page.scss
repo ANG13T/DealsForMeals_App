@@ -1,3 +1,21 @@
+
+
+:host {
+  .background-image {
+    --background: url("../../../../assets/images/food-image.jpeg") 0 0/100% 100% no-repeat ;
+  }
+}
+
+.entire-page{
+  background-color: rgb(255 255 255 / 77%);
+  color: black;
+  width: 90%;
+  height: 60vh;
+  text-align: center;
+  margin: auto;
+  margin-top: 10vh;
+}
+
 #container {
   text-align: center;
   margin-left: 1.5rem;
