@@ -47,12 +47,8 @@
         </agm-map>
       </div>
      
-
-  <!-- TODO: show bottom section only on details tab -->
   <div class="bottom-section" [hidden]="selectedTabIndex == 1">
-    <!-- <h3 class="quantity">Only {{post.amount}} left in stock</h3> -->
     <ion-button class="contact-button" *ngIf="!isOwner">Contact Supplier</ion-button>
   </div>
 
-  <!-- TODO: add edit and delete functionality -->
 </div>

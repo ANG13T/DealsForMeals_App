@@ -1,33 +1,46 @@
-
-<ion-header>
-  <ion-toolbar color="#4043E1" class="header">
+<ion-header [hidden]="loading || complete">
+  <ion-toolbar class="header">
     <ion-buttons slot="start">
-      <ion-button (click)="dismissModal()" [disabled]="completed">Close</ion-button>
+      <ion-button (click)="dismissModal()" [disabled]="completed">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
-    <!-- TODO: add is different field -->
       <ion-button class="send" [disabled]="!post.title || !post.description || post.images == [] || loading || completed" (click)="updatePost()">
         <ion-icon name="checkmark-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
+   
     <ion-title class="nav-title">Edit Post</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen>
-  <div class="top">
-    <div class="container">
-        <div class="group">      
-          <input type="text" [(ngModel)]="post.title">
-          <span class="highlight"></span>
-          <span class="bar"></span>
-          <label>Title</label>
-        </div>
-      
-    </div>
-  </div>
 
-  <div class="main">
+
+<ion-content fullscreen>
+  <div class="main-contentbody" *ngIf="post">
+
+    <mat-form-field class="deal-title">
+      <mat-label>Deal Title</mat-label>
+      <input matInput placeholder="Ex. New Deal" [(ngModel)]="post.title" maxlength="30">
+      <mat-hint align="end">{{post.title.length}} / 30</mat-hint>
+    </mat-form-field>
+
+    <div class="image-option" (click)="file.click()">
+      <div class="image">
+        <ion-icon name="cloud-upload-outline"></ion-icon>
+      </div>
+      <h2>Upload a Photo</h2>
+      <h5 class="top-image">Supported formats are PNG, GIF, or JPG</h5>
+      <h5>Photos are usually 400 x 300 or 800 x 600</h5>
+    </div>
+
+    <div class="images">
+      <input type="file" style="display: none" #file accept="image/jpeg,image/x-png" (change)="onDrop($event.target.files)">
+      <img src={{image}} class="image" *ngFor="let image of post.images" (click)="removeImage(image)">
+      <img src="../../../../assets/images/spinner.gif" class="spinner" [hidden]="!imageLoading" /> 
+    </div>
+
     <ion-item>
       <ion-label>Select Quantity</ion-label>
       <ion-select interface="popover" [(ngModel)]="post.amount" [compareWith]="compareWithFn">
@@ -38,23 +51,27 @@
 
     <div class="sub-content">
       <h3 class="sub-title">Description</h3>
-      <textarea name="Text1" cols="40" rows="5" [(ngModel)]="post.description"></textarea>
+      <textarea name="Text1" cols="40" rows="5" [(ngModel)]="post.description" placeholder="Enter a description..." maxlength="240"></textarea>
+      <p class="form-context">{{post.description.length}} / 240</p>
     </div>
-    <div class="sub-content">
-      <div class="images">
-        <input type="file" style="display: none" #file accept="image/jpeg,image/x-png" (change)="onDrop($event.target.files)">
-        <img src={{image}} class="image" *ngFor="let image of post.images">
-        <div class="image-add" (click)="file.click()">
-          <ion-icon name="images-outline"></ion-icon>
-        </div>
-      </div>
-    </div>
+
   </div>
 
   <div class="spinner-content" [hidden]="!loading">
     <div class="main-spinner">
       <ion-spinner name="bubbles"></ion-spinner>
-      <h3>Editing Post...</h3>
+      <h3>Updating Deal...</h3>
+    </div> 
+  </div>
+
+  <div class="complete-content" [hidden]="!complete">
+    <div class="completed">
+      <div class="check-logo">
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </div>
+      <h3>Congrats!</h3>
+      <p>Your deal was successfully updated!</p>
+      <ion-button (click)="goToProfile()">Go to Profile</ion-button>
     </div> 
   </div>
 </ion-content>

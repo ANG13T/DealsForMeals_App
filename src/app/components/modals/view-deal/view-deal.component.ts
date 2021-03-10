@@ -29,20 +29,11 @@ export class ViewDealComponent implements OnInit {
   ngOnInit() {
     this.userService.user$.subscribe((userProfile) => {
       if(userProfile){
-        console.log("user: ",userProfile);
         this.uid = userProfile.uid;
         this.isOwner = (this.post.userProfile.uid == this.uid);
-        console.log("post uid: " + this.post.userProfile.uid, "user uid: " + this.uid);
+        let location = this.post.userProfile.location;
+        this.displayLocation = `${location.subThoroughfare} ${location.thoroughfare}, ${location.subLocality} ${location.locality}, ${location.administrativeArea}`;
       }
-    })
-    this.route.params.subscribe(params => {
-      if(this.post == null){
-        this.postID = params['id']; 
-        //get post data
-      }
-
-      let location = this.post.userProfile.location;
-      this.displayLocation = `${location.subThoroughfare} ${location.thoroughfare}, ${location.subLocality} ${location.locality}, ${location.administrativeArea}`;
     });
   }
 
