@@ -17,6 +17,7 @@ import { MatTabChangeEvent } from '@angular/material/tabs';
 export class ViewDealComponent implements OnInit {
 
   post: Post;
+  beforeEditPost: Post;
   origin: string;
   postID: string;
   displayLocation: string;
@@ -62,9 +63,8 @@ export class ViewDealComponent implements OnInit {
     modal.onDidDismiss()
       .then((data) => {
         console.log("got the data", data)
-        if(data.data.status == "edit"){
-          this.post = data.data.data;
-        }
+        console.log(data.role)
+        this.post = data.data.data;
     });
 
     return await modal.present();

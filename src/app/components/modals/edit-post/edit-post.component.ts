@@ -5,6 +5,7 @@ import { finalize } from 'rxjs/operators';
 import { Post } from 'src/app/shared/models/post.model';
 import { PostService } from 'src/app/shared/services/post.service';
 
+
 @Component({
   selector: 'app-edit-post',
   templateUrl: './edit-post.component.html',
@@ -18,19 +19,28 @@ export class EditPostComponent implements OnInit {
   imageLoading: boolean = false;
   loading: boolean = false;
 
-  constructor(private _modalController: ModalController, private storage: AngularFireStorage, private postService: PostService) { }
+  constructor(private _modalController: ModalController, private storage: AngularFireStorage, private postService: PostService) { 
+    
+  }
 
   ngOnInit() {
-    this.initPost = this.post;
+    this.initPost = JSON.parse(JSON.stringify(this.post));
     console.log("init", this.initPost)
   }
 
   dismissModal(status?: string, post?: Post){
-    this._modalController.dismiss({
-      'dismissed': true,
-      status: status,
-      data: post
-    });
+    if(status == "" || post == null){
+      this._modalController.dismiss({
+        'dismissed': true,
+        data: this.initPost
+      })
+    }else{
+      this._modalController.dismiss({
+        'dismissed': true,
+        status: status,
+        data: post
+      });
+    }
   }
 
   compareWithFn = (o1, o2) => {
@@ -38,6 +48,7 @@ export class EditPostComponent implements OnInit {
   };
 
   updatePost(){
+    console.log("vall");
     if(this.validateForm()){
       this.loading = true;
       this.postService.updateDeal(this.post).then(() => {
@@ -45,6 +56,10 @@ export class EditPostComponent implements OnInit {
         this.dismissModal('edit', this.post);
       })
     }
+  }
+
+  removeImage(image: string){
+    this.post.images = this.post.images.filter((url) => url != image);
   }
 
   validateForm(){
@@ -86,7 +101,19 @@ export class EditPostComponent implements OnInit {
   }
 
   isDifferent(){
-    return JSON.stringify(this.post) != JSON.stringify(this.initPost);
+    if(this.initPost.title != this.post.title){
+      return true;
+    }
+    if(this.initPost.description != this.post.description){
+      return true;
+    }
+    if(this.initPost.amount != this.post.amount){
+      return true;
+    }
+    if(this.initPost.images != this.post.images){
+      return true;
+    }
+    return false;
   }
 
 
