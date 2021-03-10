@@ -45,6 +45,7 @@ export class SignUpComponent implements OnInit {
   constructor(private router: Router, private userService: UserService, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder) { }
 
   ngOnInit() {
+    this.loading = false;
   }
 
   navigate(route: string) {

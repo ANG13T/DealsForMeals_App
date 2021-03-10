@@ -6,6 +6,7 @@ import { finalize } from 'rxjs/operators';
 import { Post } from 'src/app/shared/models/post.model';
 import { PostService } from 'src/app/shared/services/post.service';
 import { UserService } from 'src/app/shared/services/user.service';
+import * as geofire from 'geofire-common';
 
 @Component({
   selector: 'app-create-post',
@@ -124,9 +125,14 @@ export class CreatePostComponent implements OnInit {
     return o1 == o2;
   };
 
+  giveGeoHash(){
+    this.post.hash = geofire.geohashForLocation([this.post.location.latitude, this.post.location.longitude]);
+  }
+
   async createPost(){
     this.loading = true;
     if(this.validateForm()){
+      this.giveGeoHash();
       await this.postService.createDeal(this.post).then((result) => {
         this.loading = false;
         this.complete = true;

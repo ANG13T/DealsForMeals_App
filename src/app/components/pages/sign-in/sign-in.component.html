@@ -29,4 +29,11 @@
     <button mat-button [disabled]="email == '' || password == ''" (click)="login()" class="login-button">Login</button>
     <p class="description">Don't have an account? <a (click)="navigate('signup')">Sign Up.</a></p>
   </div>
+
+  <div class="spinner-content" [hidden]="!loading">
+    <div class="main-spinner">
+      <ion-spinner name="bubbles"></ion-spinner>
+      <h3>Logging In...</h3>
+    </div> 
+  </div>
 </ion-content>

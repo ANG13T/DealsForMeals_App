@@ -1,3 +1,4 @@
+import { Location } from "./location.model";
 import { User } from "./user.model";
 
 export interface Post {

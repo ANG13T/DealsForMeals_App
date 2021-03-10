@@ -12,11 +12,14 @@ export class SignInComponent implements OnInit {
 
   email: string = "";
   password: string = "";
+  loading: boolean = false;
   errors = {email: "", password: ""};
 
   constructor(private router: Router, private userService: UserService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loading = false;
+  }
 
   navigate(route: string){
     this.router.navigate([`/${route}`]);
@@ -24,6 +27,7 @@ export class SignInComponent implements OnInit {
 
   async login(){
     if(this.validateForm()){
+      this.loading = true;
         await this.userService.login(this.email, this.password).then((data) => {
           if(data){
             if(data.code == "auth/user-not-found"){
