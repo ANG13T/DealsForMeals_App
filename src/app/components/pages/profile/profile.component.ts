@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit {
   steps: any[] = [];
   showDealsInfo: boolean = false;
   map: any;
+  isBuisness: boolean = false;
   selectedIndex: string = "deals";
 
   constructor(private userService: UserService, private router: Router, public modalController: ModalController, private postService: PostService) { }
@@ -34,6 +35,7 @@ export class ProfileComponent implements OnInit {
       if(!userProfile) return;
       this.user = userProfile;
       if(this.user.isBusiness){
+        this.isBuisness = true;
         await this.postService.getDealsForUser(this.user.uid).then((data) => {
           console.log("got the posts", data)
           this.posts = data;
