@@ -26,7 +26,7 @@ export class PostService {
 
   async getDealsForUser(uid: string): Promise<any>{
     let posts: Post[] = [];
-    let promise = this.afs.firestore.collection("deals").where('userProfile.uid', '==', uid).get().then((snapshot) => {
+    let promise = this.afs.firestore.collection("deals").where('userProfile.uid', '==', uid).orderBy("createdAt").get().then((snapshot) => {
       snapshot.forEach((doc) => {
         let docData = doc.data();
         let newPost: Post = {userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id, createdAt: docData.createdAt};

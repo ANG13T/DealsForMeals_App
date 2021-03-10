@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   userAddress: string = "";
   loading: boolean = true;
   posts: Post[] = [];
+  recentDeals: Post[] = [];
   steps: any[] = [];
   showDealsInfo: boolean = false;
   map: any;
@@ -39,6 +40,7 @@ export class ProfileComponent implements OnInit {
         await this.postService.getDealsForUser(this.user.uid).then((data) => {
           console.log("got the posts", data)
           this.posts = data;
+          this.recentDeals = this.posts.slice(0, 5);
         })
       }else{
         await this.postService.getDealsForUser(this.user.uid).then((data) => {
