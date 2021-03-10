@@ -117,7 +117,6 @@ export class ProfileComponent implements OnInit {
   async presentPost(post: Post){
     const modal = await this.modalController.create({
       component: ViewDealComponent,
-      cssClass: 'my-custom-class',
       componentProps: { 
         origin: 'profile',
         post: post,

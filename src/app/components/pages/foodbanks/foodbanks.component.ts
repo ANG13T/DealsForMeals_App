@@ -100,12 +100,9 @@ export class FoodbanksComponent implements OnInit {
   async openBuisness(buisness: User) {
     const modal = await this.modalController.create({
       component: ViewBuisnessComponent,
-      cssClass: 'modal-view',
-      swipeToClose: true,
       componentProps: {
         buisness: buisness
-      },
-      presentingElement: this.routerOutlet.nativeEl
+      }
     });
     return await modal.present();
   }
@@ -113,12 +110,9 @@ export class FoodbanksComponent implements OnInit {
   async openPost(post: Post){
     const modal = await this.modalController.create({
       component: ViewDealComponent,
-      cssClass: 'modal-view',
-      swipeToClose: true,
       componentProps: {
         post: post
-      },
-      presentingElement: this.routerOutlet.nativeEl
+      }
     });
     return await modal.present();
   }

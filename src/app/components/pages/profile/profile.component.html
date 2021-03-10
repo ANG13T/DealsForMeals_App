@@ -61,7 +61,7 @@
               <h3 class="content-header">Your Deals</h3>
               <div class="posts">
                 <div class="dealDisplay">
-                  <ion-card>
+                  <ion-card *ngIf="posts.length == 0">
                     <div class="step-card-main">
                       <div class="card-content">
                         <ion-card-header>
