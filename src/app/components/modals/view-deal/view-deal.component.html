@@ -5,7 +5,6 @@
       <ion-button (click)="dismissModal()">
         <ion-icon name="chevron-back-outline"></ion-icon>
       </ion-button>
-      <!-- TODO: make it back button -->
     </ion-buttons>
     <ion-buttons slot="end" [hidden]="!isOwner">
       <ion-button (click)="presentActionSheet()"><ion-icon name="ellipsis-vertical"></ion-icon></ion-button>
@@ -54,9 +53,6 @@
     <!-- <h3 class="quantity">Only {{post.amount}} left in stock</h3> -->
     <ion-button class="contact-button" *ngIf="!isOwner">Contact Supplier</ion-button>
   </div>
-  
-  <ion-button class="contact-button" *ngIf="isOwner" (click)="editPost()">Edit Post</ion-button>
-  <ion-button class="delete-button" *ngIf="isOwner" color="danger" (click)="confirmDelete()">Delete Post</ion-button>
 
   <!-- TODO: add edit and delete functionality -->
 </div>

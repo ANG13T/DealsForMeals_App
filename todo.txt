@@ -26,7 +26,6 @@ NEXT STEPS:
 DO RIGHT NOW:
 - get deals from stores near you display
 - set zoom in on view buisness location maps
-- logging in view
 - edit post update
 - view all deals display
 - slide delete and update
