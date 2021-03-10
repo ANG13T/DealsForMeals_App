@@ -16,13 +16,16 @@
 
 <div class="main">
   <h1 class="title">{{post.title | uppercase}}</h1>
+  <ion-skeleton-text animated [hidden]="post.title != ''" style="height: 3vh;" class="skeleton"></ion-skeleton-text>
   <h3 class="location">{{displayLocation}}</h3>
+  <ion-skeleton-text animated [hidden]="displayLocation != ''" style="height: 3vh; margin-bottom: 2rem;" class="skeleton"></ion-skeleton-text>
   <!-- TODO: skeleton for on loading -->
   <ion-slides pager>
     <ion-slide *ngFor="let image of post.images">
       <img src={{image}} alt="Post Image" class="post-image"/>
     </ion-slide>
   </ion-slides>
+  <ion-skeleton-text animated [hidden]="post.images != []" class="skeleton" style="height: 14rem; margin-bottom: 2rem;"></ion-skeleton-text>
 
   <!-- TODO: add phone number as optional field -->
   <ion-segment value="deals" [(ngModel)]="selectedIndex">
@@ -37,6 +40,11 @@
  
       <div class="details" [hidden]="selectedIndex != 'description'">
         <p class="description">{{post.description}}</p>
+        <ion-skeleton-text animated [hidden]="post.description != ''" class="skeleton" style="margin-bottom: 5px;"></ion-skeleton-text>
+        <ion-skeleton-text animated [hidden]="post.description != ''" class="skeleton" style="margin-bottom: 5px;"></ion-skeleton-text>
+        <ion-skeleton-text animated [hidden]="post.description != ''" class="skeleton" style="margin-bottom: 5px;"></ion-skeleton-text>
+        <ion-skeleton-text animated [hidden]="post.description != ''" class="skeleton" style="margin-bottom: 5px;"></ion-skeleton-text>
+        <ion-skeleton-text animated [hidden]="post.description != ''" class="skeleton" style="margin-bottom: 5px;"></ion-skeleton-text>
       </div>
       
     

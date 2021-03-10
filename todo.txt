@@ -31,5 +31,10 @@ DO RIGHT NOW:
 - delete image from firebase storage when delete post
 - slide delete and update
 - remove quantity from deal
-- fix edit post 
 - add skeletons to view deal
+- custommize markers to have logos and pointers
+    - make data hover over the markers
+    - make view morw button at bottom of hover
+
+- make custom location for sign up (Google Places Autocomplete on an ion-input)
+- rename all foodbank variables and names to buisnesses

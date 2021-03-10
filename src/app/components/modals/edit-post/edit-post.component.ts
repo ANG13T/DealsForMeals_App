@@ -102,15 +102,12 @@ export class EditPostComponent implements OnInit {
 
   isDifferent(){
     if(this.initPost.title != this.post.title){
-      console.log("title");
       return true;
     }
     if(this.initPost.description != this.post.description){
-      console.log("description");
       return true;
     }
     if(this.initPost.amount != this.post.amount){
-      console.log("amount");
       return true;
     }
     if(JSON.stringify(this.initPost.images) !==JSON.stringify(this.post.images)){
