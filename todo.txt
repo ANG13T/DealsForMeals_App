@@ -24,14 +24,10 @@ NEXT STEPS:
 - fix intermittent header styles problem
 
 DO RIGHT NOW:
-- get deals from stores near you display
 - set zoom in on view buisness location maps
-- edit post update
-- view all deals display
 - delete image from firebase storage when delete post
 - slide delete and update
 - remove quantity from deal
-- add skeletons to view deal
 - custommize markers to have logos and pointers
     - make data hover over the markers
     - make view morw button at bottom of hover

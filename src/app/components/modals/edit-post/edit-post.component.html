@@ -41,13 +41,6 @@
       <img src="../../../../assets/images/spinner.gif" class="spinner" [hidden]="!imageLoading" /> 
     </div>
 
-    <ion-item>
-      <ion-label>Select Quantity</ion-label>
-      <ion-select interface="popover" [(ngModel)]="post.amount" [compareWith]="compareWithFn">
-        <ion-select-option value={{num}} *ngFor="let num of [1,2,3,4,5,6,7,8,9,10]">{{num}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-
 
     <div class="sub-content">
       <h3 class="sub-title">Description</h3>

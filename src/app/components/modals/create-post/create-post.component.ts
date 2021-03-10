@@ -15,7 +15,7 @@ import * as geofire from 'geofire-common';
 })
 export class CreatePostComponent implements OnInit {
 
-  post: Post = {title: "", description: "", userProfile: null, images: [], amount: 1, id: "", location: null, lat: "", lng: "", hash: ""};
+  post: Post = {title: "", description: "", userProfile: null, images: [], id: "", location: null, lat: "", lng: "", hash: ""};
   errors = {title: "", description: "", amount: ""};
   loading: boolean = false;
   imageLoading: boolean = false;

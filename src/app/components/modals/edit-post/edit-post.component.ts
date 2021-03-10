@@ -107,9 +107,7 @@ export class EditPostComponent implements OnInit {
     if(this.initPost.description != this.post.description){
       return true;
     }
-    if(this.initPost.amount != this.post.amount){
-      return true;
-    }
+    
     if(JSON.stringify(this.initPost.images) !==JSON.stringify(this.post.images)){
       return true;
     }
