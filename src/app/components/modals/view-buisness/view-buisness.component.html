@@ -19,9 +19,21 @@
     </div>
   
     <div class="bottom">
-      <mat-tab-group>
-        <mat-tab label="DEALS">
-          <div class="posts">
+      <ion-segment value="deals" [(ngModel)]="selectedIndex">
+        <ion-segment-button value="deals">
+          <ion-label>DEALS</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="description">
+          <ion-label>DESCRIPTION</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="location">
+          <ion-label>LOCATION</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+
+
+    
+          <div class="posts" [hidden]="selectedIndex != 'deals'">
             <ion-card *ngIf="posts.length == 0">
               <ion-card-header>
                 <ion-card-title class="card-title">Buisness has not created any deals yet!</ion-card-title>
@@ -39,23 +51,22 @@
               </ion-card-content>
             </ion-card>
           </div>
-        </mat-tab>
-        <mat-tab label="ABOUT">
-          <div class="about">
+
+
+  
+          <div class="about" [hidden]="selectedIndex != 'description'">
             <h3>Buisness Description:</h3>
             <p *ngIf="buisness.description != ''">{{buisness.description}}</p>
             <p *ngIf="buisness.description == ''">No description written yet</p>
         </div>
-        </mat-tab>
-        <mat-tab label="LOCATION">
-          <div class="location">
+  
+
+          <div class="location" [hidden]="selectedIndex != 'location'">
             <agm-map [latitude]="buisness.location.latitude" [longitude]="buisness.location.longitude">
               <agm-marker [latitude]="buisness.location.latitude"
                       [longitude]="buisness.location.longitude"></agm-marker>
             </agm-map>
           </div>
-        </mat-tab>
-      </mat-tab-group>
       
     </div>
     

@@ -22,7 +22,7 @@ export class ViewDealComponent implements OnInit {
   displayLocation: string;
   isOwner: boolean = false;
   uid: string;
-  selectedTabIndex: number = 0;
+  selectedIndex: string = "description";
 
   constructor(private router: Router, private route: ActivatedRoute, private modalController: ModalController, public alertController: AlertController, private postService: PostService, public actionSheetController: ActionSheetController, private userService: UserService) { }
 
@@ -52,9 +52,7 @@ export class ViewDealComponent implements OnInit {
     });
   }
 
-  tabChanged(tabChangeEvent: MatTabChangeEvent): void {
-    this.selectedTabIndex = tabChangeEvent.index;
-  }
+
 
   navigate(route: string){
     this.router.navigate([`/${route}`]);

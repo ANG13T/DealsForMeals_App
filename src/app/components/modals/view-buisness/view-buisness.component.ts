@@ -19,6 +19,7 @@ export class ViewBuisnessComponent implements OnInit {
   posts: Post[] = [];
   shownItem: string = 'deals';
   displayLocation: string;
+  selectedIndex: string = "deals";
 
   constructor(private buisnessService: BuisnessService, private route:ActivatedRoute, private router: Router, private modalCtrl: ModalController, private postService: PostService, private modalController: ModalController) { }
 

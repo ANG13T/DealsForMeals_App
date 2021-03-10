@@ -11,7 +11,6 @@
       <ion-button (click)="presentActionSheet()"><ion-icon name="ellipsis-vertical"></ion-icon></ion-button>
     </ion-buttons>
 
-    <ion-title class="nav-title">View Deal</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -26,19 +25,29 @@
     </ion-slide>
   </ion-slides>
 
-  <!-- TODO: add location, address, and phone number + google maps location view -->
-  <mat-tab-group (selectedTabChange)="tabChanged($event)">
-    <mat-tab label="Details">
-      <p class="description">{{post.description}}</p>
+  <!-- TODO: add phone number as optional field -->
+  <ion-segment value="deals" [(ngModel)]="selectedIndex">
+    <ion-segment-button value="description">
+      <ion-label>DESCRIPTION</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="location">
+      <ion-label>LOCATION</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+ 
+      <div class="details" [hidden]="selectedIndex != 'description'">
+        <p class="description">{{post.description}}</p>
+      </div>
       
-    </mat-tab>
-    <mat-tab label="Location">
-      <agm-map [latitude]="post.userProfile.location.latitude" [longitude]="post.userProfile.location.longitude">
-        <agm-marker [latitude]="post.userProfile.location.latitude"
-                [longitude]="post.userProfile.location.longitude"></agm-marker>
-      </agm-map>
-    </mat-tab>
-  </mat-tab-group>
+    
+      <div class="location" [hidden]="selectedIndex != 'location'">
+        <agm-map [latitude]="post.userProfile.location.latitude" [longitude]="post.userProfile.location.longitude">
+          <agm-marker [latitude]="post.userProfile.location.latitude"
+                  [longitude]="post.userProfile.location.longitude"></agm-marker>
+        </agm-map>
+      </div>
+     
 
   <!-- TODO: show bottom section only on details tab -->
   <div class="bottom-section" [hidden]="selectedTabIndex == 1">
