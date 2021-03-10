@@ -29,7 +29,7 @@ export class PostService {
     let promise = this.afs.firestore.collection("deals").where('userProfile.uid', '==', uid).get().then((snapshot) => {
       snapshot.forEach((doc) => {
         let docData = doc.data();
-        let newPost: Post = {userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id};
+        let newPost: Post = {userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id, createdAt: docData.createdAt};
         posts.push(newPost);
       })
       return posts;
@@ -42,7 +42,7 @@ export class PostService {
     let promise = this.afs.firestore.collection("deals").limit(amount).get().then((snapshot) => {
       snapshot.forEach((doc) => {
         let docData = doc.data();
-        let newDeal: Post = {userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id};
+        let newDeal: Post = {userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id, createdAt: docData.created};
         deals.push(newDeal);
       })
       return deals;

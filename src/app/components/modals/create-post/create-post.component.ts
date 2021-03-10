@@ -15,7 +15,7 @@ import * as geofire from 'geofire-common';
 })
 export class CreatePostComponent implements OnInit {
 
-  post: Post = {title: "", description: "", userProfile: null, images: [], id: "", location: null, lat: "", lng: "", hash: ""};
+  post: Post = {title: "", description: "", userProfile: null, images: [], id: "", location: null, lat: "", lng: "", hash: "", createdAt: null};
   errors = {title: "", description: "", amount: ""};
   loading: boolean = false;
   imageLoading: boolean = false;
@@ -133,6 +133,7 @@ export class CreatePostComponent implements OnInit {
     this.loading = true;
     if(this.validateForm()){
       this.giveGeoHash();
+      this.post.createdAt = new Date();
       await this.postService.createDeal(this.post).then((result) => {
         this.loading = false;
         this.complete = true;

@@ -258,3 +258,16 @@ ion-card{
 agm-map{
     height: 48vh;
 }
+
+.top-deal-display{
+    display: flex;
+    margin-top: 1rem;
+    justify-content: space-between;
+    .view-all{
+        color: #1aad18;
+        background-color: transparent;
+        font-size: 1rem;
+        margin-right: 1rem;
+        margin-top: 1rem;
+    }
+}

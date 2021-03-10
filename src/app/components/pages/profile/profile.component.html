@@ -59,7 +59,10 @@
             <!-- TODO: display deals in a gallery -->
             <!-- TODO: make show all deals button -->
             <div class="deals" [hidden]="selectedIndex != 'deals'">
-              <h3 class="content-header">Your Deals</h3>
+              <div class="top-deal-display">
+                <h3 class="content-header">Recent Deals</h3>
+                <button class="view-all">View All</button>
+              </div>
               <div class="posts">
                 <div class="dealDisplay">
                   <ion-card *ngIf="posts.length == 0">

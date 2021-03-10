@@ -6,6 +6,7 @@ export interface Post {
     title: string;
     description: string;
     images: string[];
+    createdAt: Date;
     id: string;
     location?: Location; 
     lat?: any;

@@ -27,7 +27,9 @@ DO RIGHT NOW:
 - set zoom in on view buisness location maps
 - delete image from firebase storage when delete post
 - slide delete and update
-- remove quantity from deal
+- view deals button
+- view deals page
+- style view buisness page
 - custommize markers to have logos and pointers
     - make data hover over the markers
     - make view morw button at bottom of hover
