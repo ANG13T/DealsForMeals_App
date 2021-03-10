@@ -41,7 +41,7 @@
       </div>
       
     
-      <div class="location" [hidden]="selectedIndex != 'location'">
+      <div class="locationMap" [hidden]="selectedIndex != 'location'">
         <agm-map [latitude]="post.userProfile.location.latitude" [longitude]="post.userProfile.location.longitude">
           <agm-marker [latitude]="post.userProfile.location.latitude"
                   [longitude]="post.userProfile.location.longitude"></agm-marker>

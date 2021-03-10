@@ -75,6 +75,14 @@ export class ProfileComponent implements OnInit {
     return description.trim();
   }
 
+  viewProfileDescription(description: string){
+    if(description.length > 45){
+      let result = description.trim().substr(0, 45).concat("...");
+      return result;
+    }
+    return description.trim();
+  }
+
   logOut(){
     this.userService.signOut();
   }
