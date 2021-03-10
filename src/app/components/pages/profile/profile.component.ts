@@ -7,6 +7,7 @@ import { CreatePostComponent } from '../../modals/create-post/create-post.compon
 import { Post } from 'src/app/shared/models/post.model';
 import { PostService } from 'src/app/shared/services/post.service';
 import { ViewDealComponent } from '../../modals/view-deal/view-deal.component';
+import { ViewAllDealsComponent } from '../../modals/view-all-deals/view-all-deals.component';
 
 @Component({
   selector: 'app-profile',
@@ -16,6 +17,7 @@ import { ViewDealComponent } from '../../modals/view-deal/view-deal.component';
 })
 export class ProfileComponent implements OnInit {
 
+  // TODO: get stream of data as user profile deals and data?
   user: User;
   userAddress: string = "";
   loading: boolean = true;
@@ -121,6 +123,14 @@ export class ProfileComponent implements OnInit {
       if(data.data.status == "create"){
         this.posts.push(data.data.data);
       }
+    });
+
+    return await modal.present();
+  }
+
+  async presentViewAllDeals(){
+    const modal = await this.modalController.create({
+      component: ViewAllDealsComponent
     });
 
     return await modal.present();

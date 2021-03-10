@@ -41,12 +41,13 @@ import { ViewBuisnessComponent } from './components/modals/view-buisness/view-bu
 import { ViewDealComponent } from './components/modals/view-deal/view-deal.component';
 import { SettingsComponent } from './components/pages/settings/settings.component';
 import { ChipsSelectComponent } from './components/accessories/chips-select/chips-select.component';
+import { ViewAllDealsComponent } from './components/modals/view-all-deals/view-all-deals.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, HomePage, SignUpComponent, SignInComponent, ProfileComponent, SideNavComponent, BaseNavComponent, EditProfileComponent, CreatePostComponent, EditPostComponent, BottomBarComponent, FoodbanksComponent, LocationsComponent, ViewBuisnessComponent, ViewDealComponent, SettingsComponent, CreatePostComponent, ChipsSelectComponent],
-  entryComponents: [CreatePostComponent, EditPostComponent],
+  declarations: [AppComponent, HomePage, SignUpComponent, SignInComponent, ProfileComponent, SideNavComponent, BaseNavComponent, EditProfileComponent, CreatePostComponent, EditPostComponent, BottomBarComponent, FoodbanksComponent, LocationsComponent, ViewBuisnessComponent, ViewDealComponent, SettingsComponent, CreatePostComponent, ChipsSelectComponent, ViewAllDealsComponent],
+  entryComponents: [CreatePostComponent, EditPostComponent, ViewAllDealsComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, AngularFireModule.initializeApp(environment.firebaseConfig), AngularFireAuthModule, AngularFireStorageModule, FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule, MaterialModule, AgmCoreModule.forRoot({
     apiKey: environment.googleMapsAPIKey
   }), AvatarModule],

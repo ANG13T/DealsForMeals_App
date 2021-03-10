@@ -61,7 +61,7 @@
             <div class="deals" [hidden]="selectedIndex != 'deals'">
               <div class="top-deal-display">
                 <h3 class="content-header">Recent Deals</h3>
-                <button class="view-all">View All</button>
+                <button class="view-all" (click)="presentViewAllDeals()">View All</button>
               </div>
               <div class="posts">
                 <div class="dealDisplay">
