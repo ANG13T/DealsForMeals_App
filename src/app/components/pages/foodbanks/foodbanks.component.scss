@@ -132,3 +132,20 @@ ion-title{
     height: 6rem;
     width: 6rem;
   }
+
+  .card-main, .step-card-main{
+    display: flex;
+
+    img{
+        max-width: 8rem;
+        max-height: 8rem;
+        display: block;
+        width: auto;
+        height: auto;
+    }
+
+    ion-card-title{
+        font-size: 1rem;
+        margin-top: 1rem;
+    }
+}

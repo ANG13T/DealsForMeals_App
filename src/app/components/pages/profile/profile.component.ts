@@ -130,7 +130,10 @@ export class ProfileComponent implements OnInit {
 
   async presentViewAllDeals(){
     const modal = await this.modalController.create({
-      component: ViewAllDealsComponent
+      component: ViewAllDealsComponent,
+      componentProps: { 
+        deals: this.posts
+      }
     });
 
     return await modal.present();
