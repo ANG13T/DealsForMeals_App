@@ -19,6 +19,7 @@ export class LocationsComponent implements OnInit {
   map: any;
   user: User;
   buisnesses: User[] = [];
+  zoom: number = 11;
 
   @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
 

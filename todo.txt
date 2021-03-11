@@ -28,10 +28,11 @@ DO RIGHT NOW:
 - make deals and buisnesses seperate
     - format deals section
     - keep biusness format the same
-    
-- custommize markers to have logos and pointers
-    - make data hover over the markers
-    - make view morw button at bottom of hover
+
+- custommize markers 
+    - change marker design
+
+- make all settings page
 
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 - rename all foodbank variables and names to buisnesses

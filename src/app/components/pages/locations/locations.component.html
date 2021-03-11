@@ -10,7 +10,10 @@
   
   
   <ion-content [fullscreen]="true" *ngIf="user">
-    <agm-map [latitude]="user.location.latitude" [longitude]="user.location.longitude">
+    <agm-map 
+    [zoom]="zoom" 
+    [latitude]="user.location.latitude"
+    [longitude]="user.location.longitude">
       <!-- <agm-marker *ngFor="let buisness of buisnesses" 
       [latitude]="buisness.location.latitude"
       [longitude]="buisness.location.longitude"
@@ -18,14 +21,15 @@
       [iconWidth]="20"
       [iconUrl]='{"url": buisness.photoURL,"scaledSize": {"height": 30, "width": 30}}'
       [markerClickable]="true"
-      (markerClick)="openBuisnessDialog(buisness)"
+      
       ></agm-marker> -->
       <agm-overlay
       *ngFor="let buisness of buisnesses"
       [latitude]="buisness.location.latitude"
       [longitude]="buisness.location.longitude"
+      (click)="openBuisnessDialog(buisness)"
     >
-      <div class="customMarker">
+      <div class="customMarker" (click)="openBuisnessDialog(buisness)">
         <img [src]="buisness.photoURL" alt="Image" />
       </div>
     </agm-overlay>
