@@ -46,16 +46,25 @@
                 <ion-card-subtitle class="card-subtitle">Please check at another time for more deals</ion-card-subtitle>
               </ion-card-header>
             </ion-card>
-            <ion-card *ngFor="let post of posts" (click)="presentPost(post)">
-              <img src={{post.images[0]}} />
-              <ion-card-header>
-                <ion-card-title>{{post.title}}</ion-card-title>
-              </ion-card-header>
-              <!-- TODO: only get a small portion of description -->
-              <ion-card-content>
-                {{post.description}}
-              </ion-card-content>
+
+            <ion-card (click)="presentPost(post)" *ngFor="let post of posts">
+              <div class="card-main">
+                <img src={{post.images[0]}} />
+
+                <div class="card-content">
+                  <ion-card-header>
+                    <ion-card-title>{{post.title}}</ion-card-title>
+                    <ion-card-subtitle>{{post.userProfile.name}}</ion-card-subtitle>
+                  </ion-card-header>
+                  
+                  <ion-card-content>
+                    {{viewDescription(post.description)}}
+                  </ion-card-content>
+                </div>
+               
+              </div>
             </ion-card>
+
           </div>
 
 

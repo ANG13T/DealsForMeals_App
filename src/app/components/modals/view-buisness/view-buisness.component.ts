@@ -68,6 +68,14 @@ export class ViewBuisnessComponent implements OnInit {
     this.router.navigate([`/${route}`]);
   }
 
+  viewDescription(description: string) {
+    if (description.length > 40) {
+      let result = description.trim().substr(0, 40).concat("...");
+      return result;
+    }
+    return description.trim();
+  }
+
    dismissModal() {
     this.modalCtrl.dismiss({
       'dismissed': true
