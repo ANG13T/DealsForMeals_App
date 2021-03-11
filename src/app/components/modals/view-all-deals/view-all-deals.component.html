@@ -12,7 +12,7 @@
 <ion-content fullscreen>
   <div class="main-contentbody" *ngIf="deals">
     <!-- TODO: make this into pagination to save data costs -->
-    <ion-list lines="none">
+    <ion-list lines="none" class="userDisplay" [hidden]="!isOwner">
       <ion-item-sliding *ngFor="let deal of deals">
         <ion-item>
           <ion-card (click)="presentDeal(deal)">
@@ -37,9 +37,11 @@
         <ion-item-option (click)="updateDeal(deal)">Update</ion-item-option>
         <ion-item-option color="danger" (click)="deleteDeal(deal)">Delete</ion-item-option>
       </ion-item-options>
-
     </ion-item-sliding>
+    </ion-list>
 
+    <ion-list lines="none" class="viewerDisplay" [hidden]="isOwner">
+      <h3>Not owner</h3>
     </ion-list>
   </div>
 </ion-content>

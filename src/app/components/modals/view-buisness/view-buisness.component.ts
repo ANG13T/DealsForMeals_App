@@ -6,6 +6,7 @@ import { ModalController } from '@ionic/angular';
 import { Post } from 'src/app/shared/models/post.model';
 import { PostService } from 'src/app/shared/services/post.service';
 import { ViewDealComponent } from '../view-deal/view-deal.component';
+import { ViewAllDealsComponent } from '../view-all-deals/view-all-deals.component';
 
 @Component({
   selector: 'app-view-buisness',
@@ -17,6 +18,7 @@ export class ViewBuisnessComponent implements OnInit {
 
   buisness: User;
   posts: Post[] = [];
+  previewDeals: Post[] = [];
   shownItem: string = 'deals';
   displayLocation: string;
   selectedIndex: string = "deals";
@@ -33,6 +35,7 @@ export class ViewBuisnessComponent implements OnInit {
 
     this.postService.getDealsForUser(this.buisness.uid).then((postData) => {
       this.posts = postData;
+      this.previewDeals = this.posts.slice(0, 4);
     });
 
     let location = this.buisness.location;
@@ -74,6 +77,17 @@ export class ViewBuisnessComponent implements OnInit {
       return result;
     }
     return description.trim();
+  }
+
+  async presentViewAllDeals(){
+    const modal = await this.modalController.create({
+      component: ViewAllDealsComponent,
+      componentProps: { 
+        deals: this.posts
+      }
+    });
+
+    return await modal.present();
   }
 
    dismissModal() {

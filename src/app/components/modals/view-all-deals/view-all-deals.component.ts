@@ -5,6 +5,7 @@ import { Location } from 'src/app/shared/models/location.model';
 import { ViewDealComponent } from '../view-deal/view-deal.component';
 import { EditPostComponent } from '../edit-post/edit-post.component';
 import { PostService } from 'src/app/shared/services/post.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-view-all-deals',
@@ -15,10 +16,17 @@ import { PostService } from 'src/app/shared/services/post.service';
 export class ViewAllDealsComponent implements OnInit {
 
   deals: Post[];
+  isOwner: boolean = false;
 
-  constructor(private modalController: ModalController, private alertController: AlertController, private postService: PostService) { }
+  constructor(private modalController: ModalController, private alertController: AlertController, private postService: PostService, private userService: UserService) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.userService.user$.subscribe((userProfile) => {
+      if(userProfile){
+        this.isOwner = (this.deals[0].userProfile.uid == userProfile.uid); //check if is owner because all deals will have same userProfile.uid
+      }
+    })
+  }
 
   dismissModal() {
     this.modalController.dismiss({
@@ -26,9 +34,6 @@ export class ViewAllDealsComponent implements OnInit {
     });
   }
 
-  presentPost(){
-
-  }
 
   getLocation(location: Location) {
     let result = `${location.subThoroughfare} ${location.thoroughfare}, ${location.subLocality}`;
@@ -41,8 +46,8 @@ export class ViewAllDealsComponent implements OnInit {
   }
 
   viewDescription(description: string) {
-    if (description.length > 40) {
-      let result = description.trim().substr(0, 40).concat("...");
+    if (description.length > 35) {
+      let result = description.trim().substr(0, 35).concat("...");
       return result;
     }
     return description.trim();

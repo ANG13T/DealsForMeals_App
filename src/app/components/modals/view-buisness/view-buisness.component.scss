@@ -218,3 +218,20 @@ ion-card-title{
         margin-top: 1rem;
     }
 }
+
+.top-deal-display{
+    display: flex;
+    margin-top: 1.5rem;
+    justify-content: space-between;
+
+    .content-header{
+        margin-left: 1.5rem;
+        margin-bottom: 0px;
+    }
+    .view-all{
+        color: #1aad18;
+        background-color: transparent;
+        font-size: 1rem;
+        margin-right: 1rem;
+    }
+}

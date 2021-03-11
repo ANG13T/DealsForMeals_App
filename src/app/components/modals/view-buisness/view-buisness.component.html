@@ -47,7 +47,12 @@
               </ion-card-header>
             </ion-card>
 
-            <ion-card (click)="presentPost(post)" *ngFor="let post of posts">
+            <div class="top-deal-display" [hidden]="posts.length == 0">
+              <h3 class="content-header">Recent Deals</h3>
+              <button class="view-all" (click)="presentViewAllDeals()">View All</button>
+            </div>
+
+            <ion-card (click)="presentPost(post)" *ngFor="let post of previewDeals">
               <div class="card-main">
                 <img src={{post.images[0]}} />
 
@@ -61,7 +66,6 @@
                     {{viewDescription(post.description)}}
                   </ion-card-content>
                 </div>
-               
               </div>
             </ion-card>
 
