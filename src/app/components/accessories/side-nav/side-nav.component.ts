@@ -10,16 +10,10 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class SideNavComponent implements OnInit {
 
-  identifier:string;
 
   constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
-    this.userService.user$.subscribe((userProfile) => {
-      if(userProfile){
-        this.identifier = userProfile.accountType;
-      }
-    })
   }
 
   navigate(route: string){

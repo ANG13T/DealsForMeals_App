@@ -129,30 +129,6 @@
                   </ion-slides>
                 </div>
 
-
-                <h3 class="content-header">Next Steps</h3>
-                <div class="steps">
-                  <ion-slides pager>
-                    <ion-slide *ngFor="let step of steps">
-                      <ion-card (click)="navigate(step.link)">
-                        <div class="step-card-main">
-                          <ion-avatar item-start>
-                            <ngx-avatar value={{findStepIndex(step.content)}}></ngx-avatar>
-                          </ion-avatar>
-    
-                          <div class="card-content">
-                            <ion-card-header>
-                              <ion-card-title>{{step.content}}</ion-card-title>
-                            </ion-card-header>
-                          </div>
-                         
-                        </div>
-                        
-                      </ion-card>
-                    </ion-slide>
-                  </ion-slides>
-                </div>
-
               </div>
             </div>
             

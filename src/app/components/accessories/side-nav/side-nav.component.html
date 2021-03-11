@@ -5,21 +5,17 @@
 </ion-header>
 <ion-content class="content">
   <ion-list lines="none">
-    <ion-item (click)="navigate('profile')">
-      <ion-icon name="person-circle-outline" ></ion-icon>
-      Profile
-    </ion-item>
-    <ion-item (click)="navigate('foodbanks')" *ngIf="identifier == 'foodbank'">
+    <ion-item (click)="navigate('foodbanks')">
       <ion-icon name="storefront-outline" ></ion-icon>
-      Foodbanks
-    </ion-item>
-    <ion-item (click)="navigate('stores')" *ngIf="identifier == 'store'">
-      <ion-icon name="storefront-outline" ></ion-icon>
-      Grocery Stores
+      Buisnesses
     </ion-item>
     <ion-item (click)="navigate('locations')">
       <ion-icon name="location-outline"></ion-icon>
       Locations
+    </ion-item>
+    <ion-item (click)="navigate('profile')">
+      <ion-icon name="person-circle-outline" ></ion-icon>
+      Profile
     </ion-item>
     <ion-item>
       <ion-icon name="notifications-outline"></ion-icon>

@@ -23,7 +23,6 @@ export class ProfileComponent implements OnInit {
   loading: boolean = true;
   posts: Post[] = [];
   recentDeals: Post[] = [];
-  steps: any[] = [];
   showDealsInfo: boolean = false;
   map: any;
   isBuisness: boolean = false;
@@ -52,7 +51,6 @@ export class ProfileComponent implements OnInit {
       }
       this.userAddress = `${this.user.location.locality}, ${this.user.location.administrativeArea}`;
 
-      this.findNextSteps();
       if(this.user.description == ""){
         this.user.description = "User has not written a description yet.";
       }
@@ -63,9 +61,6 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  findStepIndex(content: string){
-    return this.steps.findIndex(step => step.content == content) + 1;
-  }
 
   navigate(route: string){
     if(route != ""){
@@ -93,24 +88,6 @@ export class ProfileComponent implements OnInit {
     this.userService.signOut();
   }
 
-  findNextSteps(){
-    this.steps = [];
-    if(this.user.isBusiness){ 
-      if(this.user.photoURL == "https://firebasestorage.googleapis.com/v0/b/deals2meals-4e239.appspot.com/o/default_user.jpg?alt=media&token=e1c97c88-5aab-487b-ae6d-878415e28b6a"){
-        this.steps.push({content: 'Enter a Profile Image', link: 'profile/edit'});
-      }
-
-      if(this.user.description == ""){
-        this.steps.push({content: 'Enter a Description', link: 'profile/edit'});
-      }
-
-      if(this.posts == []){
-        this.steps.push({content: 'Make your First Deal', link: 'profile/edit'});
-      }
-    }else{
-      this.steps.concat([{content: 'Find a Buisness Near You', link: 'foodbanks'}, {content: 'Contact the Buisness', link: ''}, {content: 'Receive your Donation', link: ''}]);
-    }
-  }
 
   async presentModal() {
     const modal = await this.modalController.create({
