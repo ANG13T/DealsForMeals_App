@@ -35,6 +35,8 @@ DO RIGHT NOW:
 - make all settings page
 - make profile header
 
+- near you bottom section on location map
+
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 - rename all foodbank variables and names to buisnesses
 - delete user + remove user images from storage if not default image
