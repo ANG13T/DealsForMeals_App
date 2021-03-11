@@ -29,35 +29,46 @@ background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA3AAAAKMCAY
 	position: relative;
 	overflow: hidden;
     font-family: 'poppins', sans-serif !important;
-}
 
-.profile-top{
-    width: 100%;
-	height: 100%;
-    padding: 20px;
-    padding-top: 3rem !important;
-	color:white;
-    // background: #2858CD;
-    padding-bottom: 2rem;
-
-    .topDisplay{
-        position: relative;
-            .edit-profile{
-                position: absolute;
-                bottom: 8%;
-                right: 35%;
-                background-color: #67C1F4;
-                width: 30px;
-                height: 30px;
-                color: white;
-                font-size: 1px;
-
-                mat-icon{
-                    font-size: 1rem;
+    .profile-top{
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        padding-top: 3rem !important;
+        color:white;
+        // background: #2858CD;
+        padding-bottom: 2rem;
+    
+        .topDisplay{
+            position: relative;
+                .edit-profile{
+                    position: absolute;
+                    bottom: 8%;
+                    right: 35%;
+                    background-color: #67C1F4;
+                    width: 30px;
+                    height: 30px;
+                    color: white;
+                    font-size: 1px;
+    
+                    mat-icon{
+                        font-size: 1rem;
+                    }
                 }
+
+            .profile-image{
+                width: 7rem;
+                height: 7rem;
+                border: 1px solid #7A7171;
+                border-radius: 60px;
+                margin: auto;
+                margin-top: 2rem;
             }
+        }
     }
 }
+
+
 
 .ion-page{
     overflow:visible !important;
@@ -94,14 +105,7 @@ ion-menu-button{
     }
 }
 
-.profile-image{
-    width: 7rem;
-    height: 7rem;
-    border: 1px solid #7A7171;
-    border-radius: 60px;
-    margin: auto;
-    margin-top: 2rem;
-}
+
 
 .profile-name{
     font-size: 1.6rem !important;

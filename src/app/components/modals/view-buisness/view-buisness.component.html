@@ -1,38 +1,37 @@
-<ion-header>
-  <ion-toolbar color="#4043E1" class="header">
-    <ion-title></ion-title>
-    <ion-buttons slot="start">
-      <ion-button (click)="dismissModal()">
-        <ion-icon name="chevron-back-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
 <ion-content fullscreen>
-
   <div class="entire">
-    <div class="top">
+    <!-- <div class="top">
       <img src={{buisness.photoURL}} alt="Buisness Image" class="profile-image">
       <h1 class="name">{{buisness.name}}</h1>
       <h3 class="location">{{displayLocation}}</h3>
       <button mat-button class="message-button">Send Message</button>
+    </div> -->
+    <div class="top-content">
+      <div class="back-button">
+        <ion-icon name="close-outline"></ion-icon>
+      </div>
+      <div class="profile-top">
+        <div class="topDisplay">
+            <img src={{buisness.photoURL}} alt="Profile Image" class="profile-image" />
+        </div>
+      </div>
     </div>
   
+
+    <ion-segment value="deals" [(ngModel)]="selectedIndex">
+      <ion-segment-button value="deals">
+        <ion-label>DEALS</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="description">
+        <ion-label>DESCRIPTION</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="location">
+        <ion-label>LOCATION</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+
     <div class="bottom">
-      <ion-segment value="deals" [(ngModel)]="selectedIndex">
-        <ion-segment-button value="deals">
-          <ion-label>DEALS</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="description">
-          <ion-label>DESCRIPTION</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="location">
-          <ion-label>LOCATION</ion-label>
-        </ion-segment-button>
-      </ion-segment>
-
-
-    
           <div class="posts" [hidden]="selectedIndex != 'deals'">
             <ion-card *ngIf="posts.length == 0">
               <ion-card-header>
