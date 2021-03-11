@@ -18,6 +18,7 @@ export class ViewBuisnessComponent implements OnInit {
 
   buisness: User;
   posts: Post[] = [];
+  loadingPosts:boolean = false;
   previewDeals: Post[] = [];
   shownItem: string = 'deals';
   displayLocation: string;
@@ -26,6 +27,7 @@ export class ViewBuisnessComponent implements OnInit {
   constructor(private buisnessService: BuisnessService, private route:ActivatedRoute, private router: Router, private modalCtrl: ModalController, private postService: PostService, private modalController: ModalController) { }
 
   ngOnInit() {
+    this.loadingPosts = true;
     if(!this.buisness){
       let buisnessID = this.route.snapshot.params['id'];
       this.buisnessService.getBuisnessByID(buisnessID).then((buisness) => {
@@ -36,6 +38,7 @@ export class ViewBuisnessComponent implements OnInit {
     this.postService.getDealsForUser(this.buisness.uid).then((postData) => {
       this.posts = postData;
       this.previewDeals = this.posts.slice(0, 4);
+      this.loadingPosts = false;
     });
 
     let location = this.buisness.location;
