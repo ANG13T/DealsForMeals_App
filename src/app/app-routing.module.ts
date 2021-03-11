@@ -11,6 +11,8 @@ import { SignUpComponent } from './components/pages/sign-up/sign-up.component';
 import { ViewBuisnessComponent } from './components/modals/view-buisness/view-buisness.component';
 import { ViewDealComponent } from './components/modals/view-deal/view-deal.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { ShareRateComponent } from './components/pages/share-rate/share-rate.component';
+import { HelpComponent } from './components/pages/help/help.component';
 
 const routes: Routes = [
   {
@@ -43,6 +45,16 @@ const routes: Routes = [
   {
     path: 'profile/edit',
     component: EditProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'profile/share',
+    component: ShareRateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'profile/help',
+    component: HelpComponent,
     canActivate: [AuthGuard]
   },
   {

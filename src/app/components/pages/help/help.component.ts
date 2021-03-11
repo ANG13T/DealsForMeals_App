@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular/providers/nav-controller';
 
 @Component({
   selector: 'app-help',
@@ -7,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HelpComponent implements OnInit {
 
-  constructor() { }
+  constructor(private navCtrl: NavController) { }
 
   ngOnInit() {}
+
+  goBack(){
+    this.navCtrl.back();
+  }
 
 }
