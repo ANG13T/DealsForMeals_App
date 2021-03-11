@@ -4,13 +4,14 @@ import { Location } from '../models/location.model';
 import { Post } from '../models/post.model';
 import { User } from '../models/user.model';
 import * as geofire from 'geofire-common';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
 
-  constructor(private afs: AngularFirestore) { }
+  constructor(private afs: AngularFirestore, private storage: AngularFireStorage) { }
 
   async createDeal(post: Post): Promise<any>{
     this.afs.collection("deals").add(post).then((doc) => {
@@ -95,8 +96,17 @@ export class PostService {
     return result;
   }
 
-  async deleteDeal(postID: string): Promise<any>{
-    let promise = this.afs.firestore.collection("deals").doc(postID).delete().then(() => {
+  async deleteDeal(post: Post): Promise<any>{
+    const fileStorage= this.storage;
+    let promise = this.afs.firestore.collection("deals").doc(post.id).delete().then(async () => {
+      for(let image of post.images){
+        console.log("delete image");
+        let storageRefFile = fileStorage.refFromURL(image);
+        await storageRefFile.delete().toPromise().catch((error) => {
+          console.log("error with storage file delete", error.message);
+          return error;
+        });
+      }
       return;
     }).catch((err) => {
       alert("Error: " + err.message);
@@ -114,5 +124,6 @@ export class PostService {
     });
     return promise;
   }
+  
 
 }

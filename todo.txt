@@ -26,9 +26,6 @@ NEXT STEPS:
 DO RIGHT NOW:
 - set zoom in on view buisness location maps
 - delete image from firebase storage when delete post
-- slide delete and update
-- view deals button
-- view deals page
 - style view buisness page
 - custommize markers to have logos and pointers
     - make data hover over the markers
@@ -36,3 +33,4 @@ DO RIGHT NOW:
 
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 - rename all foodbank variables and names to buisnesses
+- delete user + remove user images from storage if not default image

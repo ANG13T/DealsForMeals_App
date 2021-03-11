@@ -84,7 +84,7 @@ export class ViewDealComponent implements OnInit {
           text: 'Delete',
           handler: () => {
             console.log('Confirm Okay');
-            this.postService.deleteDeal(this.post.id).then(() => {
+            this.postService.deleteDeal(this.post).then(() => {
               this.dismissModal('delete', this.post);
             })
           }
