@@ -63,4 +63,12 @@ export class ViewAllDealsComponent implements OnInit {
         }
     });
   }
+
+  async updateDeal(deal: Post){
+
+  }
+
+  async deleteDeal(deal: Post){
+
+  }
 }
