@@ -25,10 +25,8 @@
       [latitude]="buisness.location.latitude"
       [longitude]="buisness.location.longitude"
     >
-      <div>
-        <!-- <p>Location</p> -->
-        <!-- <img src={{buisness.photoURL}} /> -->
-        <img style="width: 20px; height: 20px;" [src]="buisness.photoURL" alt="Image" />
+      <div class="customMarker">
+        <img [src]="buisness.photoURL" alt="Image" />
       </div>
     </agm-overlay>
 
