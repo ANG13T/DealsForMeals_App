@@ -158,3 +158,37 @@ agm-map{
         }
     }
 }
+
+.transition-info{
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    border: 20px solid white;
+    background: white;
+    border-radius: 50px 0px 0px 0px;
+    color: black;
+
+    .profile-name{
+        font-size: 1.6rem !important;
+        font-weight: bold !important;
+        margin-bottom: .5rem !important;
+        font-family: poppins, sans-serif;
+        margin-top: .5rem !important;
+        padding-top: 1rem;
+    }
+    
+    .profile-description{
+        font-size: 1rem !important;
+        font-family: poppins, sans-serif;
+    
+        mat-icon, span{
+            vertical-align: middle !important;
+            display: inline-block;
+        }
+    
+       span{
+           margin-left: 3px;
+       }
+    }
+    
+}

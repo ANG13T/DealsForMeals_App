@@ -1,20 +1,27 @@
 <ion-content fullscreen>
   <div class="entire">
     <!-- <div class="top">
-      <img src={{buisness.photoURL}} alt="Buisness Image" class="profile-image">
-      <h1 class="name">{{buisness.name}}</h1>
-      <h3 class="location">{{displayLocation}}</h3>
-      <button mat-button class="message-button">Send Message</button>
     </div> -->
     <div class="top-content">
-      <div class="back-button">
+      <div class="back-button" (click)="dismissModal()">
         <ion-icon name="close-outline"></ion-icon>
       </div>
       <div class="profile-top">
         <div class="topDisplay">
-            <img src={{buisness.photoURL}} alt="Profile Image" class="profile-image" />
+            <img src={{buisness.photoURL}} alt="Buisness Image" class="profile-image" />
         </div>
       </div>
+    </div>
+
+    <div class="transition-info">
+      <h2 class="profile-name">{{buisness.name}}</h2>
+      <ion-skeleton-text animated [hidden]="buisness.name != ''"></ion-skeleton-text>
+      <h2 class="profile-description">
+        <span>
+          {{displayLocation}}
+        </span>
+      </h2>
+      <ion-skeleton-text animated [hidden]="displayLocation != ''"></ion-skeleton-text>
     </div>
   
 
@@ -54,7 +61,7 @@
 
   
           <div class="about" [hidden]="selectedIndex != 'description'">
-            <h3>Buisness Description:</h3>
+            <h3>BUISNESS DESCRIPTION:</h3>
             <p *ngIf="buisness.description != ''">{{buisness.description}}</p>
             <p *ngIf="buisness.description == ''">No description written yet</p>
         </div>
