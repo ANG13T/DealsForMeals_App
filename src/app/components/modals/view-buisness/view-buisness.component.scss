@@ -221,6 +221,7 @@ ion-card-title{
 .top-deal-display{
     display: flex;
     margin-top: 1.5rem;
+    margin-bottom: 1rem;
     justify-content: space-between;
 
     .content-header{
@@ -232,5 +233,11 @@ ion-card-title{
         background-color: transparent;
         font-size: 1rem;
         margin-right: 1rem;
+    }
+}
+
+.about{
+    .description{
+        margin-top: 1.5rem;
     }
 }

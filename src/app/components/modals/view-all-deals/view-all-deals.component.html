@@ -5,7 +5,8 @@
         <ion-icon name="close-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>View Your Deals</ion-title>
+    <ion-title [hidden]="!isOwner">View Your Deals</ion-title>
+    <ion-title [hidden]="isOwner">View Deals</ion-title>
   </ion-toolbar>
 </ion-header>
 
