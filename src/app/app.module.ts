@@ -43,10 +43,12 @@ import { SettingsComponent } from './components/pages/settings/settings.componen
 import { ChipsSelectComponent } from './components/accessories/chips-select/chips-select.component';
 import { ViewAllDealsComponent } from './components/modals/view-all-deals/view-all-deals.component';
 import { AgmOverlays } from "agm-overlays"
+import { HelpComponent } from './components/pages/help/help.component';
+import { ShareRateComponent } from './components/pages/share-rate/share-rate.component';
 
 
 @NgModule({
-  declarations: [AppComponent, HomePage, SignUpComponent, SignInComponent, ProfileComponent, SideNavComponent, BaseNavComponent, EditProfileComponent, CreatePostComponent, EditPostComponent, BottomBarComponent, FoodbanksComponent, LocationsComponent, ViewBuisnessComponent, ViewDealComponent, SettingsComponent, CreatePostComponent, ChipsSelectComponent, ViewAllDealsComponent],
+  declarations: [AppComponent, HomePage, SignUpComponent, SignInComponent, ProfileComponent, SideNavComponent, BaseNavComponent, EditProfileComponent, CreatePostComponent, EditPostComponent, BottomBarComponent, FoodbanksComponent, LocationsComponent, ViewBuisnessComponent, ViewDealComponent, SettingsComponent, CreatePostComponent, ChipsSelectComponent, ViewAllDealsComponent,  HelpComponent, ShareRateComponent],
   entryComponents: [CreatePostComponent, EditPostComponent, ViewAllDealsComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, AngularFireModule.initializeApp(environment.firebaseConfig), AngularFireAuthModule, AngularFireStorageModule, FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule, MaterialModule, AgmOverlays, AgmCoreModule.forRoot({
     apiKey: environment.googleMapsAPIKey

@@ -33,6 +33,7 @@ DO RIGHT NOW:
     - change marker design
 
 - make all settings page
+- make profile header
 
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 - rename all foodbank variables and names to buisnesses
