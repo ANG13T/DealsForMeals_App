@@ -19,11 +19,18 @@ export class ShareRateComponent implements OnInit {
 
   toggleStar(index){
     let amount = index + 1;
-    for(let i = 0; i < amount; i++){
+    let remaining = 5 - amount;
 
+    //marked star
+    for(let i = 0; i < amount; i++){
+      this.stars[i] = true;
     }
 
-    // for)
+    //unmarked star.
+    for(let i = 5; i > amount; i--){
+      this.stars[i - 1] = false;
+    }
+
   }
 
 }
