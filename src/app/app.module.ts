@@ -13,7 +13,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { MaterialModule } from './shared/modules/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -54,7 +53,7 @@ import { ShareRateComponent } from './components/pages/share-rate/share-rate.com
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, AngularFireModule.initializeApp(environment.firebaseConfig), AngularFireAuthModule, AngularFireStorageModule, FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule, MaterialModule, AgmOverlays, AgmCoreModule.forRoot({
     apiKey: environment.googleMapsAPIKey
   }), AvatarModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AngularFirestore, NativeGeocoder, Geolocation, SocialSharing],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AngularFirestore, NativeGeocoder, Geolocation],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

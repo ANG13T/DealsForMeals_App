@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @Component({
   selector: 'app-share-rate',
@@ -10,7 +9,7 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 export class ShareRateComponent implements OnInit {
   stars: boolean[] = [true, true, true, true, true];
 
-  constructor(private navCtrl: NavController, private socialSharing: SocialSharing) { }
+  constructor(private navCtrl: NavController) { }
 
   ngOnInit() {}
 
@@ -45,12 +44,7 @@ export class ShareRateComponent implements OnInit {
   }
 
   otherShare(){
-    this.socialSharing.share("Download DealsForMeals on the App Store!", "DealsForMeals", "", "https://angelina-tsuboi.github.io/DealsForMeals/").then(() =>{
-      console.log("done share")
-    }).catch((err) => {
-      console.log("An error occured", err)
-      alert("An unexpected error occurred");
-    })
+    
   }
 
 }
