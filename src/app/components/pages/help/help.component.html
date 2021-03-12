@@ -10,8 +10,29 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <h1>hello</h1>
   <div class="help-container">
-
+ 
+    
+      <ion-list>
+        <button (click)="expandItem(item)" ion-item *ngFor="let item of items">
+          <ion-thumbnail item-start>
+            <img src="http://placehold.it/100">
+          </ion-thumbnail>
+          <h2>My Neighbor Totoro</h2>
+          <p>Hayao Miyazaki • 1988</p>
+          <accordion-list [height]="itemHeight" [expanded]="item.expanded">
+              <ion-item>
+                <h2>Hello Everyone</h2>
+              </ion-item>
+              <ion-item>
+                <h2>Hello Everyone</h2>
+              </ion-item>
+          </accordion-list>
+          <button ion-button clear item-end>View</button>
+        </button>
+      </ion-list>
+  
 
   </div>
 </ion-content>

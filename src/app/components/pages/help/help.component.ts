@@ -6,13 +6,49 @@ import { NavController } from '@ionic/angular';
   templateUrl: './help.component.html',
   styleUrls: ['./help.component.scss'],
 })
+
+
 export class HelpComponent implements OnInit {
 
-  constructor(private navCtrl: NavController) { }
+  items: any = [];
+  itemHeight: number = 0;
 
-  ngOnInit() {}
+  constructor(private navCtrl: NavController) {
+    this.items = [
+      { expanded: false },
+      { expanded: false },
+      { expanded: false },
+      { expanded: false },
+      { expanded: false },
+      { expanded: false },
+      { expanded: false },
+      { expanded: false },
+      { expanded: false }
+    ];
 
-  goBack(){
+  }
+
+
+  expandItem(item) {
+
+    this.items.map((listItem) => {
+
+      if (item == listItem) {
+        listItem.expanded = !listItem.expanded;
+      } else {
+        listItem.expanded = false;
+      }
+
+      return listItem;
+
+    });
+  }
+
+
+
+  ngOnInit() { }
+
+  goBack() {
     this.navCtrl.back();
   }
 
