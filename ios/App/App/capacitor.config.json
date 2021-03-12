@@ -19,8 +19,5 @@
       "SplashScreen": "screen",
       "SplashScreenDelay": "3000"
     }
-  },
-  "server": {
-    "url": "http://172.17.102.104:8100"
   }
 }

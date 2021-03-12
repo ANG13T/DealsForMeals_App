@@ -20,7 +20,6 @@ export class ShareRateComponent implements OnInit {
 
   toggleStar(index){
     let amount = index + 1;
-    let remaining = 5 - amount;
 
     //marked star
     for(let i = 0; i < amount; i++){
@@ -34,7 +33,7 @@ export class ShareRateComponent implements OnInit {
   }
 
   messageShare(){
-
+    // this.socialSharing.canShareVia()
   }
 
   instaShare(){
@@ -45,8 +44,13 @@ export class ShareRateComponent implements OnInit {
 
   }
 
-  twitterShare(){
-    
+  otherShare(){
+    this.socialSharing.share("Download DealsForMeals on the App Store!", "DealsForMeals", "", "https://angelina-tsuboi.github.io/DealsForMeals/").then(() =>{
+      console.log("done share")
+    }).catch((err) => {
+      console.log("An error occured", err)
+      alert("An unexpected error occurred");
+    })
   }
 
 }
