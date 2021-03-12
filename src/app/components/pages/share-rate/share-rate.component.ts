@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @Component({
   selector: 'app-share-rate',
@@ -9,7 +10,7 @@ import { NavController } from '@ionic/angular';
 export class ShareRateComponent implements OnInit {
   stars: boolean[] = [true, true, true, true, true];
 
-  constructor(private navCtrl: NavController) { }
+  constructor(private navCtrl: NavController, private socialSharing: SocialSharing) { }
 
   ngOnInit() {}
 
@@ -30,7 +31,22 @@ export class ShareRateComponent implements OnInit {
     for(let i = 5; i > amount; i--){
       this.stars[i - 1] = false;
     }
+  }
 
+  messageShare(){
+
+  }
+
+  instaShare(){
+
+  }
+
+  facebookShare(){
+
+  }
+
+  twitterShare(){
+    
   }
 
 }
