@@ -45,6 +45,7 @@ export class ShareRateComponent implements OnInit {
 
   otherShare(){
     
+    
   }
 
 }

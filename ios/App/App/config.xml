@@ -2,11 +2,6 @@
 <widget version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <access origin="*" />
   
-  <feature name="SocialSharing">
-    <param name="ios-package" value="SocialSharing"/>
-    <param name="onload" value="true"/>
-  </feature>
-
   <feature name="Device">
     <param name="ios-package" value="CDVDevice"/>
   </feature>
@@ -68,6 +63,11 @@
 
   <feature name="NativeGeocoder">
     <param name="ios-package" value="NativeGeocoder"/>
+  </feature>
+
+  <feature name="SocialSharing">
+    <param name="ios-package" value="SocialSharing"/>
+    <param name="onload" value="true"/>
   </feature>
 
   
