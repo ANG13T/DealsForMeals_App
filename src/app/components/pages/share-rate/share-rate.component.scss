@@ -1,3 +1,57 @@
-.options{
-    display: flex;
+
+ion-content{
+    text-align: center;
+
+    .subtitle{
+        text-align: left;
+        font-size: 1.4rem;
+        margin-left: 1.2rem;
+        font-family: poppins, sans-serif;
+        width: 90%;
+        margin-top: 2rem;
+        padding-bottom: .5rem;
+        border-bottom: 1px solid gray;
+    }
+
+    .options{
+        display: flex;
+        margin-top: 1.4rem;
+        margin-bottom: 1.7rem;
+
+        .option{
+            margin: 0 auto;
+            
+            ion-icon{
+                font-size: 2.4rem;
+                margin-bottom: 10px;
+            }
+        }
+    }
+    
+    .rate-container{
+        .stars{
+            display: flex;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+
+            .star{
+                margin: 0 auto;
+                font-size: 2rem;
+            }
+        }
+
+        .submit-button{
+            background: #3880ff;
+            color: white;
+            width: 80%;
+            height: 2.5rem;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-top: 1rem;
+            border-radius: 8px;
+            border: 2px solid #3880ff;
+        }
+    }
 }
+
+

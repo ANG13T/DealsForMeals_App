@@ -14,21 +14,20 @@
 
     <!-- Share app (twitter, facebook, insta, etc) -->
     <h3 class="subtitle">Share with Others</h3>
-    <hr>
     <div class="options">
-      <div class="option">
-        <ion-icon name="chatbox-outline"></ion-icon>
+      <div class="option" style="color: #52c152;">
+        <ion-icon name="chatbubble"></ion-icon>
         <h4 class="option-text">Messages</h4>
       </div>
-      <div class="option">
+      <div class="option" style="color: #d43fd4;">
         <ion-icon name="logo-instagram"></ion-icon>
         <h4 class="option-text">Instagram</h4>
       </div>
-      <div class="option">
+      <div class="option" style="color: #4dc4ea;">
         <ion-icon name="logo-twitter"></ion-icon>
         <h4 class="option-text">Twitter</h4>
       </div>
-      <div class="option">
+      <div class="option" style="color: #3880ff;">
         <ion-icon name="logo-facebook"></ion-icon>
         <h4 class="option-text">Facebook</h4>
       </div>
@@ -37,17 +36,16 @@
 
     <!-- Rate app with stars and button -->
     <h3 class="subtitle">Rate Our App</h3>
+
     <div class="rate-container">
-      <div class="stars">
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
-        <div class="star"></div>
+      <div class="stars" style="color: #ffcb38;">
+        <div class="star" *ngFor="let star of stars; let i = index">
+          <ion-icon name="star-outline" [hidden]="star"></ion-icon>
+          <ion-icon name="star" [hidden]="!star"></ion-icon>
+        </div>       
       </div>
-      <button>RATE</button>
+      <button class="submit-button">SUBMIT</button>
     </div>
-    <hr>
 
   </div>
 </ion-content>
