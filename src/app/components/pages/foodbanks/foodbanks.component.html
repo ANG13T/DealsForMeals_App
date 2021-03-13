@@ -12,22 +12,12 @@
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title>Deals4Meals</ion-title>
+      <ion-title>DealsForMeals</ion-title>
     </ion-toolbar>
-    <ion-toolbar>
-      <ion-segment value="foodbanks" class="choices">
-        <ion-segment-button value="deals" (click)="toggleShowFoodbanks()">
-          <ion-label>Deals</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="foodbanks" checked (click)="toggleShowFoodbanks()">
-          <ion-label>Buisnessses Near Me</ion-label>
-        </ion-segment-button>
-      </ion-segment>
-    </ion-toolbar>
-    <ion-toolbar class="toolbar-item" [hidden]="!showFoodbanks || !search">
+    <ion-toolbar class="toolbar-item" [hidden]="!search">
       <ion-searchbar></ion-searchbar>
     </ion-toolbar>
-    <ion-toolbar class="toolbar-item" [hidden]="!showFoodbanks || !filter">
+    <ion-toolbar class="toolbar-item" [hidden]="!filter">
       <app-chips-select [options]="buisnessOptions" [formControl]="categoryControl">
       </app-chips-select>
     </ion-toolbar>
@@ -38,10 +28,10 @@
   <ion-content class="content">
 
 
-  <div class="foodbanks-section" [hidden]="!showFoodbanks">
+  <div class="foodbanks-section">
     <ion-infinite-scroll>
       <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data…">
-        <div class="foodbanks" *ngIf="showFoodbanks" [hidden]="loadingFoodbanks">
+        <div class="foodbanks" [hidden]="loadingBuisnesses">
           <div class="foodbank" *ngFor="let foodbank of buisnesses" (click)="openBuisness(foodbank)">
             <ion-item>
               <ion-thumbnail slot="start">
@@ -57,7 +47,7 @@
           </div>
         </div>
 
-        <div class="loading-foodbanks" [hidden]="!loadingFoodbanks">
+        <div class="loading-foodbanks" [hidden]="!loadingBuisnesses">
           <div class="foodbank" *ngFor="let post of [1,2,3,4,5]">
             <ion-item>
               <ion-thumbnail slot="start">
@@ -82,7 +72,7 @@
     </ion-infinite-scroll>
   </div>
 
-  <div class="deals-section" [hidden]="showFoodbanks">
+  <!-- <div class="deals-section" [hidden]="showFoodbanks">
     <ion-infinite-scroll>
       <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data…">
         <div class="foodbanks" *ngIf="!showFoodbanks" [hidden]="loadingDeals">
@@ -124,7 +114,7 @@
 
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
-  </div>
+  </div> -->
     
 
 

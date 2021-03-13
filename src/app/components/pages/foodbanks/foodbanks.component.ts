@@ -24,10 +24,7 @@ export class FoodbanksComponent implements OnInit {
 
   buisnesses: User[];
   user: User;
-  deals: Post[] = [];
-  loadingFoodbanks: boolean = false;
-  loadingDeals: boolean = false;
-  showFoodbanks: boolean = true;
+  loadingBuisnesses: boolean = false;
   search: boolean = false;
   filter: boolean = false;
   buisnessOptions = ["Foodbanks", "Restaurants", "Other"];
@@ -38,12 +35,11 @@ export class FoodbanksComponent implements OnInit {
 
   disabledControl = new FormControl(false);
 
-  constructor(private buisnessService: BuisnessService, private postService: PostService, private routerOutlet: IonRouterOutlet, private modalController: ModalController, private userService: UserService) { }
+  constructor(private buisnessService: BuisnessService, private postService: PostService, private modalController: ModalController, private userService: UserService) { }
 
   async ngOnInit() {
-    this.loadingDeals = true;
-    this.loadingFoodbanks = true;
-    this.showFoodbanks = true;
+    this.loadingBuisnesses = true;
+
 
     this.disabledControl.valueChanges
       .pipe(untilDestroyed(this))
@@ -59,14 +55,14 @@ export class FoodbanksComponent implements OnInit {
         this.buisnessService.getBuisnessesNearLocation(this.user.location).then((result) => {
           console.log("done with result", result);
           this.buisnesses = result;
-          this.loadingFoodbanks = false;
+          this.loadingBuisnesses = false;
         })
 
-        this.postService.getDealsNearLocation(this.user.location).then((result) => {
-          console.log("resultant deals", result)
-          this.deals = result;
-          this.loadingDeals = false;
-        })
+        // this.postService.getDealsNearLocation(this.user.location).then((result) => {
+        //   console.log("resultant deals", result)
+        //   this.deals = result;
+        //   this.loadingDeals = false;
+        // })
       }
     });
 
@@ -88,10 +84,6 @@ export class FoodbanksComponent implements OnInit {
     }
   }
 
-  toggleShowFoodbanks() {
-    this.showFoodbanks = !this.showFoodbanks;
-  }
-
 
   async openBuisness(buisness: User) {
     const modal = await this.modalController.create({
@@ -103,15 +95,15 @@ export class FoodbanksComponent implements OnInit {
     return await modal.present();
   }
 
-  async openPost(post: Post){
-    const modal = await this.modalController.create({
-      component: ViewDealComponent,
-      componentProps: {
-        post: post
-      }
-    });
-    return await modal.present();
-  }
+  // async openPost(post: Post){
+  //   const modal = await this.modalController.create({
+  //     component: ViewDealComponent,
+  //     componentProps: {
+  //       post: post
+  //     }
+  //   });
+  //   return await modal.present();
+  // }
 
   getLocation(location: Location){
       let result = `${location.subThoroughfare} ${location.thoroughfare}, ${location.subLocality}`;
