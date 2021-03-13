@@ -21,7 +21,9 @@ export class DealsComponent implements OnInit {
   deals: Post[];
   user: User;
   loadingDeals: boolean = false;
-  search: boolean = false;
+  searchTerm: string = "";
+  topDisplay: Post[];
+  bottomDisplay: Post[];
 
   constructor(private postService: PostService, private modalController: ModalController, private userService: UserService) { }
 
@@ -36,17 +38,16 @@ export class DealsComponent implements OnInit {
         this.postService.getDealsNearLocation(this.user.location).then((result) => {
           console.log("resultant deals", result)
           this.deals = result;
+          let results = this.deals;
+          this.topDisplay = results.slice(0, 5);
+          this.bottomDisplay = results.slice(5, this.deals.length);
           this.loadingDeals = false;
         })
       }
     });
 
   }
-
-  toggleSearch(){
-    this.search = !this.search;
-  }
-
+  
   async openPost(post: Post){
     const modal = await this.modalController.create({
       component: ViewDealComponent,
