@@ -167,9 +167,11 @@ ion-title{
   .card-main, .step-card-main{
     display: flex;
     width: 100%;
+    margin-bottom: 2.5rem;
 
     img{
         min-width: 100%;
+        max-height: 25vh;
         display: block;
         width: auto;
         height: auto;
@@ -180,4 +182,15 @@ ion-title{
         font-size: 1rem;
         margin-top: 1rem;
     }
+}
+
+
+ion-slides {
+  --bullet-background: #C4C4C4;
+  --bullet-margin-top: 20px;
+  --bullet-background-active: #A0A3BD;
+}
+
+ion-slides .swiper-pagination {
+  bottom: 0px;
 }

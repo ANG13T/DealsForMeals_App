@@ -14,7 +14,7 @@ import { ViewDealComponent } from '../../modals/view-deal/view-deal.component';
 @Component({
   selector: 'app-deals',
   templateUrl: './deals.component.html',
-  styleUrls: ['./deals.component.scss'],
+  styleUrls: ['./deals.component.scss']
 })
 export class DealsComponent implements OnInit {
 
@@ -47,8 +47,8 @@ export class DealsComponent implements OnInit {
     });
 
   }
-  
-  async openPost(post: Post){
+
+  async openDeal(post: Post){
     const modal = await this.modalController.create({
       component: ViewDealComponent,
       componentProps: {

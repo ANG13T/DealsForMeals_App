@@ -7,7 +7,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- TODO for cards: Add small portion to description -->
+  <!-- TODO: add skeleton for top display -->
 
   <ion-content class="content">
   <div class="deals-section">
@@ -21,7 +21,7 @@
       <ion-slides pager>
         <ion-slide *ngFor="let deal of topDisplay">
             <div class="card-main" (click)="openDeal(deal)">
-              <img src={{deal.images[0]}} /> 
+              <img src={{deal.images[0]}} />
             </div>
         </ion-slide>
         </ion-slides>
