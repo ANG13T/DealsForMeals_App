@@ -5,9 +5,6 @@
         <button mat-icon-button (click)="toggleSearch()">
           <mat-icon>search</mat-icon>
         </button>
-        <button mat-icon-button (click)="toggleFilter()">
-          <mat-icon>filter_alt</mat-icon>
-        </button>
       </ion-buttons>
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
@@ -16,10 +13,6 @@
     </ion-toolbar>
     <ion-toolbar class="toolbar-item" [hidden]="!search">
       <ion-searchbar></ion-searchbar>
-    </ion-toolbar>
-    <ion-toolbar class="toolbar-item" [hidden]="!filter">
-      <app-chips-select [options]="buisnessOptions" [formControl]="categoryControl">
-      </app-chips-select>
     </ion-toolbar>
   </ion-header>
 
