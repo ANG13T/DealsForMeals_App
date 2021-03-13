@@ -5,6 +5,10 @@
 </ion-header>
 <ion-content class="content">
   <ion-list lines="none">
+    <ion-item (click)="navigate('deals')">
+      <ion-icon name="restaurant-outline"></ion-icon>
+      Deals
+    </ion-item>
     <ion-item (click)="navigate('foodbanks')">
       <ion-icon name="storefront-outline" ></ion-icon>
       Buisnesses
@@ -16,10 +20,6 @@
     <ion-item (click)="navigate('profile')">
       <ion-icon name="person-circle-outline" ></ion-icon>
       Profile
-    </ion-item>
-    <ion-item>
-      <ion-icon name="notifications-outline"></ion-icon>
-      Notifications
     </ion-item>
     <ion-item (click)="logOut()">
       <ion-icon name="log-out-outline"></ion-icon>

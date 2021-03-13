@@ -13,6 +13,7 @@ import { ViewDealComponent } from './components/modals/view-deal/view-deal.compo
 import { AuthGuard } from './shared/guards/auth.guard';
 import { ShareRateComponent } from './components/pages/share-rate/share-rate.component';
 import { HelpComponent } from './components/pages/help/help.component';
+import { DealsComponent } from './components/pages/deals/deals.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'deals',
+    component: DealsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'locations',
     component: LocationsComponent,
     canActivate: [AuthGuard]
@@ -60,16 +66,6 @@ const routes: Routes = [
   {
     path: 'settings',
     component: SettingsComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'buisness/:id',
-    component: ViewBuisnessComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'deal/:id',
-    component: ViewDealComponent,
     canActivate: [AuthGuard]
   }
 ];
