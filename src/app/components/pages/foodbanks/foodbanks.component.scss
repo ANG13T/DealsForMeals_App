@@ -19,14 +19,26 @@
     font-size: 1.7rem;
   }
 
+  .chip-section{
+    margin-top: 5px;
+  }
+
   h3{
     text-align: left;
     font-family: 'Poppins', sans-serif;
     margin-top: 1rem;
   }
-  ion-searchbar{
-    text-align: left;
+  .options-bar{
+    display: flex;
+    ion-searchbar{
+      text-align: left;
+    }
+
+    button{
+      margin-top: 10px;
+    }
   }
+  
 }
 
 .header{

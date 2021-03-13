@@ -24,6 +24,7 @@ export class FoodbanksComponent implements OnInit {
 
   buisnesses: User[];
   user: User;
+  filter: boolean = false;
   loadingBuisnesses: boolean = false;
   buisnessOptions = ["Foodbanks", "Restaurants", "Other"];
 
@@ -37,7 +38,7 @@ export class FoodbanksComponent implements OnInit {
 
   async ngOnInit() {
     this.loadingBuisnesses = true;
-
+    this.filter = false;
 
     this.disabledControl.valueChanges
       .pipe(untilDestroyed(this))
@@ -58,6 +59,10 @@ export class FoodbanksComponent implements OnInit {
       }
     });
 
+  }
+
+  toggleFilter(){
+    this.filter = !this.filter;
   }
 
   async openBuisness(buisness: User) {

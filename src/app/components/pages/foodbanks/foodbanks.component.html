@@ -14,10 +14,15 @@
     <h1 class="title">View Buisnesses</h1>
     <div class="options-bar">
       <ion-searchbar></ion-searchbar>
-      <button mat-icon-button color="primary">
+      <button mat-icon-button color="primary" (click)="toggleFilter()">
         <mat-icon>filter_list</mat-icon>
       </button>
     </div>
+    <div class="chip-section" [hidden]="!filter">
+      <app-chips-select [options]="buisnessOptions" [formControl]="categoryControl">
+      </app-chips-select>
+    </div>
+
     <h3>Locations Near You</h3>
   <div class="foodbanks-section">
     <ion-infinite-scroll>
