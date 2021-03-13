@@ -34,10 +34,10 @@ NEXT STEPS:
  - make start up tutorial slideshow
  - add margin to the top of dialogs + profile
 -  make search and filter?
+
 - fix intermittent header styles problem
 
 DO RIGHT NOW:
-- set zoom in on view buisness location maps
 - make deals and buisnesses seperate
     - format deals section
     - keep biusness format the same

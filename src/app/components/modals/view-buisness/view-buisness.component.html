@@ -108,7 +108,7 @@
   
 
           <div class="location" [hidden]="selectedIndex != 'location'">
-            <agm-map [latitude]="buisness.location.latitude" [longitude]="buisness.location.longitude">
+            <agm-map [zoom]="13" [latitude]="buisness.location.latitude" [longitude]="buisness.location.longitude">
               <agm-marker [latitude]="buisness.location.latitude"
                       [longitude]="buisness.location.longitude"></agm-marker>
             </agm-map>

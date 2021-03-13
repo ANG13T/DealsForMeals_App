@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="hide-nav-bar">
   <div profile *ngIf="user" #content class="full-profile">
     <div class="top-content">
       <div class="menu-button">
@@ -133,7 +133,7 @@
             </div>
             
           <div class="location" [hidden]="selectedIndex != 'location'">
-            <agm-map [latitude]="user.location.latitude" [longitude]="user.location.longitude">
+            <agm-map [zoom]="13" [latitude]="user.location.latitude" [longitude]="user.location.longitude">
               <agm-marker [latitude]="user.location.latitude"
                       [longitude]="user.location.longitude"></agm-marker>
             </agm-map>

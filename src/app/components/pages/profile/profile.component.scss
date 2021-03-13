@@ -163,10 +163,6 @@ ion-menu-button{
     margin-bottom: 1.5rem;
 }
 
-.header{
-    background-color: #4078e1;
-    color: white;
-}
 
 ion-card{
     width: 90vw;
@@ -274,4 +270,8 @@ agm-map{
         margin-right: 1rem;
         margin-top: 1rem;
     }
+}
+
+ion-content::before{
+    background-color: blue;
 }
