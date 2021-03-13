@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -9,6 +9,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { ViewEncapsulation } from '@angular/core';
 import * as geofire from 'geofire-common';
+
+declare var google;
 
 @Component({
   selector: 'app-sign-up',
@@ -41,8 +43,17 @@ export class SignUpComponent implements OnInit {
     maxResults: 5
   };
 
+  // form location autocomplete
+  GoogleAutocomplete: any;
+  autocomplete: { input: string; };
+  autocompleteItems: any[];
 
-  constructor(private router: Router, private userService: UserService, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder) { }
+
+  constructor(private router: Router, private userService: UserService, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder, public zone: NgZone) { 
+    this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
+    this.autocomplete = { input: '' };
+    this.autocompleteItems = [];
+  }
 
   ngOnInit() {
     this.loading = false;
@@ -237,6 +248,30 @@ export class SignUpComponent implements OnInit {
     }
     return address.slice(0, -2);
   }
+
+  // Autocmoplete Functionality
+  ClearAutocomplete(){
+    this.autocompleteItems = []
+    this.autocomplete.input = ''
+  }
+
+  UpdateSearchResults(){
+    if (this.autocomplete.input == '') {
+      this.autocompleteItems = [];
+      return;
+    }
+    this.GoogleAutocomplete.getPlacePredictions({ input: this.autocomplete.input },
+    (predictions, status) => {
+      this.autocompleteItems = [];
+      this.zone.run(() => {
+        predictions.forEach((prediction) => {
+          this.autocompleteItems.push(prediction);
+        });
+      });
+    });
+  }
+
+
 
 
 }

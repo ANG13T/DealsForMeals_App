@@ -37,14 +37,23 @@
       </mat-step>
       <mat-step *ngIf="isBusiness">
         <ng-template matStepLabel>Step 2</ng-template>
-        <ion-button (click)="getGeolocation()" class="location-button" expand="full">
+        <!-- <ion-button (click)="getGeolocation()" class="location-button" expand="full">
           <ion-icon name="location-outline"></ion-icon>
           Get Location
         </ion-button>
         <agm-map [latitude]="location.latitude" [longitude]="location.longitude" [hidden]="location.fullAddress == ''">
           <agm-marker [latitude]="location.latitude"
                   [longitude]="location.longitude"></agm-marker>
-        </agm-map>
+        </agm-map> -->
+
+        <ion-toolbar color="primary">
+          <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="UpdateSearchResults()" placeholder="Search for a place"  (ionClear)="ClearAutocomplete()"></ion-searchbar>
+        </ion-toolbar>
+        <ion-list [hidden]="autocompleteItems.length == 0">
+          <ion-item *ngFor="let item of autocompleteItems" tappable (click)="SelectSearchResult(item)">
+            {{ item.description }}
+          </ion-item>
+        </ion-list>
         
         
         <div class="buttons">
