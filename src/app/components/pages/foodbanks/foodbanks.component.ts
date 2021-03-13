@@ -25,8 +25,6 @@ export class FoodbanksComponent implements OnInit {
   buisnesses: User[];
   user: User;
   loadingBuisnesses: boolean = false;
-  search: boolean = false;
-  filter: boolean = false;
   buisnessOptions = ["Foodbanks", "Restaurants", "Other"];
 
   categoryControl = new FormControl(['Foodbanks']);
@@ -61,22 +59,6 @@ export class FoodbanksComponent implements OnInit {
     });
 
   }
-
-
-  toggleSearch(){
-    this.search = !this.search;
-    if(this.search){
-      this.filter = false;
-    }
-  }
-
-  toggleFilter(){
-    this.filter = !this.filter;
-    if(this.filter){
-      this.search = false;
-    }
-  }
-
 
   async openBuisness(buisness: User) {
     const modal = await this.modalController.create({

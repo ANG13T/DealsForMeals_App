@@ -8,8 +8,30 @@
 }
 
 .header{
-  background-color: #4078e1;
-  color: white !important;
+  background-color: white;
+  color: black !important;
+}
+
+.deals-section{
+  width: 90%;
+  margin: auto;
+  text-align: center;
+
+  .title{
+    margin-top: 2rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 1.7rem;
+  }
+
+  h3{
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 1rem;
+  }
+  ion-searchbar{
+    text-align: left;
+  }
 }
 
 ion-title{

@@ -1,27 +1,22 @@
 <div class="deals">
   <ion-header>
-    <ion-toolbar class="header" color="#4078e1">
-      <ion-buttons slot="end">
-        <button mat-icon-button (click)="toggleSearch()">
-          <mat-icon>search</mat-icon>
-        </button>
-      </ion-buttons>
+    <ion-toolbar class="header">
       <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
+        <ion-menu-button style="color: black;"></ion-menu-button>
       </ion-buttons>
-      <ion-title>DealsForMeals</ion-title>
-    </ion-toolbar>
-    <ion-toolbar class="toolbar-item" [hidden]="!search">
-      <ion-searchbar></ion-searchbar>
     </ion-toolbar>
   </ion-header>
 
   <!-- TODO for cards: Add small portion to description -->
 
   <ion-content class="content">
-
-
   <div class="deals-section">
+    <h1 class="title">View Deals</h1>
+    <div class="options-bar">
+      <ion-searchbar></ion-searchbar>
+    </div>
+    <h3>Deals Near You</h3>
+
     <ion-infinite-scroll>
       <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data…">
         <div class="deals" [hidden]="loadingDeals">
