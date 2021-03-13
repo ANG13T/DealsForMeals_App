@@ -12,27 +12,30 @@
 <ion-content [fullscreen]="true">
   <h1>hello</h1>
   <div class="help-container">
- 
-    
-      <ion-list>
-        <button (click)="expandItem(item)" ion-item *ngFor="let item of items">
-          <ion-thumbnail item-start>
-            <img src="http://placehold.it/100">
-          </ion-thumbnail>
-          <h2>My Neighbor Totoro</h2>
-          <p>Hayao Miyazaki • 1988</p>
-          <accordion-list [height]="itemHeight" [expanded]="item.expanded">
-              <ion-item>
-                <h2>Hello Everyone</h2>
-              </ion-item>
-              <ion-item>
-                <h2>Hello Everyone</h2>
-              </ion-item>
-          </accordion-list>
-          <button ion-button clear item-end>View</button>
-        </button>
-      </ion-list>
-  
-
+    mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        This is the expansion title
+      </mat-panel-title>
+      <mat-panel-description>
+        This is a summary of the content
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>This is the primary content of the panel.</p>
+  </mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Self aware panel
+      </mat-panel-title>
+      <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>I'm visible because I am open</p>
+  </mat-expansion-panel>
+</mat-accordion>
   </div>
 </ion-content>
