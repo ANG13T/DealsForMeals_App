@@ -4,29 +4,25 @@
 NOW: 
 - buisness tweaks
 
-- set zoom in on view buisness location maps
-
-- set limits on signup form
-
 - load more data when scroll to bottom
 
 - change header component orientation
 
 - email supplier form
 
-- view all deals button
-
+- add google oauth to sign in and sign up forms
 
 - custommize markers 
     - change marker design
 
 - make all settings page
+
 - make profile header
 
 - near you bottom section on location map
 
-
 - rename all foodbank variables and names to buisnesses
+
 - delete user + remove user images from storage if not default image
 
 NEXT STEPS:
@@ -38,9 +34,8 @@ NEXT STEPS:
 - fix intermittent header styles problem
 
 DO RIGHT NOW:
-- make deals and buisnesses seperate
-    - format deals section
-    - keep biusness format the same
+- format deals section
+- format buisnesses section
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 
 
