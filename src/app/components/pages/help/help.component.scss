@@ -1,11 +1,20 @@
-accordion-list {
- 
-    .wrapper {
-        transition: 0.2s linear;
-    }   
- 
-    .collapsed {
-        height: 0 !important;
+ion-content{
+    font-family: poppins, sans-serif;
+}
+
+mat-accordion{
+   
+    mat-panel-title{
+        font-family: poppins, sans-serif;
+        color:  #2464d4;
     }
- 
+}
+
+.faq-title{
+    text-align: center;
+    margin-top: 2rem;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-family: poppins, sans-serif;
 }

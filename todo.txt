@@ -16,6 +16,19 @@ NOW:
 
 - view all deals button
 
+
+- custommize markers 
+    - change marker design
+
+- make all settings page
+- make profile header
+
+- near you bottom section on location map
+
+
+- rename all foodbank variables and names to buisnesses
+- delete user + remove user images from storage if not default image
+
 NEXT STEPS:
  - make splash screen
  - make start up tutorial slideshow
@@ -28,15 +41,6 @@ DO RIGHT NOW:
 - make deals and buisnesses seperate
     - format deals section
     - keep biusness format the same
-
-- custommize markers 
-    - change marker design
-
-- make all settings page
-- make profile header
-
-- near you bottom section on location map
-
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
-- rename all foodbank variables and names to buisnesses
-- delete user + remove user images from storage if not default image
+
+

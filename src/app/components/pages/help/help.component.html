@@ -2,7 +2,6 @@
 
  <ion-header>
   <ion-toolbar class="header">
-    <ion-title>Help and FAQ</ion-title>
     <ion-buttons slot="start">
       <ion-button (click)="goBack()">Close</ion-button>
     </ion-buttons>
@@ -10,31 +9,48 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <h1>hello</h1>
+  <h1 class="faq-title">FAQ</h1>
   <div class="help-container">
-    mat-accordion>
-  <mat-expansion-panel hideToggle>
+  <mat-accordion>
+  <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        This is the expansion title
+        What is DealsForMeals?
       </mat-panel-title>
-      <mat-panel-description>
-        This is a summary of the content
-      </mat-panel-description>
     </mat-expansion-panel-header>
-    <p>This is the primary content of the panel.</p>
+    <p>DealsForMeals is a non-profit organization to help foodbanks by allowing local eateries donate extra food and supplies to foodbanks near them.</p>
   </mat-expansion-panel>
-  <mat-expansion-panel (opened)="panelOpenState = true"
-                       (closed)="panelOpenState = false">
+  <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Self aware panel
+        What is DealsForMeals?
       </mat-panel-title>
-      <mat-panel-description>
-        Currently I am {{panelOpenState ? 'open' : 'closed'}}
-      </mat-panel-description>
     </mat-expansion-panel-header>
-    <p>I'm visible because I am open</p>
+    <p>DealsForMeals is a non-profit organization to help foodbanks by allowing local eateries donate extra food and supplies to foodbanks near them.</p>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        What is DealsForMeals?
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>DealsForMeals is a non-profit organization to help foodbanks by allowing local eateries donate extra food and supplies to foodbanks near them.</p>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        What is DealsForMeals?
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>DealsForMeals is a non-profit organization to help foodbanks by allowing local eateries donate extra food and supplies to foodbanks near them.</p>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        What is DealsForMeals?
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>DealsForMeals is a non-profit organization to help foodbanks by allowing local eateries donate extra food and supplies to foodbanks near them.</p>
   </mat-expansion-panel>
 </mat-accordion>
   </div>
