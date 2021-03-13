@@ -35,7 +35,7 @@ export class FoodbanksComponent implements OnInit {
 
   disabledControl = new FormControl(false);
 
-  constructor(private buisnessService: BuisnessService, private postService: PostService, private modalController: ModalController, private userService: UserService) { }
+  constructor(private buisnessService: BuisnessService, private modalController: ModalController, private userService: UserService) { }
 
   async ngOnInit() {
     this.loadingBuisnesses = true;
@@ -57,16 +57,9 @@ export class FoodbanksComponent implements OnInit {
           this.buisnesses = result;
           this.loadingBuisnesses = false;
         })
-
-        // this.postService.getDealsNearLocation(this.user.location).then((result) => {
-        //   console.log("resultant deals", result)
-        //   this.deals = result;
-        //   this.loadingDeals = false;
-        // })
       }
     });
 
-    // Getting Buisness Data from Buisness Feed Service
   }
 
 
@@ -94,16 +87,6 @@ export class FoodbanksComponent implements OnInit {
     });
     return await modal.present();
   }
-
-  // async openPost(post: Post){
-  //   const modal = await this.modalController.create({
-  //     component: ViewDealComponent,
-  //     componentProps: {
-  //       post: post
-  //     }
-  //   });
-  //   return await modal.present();
-  // }
 
   getLocation(location: Location){
       let result = `${location.subThoroughfare} ${location.thoroughfare}, ${location.subLocality}`;
