@@ -34,8 +34,7 @@ NEXT STEPS:
 - fix intermittent header styles problem
 
 DO RIGHT NOW:
-- format deals section
-- format buisnesses section
+- format deals section (not header)
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 
 

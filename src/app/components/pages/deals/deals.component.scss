@@ -28,6 +28,8 @@
     text-align: left;
     font-family: 'Poppins', sans-serif;
     margin-top: 1rem;
+    font-size: 1.3rem;
+    font-weight: bold;
   }
   ion-searchbar{
     text-align: left;
@@ -155,15 +157,20 @@ ion-title{
     width: 6rem;
   }
 
+  ion-slides{
+    margin-bottom: 1rem;
+  }
+
   .card-main, .step-card-main{
     display: flex;
+    width: 100%;
 
     img{
-        max-width: 8rem;
-        max-height: 8rem;
+        min-width: 100%;
         display: block;
         width: auto;
         height: auto;
+        border-radius: 20px;
     }
 
     ion-card-title{
