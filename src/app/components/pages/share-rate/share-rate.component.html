@@ -15,23 +15,24 @@
     <!-- Share app (twitter, facebook, insta, etc) -->
     <h3 class="subtitle">Share with Others</h3>
     <div class="options">
-      <div class="option" style="color: #52c152;" (click)="messageShare()">
-        <ion-icon name="chatbubble"></ion-icon>
-        <h4 class="option-text">Messages</h4>
-      </div>
-      <div class="option" style="color: #d43fd4;">
+      <div class="option" style="color: #d43fd4;" (click)="instaShare()">
         <ion-icon name="logo-instagram"></ion-icon>
         <h4 class="option-text">Instagram</h4>
       </div>
   
-      <div class="option" style="color: #3880ff;">
+      <div class="option" style="color: #3880ff;" (click)="facebookShare()">
         <ion-icon name="logo-facebook"></ion-icon>
         <h4 class="option-text">Facebook</h4>
       </div>
 
-      <div class="option" style="color: #4dc4ea;" (click)="otherShare()">
+      <div class="option" style="color: #4dc4ea;" (click)="twitterShare()">
         <ion-icon name="logo-twitter"></ion-icon>
         <h4 class="option-text">Twitter</h4>
+      </div>
+
+      <div class="option" style="color: #9c9eac;" (click)="otherShare()">
+        <ion-icon name="share"></ion-icon>
+        <h4 class="option-text">Share</h4>
       </div>
     </div>
    

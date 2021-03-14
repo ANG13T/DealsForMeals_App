@@ -32,29 +32,11 @@ export class ShareRateComponent implements OnInit {
     }
   }
 
-  messageShare(){
-    console.log("sharing message");
-    this.socialSharing.shareViaEmail('Body', 'Subject', ['recipient@example.org']).then(() => {
-      // Success!
-    }).catch(() => {
-      // Error!
-    });
-  }
-
-  instaShare(){
-
-  }
-
-  facebookShare(){
-
-  }
-
   otherShare(){
     console.log("sharing...")
     let options = {
-      message: 'share this', // not supported on some apps (Facebook, Instagram)
-      subject: 'the subject', // fi. for email
-      files: ['', ''], // an array of filenames either locally or remotely
+      message: 'Download DealsForMeals on the App Store', // not supported on some apps (Facebook, Instagram)
+      subject: 'Download DealsForMeals on the App Store', // fi. for email
       url: 'https://example.com/',
       chooserTitle: 'Pick an app' // Android only, you can override the default share sheet title
   }
@@ -64,7 +46,33 @@ export class ShareRateComponent implements OnInit {
   }, (err) => {
       console.log("Sharing failed with message: ", err);
   });
+  }
 
+  instaShare(){
+    this.socialSharing.shareViaTwitter("Download DealsForMeals from the App Store", null, null).then(() => {
+      console.log("done")
+    }).catch((err) => {
+      console.log("error: ", err)
+      alert("Please Download Instagram to Share the App.")
+    })
+  }
+
+  facebookShare(){
+    this.socialSharing.shareViaTwitter("Download DealsForMeals from the App Store", null, null).then(() => {
+      console.log("done")
+    }).catch((err) => {
+      console.log("error: ", err)
+      alert("Please Download Facebook to Share the App.")
+    })
+  }
+
+  twitterShare(){
+    this.socialSharing.shareViaTwitter("Download DealsForMeals from the App Store", null, null).then(() => {
+      console.log("done")
+    }).catch((err) => {
+      console.log("error: ", err)
+      alert("Please Download Twitter to Share the App.")
+    })
   }
 
 }
