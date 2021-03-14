@@ -50,8 +50,21 @@ export class ShareRateComponent implements OnInit {
   }
 
   otherShare(){
-    
-    
+    console.log("sharing...")
+    let options = {
+      message: 'share this', // not supported on some apps (Facebook, Instagram)
+      subject: 'the subject', // fi. for email
+      files: ['', ''], // an array of filenames either locally or remotely
+      url: 'https://example.com/',
+      chooserTitle: 'Pick an app' // Android only, you can override the default share sheet title
+  }
+  this.socialSharing.shareWithOptions(options).then((result) => {
+      console.log("Share completed? ", result.completed); // On Android apps mostly return false even while it's true
+      console.log("Shared to app: ", result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
+  }, (err) => {
+      console.log("Sharing failed with message: ", err);
+  });
+
   }
 
 }
