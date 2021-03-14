@@ -35,8 +35,18 @@
   </ion-content>
 
   <ion-bottom-sheet title="Buisnesses Near You" dockedHeight="20vh" state="SheetState.Docked">
-
-    <h3>INside the Sheet</h3>
+    <ion-list>
+      <ion-item *ngFor="let buisness of buisnesses" (click)="openBuisnessDialog(buisness)">
+        <ion-thumbnail slot="start">
+          <img src={{buisness.photoURL}}>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>{{buisness.name}}</h3>
+          <p>{{getLocation(buisness.location)}}</p>
+          <p>{{getSubLocation(buisness.location)}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
   </ion-bottom-sheet>
 
 

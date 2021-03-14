@@ -6,6 +6,7 @@ import { User } from 'src/app/shared/models/user.model';
 import { BuisnessService } from 'src/app/shared/services/buisness.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ViewBuisnessComponent } from '../../modals/view-buisness/view-buisness.component';
+import { Location } from '../../../shared/models/location.model';
 
 declare var google: any;
 
@@ -52,4 +53,15 @@ export class LocationsComponent implements OnInit {
     });
     return await modal.present();
   }
+
+  getLocation(location: Location){
+    let result = `${location.subThoroughfare} ${location.thoroughfare}, ${location.subLocality}`;
+    return result;
+}
+
+getSubLocation(location: Location){
+    let result = `${location.locality} ${location.administrativeArea}, ${location.postalCode}`;
+    return result;
+}
+
 }
