@@ -26,31 +26,5 @@ export class AccountSettingsComponent implements OnInit {
   goBack(){
     this.navCtrl.back();
   }
-
-  async presentDeleteAlert() {
-    const alert = await this.alertController.create({
-      header: 'Delete Account',
-      message: 'Are you sure? This action is <strong>irreversible</strong>',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'Delete',
-          handler: async() => {
-            console.log('Confirm Okay');
-            await this.userService.deleteUser(this.user);
-          }
-        }
-      ]
-    });
-
-    await alert.present();
-  }
-
-
+  
 }
