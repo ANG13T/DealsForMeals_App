@@ -109,4 +109,15 @@ export class UserService {
     return promise;
   }
 
+  async deleteUser(user: User){
+    let promise = this.afs.firestore.collection("users").doc(user.uid).delete().then(() => {
+      console.log("user deleted")
+      this.router.navigate(['/']);
+      return;
+    }).catch((err) => {
+      console.log("err");
+      return err;
+    })
+  }
+
 }

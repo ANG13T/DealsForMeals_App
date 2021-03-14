@@ -10,17 +10,17 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="account-settings-container">
-    <div class="location-change" [hidden]="user.accountType != 'buisness'">
+  <div class="account-settings-container" *ngIf="user">
+    <!-- <div class="location-change" [hidden]="user.accountType != 'buisness'">
       <h3 class="subtitle">Change Buisness Location</h3>
 
-    </div>
+    </div> -->
     <div class="delete-account">
       <h3 class="subtitle">Delete Account</h3>
       <p>Caution: this action will delete your profile data and all of your user data from the app.</p>
-      <ion-button>
-        <ion-icon>delete</ion-icon>
-        Delete
+      <ion-button class="delete-button" color="danger" (click)="presentDeleteAlert()">
+        <ion-icon name="trash-outline"></ion-icon>
+        Delete Account
       </ion-button>
     </div>
   </div>
