@@ -56,10 +56,10 @@ export class UserService {
     return promise;
   }
 
-  async googleSignin(user: User){
+  async googleSignin(){
     const provider = new app.auth.GoogleAuthProvider();
     const creds = await this.afAuth.signInWithPopup(provider);
-    const userRef = this.afs.firestore.doc(`users/${user.uid}`);
+    const userRef = this.afs.firestore.doc(`users/${creds.user.uid}`);
 
     userRef.get().then((doc) => {
       if(!doc.exists){
@@ -67,12 +67,52 @@ export class UserService {
         this.router.navigate(['/signup']);
         return;
       }else{
+        this.loggedIn = true;
         this.router.navigate(['/profile']);
         return;
       }
     })
   }
 
+  async googleSignUp(user: User){
+    const provider = new app.auth.GoogleAuthProvider();
+    const creds = await this.afAuth.signInWithPopup(provider);
+    const userRef = this.afs.firestore.doc(`users/${user.uid}`);
+
+    userRef.get().then((doc) => {
+      if(!doc.exists){
+        let userData: User = {
+          uid: user.uid,
+          email: user.email,
+          name: user.name,
+          location: user.location,
+          lng: user.location.longitude,
+          lat: user.location.latitude,
+          hash: geofire.geohashForLocation([user.location.latitude, user.location.longitude]),
+          accountType: user.accountType,
+          photoURL: 'https://firebasestorage.googleapis.com/v0/b/deals2meals-4e239.appspot.com/o/default_user.jpg?alt=media&token=e1c97c88-5aab-487b-ae6d-878415e28b6a',
+          isBusiness: user.isBusiness,
+          description: ''
+        }
+
+        this.afs.firestore.collection("users").doc(userData.uid).set(userData)
+        .then(() => {
+          this.loggedIn = true;
+          this.router.navigate(['/profile']);
+          return;
+        })
+        .catch((err) => {
+          alert("Error: " + err);
+          return err;
+        })
+
+      }else{
+        alert("User already created. Please sign in.");
+        this.router.navigate(['/login']);
+        return;
+      }
+    })
+  }
 
   async checkUserExsists(newUser: User): Promise<any>{
     let userExists = await this.afAuth.fetchSignInMethodsForEmail(newUser.email);
