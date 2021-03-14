@@ -49,12 +49,11 @@ import { ShareRateComponent } from './components/pages/share-rate/share-rate.com
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { AppRate } from '@ionic-native/app-rate/ngx';
 import { DealsComponent } from './components/pages/deals/deals.component';
-import { AccountSettingsComponent } from './components/pages/account-settings/account-settings.component';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 
 @NgModule({
-  declarations: [AppComponent, HomePage, SignUpComponent, SignInComponent, ProfileComponent, SideNavComponent, BaseNavComponent, EditProfileComponent, CreatePostComponent, EditPostComponent, BottomBarComponent, FoodbanksComponent, LocationsComponent, ViewBuisnessComponent, ViewDealComponent, SettingsComponent, CreatePostComponent, ChipsSelectComponent, ViewAllDealsComponent,  HelpComponent, ShareRateComponent, DealsComponent, AccountSettingsComponent],
+  declarations: [AppComponent, HomePage, SignUpComponent, SignInComponent, ProfileComponent, SideNavComponent, BaseNavComponent, EditProfileComponent, CreatePostComponent, EditPostComponent, BottomBarComponent, FoodbanksComponent, LocationsComponent, ViewBuisnessComponent, ViewDealComponent, SettingsComponent, CreatePostComponent, ChipsSelectComponent, ViewAllDealsComponent,  HelpComponent, ShareRateComponent, DealsComponent],
   entryComponents: [CreatePostComponent, EditPostComponent, ViewAllDealsComponent, ViewDealComponent, ViewBuisnessComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, AngularFireModule.initializeApp(environment.firebaseConfig), AngularFireAuthModule, AngularFireStorageModule, FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule, MaterialModule, AgmOverlays, AgmCoreModule.forRoot({
     apiKey: environment.googleMapsAPIKey

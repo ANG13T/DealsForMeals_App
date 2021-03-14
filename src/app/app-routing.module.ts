@@ -14,7 +14,6 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { ShareRateComponent } from './components/pages/share-rate/share-rate.component';
 import { HelpComponent } from './components/pages/help/help.component';
 import { DealsComponent } from './components/pages/deals/deals.component';
-import { AccountSettingsComponent } from './components/pages/account-settings/account-settings.component';
 
 const routes: Routes = [
   {
@@ -52,11 +51,6 @@ const routes: Routes = [
   {
     path: 'profile/edit',
     component: EditProfileComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'profile/settings',
-    component: AccountSettingsComponent,
     canActivate: [AuthGuard]
   },
   {
