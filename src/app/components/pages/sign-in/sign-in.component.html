@@ -25,8 +25,19 @@
       <mat-icon matSuffix>lock</mat-icon>
     <mat-hint style="color:red;">{{errors.password}}</mat-hint> 
     </mat-form-field>
-  </div>
+
     <button mat-button [disabled]="email == '' || password == ''" (click)="login()" class="login-button">Login</button>
+  </div>
+  <h2 class="divider line one-line">OR</h2>
+
+  <div class="google-section">
+    <button class="google-button">
+      <img src="../../../../assets/icon/google-icon.svg" alt="Google Icon" />
+      <h3>Sign up with Google</h3>
+    </button>
+  </div>
+
+    
     <p class="description">Don't have an account? <a (click)="navigate('signup')">Sign Up.</a></p>
   </div>
 
