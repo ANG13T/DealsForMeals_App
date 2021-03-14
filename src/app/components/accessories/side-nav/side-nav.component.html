@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar color="#3048D1">
-    <ion-title>End Menu</ion-title>
+    <div class="profile-section" *ngIf="user">
+      <ngx-avatar src={{user.photoURL}}></ngx-avatar>
+      <h2>{{user.name}}</h2>
+    </div>
   </ion-toolbar>
 </ion-header>
 <ion-content class="content">

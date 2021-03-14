@@ -8,12 +8,10 @@ NOW:
 
 - change header component orientation
 
-
 - add google oauth to sign in and sign up forms
 
 - enter search buisness name and location for locations page
 
-- make profile header ? 
 
 - rename all foodbank variables and names to buisnesses
 
@@ -25,9 +23,6 @@ NOW:
 
 - enable google maps billing account
 
-- reformat setttings page
-
-- delete user + remove user images from storage if not default image
 
 NEXT STEPS:
  - make splash screen
@@ -39,5 +34,6 @@ NEXT STEPS:
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 
 DO RIGHT NOW:
-- email supplier form
+- reformat setttings page
+- delete user + remove user images from storage if not default image
 

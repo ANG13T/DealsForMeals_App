@@ -20,3 +20,24 @@ ion-content::before{
     color: red;
     margin-top: 3rem;
 }
+
+.dangerous-area{
+    width: 90%;
+    margin: auto;
+    margin-top: 4.5vh;
+
+    h3{
+        margin-bottom: 8px;
+        font-weight: bold;
+        font-family: poppins, sans-serif;
+    }
+
+    .delete-button{
+        margin-bottom: 1.8vh;
+
+        ion-icon{
+            margin-right: 8px;
+        }
+    }
+
+}

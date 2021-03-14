@@ -17,12 +17,12 @@
       </ion-label>
     </ion-item>
     <!-- Account Settings -->
-    <ion-item detail (click)="navigate('profile/settings')">
+    <!-- <ion-item detail (click)="navigate('profile/settings')">
       <ion-icon slot="start" name="cog"></ion-icon>
       <ion-label>
         Account Settings
       </ion-label>
-    </ion-item>
+    </ion-item> -->
 
     <!-- Share -->
     <ion-item detail (click)="navigate('profile/share')">
@@ -38,9 +38,6 @@
        Get Help and FAQ
       </ion-label>   
     </ion-item>
-    <!-- Delete All Posts Settings -->
-    
-    <!-- Delete Account Settings -->
 
     <!-- Log Out Settings -->
     <ion-item detail (click)="logOut()" class="logout-item">
@@ -49,5 +46,16 @@
         Log Out
       </ion-label>
     </ion-item>
+
+    <!-- Delete Account Settings -->
+    <div class="dangerous-area">
+      <h3>Dangerous Area</h3>
+      <ion-button class="delete-button" color="danger" (click)="presentDeleteAlert()">
+        <ion-icon name="trash-outline"></ion-icon>
+        Delete Account
+      </ion-button>
+      <p><b>Caution</b>: this action will delete your profile data and all of your user data from the app.</p>
+    </div>
+
   </div>
 </ion-content>
