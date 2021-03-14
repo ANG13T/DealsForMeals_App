@@ -109,3 +109,59 @@ agm-map {
     background-size: cover;
     background-size: 100% 350px;
 }
+.divider {
+    display: flex;
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    
+    &:before,
+    &:after {
+      content: "";
+      flex: 1;
+    }
+  }
+  
+  // Base line
+  .line {
+    align-items: center;
+    margin: 1em -1em;
+    
+    &:before,
+    &:after {
+      height: 1px;
+      margin: 0 1em;
+    }
+  }
+  
+  
+    .one-line {
+      &:before,
+      &:after {
+        background: black;
+      }
+    }
+
+.google-section{
+    text-align: center;
+    .google-button{
+        display: inline-flex;
+        align-items: center; 
+        margin: auto;
+        border: 10px solid #4285F4;
+        border-radius: 20px;
+        background-color: #4285F4;
+        color: white;
+        img{
+            width: 2rem;
+            height: 2rem;
+            margin-right: 10px;
+            border: 5px solid white;
+            border-radius: 50%;
+            background-color: white;
+        }
+        h3{
+            margin-bottom: 0px;
+            font-family: poppins, sans-serif;
+        }
+    }
+}

@@ -8,7 +8,7 @@ NOW:
 
 - change header component orientation
 
-
+- format ion-item cards
 
 - enter search buisness name and location for locations page
 
@@ -30,8 +30,7 @@ NEXT STEPS:
 
 DO RIGHT NOW:
 - add google oauth to sign in and sign up forms
-- rename all foodbank variables and names to buisnesses
-- format ion-item cards
+
 
 
 

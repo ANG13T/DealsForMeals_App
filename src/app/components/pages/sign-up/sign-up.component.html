@@ -37,22 +37,22 @@
       </mat-step>
       <mat-step *ngIf="isBusiness">
         <ng-template matStepLabel>Step 2</ng-template>
-        <!-- <ion-button (click)="getGeolocation()" class="location-button" expand="full">
+        <ion-button (click)="getGeolocation()" class="location-button" expand="full">
           <ion-icon name="location-outline"></ion-icon>
           Get Location
         </ion-button>
         <agm-map [latitude]="location.latitude" [longitude]="location.longitude" [hidden]="location.fullAddress == ''">
           <agm-marker [latitude]="location.latitude"
                   [longitude]="location.longitude"></agm-marker>
-        </agm-map> -->
+        </agm-map>
 
-        <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="UpdateSearchResults()" placeholder="Search for a place"  (ionClear)="ClearAutocomplete()"></ion-searchbar>
+        <!-- <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="UpdateSearchResults()" placeholder="Search for a place"  (ionClear)="ClearAutocomplete()"></ion-searchbar>
         <p>hello</p>
         <ion-list [hidden]="autocompleteItems.length == 0" style="height: 30vh;">
           <ion-item *ngFor="let item of autocompleteItems" tappable (click)="SelectSearchResult(item)">
             {{ item.description }}
           </ion-item>
-        </ion-list>
+        </ion-list> -->
         
         
         <div class="buttons">
@@ -99,9 +99,17 @@
         <div class="buttons">
           <button mat-button matStepperPrevious class="continue-button back-button">Back</button>
           <button mat-button [hidden]="isBusiness" [disabled]="email == '' || password == '' || name == ''"
-            (click)="signUp()" class="continue-button">Create</button>
+            (click)="signUp()" class="continue-button">Sign Up</button>
           <button (click)="signUp()" [hidden]="!isBusiness" [disabled]="email == '' || password == '' || name == ''"
-            class="continue-button">Create</button>
+            class="continue-button">Sign Up</button>
+        </div>
+
+        <h2 class="divider line one-line">OR</h2>
+        <div class="google-section">
+          <button class="google-button">
+            <img src="../../../../assets/icon/google-icon.svg" alt="Google Icon" />
+            <h3>Sign up with Google</h3>
+          </button>
         </div>
       </mat-step>
     </mat-horizontal-stepper>
