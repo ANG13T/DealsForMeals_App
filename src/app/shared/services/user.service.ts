@@ -9,6 +9,7 @@ import { of } from 'rxjs/internal/observable/of';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import * as geofire from 'geofire-common';
 import { AngularFireStorage } from '@angular/fire/storage';
+import app from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
@@ -54,6 +55,24 @@ export class UserService {
 
     return promise;
   }
+
+  async googleSignin(user: User){
+    const provider = new app.auth.GoogleAuthProvider();
+    const creds = await this.afAuth.signInWithPopup(provider);
+    const userRef = this.afs.firestore.doc(`users/${user.uid}`);
+
+    userRef.get().then((doc) => {
+      if(!doc.exists){
+        alert("User not created. Please sign up.");
+        this.router.navigate(['/signup']);
+        return;
+      }else{
+        this.router.navigate(['/profile']);
+        return;
+      }
+    })
+  }
+
 
   async checkUserExsists(newUser: User): Promise<any>{
     let userExists = await this.afAuth.fetchSignInMethodsForEmail(newUser.email);
@@ -133,5 +152,6 @@ export class UserService {
       console.log("err", err);
     })
   }
+
 
 }

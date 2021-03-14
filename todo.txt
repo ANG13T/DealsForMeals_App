@@ -12,6 +12,7 @@ NOW:
 
 - enter search buisness name and location for locations page
 
+- set default location 
 
 - custommize markers 
     - ? change marker design to https://thumbs.dreamstime.com/z/wireframe-kit-mobile-phone-mobile-app-ui-ux-design-new-map-position-popular-places-close-to-me-cafes-restaurants-address-137739755.jpg
