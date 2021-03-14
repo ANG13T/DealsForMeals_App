@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { AppRate } from '@ionic-native/app-rate/ngx';
 
 @Component({
   selector: 'app-share-rate',
@@ -10,26 +11,36 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 export class ShareRateComponent implements OnInit {
   stars: boolean[] = [true, true, true, true, true];
 
-  constructor(private navCtrl: NavController, private socialSharing: SocialSharing) { }
+  constructor(private navCtrl: NavController, private socialSharing: SocialSharing, private appRate: AppRate) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.appRate.preferences = {
+      displayAppName: 'App Rate Demo',
+      promptAgainForEachNewVersion: true,
+      storeAppURL:{
+        ios: '< my_app_id >', 
+        android: 'market://details?id=yourapp.package.name'
+      },
+      customLocale: {
+        title: 'Do you enjoy DealsForMeals?',
+        message: 'If you enjoy DealsForMeals. would you mind talking to rate it?',
+        cancelButtonLabel: 'No, Thanks',
+        laterButtonLabel: 'Remind Me Later',
+        rateButtonLabel: 'Rate It Now'
+      },
+      callbacks:{
+        onRateDialogShow: function(callback) {
+          console.log('User Prompt for Rating');
+        },
+        onButtonClicked: function(buttonIndex){
+          console.log('Selected Button Index',buttonIndex);
+        }
+      }
+    }
+  }
 
   goBack(){
     this.navCtrl.back();
-  }
-
-  toggleStar(index){
-    let amount = index + 1;
-
-    //marked star
-    for(let i = 0; i < amount; i++){
-      this.stars[i] = true;
-    }
-
-    //unmarked star.
-    for(let i = 5; i > amount; i--){
-      this.stars[i - 1] = false;
-    }
   }
 
   otherShare(){
@@ -73,6 +84,16 @@ export class ShareRateComponent implements OnInit {
       console.log("error: ", err)
       alert("Please Download Twitter to Share the App.")
     })
+  }
+
+  showRatePrompt(){
+    this.appRate.preferences.storeAppURL = {
+      //ios: '< my_app_id >',
+      android: 'market://details?id=com.hsa.followup.happyspoon'
+      //windows: 'ms-windows-store://review/?ProductId=< Store_ID >'
+      };
+  
+      this.appRate.promptForRating(true); 
   }
 
 }
