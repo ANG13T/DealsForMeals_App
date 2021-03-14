@@ -29,6 +29,7 @@
     "@capacitor/core": "2.4.6",
     "@capacitor/ios": "^2.4.7",
     "@ionic-native/app-rate": "^5.31.1",
+    "@ionic-native/core": "^5.31.1",
     "@ionic-native/geolocation": "^5.31.1",
     "@ionic-native/google-maps": "^5.5.0",
     "@ionic-native/native-geocoder": "^5.31.1",
@@ -92,7 +93,6 @@
   "description": "An Ionic project",
   "cordova": {
     "plugins": {
-      "cordova-plugin-geolocation": {},
       "cordova-plugin-nativegeocoder": {},
       "cordova-plugin-googlemaps": {},
       "cordova-plugin-whitelist": {},
@@ -100,7 +100,10 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-geolocation": {
+        "GPS_REQUIRED": "true"
+      }
     },
     "platforms": [
       "browser",
