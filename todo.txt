@@ -8,17 +8,20 @@ NOW:
 
 - change header component orientation
 
-- email supplier form
 
 - add google oauth to sign in and sign up forms
 
 - enter search buisness name and location for locations page
 
-- make profile header
+- make profile header ? 
 
 - rename all foodbank variables and names to buisnesses
 
 - format ion-item cards
+
+- custommize markers 
+    - ? change marker design to https://thumbs.dreamstime.com/z/wireframe-kit-mobile-phone-mobile-app-ui-ux-design-new-map-position-popular-places-close-to-me-cafes-restaurants-address-137739755.jpg
+    - move to marker on click of bottom item
 
 - enable google maps billing account
 
@@ -35,7 +38,5 @@ NEXT STEPS:
 
 DO RIGHT NOW:
 - make all settings page
-- custommize markers 
-    - change marker design
-- near you bottom section on location map
+- email supplier form
 

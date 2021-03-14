@@ -54,6 +54,7 @@ export class LocationsComponent implements OnInit {
     return await modal.present();
   }
 
+
   getLocation(location: Location){
     let result = `${location.subThoroughfare} ${location.thoroughfare}, ${location.subLocality}`;
     return result;
