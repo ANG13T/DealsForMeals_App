@@ -14,13 +14,13 @@ NOW:
 
 - enter search buisness name and location for locations page
 
-- make all settings page
-
 - make profile header
 
 - rename all foodbank variables and names to buisnesses
 
 - format ion-item cards
+
+- enable google maps billing account
 
 - delete user + remove user images from storage if not default image
 
@@ -31,8 +31,10 @@ NEXT STEPS:
 -  make search and filter?
 - fix intermittent header styles problem
 
-DO RIGHT NOW:
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
+
+DO RIGHT NOW:
+- make all settings page
 - custommize markers 
     - change marker design
 - near you bottom section on location map

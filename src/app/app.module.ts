@@ -22,6 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
+import { IonBottomSheetModule } from 'ion-bottom-sheet';
 
 // Components
 import { AppComponent } from './app.component';
@@ -55,7 +56,7 @@ import { DealsComponent } from './components/pages/deals/deals.component';
   entryComponents: [CreatePostComponent, EditPostComponent, ViewAllDealsComponent, ViewDealComponent, ViewBuisnessComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, AngularFireModule.initializeApp(environment.firebaseConfig), AngularFireAuthModule, AngularFireStorageModule, FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule, MaterialModule, AgmOverlays, AgmCoreModule.forRoot({
     apiKey: environment.googleMapsAPIKey
-  }), AvatarModule],
+  }), AvatarModule, IonBottomSheetModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AngularFirestore, NativeGeocoder, Geolocation,SocialSharing, AppRate],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

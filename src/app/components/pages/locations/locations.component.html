@@ -14,16 +14,13 @@
     [zoom]="zoom" 
     [latitude]="user.location.latitude"
     [longitude]="user.location.longitude">
-      <!-- <agm-marker *ngFor="let buisness of buisnesses" 
+      <agm-marker *ngFor="let buisness of buisnesses" 
       [latitude]="buisness.location.latitude"
       [longitude]="buisness.location.longitude"
-      [iconHeight]="20"
-      [iconWidth]="20"
-      [iconUrl]='{"url": buisness.photoURL,"scaledSize": {"height": 30, "width": 30}}'
       [markerClickable]="true"
-      
-      ></agm-marker> -->
-      <agm-overlay
+      (markerClick)="openBuisnessDialog(buisness)"
+      ></agm-marker>
+      <!-- <agm-overlay
       *ngFor="let buisness of buisnesses"
       [latitude]="buisness.location.latitude"
       [longitude]="buisness.location.longitude"
@@ -32,8 +29,12 @@
       <div class="customMarker" (click)="openBuisnessDialog(buisness)">
         <img [src]="buisness.photoURL" alt="Image" />
       </div>
-    </agm-overlay>
+    </agm-overlay> -->
 
     </agm-map>
   </ion-content>
+
+  <ion-bottom-sheet [title]="Buisnesses Near You">
+
+  </ion-bottom-sheet>
 </div>
