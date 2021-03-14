@@ -256,13 +256,18 @@ export class SignUpComponent implements OnInit {
   }
 
   UpdateSearchResults(){
+    console.log(this.autocomplete.input);
     if (this.autocomplete.input == '') {
+      console.log("not running the code");
       this.autocompleteItems = [];
       return;
     }
+    console.log(" running the code");
     this.GoogleAutocomplete.getPlacePredictions({ input: this.autocomplete.input },
     (predictions, status) => {
       this.autocompleteItems = [];
+      console.log("the status is", status);
+      console.log("the predications are", predictions)
       this.zone.run(() => {
         predictions.forEach((prediction) => {
           this.autocompleteItems.push(prediction);
