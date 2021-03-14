@@ -23,7 +23,7 @@
         <h2 class="profile-name">{{user.name}}</h2>
         <ion-skeleton-text animated [hidden]="user.name != ''"></ion-skeleton-text>
         <h2 class="profile-description">
-          <mat-icon>location_on</mat-icon>
+          <mat-icon [hidden]="userAddress == ''">location_on</mat-icon>
           <span>
             {{userAddress}}
           </span>

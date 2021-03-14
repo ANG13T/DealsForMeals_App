@@ -8,6 +8,7 @@ import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import * as geofire from 'geofire-common';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class UserService {
   loggedIn : boolean;
   location: any;
   
-  constructor(private router: Router, private afAuth: AngularFireAuth, private afs: AngularFirestore, private geolocation: Geolocation) {
+  constructor(private router: Router, private afAuth: AngularFireAuth, private afs: AngularFirestore, private geolocation: Geolocation,  private storage: AngularFireStorage, private userService: UserService) {
     // let watch = this.geolocation.watchPosition();
     // watch.subscribe((data: any) => {
     // this.location.latitude = data.coords.latitude;
@@ -109,14 +110,27 @@ export class UserService {
     return promise;
   }
 
+  async deleteUserImage(imageURL: string){
+    let storageRefFile = this.storage.refFromURL(imageURL);
+    await storageRefFile.delete().toPromise().then(() => {
+      this.userService.signOut();
+    }).catch((error) => {
+      console.log("error with storage file delete", error.message);
+    });
+  }
+
   async deleteUser(user: User){
-    let promise = this.afs.firestore.collection("users").doc(user.uid).delete().then(() => {
+   this.afs.firestore.collection("users").doc(user.uid).delete().then(async() => {
       console.log("user deleted")
-      this.router.navigate(['/']);
-      return;
+
+      if(user.photoURL != "https://firebasestorage.googleapis.com/v0/b/deals2meals-4e239.appspot.com/o/default_user.jpg?alt=media&token=e1c97c88-5aab-487b-ae6d-878415e28b6a"){
+        this.deleteUserImage(user.photoURL);
+      }else{
+        this.userService.signOut();
+      }
+
     }).catch((err) => {
-      console.log("err");
-      return err;
+      console.log("err", err);
     })
   }
 

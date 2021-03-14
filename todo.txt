@@ -34,6 +34,5 @@ NEXT STEPS:
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 
 DO RIGHT NOW:
-- reformat setttings page
-- delete user + remove user images from storage if not default image
+- remove user images from storage if not default image
 
