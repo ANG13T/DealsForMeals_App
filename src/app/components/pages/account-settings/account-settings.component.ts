@@ -40,7 +40,7 @@ export class AccountSettingsComponent implements OnInit {
             console.log('Confirm Cancel: blah');
           }
         }, {
-          text: 'Okay',
+          text: 'Delete',
           handler: async() => {
             console.log('Confirm Okay');
             await this.userService.deleteUser(this.user);

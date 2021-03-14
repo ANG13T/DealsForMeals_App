@@ -8,6 +8,15 @@ ion-title{
     color: black;
 }
 
+ion-item{
+    margin-top: 2vh;
+}
+
 ion-content::before{
     background-color: blue;
+}
+
+.logout-item{
+    color: red;
+    margin-top: 3rem;
 }

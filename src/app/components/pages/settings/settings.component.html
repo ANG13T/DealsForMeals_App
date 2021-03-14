@@ -11,12 +11,14 @@
   <div class="settings-form">
     <!-- Profile -->
     <ion-item detail (click)="navigate('profile/edit')">
+      <ion-icon slot="start" name="person-circle"></ion-icon>
       <ion-label>
         Profile Details
       </ion-label>
     </ion-item>
     <!-- Account Settings -->
     <ion-item detail (click)="navigate('profile/settings')">
+      <ion-icon slot="start" name="cog"></ion-icon>
       <ion-label>
         Account Settings
       </ion-label>
@@ -24,12 +26,14 @@
 
     <!-- Share -->
     <ion-item detail (click)="navigate('profile/share')">
+      <ion-icon slot="start" name="share-social"></ion-icon>
       <ion-label>
         Share and Rate App
       </ion-label>   
     </ion-item>
     <!-- Get Help -->
     <ion-item detail (click)="navigate('profile/help')">
+      <ion-icon slot="start" name="information-circle"></ion-icon>
       <ion-label>
        Get Help and FAQ
       </ion-label>   
@@ -39,7 +43,8 @@
     <!-- Delete Account Settings -->
 
     <!-- Log Out Settings -->
-    <ion-item (click)="logOut()">
+    <ion-item detail (click)="logOut()" class="logout-item">
+      <ion-icon slot="start" name="log-out"></ion-icon>
       <ion-label>
         Log Out
       </ion-label>
