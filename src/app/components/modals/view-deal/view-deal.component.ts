@@ -7,6 +7,7 @@ import { PostService } from 'src/app/shared/services/post.service';
 import { EditPostComponent } from '../edit-post/edit-post.component';
 import { UserService } from 'src/app/shared/services/user.service';
 import { MatTabChangeEvent } from '@angular/material/tabs';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 @Component({
   selector: 'app-view-deal',
@@ -25,7 +26,7 @@ export class ViewDealComponent implements OnInit {
   uid: string;
   selectedIndex: string = "description";
 
-  constructor(private router: Router, private route: ActivatedRoute, private modalController: ModalController, public alertController: AlertController, private postService: PostService, public actionSheetController: ActionSheetController, private userService: UserService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private modalController: ModalController, public alertController: AlertController, private postService: PostService, public actionSheetController: ActionSheetController, private userService: UserService, private emailSender: EmailComposer) { }
 
   ngOnInit() {
     this.userService.user$.subscribe((userProfile) => {
@@ -120,5 +121,16 @@ export class ViewDealComponent implements OnInit {
     await actionSheet.present();
   }
 
+
+  contactBuisness(){
+    this.emailSender.open({
+      to: this.post.userProfile.email,
+      subject: 'DealsForMeals Buisness Request'
+    }).then(() => {
+      console.log("done!")
+    }).catch((err) => {
+      console.log("something went wrong");
+    });
+  }
 
 }

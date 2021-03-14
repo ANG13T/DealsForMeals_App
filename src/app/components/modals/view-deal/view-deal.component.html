@@ -26,7 +26,7 @@
     </ion-slide>
   </ion-slides>
   <ion-skeleton-text animated [hidden]="post.images != []" class="skeleton" style="height: 14rem; margin-bottom: 2rem;"></ion-skeleton-text>
-
+  <ion-button class="contact-button" (click)="contactBuisness()">Contact Supplier</ion-button>
   <!-- TODO: add phone number as optional field -->
   <ion-segment value="deals" [(ngModel)]="selectedIndex">
     <ion-segment-button value="description">

@@ -7,6 +7,7 @@ import { Post } from 'src/app/shared/models/post.model';
 import { PostService } from 'src/app/shared/services/post.service';
 import { ViewDealComponent } from '../view-deal/view-deal.component';
 import { ViewAllDealsComponent } from '../view-all-deals/view-all-deals.component';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 @Component({
   selector: 'app-view-buisness',
@@ -24,7 +25,7 @@ export class ViewBuisnessComponent implements OnInit {
   displayLocation: string;
   selectedIndex: string = "deals";
 
-  constructor(private buisnessService: BuisnessService, private route:ActivatedRoute, private router: Router, private modalCtrl: ModalController, private postService: PostService, private modalController: ModalController) { }
+  constructor(private buisnessService: BuisnessService, private route:ActivatedRoute, private router: Router, private modalCtrl: ModalController, private postService: PostService, private modalController: ModalController, private emailSender: EmailComposer) { }
 
   ngOnInit() {
     this.loadingPosts = true;
@@ -96,6 +97,17 @@ export class ViewBuisnessComponent implements OnInit {
    dismissModal() {
     this.modalCtrl.dismiss({
       'dismissed': true
+    });
+  }
+
+  contactBuisness(){
+    this.emailSender.open({
+      to:     this.buisness.email,
+      subject: 'DealsForMeals Buisness Request'
+    }).then(() => {
+      console.log("done!")
+    }).catch((err) => {
+      console.log("something went wrong");
     });
   }
 
