@@ -36,7 +36,7 @@ import { EditProfileComponent } from './components/pages/edit-profile/edit-profi
 import { CreatePostComponent } from './components/modals/create-post/create-post.component';
 import { EditPostComponent } from './components/modals/edit-post/edit-post.component';
 import { BottomBarComponent } from './components/accessories/bottom-bar/bottom-bar.component';
-import { FoodbanksComponent } from './components/pages/foodbanks/foodbanks.component';
+import { BuisnessesComponent } from './components/pages/buisnesses/buisnesses.component';
 import { LocationsComponent } from './components/pages/locations/locations.component';
 import { ViewBuisnessComponent } from './components/modals/view-buisness/view-buisness.component';
 import { ViewDealComponent } from './components/modals/view-deal/view-deal.component';
@@ -53,7 +53,7 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 
 @NgModule({
-  declarations: [AppComponent, HomePage, SignUpComponent, SignInComponent, ProfileComponent, SideNavComponent, BaseNavComponent, EditProfileComponent, CreatePostComponent, EditPostComponent, BottomBarComponent, FoodbanksComponent, LocationsComponent, ViewBuisnessComponent, ViewDealComponent, SettingsComponent, CreatePostComponent, ChipsSelectComponent, ViewAllDealsComponent,  HelpComponent, ShareRateComponent, DealsComponent],
+  declarations: [AppComponent, HomePage, SignUpComponent, SignInComponent, ProfileComponent, SideNavComponent, BaseNavComponent, EditProfileComponent, CreatePostComponent, EditPostComponent, BottomBarComponent, BuisnessesComponent, LocationsComponent, ViewBuisnessComponent, ViewDealComponent, SettingsComponent, CreatePostComponent, ChipsSelectComponent, ViewAllDealsComponent,  HelpComponent, ShareRateComponent, DealsComponent],
   entryComponents: [CreatePostComponent, EditPostComponent, ViewAllDealsComponent, ViewDealComponent, ViewBuisnessComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, AngularFireModule.initializeApp(environment.firebaseConfig), AngularFireAuthModule, AngularFireStorageModule, FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule, MaterialModule, AgmOverlays, AgmCoreModule.forRoot({
     apiKey: environment.googleMapsAPIKey

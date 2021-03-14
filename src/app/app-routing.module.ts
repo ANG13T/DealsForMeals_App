@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { EditProfileComponent } from './components/pages/edit-profile/edit-profile.component';
-import { FoodbanksComponent } from './components/pages/foodbanks/foodbanks.component';
+import { BuisnessesComponent } from './components/pages/buisnesses/buisnesses.component';
 import { HomePage } from './components/pages/home/home.page';
 import { LocationsComponent } from './components/pages/locations/locations.component';
 import { ProfileComponent } from './components/pages/profile/profile.component';
@@ -34,8 +34,8 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'foodbanks',
-    component: FoodbanksComponent,
+    path: 'buisnesses',
+    component: BuisnessesComponent,
     canActivate: [AuthGuard]
   },
   {

@@ -16,11 +16,11 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @UntilDestroy()
 @Component({
-  selector: 'app-foodbanks',
-  templateUrl: './foodbanks.component.html',
-  styleUrls: ['./foodbanks.component.scss'],
+  selector: 'app-buisnesses',
+  templateUrl: './buisnesses.component.html',
+  styleUrls: ['./buisnesses.component.scss'],
 })
-export class FoodbanksComponent implements OnInit {
+export class BuisnessesComponent implements OnInit {
 
   buisnesses: User[];
   user: User;
