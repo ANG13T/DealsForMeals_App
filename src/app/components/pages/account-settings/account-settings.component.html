@@ -1,3 +1,15 @@
-<p>
-  account-settings works!
-</p>
+
+
+ <ion-header>
+  <ion-toolbar class="header">
+    <ion-title>Account Settings</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="account-settings-container">
+  </div>
+</ion-content>
