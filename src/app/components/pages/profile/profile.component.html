@@ -19,10 +19,10 @@
 
     <div class="container">
 
-      <div class="transition-info">
+      <div class="transition-info" *ngIf="user">
         <h2 class="profile-name">{{user.name}}</h2>
         <ion-skeleton-text animated [hidden]="user.name != ''"></ion-skeleton-text>
-        <div class="buisness-info" [hidden]="!user.isBuisness" *ngIf="user">
+        <div class="buisness-info" [hidden]="!isBuisness">
           <h2 class="profile-description">
             <mat-icon [hidden]="userAddress == ''">location_on</mat-icon>
             <span>
