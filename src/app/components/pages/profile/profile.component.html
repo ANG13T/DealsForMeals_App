@@ -42,9 +42,9 @@
       <div class="supplies">
         <div class="profile-options" *ngIf="!user.isBusiness">
           <h4 class="welcome-text">What would you like to do next?</h4>
-          <ion-button class="profile-button">Find Deals</ion-button>
-          <ion-button class="profile-button">Find Buisnesses Near You</ion-button>
-          <ion-button class="profile-button">Search Locations in your Area</ion-button>
+          <ion-button class="profile-button" (click)="navigate('deals')">Find Deals</ion-button>
+          <ion-button class="profile-button" (click)="navigate('buisnesses')">Find Buisnesses Near You</ion-button>
+          <ion-button class="profile-button" (click)="navigate('locations')">Search Locations in your Area</ion-button>
         </div>
 
         <div class="profile-options" *ngIf="user.isBusiness">

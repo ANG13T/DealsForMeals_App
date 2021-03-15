@@ -49,7 +49,10 @@ export class BuisnessService {
           const distanceInM = distanceInKm * 1000;
           if (distanceInM <= radiusInM) {
             // let userDoc = {doc.data().uid, } as User;
-            matchingDocs.push(userData);
+            if(userData.isBusiness){
+              matchingDocs.push(userData);
+            }
+            
           }
         }
       }

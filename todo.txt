@@ -28,7 +28,6 @@ NEXT STEPS:
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 
 DO RIGHT NOW:
-- add google oauth to sign in and sign up forms
 - load more data when scroll to bottom
 - add phone number option for buisnesses
 - make home page mobile responsive
