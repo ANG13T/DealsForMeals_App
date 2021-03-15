@@ -149,13 +149,16 @@ ion-menu-button{
 }
 
 .profile-button{
-    --background: #E5E5E5;
-    color: #232BDE;
+    --background: #FFD4D2;
+    color: #64676f;
+    font-family: poppins, sans-serif;
     font-size: 18px;
     font-weight: bold;
     width: 85%;
     border-radius: 2px;
     margin: auto;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
 }
 
 .or{
@@ -187,15 +190,13 @@ ion-card{
 
 .profile-options{
     background: white;
+    margin-top: 0px !important;
 
     .welcome-text{
         font-size: 1.2rem;
         font-weight: bold;
-        margin-bottom: 2rem;
-    }
-
-    .or-section{
-        margin-top: 1rem;
+        padding-top: 1.5rem;
+        font-family: poppins, sans-serif;
         margin-bottom: 1rem;
     }
 }
