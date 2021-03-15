@@ -14,13 +14,13 @@ import { NavController, ToastController } from '@ionic/angular';
   styleUrls: ['./edit-profile.component.scss'],
 })
 export class EditProfileComponent implements OnInit {
-  userProfile: User = {name: "", email: "", accountType: "foodbank", photoURL: "", uid: "", location: null, isBusiness: false, description: ""};
+  userProfile: User = {name: "", email: "", accountType: "foodbank", photoURL: "", uid: "", location: null, isBusiness: false, description: "", phoneNumber: ""};
   firstName: string = "";
   lastName: string = "";
   initFirstName: string = "";
   phoneNumber = '';
   initLastName: string = "";
-  initUserProfile: User = {name: "", email: "", accountType: "foodbank", photoURL: "", uid: "", location: null, isBusiness: false};
+  initUserProfile: User = {name: "", email: "", accountType: "foodbank", photoURL: "", uid: "", location: null, isBusiness: false, phoneNumber: ""};
   profileLoading: boolean = false;
   errors = {password: "", name: "", email: ""};
 
@@ -36,6 +36,7 @@ export class EditProfileComponent implements OnInit {
         this.userProfile.location = userProfile.location;
         this.userProfile.description = userProfile.description;
         this.userProfile.isBusiness = userProfile.isBusiness;
+        this.userProfile.phoneNumber = userProfile.phoneNumber;
 
         //init user profile
         this.initUserProfile.name = userProfile.name;
@@ -46,6 +47,7 @@ export class EditProfileComponent implements OnInit {
         this.initUserProfile.location = userProfile.location;
         this.initUserProfile.description = userProfile.description;
         this.initUserProfile.isBusiness = userProfile.isBusiness;
+        this.initUserProfile.phoneNumber = userProfile.phoneNumber;
 
         if(!userProfile.isBuisness){
           this.initFirstName = this.userProfile.name.split(" ")[0];
@@ -77,6 +79,16 @@ export class EditProfileComponent implements OnInit {
           duration: 2000
         });
         toast.present();
+        console.log(this.initUserProfile, this.userProfile, this.fieldsDifferent());
+        this.initUserProfile.name = this.userProfile.name;
+        this.initUserProfile.email = this.userProfile.email;
+        this.initUserProfile.photoURL = this.userProfile.photoURL;
+        this.initUserProfile.accountType = this.userProfile.accountType;
+        this.initUserProfile.uid = this.userProfile.uid;
+        this.initUserProfile.location = this.userProfile.location;
+        this.initUserProfile.description = this.userProfile.description;
+        this.initUserProfile.isBusiness = this.userProfile.isBusiness;
+        this.initUserProfile.phoneNumber = this.userProfile.phoneNumber;
       }
     })
     }
@@ -89,7 +101,23 @@ export class EditProfileComponent implements OnInit {
   }
 
   fieldsDifferent(){
-    return JSON.stringify(this.initUserProfile) != JSON.stringify(this.userProfile);
+    if(this.userProfile.name != this.initUserProfile.name){
+      return true;
+    }
+
+    if(this.userProfile.phoneNumber.internationalNumber != this.initUserProfile.phoneNumber.internationalNumber){
+      return true;
+    }
+
+    if(this.userProfile.description != this.initUserProfile.description){
+      return true;
+    }
+
+    if(this.userProfile.accountType != this.initUserProfile.accountType){
+      return true;
+    }
+
+    return false;
   }
 
   editUserName(content: string, location: string){

@@ -11,5 +11,6 @@ export interface User {
     location?: Location; 
     lat?: any;
     lng?: any;
+    phoneNumber?: any;
     hash?: any;
   }
