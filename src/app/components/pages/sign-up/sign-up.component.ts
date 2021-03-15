@@ -153,6 +153,27 @@ export class SignUpComponent implements OnInit {
     }
   }
 
+  async googleSignUp(){
+      let newUser: User = {
+        name: '',
+        uid: '',
+        location: this.location,
+        lat: this.location.latitude,
+        lng: this.location.longitude,
+        hash: geofire.geohashForLocation([this.location.latitude, this.location.longitude]),
+        accountType: this.accountType,
+        email: '',
+        photoURL: '',
+        isBusiness: this.isBusiness
+      }
+
+      await this.userService.googleSignUp(newUser)
+      .catch((err) => {
+        console.log("err", err);
+        alert("Something went wrong: " + err.message);
+      })
+  }
+
   validateForm(): boolean {
     let result = true;
     if (this.name.length > 30) {

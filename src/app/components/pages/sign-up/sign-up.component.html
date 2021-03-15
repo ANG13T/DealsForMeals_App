@@ -61,7 +61,8 @@
         </div>
       </mat-step>
       <mat-step [completed]="validateSecond()">
-        <ng-template matStepLabel>Step 3</ng-template>
+        <ng-template matStepLabel *ngIf="!isBusiness">Step 2</ng-template>
+        <ng-template matStepLabel *ngIf="isBusiness">Step 3</ng-template>
         <mat-form-field appearance="outline" [hidden]="!isBusiness">
           <mat-label>Organization Name:</mat-label>
           <input matInput placeholder="Ex. Whole Foods" required [(ngModel)]="name" maxlength="30">
@@ -106,7 +107,7 @@
 
         <h2 class="divider line one-line">OR</h2>
         <div class="google-section">
-          <button class="google-button">
+          <button class="google-button" (click)="googleSignUp()">
             <img src="../../../../assets/icon/google-icon.svg" alt="Google Icon" />
             <h3>Sign up with Google</h3>
           </button>

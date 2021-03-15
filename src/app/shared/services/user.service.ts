@@ -83,14 +83,14 @@ export class UserService {
       if(!doc.exists){
         let userData: User = {
           uid: user.uid,
-          email: user.email,
-          name: user.name,
+          email: creds.user.email,
+          name: creds.user.displayName,
           location: user.location,
           lng: user.location.longitude,
           lat: user.location.latitude,
           hash: geofire.geohashForLocation([user.location.latitude, user.location.longitude]),
           accountType: user.accountType,
-          photoURL: 'https://firebasestorage.googleapis.com/v0/b/deals2meals-4e239.appspot.com/o/default_user.jpg?alt=media&token=e1c97c88-5aab-487b-ae6d-878415e28b6a',
+          photoURL: creds.user.photoURL,
           isBusiness: user.isBusiness,
           description: ''
         }
