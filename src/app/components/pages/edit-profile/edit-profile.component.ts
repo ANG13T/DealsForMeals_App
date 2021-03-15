@@ -18,6 +18,7 @@ export class EditProfileComponent implements OnInit {
   firstName: string = "";
   lastName: string = "";
   initFirstName: string = "";
+  phoneNumber = '';
   initLastName: string = "";
   initUserProfile: User = {name: "", email: "", accountType: "foodbank", photoURL: "", uid: "", location: null, isBusiness: false};
   profileLoading: boolean = false;
