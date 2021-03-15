@@ -33,7 +33,7 @@ export class SignUpComponent implements OnInit {
   email: string = "";
   password: string = "";
   isBusiness: boolean = false;
-  accountType: 'foodie' | 'foodbank' | 'resturant' | 'other' = "foodbank";
+  accountType: 'foodie' | 'foodbank' | 'resturant' | 'other' = "foodie";
   errors = { password: "", name: "", email: "", location: "" };
 
   // Location Variables

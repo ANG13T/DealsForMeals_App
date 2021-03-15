@@ -22,23 +22,25 @@
       <div class="transition-info">
         <h2 class="profile-name">{{user.name}}</h2>
         <ion-skeleton-text animated [hidden]="user.name != ''"></ion-skeleton-text>
-        <h2 class="profile-description">
-          <mat-icon [hidden]="userAddress == ''">location_on</mat-icon>
-          <span>
-            {{userAddress}}
-          </span>
-        </h2>
-        <ion-skeleton-text animated [hidden]="userAddress != ''"></ion-skeleton-text>
-  
-        <div class="description">
-          {{viewProfileDescription(user.description)}}
+        <div class="buisness-info" [hidden]="!user.isBuisness" *ngIf="user">
+          <h2 class="profile-description">
+            <mat-icon [hidden]="userAddress == ''">location_on</mat-icon>
+            <span>
+              {{userAddress}}
+            </span>
+          </h2>
+          <ion-skeleton-text animated [hidden]="userAddress != ''"></ion-skeleton-text>
+    
+          <div class="description">
+            {{viewProfileDescription(user.description)}}
+          </div>
         </div>
+        
         <ion-skeleton-text animated [hidden]="user.description != ''"></ion-skeleton-text>
       </div>
 
       <div class="supplies">
         <div class="profile-options" *ngIf="!user.isBusiness">
-          <h4 class="welcome-text">Welcome, {{user.name}}!</h4>
           <ion-button class="profile-button">View Food Banks Near You</ion-button>
           <div class="or-section">
             <h3>OR</h3>

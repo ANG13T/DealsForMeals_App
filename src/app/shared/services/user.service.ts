@@ -77,12 +77,12 @@ export class UserService {
   async googleSignUp(user: User){
     const provider = new app.auth.GoogleAuthProvider();
     const creds = await this.afAuth.signInWithPopup(provider);
-    const userRef = this.afs.firestore.doc(`users/${user.uid}`);
+    const userRef = this.afs.firestore.doc(`users/${creds.user.uid}`);
 
     userRef.get().then((doc) => {
       if(!doc.exists){
         let userData: User = {
-          uid: user.uid,
+          uid: creds.user.uid,
           email: creds.user.email,
           name: creds.user.displayName,
           location: user.location,
