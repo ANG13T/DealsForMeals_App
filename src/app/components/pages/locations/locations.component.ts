@@ -7,6 +7,7 @@ import { BuisnessService } from 'src/app/shared/services/buisness.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ViewBuisnessComponent } from '../../modals/view-buisness/view-buisness.component';
 import { Location } from '../../../shared/models/location.model';
+import { SheetState } from 'ion-bottom-sheet';
 
 declare var google: any;
 
@@ -21,6 +22,7 @@ export class LocationsComponent implements OnInit {
   user: User;
   buisnesses: User[] = [];
   zoom: number = 11;
+  defaultSheetState = SheetState.Docked;
   loading: boolean = true;
 
   @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;

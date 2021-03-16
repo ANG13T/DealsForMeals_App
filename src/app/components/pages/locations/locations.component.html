@@ -34,7 +34,7 @@
     </agm-map>
   </ion-content>
 
-  <ion-bottom-sheet title="Buisnesses Near You" dockedHeight="20vh" state="SheetState.Docked">
+  <ion-bottom-sheet title="Buisnesses Near You" dockedHeight="100px" state="defaultSheetState" disableDrag="false" >
     <ion-list>
       <ion-item *ngFor="let buisness of buisnesses" (click)="openBuisnessDialog(buisness)">
         <ion-thumbnail slot="start">
@@ -46,13 +46,13 @@
           <p>{{getSubLocation(buisness.location)}}</p>
         </ion-label>
       </ion-item>
-
+  
       <div class="no-buisnesses" [hidden]="buisnesses.length != 0 || loading" style="text-align: center; margin-top: 2rem;">
         <h2>No Buisnesses Found!</h2>
         <p style="font-size: 1rem;">Please check another time to find more buisnesses near you.</p>
       </div>
     </ion-list>
   </ion-bottom-sheet>
-
-
 </div>
+
+

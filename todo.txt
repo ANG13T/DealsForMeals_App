@@ -22,14 +22,13 @@ NEXT STEPS:
 
 - make splash screen
 - make start up tutorial slideshow
--  make search and filter?
 - fix intermittent header styles problem
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 
 DO RIGHT NOW:
-- finish FAQ
 - default collapse location bottom
 
+-  make search and filter?
 - get stream of location for foodie account
 - make categorie options for location maps 
 
