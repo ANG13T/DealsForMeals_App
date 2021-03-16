@@ -45,7 +45,7 @@
                 </div>
 
                 <!-- modify for piping -->
-                <div class="no-deals" [hidden]="buisnesses.length != 0"> 
+                <div class="no-deals" [hidden]="(buisnesses | buisnessCategory: categoryControl.value)?.length != 0" style="text-align: center;"> 
                   <h2 style="margin-top: 1rem;">No Buisnesses Found!</h2>
                   <p style="font-size: 1rem;">Please check another time to find buisnesses near you.</p>
                 </div>
@@ -91,15 +91,12 @@
               <p>{{getLocation(buisness.location)}}</p>
               <p>{{getSubLocation(buisness.location)}}</p>
             </ion-label>
-          </ion-item>
+          </ion-item>   
+        </div>
 
-          <!-- modify for piping -->
-          <ion-item>
-            <div class="no-deals" [hidden]="buisnesses.length != 0"> 
-              <h2 style="margin-top: 1rem;">No Buisnesses Found!</h2>
-              <p style="font-size: 1rem;">Please check another time to find buisnesses near you.</p>
-            </div>
-          </ion-item>
+        <div class="no-deals" [hidden]="(buisnesses | filterBy: ['name']: searchTerm | buisnessCategory: categoryControl.value)?.length != 0" style="text-align: center;"> 
+          <h3 style="font-weight: bold;">No Buisnesses Found!</h3>
+          <p style="font-size: 1rem;">Please check another time to find buisnesses near you.</p>
         </div>
 
       </div>
