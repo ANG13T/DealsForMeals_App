@@ -29,7 +29,7 @@ export class BuisnessesComponent implements OnInit {
   loadingBuisnesses: boolean = false;
   buisnessOptions = ["Foodbanks", "Restaurants", "Other"];
 
-  categoryControl = new FormControl([]);
+  categoryControl = new FormControl(this.buisnessOptions);
 
   chipsControlValue$ = this.categoryControl.valueChanges;
 
