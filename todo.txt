@@ -26,10 +26,14 @@ NEXT STEPS:
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 
 DO RIGHT NOW:
-- load more data when scroll to bottom
-- make mobile responsive (profile, edit profile, create deal, view deal, edit deals, locations);
+- style bottom bar
 - get stream of location for foodie account
 - make categorie options for location maps 
+
+
+- load more data when scroll to bottom
+- make mobile responsive (profile, edit profile, create deal, view deal, edit deals, locations);
+
 
 
 

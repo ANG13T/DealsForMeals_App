@@ -1,14 +1,24 @@
   <ion-tab-bar slot="bottom" *ngIf="user">
+
     <ion-tab-button  (click)="navigate('buisnesses')" [class.active-item]="selectedPath.includes('buisnesses')">
       <ion-icon name="storefront-outline"></ion-icon>
       <ion-label>Buisnesses</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button (click)="navigate('locations')" [class.active-item]="selectedPath.includes('locations')" *ngIf="user.isBusiness">
+    <ion-tab-button  *ngIf="user.isBusiness">
       <ion-icon name="add-outline"></ion-icon>
       <ion-label></ion-label>
     </ion-tab-button>
 
+    <ion-tab-button  (click)="navigate('deals')" [class.active-item]="selectedPath.includes('deals')">
+      <ion-icon name="restaurant-outline"></ion-icon>
+      <ion-label>Deals</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button  (click)="navigate('locations')" [class.active-item]="selectedPath.includes('locations')">
+      <ion-icon name="location-outline"></ion-icon>
+      <ion-label>Places</ion-label>
+    </ion-tab-button>
   
     <ion-tab-button  (click)="navigate('profile')" [class.active-item]="selectedPath.includes('profile')">
       <ion-icon name="person-circle-outline"></ion-icon>
