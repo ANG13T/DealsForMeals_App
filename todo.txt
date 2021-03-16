@@ -28,8 +28,8 @@ NEXT STEPS:
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 
 DO RIGHT NOW:
-- make no results found page
 - make categorie options for location maps 
+- skeletons for deals and buisnesses
 
 - load more data when scroll to bottom
 - make mobile responsive (profile, edit profile, create deal, view deal, edit deals, locations);

@@ -10,7 +10,7 @@
       <ion-label>Deals</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button  *ngIf="user.isBusiness">
+    <ion-tab-button  [hidden]="!user.isBusiness">
       <ion-icon name="add-outline"></ion-icon>
       <ion-label></ion-label>
     </ion-tab-button>

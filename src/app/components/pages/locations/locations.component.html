@@ -8,8 +8,21 @@
     </ion-toolbar>
   </ion-header>
   
-  
+
   <ion-content [fullscreen]="true" *ngIf="user">
+    <ion-searchbar></ion-searchbar>
+    <div class="indicators">
+      <div class="indicator">
+        <ion-icon name="nutrition-outline"></ion-icon>
+      </div>
+      <div class="indicator">
+        <ion-icon name="storefront-outline"></ion-icon>
+      </div>
+      <div class="indicator">
+        <ion-icon name="business-outline"></ion-icon>
+      </div>
+    </div>
+    
     <agm-map 
     [zoom]="zoom" 
     [latitude]="user.location.latitude"
@@ -30,7 +43,6 @@
         <img [src]="buisness.photoURL" alt="Image" />
       </div>
     </agm-overlay> -->
-
     </agm-map>
   </ion-content>
 
