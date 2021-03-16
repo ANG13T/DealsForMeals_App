@@ -80,7 +80,7 @@
 
       <div class="search-section" [hidden]="searchTerm == ''">
 
-        <div class="buisness" *ngFor="let buisness of buisnesses | filterBy: ['name']: searchTerm" (click)="openDeal(deal)">
+        <div class="buisness" *ngFor="let buisness of buisnesses | filterBy: ['name']: searchTerm | buisnessCategory: categoryControl.value" (click)="openDeal(deal)">
           <ion-item>
             <ion-thumbnail slot="start">
               <img src={{buisness.photoURL}}>
