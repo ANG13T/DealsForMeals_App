@@ -7,7 +7,7 @@
       <ion-button (click)="goBack()">Cancel</ion-button>
     </ion-buttons>
 
-    <ion-buttons slot="end">
+    <ion-buttons slot="end" *ngIf="userProfile && initUserProfile">
       <ion-button [disabled]="!fieldsDifferent() || !userProfile.name || !userProfile.email || !userProfile.photoURL || profileLoading" (click)="editProfile()">Done</ion-button>
     </ion-buttons>
   </ion-toolbar>

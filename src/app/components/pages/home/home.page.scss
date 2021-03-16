@@ -82,3 +82,91 @@
 agm-map {
   height: 300px;
 }
+
+// Media Queries 
+
+/* Portrait: Iphone 4 */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .bottom-buttons{
+      display: flex;
+      justify-content: space-between;
+
+      .sign-in-button{
+        width: 8rem;
+      }
+    }
+
+    .entire-page{
+      height: 85vh;
+    }
+}
+
+/* Portrait: IPhone 5 */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .bottom-buttons{
+      display: flex;
+      justify-content: space-between;
+
+      .sign-in-button{
+        width: 7rem;
+      }
+    }
+
+    .entire-page{
+      margin-top: 8vh;
+      height: 85vh;
+
+      .logo-image{
+        width: 9rem;
+      }
+
+      .home-title{
+        font-size: 1.8rem;
+      }
+
+      .context{
+        font-size: 20px !important;
+      }
+    }
+}
+
+
+/* Portrait: iPhone 6, 6S, 7 and 8 */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) { 
+    .bottom-buttons{
+      display: block;
+
+      .sign-in-button{
+        width: 90%;
+      }
+    }
+
+    .entire-page{
+      height: 80vh;
+
+      .logo-image{
+        width: 12rem;
+      }
+
+      .home-title{
+        font-size: 2rem;
+      }
+
+      .context{
+        font-size: 1.7rem !important;
+      }
+
+    }
+}
