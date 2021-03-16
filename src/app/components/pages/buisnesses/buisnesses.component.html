@@ -11,68 +11,92 @@
 
   <ion-content class="content">
     <div class="main-buisnesss-content">
-    <h1 class="title">View Buisnesses</h1>
-    <div class="options-bar">
-      <ion-searchbar></ion-searchbar>
-      <button mat-icon-button color="primary" (click)="toggleFilter()">
-        <mat-icon>filter_list</mat-icon>
-      </button>
-    </div>
-    <div class="chip-section" [hidden]="!filter">
-      <app-chips-select [options]="buisnessOptions" [formControl]="categoryControl">
-      </app-chips-select>
-    </div>
+      <h1 class="title">View Buisnesses</h1>
+      <div class="options-bar">
+        <ion-searchbar [(ngModel)]="searchTerm"></ion-searchbar>
+        <button mat-icon-button color="primary" (click)="toggleFilter()">
+          <mat-icon>filter_list</mat-icon>
+        </button>
+      </div>
+      <div class="chip-section" [hidden]="!filter">
+        <app-chips-select [options]="buisnessOptions" [formControl]="categoryControl">
+        </app-chips-select>
+      </div>
 
-    <h3 [hidden]="(!loadingBuisnesses && buisnesses.length == 0)">Locations Near You</h3>
-  <div class="foodbanks-section">
-    <ion-infinite-scroll>
-      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data…">
-        <div class="foodbanks" [hidden]="loadingBuisnesses">
-          <div class="foodbank" *ngFor="let foodbank of buisnesses" (click)="openBuisness(foodbank)">
-            <ion-item>
-              <ion-thumbnail slot="start">
-                <img src={{foodbank.photoURL}}>
-              </ion-thumbnail>
-              <ion-label>
-                <h3>{{foodbank.name}}</h3>
-                <p>{{getLocation(foodbank.location)}}</p>
-                <p>{{getSubLocation(foodbank.location)}}</p>
-              </ion-label>
-            </ion-item>
-          </div>
+      <div class="general-section" [hidden]="searchTerm != ''">
+      <h3 [hidden]="(!loadingBuisnesses && buisnesses.length == 0)">Locations Near You</h3>
+      <div class="foodbanks-section">
 
-          <div class="no-deals" [hidden]="buisnesses.length != 0">
-            <h2 style="margin-top: 1rem;">No Buisnesses Found!</h2>
-            <p style="font-size: 1rem;">Please check another time to find buisnesses near you.</p>
-          </div>
+        
+          <ion-infinite-scroll>
+            <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data…">
+              <div class="foodbanks" [hidden]="loadingBuisnesses">
+                <div class="foodbank" *ngFor="let foodbank of buisnesses" (click)="openBuisness(foodbank)">
+                  <ion-item>
+                    <ion-thumbnail slot="start">
+                      <img src={{foodbank.photoURL}}>
+                    </ion-thumbnail>
+                    <ion-label>
+                      <h3>{{foodbank.name}}</h3>
+                      <p>{{getLocation(foodbank.location)}}</p>
+                      <p>{{getSubLocation(foodbank.location)}}</p>
+                    </ion-label>
+                  </ion-item>
+                </div>
 
+                <div class="no-deals" [hidden]="buisnesses.length != 0">
+                  <h2 style="margin-top: 1rem;">No Buisnesses Found!</h2>
+                  <p style="font-size: 1rem;">Please check another time to find buisnesses near you.</p>
+                </div>
+
+              </div>
+
+              <div class="loading-foodbanks" [hidden]="!loadingBuisnesses">
+                <div class="foodbank" *ngFor="let post of [1,2,3,4,5]">
+                  <ion-item>
+                    <ion-thumbnail slot="start">
+                      <ion-skeleton-text></ion-skeleton-text>
+                    </ion-thumbnail>
+                    <ion-label>
+                      <h3>
+                        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                      </h3>
+                      <p>
+                        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                      </p>
+                      <p>
+                        <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+                      </p>
+                    </ion-label>
+                  </ion-item>
+                </div>
+              </div>
+
+            </ion-infinite-scroll-content>
+          </ion-infinite-scroll>
         </div>
 
-        <div class="loading-foodbanks" [hidden]="!loadingBuisnesses">
-          <div class="foodbank" *ngFor="let post of [1,2,3,4,5]">
-            <ion-item>
-              <ion-thumbnail slot="start">
-                <ion-skeleton-text></ion-skeleton-text>
-              </ion-thumbnail>
-              <ion-label>
-                <h3>
-                  <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
-                </h3>
-                <p>
-                  <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
-                </p>
-                <p>
-                  <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
-                </p>
-              </ion-label>
-            </ion-item>
-          </div>
+      </div>
+
+      <div class="search-section" [hidden]="searchTerm == ''">
+
+        <div class="buisness" *ngFor="let buisness of buisnesses | filterBy: ['name']: searchTerm" (click)="openDeal(deal)">
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <img src={{buisness.photoURL}}>
+            </ion-thumbnail>
+            <ion-label>
+              <h3>{{buisness.name}}</h3>
+              <p>{{getLocation(buisness.location)}}</p>
+              <p>{{getSubLocation(buisness.location)}}</p>
+            </ion-label>
+          </ion-item>
         </div>
 
-      </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
-  </div>
-</div>
+      </div>
+
+    </div>
+
   </ion-content>
 
   <app-bottom-bar></app-bottom-bar>

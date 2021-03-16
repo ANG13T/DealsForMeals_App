@@ -25,6 +25,7 @@ export class BuisnessesComponent implements OnInit {
   buisnesses: User[] = [];
   user: User;
   filter: boolean = false;
+  searchTerm:string = "";
   loadingBuisnesses: boolean = false;
   buisnessOptions = ["Foodbanks", "Restaurants", "Other"];
 
