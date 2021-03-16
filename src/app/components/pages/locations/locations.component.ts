@@ -21,6 +21,7 @@ export class LocationsComponent implements OnInit {
   user: User;
   buisnesses: User[] = [];
   zoom: number = 11;
+  loading: boolean = true;
 
   @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
 
@@ -29,12 +30,14 @@ export class LocationsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.userService.user$.subscribe((userProfile) => {
       if (userProfile) {
         this.user = userProfile;
 
         this.businessService.getBuisnessesNearLocation(this.user.location).then((result) => {
           this.buisnesses = result;
+          this.loading = false;
         })
       }
     })

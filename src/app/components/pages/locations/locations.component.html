@@ -46,6 +46,11 @@
           <p>{{getSubLocation(buisness.location)}}</p>
         </ion-label>
       </ion-item>
+
+      <div class="no-buisnesses" [hidden]="buisnesses.length != 0 || loading" style="text-align: center; margin-top: 2rem;">
+        <h2>No Buisnesses Found!</h2>
+        <p style="font-size: 1rem;">Please check another time to find more buisnesses near you.</p>
+      </div>
     </ion-list>
   </ion-bottom-sheet>
 
