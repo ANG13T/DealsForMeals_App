@@ -77,7 +77,7 @@
     </div>
 
     <div class="search-display" [hidden]="searchTerm == ''">
-      <div class="deal" *ngFor="let deal of deals" (click)="openDeal(deal)">
+      <div class="deal" *ngFor="let deal of deals | filterBy: ['title']: searchTerm" (click)="openDeal(deal)">
         <ion-item>
           <ion-thumbnail slot="start">
             <img src={{deal.images[0]}}>
