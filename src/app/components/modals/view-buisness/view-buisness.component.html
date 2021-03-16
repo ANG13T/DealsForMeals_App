@@ -103,6 +103,10 @@
 
   
           <div class="about" [hidden]="selectedIndex != 'description'">
+            <h3 class="phone-number" [hidden]="buisness.phoneNumber == ''">
+              <ion-icon name="call"></ion-icon>
+              <span>{{buisness.phoneNumber.internationalNumber}}</span>
+            </h3>
             <h3 class="description">BUISNESS DESCRIPTION:</h3>
             <p *ngIf="buisness.description != ''">{{buisness.description}}</p>
             <p *ngIf="buisness.description == ''">No description written yet</p>

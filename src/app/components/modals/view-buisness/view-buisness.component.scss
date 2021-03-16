@@ -246,3 +246,18 @@ ion-card-title{
     width: 10rem;
     font-weight: bold;
 }
+
+.phone-number{
+    margin-top: 2.3vh !important;
+    margin-bottom: 1.3vh !important;
+    font-size: 18px !important;
+
+    ion-icon{
+        vertical-align: middle !important;
+        margin-right: 6px;
+    }
+
+    span{
+        vertical-align: middle !important;
+    }
+}
