@@ -105,10 +105,12 @@ export class EditProfileComponent implements OnInit {
       return true;
     }
 
-    if(this.userProfile.phoneNumber.internationalNumber != this.initUserProfile.phoneNumber.internationalNumber){
-      return true;
+    if(this.userProfile.phoneNumber){
+      if(this.userProfile.phoneNumber.internationalNumber != this.initUserProfile.phoneNumber.internationalNumber){
+        return true;
+      }
     }
-
+    
     if(this.userProfile.description != this.initUserProfile.description){
       return true;
     }
