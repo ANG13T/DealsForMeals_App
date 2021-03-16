@@ -27,7 +27,7 @@
     [zoom]="zoom" 
     [latitude]="user.location.latitude"
     [longitude]="user.location.longitude">
-      <agm-marker *ngFor="let buisness of buisnesses" 
+      <agm-marker *ngFor="let buisness of buisnesses | buisnessCategory: selectedIndicators" 
       [latitude]="buisness.location.latitude"
       [longitude]="buisness.location.longitude"
       [markerClickable]="true"
