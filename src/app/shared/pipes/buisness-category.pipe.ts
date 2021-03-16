@@ -6,9 +6,8 @@ import { User } from '../models/user.model';
 })
 export class BuisnessCategoryPipe implements PipeTransform {
 
-  transform(buisnesses: User[], categories: string[], freePass?: boolean) {
-    console.log("free pass", freePass)
-    if(freePass){
+  transform(buisnesses: User[], categories: string[], freePass?: string) {
+    if(freePass == "all"){
       return buisnesses;
     }
     let lowercasedCategories = categories.map(cat => cat.toLowerCase())
@@ -18,7 +17,6 @@ export class BuisnessCategoryPipe implements PipeTransform {
       }
       return cat;
     })
-    console.log("cats", modifiedCategories)
     return buisnesses.filter(buisness => modifiedCategories.includes(buisness.accountType));
   }
 

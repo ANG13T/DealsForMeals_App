@@ -22,8 +22,7 @@ export class LocationsComponent implements OnInit {
   user: User;
   buisnesses: User[] = [];
   zoom: number = 11;
-  selectedIndicators: string = "";
-  freePass: boolean = (this.selectedIndicators == "");
+  selectedIndicators: string = "all";
   defaultSheetState = SheetState.Docked;
   loading: boolean = true;
   toggledFoodbanks: boolean = false;
@@ -85,21 +84,21 @@ export class LocationsComponent implements OnInit {
 
   toggleIndicators(indicator: string){
     if(indicator == "others"){
-      this.toggledOthers ? this.selectedIndicators = "" : this.selectedIndicators = "others";
+      this.toggledOthers ? this.selectedIndicators = "all" : this.selectedIndicators = "others";
       this.toggledOthers = !this.toggledOthers;
       this.toggledFoodbanks = false;
       this.toggledRestaurants = false;
     }
 
     if(indicator == "foodbanks"){
-      this.toggledFoodbanks ? this.selectedIndicators = "" : this.selectedIndicators = "foodbanks";
+      this.toggledFoodbanks ? this.selectedIndicators = "all" : this.selectedIndicators = "foodbanks";
       this.toggledFoodbanks = !this.toggledFoodbanks;
       this.toggledOthers = false;
       this.toggledRestaurants = false;
     }
 
     if(indicator == "restaurants"){
-      this.toggledRestaurants ? this.selectedIndicators = "" : this.selectedIndicators = "restaurants";
+      this.toggledRestaurants ? this.selectedIndicators = "all" : this.selectedIndicators = "restaurants";
       this.toggledRestaurants = !this.toggledRestaurants;
       this.toggledOthers = false;
       this.toggledFoodbanks = false;
