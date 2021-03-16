@@ -21,6 +21,7 @@ export class LocationsComponent implements OnInit {
   map: any;
   user: User;
   buisnesses: User[] = [];
+  searchTerm: string;
   zoom: number = 11;
   selectedIndicators: string = "all";
   defaultSheetState = SheetState.Docked;
@@ -103,8 +104,6 @@ export class LocationsComponent implements OnInit {
       this.toggledOthers = false;
       this.toggledFoodbanks = false;
     }
-
-    console.log("selected", this.selectedIndicators)
   }
 
 getSubLocation(location: Location){
