@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -7,6 +7,7 @@ import { UserService } from 'src/app/shared/services/user.service';
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SignInComponent implements OnInit {
 
