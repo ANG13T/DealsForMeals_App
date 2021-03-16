@@ -102,30 +102,25 @@
                   </div>
 
                 <div class="loading-posts" *ngIf="loading && isBuisness">
-                  <ion-slides pager>
-                    <ion-slide *ngFor="let post of posts">
-                      <ion-card>
-                        <div class="card-main" style="padding-left: 10px;">
-                          <ion-skeleton-text animated height="10vh" width="50px"></ion-skeleton-text>
-    
-                          <div class="card-content" style="width: 100%;">
-                            <ion-card-header>
-                              <ion-skeleton-text animated></ion-skeleton-text>
-                            </ion-card-header>
-                            
-                            <ion-card-content style="padding-bottom: 5px;">
-                              <ion-skeleton-text animated></ion-skeleton-text>
-                              <ion-skeleton-text animated></ion-skeleton-text>
-                              <ion-skeleton-text animated></ion-skeleton-text>
-                            </ion-card-content>
-                          </div>
-                         
-                        </div>
-                        
-                      </ion-card>
 
-                    </ion-slide>
-                  </ion-slides>
+                    <ion-card *ngFor="let post of [1,2,3]">
+                      <div class="card-main" style="padding-left: 10px;">
+                        <ion-skeleton-text animated height="10vh" width="50px"></ion-skeleton-text>
+  
+                        <div class="card-content" style="width: 100%;">
+                          <ion-card-header>
+                            <ion-skeleton-text animated></ion-skeleton-text>
+                          </ion-card-header>
+                          
+                          <ion-card-content style="padding-bottom: 5px;">
+                            <ion-skeleton-text animated></ion-skeleton-text>
+                            <ion-skeleton-text animated></ion-skeleton-text>
+                            <ion-skeleton-text animated></ion-skeleton-text>
+                          </ion-card-content>
+                        </div>
+                       
+                      </div>
+                    </ion-card>
                 </div>
 
               </div>
