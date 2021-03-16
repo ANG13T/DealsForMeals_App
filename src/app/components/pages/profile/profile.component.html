@@ -78,8 +78,7 @@
                   </ion-card>
                 </div>
                 <div class="posts" *ngIf="!loading">
-                  <ion-slides pager>
-                    <ion-slide *ngFor="let post of recentDeals">
+                    <div class="recentDeal" *ngFor="let post of recentDeals">
                       <ion-card (click)="presentPost(post)">
                         <div class="card-main">
                           <img src={{post.images[0]}} />
@@ -98,10 +97,9 @@
                         </div>
                         
                       </ion-card>
+                      </div>
                       
-                    </ion-slide>
-                  </ion-slides>
-                </div>
+                  </div>
 
                 <div class="loading-posts" *ngIf="loading && isBuisness">
                   <ion-slides pager>

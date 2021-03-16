@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
         await this.postService.getDealsForUser(this.user.uid).then((data) => {
           console.log("got the posts", data)
           this.posts = data;
-          this.recentDeals = this.posts.slice(0, 5);
+          this.recentDeals = this.posts.slice(0, 4);
         })
       }else{
         await this.postService.getDealsForUser(this.user.uid).then((data) => {

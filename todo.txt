@@ -9,7 +9,7 @@ TODOS:
 
 - format ion-item cards
 
-- enter search buisness name and location for locations page
+- enter search location for locations page
 
 - move to marker on click of bottom item
 
@@ -21,18 +21,18 @@ TODOS:
 
 
 NEXT STEPS:
-
-- make splash screen
 - make start up tutorial slideshow
 - fix intermittent header styles problem
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 
 DO RIGHT NOW:
-- make categorie options for location maps 
-- skeletons for deals and buisnesses
+- make mobile responsive (profile, edit profile, create deal, view deal, edit deals, locations);
+- modify skeletons on profile page
+- style view your deals slide buttons
+- make splash screen
 
 - load more data when scroll to bottom
-- make mobile responsive (profile, edit profile, create deal, view deal, edit deals, locations);
+
 
 
 
