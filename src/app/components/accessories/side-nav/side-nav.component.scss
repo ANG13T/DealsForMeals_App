@@ -1,5 +1,6 @@
 .header{
-    background-color: #3048D1 !important;
+    background-image: url("../../../../assets/images/header-style.png");
+    background-size: cover;
     color: white;
 }
 
@@ -33,6 +34,7 @@ ion-icon{
 }
 
 ion-toolbar{
-    background-color: #3048D1 !important;  
+    background-image: url("../../../../assets/images/header-style.png");
+    background-size: cover; 
     color: white;
 }
