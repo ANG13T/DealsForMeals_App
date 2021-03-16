@@ -23,7 +23,6 @@
               <div class="card-content">
                 <ion-card-header>
                   <ion-card-title>{{deal.title}}</ion-card-title>
-                  <ion-card-subtitle>{{deal.userProfile.name}}</ion-card-subtitle>
                 </ion-card-header>
     
                 <ion-card-content>
@@ -33,11 +32,19 @@
             </div>
         </ion-card>
         </ion-item>
+
+        <ion-item-options side="start">
+          <ion-item-option color="danger" (click)="deleteDeal(deal)">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
         
       <ion-item-options side="end">
-        <ion-item-option (click)="updateDeal(deal)">Update</ion-item-option>
-        <ion-item-option color="danger" (click)="deleteDeal(deal)">Delete</ion-item-option>
+        <ion-item-option (click)="updateDeal(deal)">
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-item-option>
       </ion-item-options>
+
     </ion-item-sliding>
     </ion-list>
 

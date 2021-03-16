@@ -27,8 +27,8 @@ NEXT STEPS:
 
 DO RIGHT NOW:
 - make mobile responsive (profile, edit profile, create deal, view deal, edit deals, locations);
-- modify skeletons on profile page
 - style view your deals slide buttons
+- change color of deal markers
 - make splash screen
 
 - load more data when scroll to bottom
