@@ -18,7 +18,7 @@ import { ViewDealComponent } from '../../modals/view-deal/view-deal.component';
 })
 export class DealsComponent implements OnInit {
 
-  deals: Post[];
+  deals: Post[] = [];
   user: User;
   loadingDeals: boolean = false;
   searchTerm: string = "";

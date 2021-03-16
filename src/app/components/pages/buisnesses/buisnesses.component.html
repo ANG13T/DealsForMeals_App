@@ -23,7 +23,7 @@
       </app-chips-select>
     </div>
 
-    <h3>Locations Near You</h3>
+    <h3 [hidden]="(!loadingBuisnesses && buisnesses.length == 0)">Locations Near You</h3>
   <div class="foodbanks-section">
     <ion-infinite-scroll>
       <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data…">
@@ -39,8 +39,13 @@
                 <p>{{getSubLocation(foodbank.location)}}</p>
               </ion-label>
             </ion-item>
-
           </div>
+
+          <div class="no-deals" [hidden]="buisnesses.length != 0">
+            <h2 style="margin-top: 1rem;">No Buisnesses Found!</h2>
+            <p style="font-size: 1rem;">Please check another time to find buisnesses near you.</p>
+          </div>
+
         </div>
 
         <div class="loading-foodbanks" [hidden]="!loadingBuisnesses">

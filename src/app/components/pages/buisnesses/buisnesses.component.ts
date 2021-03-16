@@ -22,7 +22,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 })
 export class BuisnessesComponent implements OnInit {
 
-  buisnesses: User[];
+  buisnesses: User[] = [];
   user: User;
   filter: boolean = false;
   loadingBuisnesses: boolean = false;

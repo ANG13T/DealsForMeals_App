@@ -27,7 +27,8 @@ NEXT STEPS:
 
 DO RIGHT NOW:
 - load more data when scroll to bottom
-- make home page mobile responsive
+- make mobile responsive (profile, edit profile, create deal, view deal, edit deals, locations);
+- make placeholder for no data 
 - get stream of location for foodie account
 - make categorie options for location maps 
 

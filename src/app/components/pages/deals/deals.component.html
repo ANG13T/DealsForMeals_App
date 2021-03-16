@@ -17,7 +17,7 @@
     </div>
 
     <div class="topDisplay" [hidden]="searchTerm != ''">
-      <h3 class="subtitle">Deals Near You</h3>
+      <h3 class="subtitle" [hidden]="(!loading && deals.length == 0)">Deals Near You</h3>
       <ion-slides pager>
         <ion-slide *ngFor="let deal of topDisplay">
             <div class="card-main" (click)="openDeal(deal)">
@@ -41,7 +41,11 @@
                 <p>{{getSubLocation(deal.userProfile.location)}}</p>
               </ion-label>
             </ion-item>
+          </div>
 
+          <div class="no-deals" [hidden]="deals.length != 0">
+            <h2>No Deals Found!</h2>
+            <p style="font-size: 1rem;">Please check another time for more deals near you.</p>
           </div>
         </div>
 
