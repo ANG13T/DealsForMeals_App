@@ -1,7 +1,8 @@
+TODOS: 
 - improve for more mobile devices
+
 - improve mobile animations (headers)
 
-NOW: 
 - buisness tweaks
 
 - change header component orientation
@@ -10,26 +11,27 @@ NOW:
 
 - enter search buisness name and location for locations page
 
-- custommize markers 
-    - ? change marker design to https://thumbs.dreamstime.com/z/wireframe-kit-mobile-phone-mobile-app-ui-ux-design-new-map-position-popular-places-close-to-me-cafes-restaurants-address-137739755.jpg
-    - move to marker on click of bottom item
+- move to marker on click of bottom item
 
 - enable google maps billing account
 
+- clean up code (api keys, etc)
+
 
 NEXT STEPS:
- - make splash screen
- - make start up tutorial slideshow
+
+- make splash screen
+- make start up tutorial slideshow
 -  make search and filter?
 - fix intermittent header styles problem
-
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 
 DO RIGHT NOW:
-- style bottom bar
+- finish FAQ
+- default collapse location bottom
+
 - get stream of location for foodie account
 - make categorie options for location maps 
-
 
 - load more data when scroll to bottom
 - make mobile responsive (profile, edit profile, create deal, view deal, edit deals, locations);
