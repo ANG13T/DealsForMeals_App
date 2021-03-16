@@ -7,30 +7,6 @@
     text-align: center;
 }
 
-.top{
-    margin: 0; 
-    padding: 2em 5em 4em; 
-    color: #efefef;
-    overflow:hidden;
-    position: relative;
-}
-
-.top::after{
-    content:"";
-    position:absolute;
-    background-image: url("../../../../assets/images/header-style.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    top:0;
-    left:0;
-    height: 100%;
-    width:100%;
-    background-color: transparent;
-    transform: skewY(4deg);
-    transform-origin: bottom right;
-    z-index: -1;
-}
-
 .description{
     font-size: 1rem;
 }
