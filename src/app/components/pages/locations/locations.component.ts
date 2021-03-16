@@ -22,7 +22,8 @@ export class LocationsComponent implements OnInit {
   user: User;
   buisnesses: User[] = [];
   zoom: number = 11;
-  selectedIndicators: string[] = ['others', 'foodbanks', 'restaurants'];
+  selectedIndicators: string = "";
+  freePass: boolean = (this.selectedIndicators == "");
   defaultSheetState = SheetState.Docked;
   loading: boolean = true;
   toggledFoodbanks: boolean = false;
@@ -83,29 +84,28 @@ export class LocationsComponent implements OnInit {
   }
 
   toggleIndicators(indicator: string){
-    if(indicator == "others" && this.toggledOthers == false){
-      this.toggledOthers = true;
-      this.selectedIndicators.push("others");
-    }else{
-      this.toggledOthers = false;
-      this.selectedIndicators.splice(this.selectedIndicators.indexOf("others"));
-    }
-
-    if(indicator == "foodbanks" && this.toggledFoodbanks == false){
-      this.toggledFoodbanks = true;
-      this.selectedIndicators.push("foodbanks");
-    }else{
+    if(indicator == "others"){
+      this.toggledOthers ? this.selectedIndicators = "" : this.selectedIndicators = "others";
+      this.toggledOthers = !this.toggledOthers;
       this.toggledFoodbanks = false;
-      this.selectedIndicators.splice(this.selectedIndicators.indexOf("foodbanks"));
+      this.toggledRestaurants = false;
     }
 
-    if(indicator == "restaurants" && this.toggledRestaurants == false){
-      this.toggledRestaurants = true;
-      this.selectedIndicators.push("restaurants");
-    }else{
+    if(indicator == "foodbanks"){
+      this.toggledFoodbanks ? this.selectedIndicators = "" : this.selectedIndicators = "foodbanks";
+      this.toggledFoodbanks = !this.toggledFoodbanks;
+      this.toggledOthers = false;
       this.toggledRestaurants = false;
-      this.selectedIndicators.splice(this.selectedIndicators.indexOf("restaurants"));
     }
+
+    if(indicator == "restaurants"){
+      this.toggledRestaurants ? this.selectedIndicators = "" : this.selectedIndicators = "restaurants";
+      this.toggledRestaurants = !this.toggledRestaurants;
+      this.toggledOthers = false;
+      this.toggledFoodbanks = false;
+    }
+
+    console.log("selected", this.selectedIndicators)
   }
 
 getSubLocation(location: Location){
