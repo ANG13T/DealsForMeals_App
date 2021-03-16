@@ -16,62 +16,81 @@
       <ion-searchbar [(ngModel)]="searchTerm"></ion-searchbar>
     </div>
 
-    <div class="topDisplay" [hidden]="searchTerm != ''">
-      <h3 class="subtitle" [hidden]="(!loading && deals.length == 0)">Deals Near You</h3>
-      <ion-slides pager>
-        <ion-slide *ngFor="let deal of topDisplay">
-            <div class="card-main" (click)="openDeal(deal)">
-              <img src={{deal.images[0]}} />
+    <div class="general-display" [hidden]="searchTerm != ''">
+      <div class="topDisplay">
+        <h3 class="subtitle" [hidden]="(!loading && deals.length == 0)">Deals Near You</h3>
+        <ion-slides pager>
+          <ion-slide *ngFor="let deal of topDisplay">
+              <div class="card-main" (click)="openDeal(deal)">
+                <img src={{deal.images[0]}} />
+              </div>
+          </ion-slide>
+          </ion-slides>
+      </div>
+      
+      <ion-infinite-scroll>
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data…">
+          <div class="deals" [hidden]="loadingDeals">
+            <div class="deal" *ngFor="let deal of bottomDisplay" (click)="openDeal(deal)">
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img src={{deal.images[0]}}>
+                </ion-thumbnail>
+                <ion-label>
+                  <h3>{{deal.title}}</h3>
+                  <p>{{getLocation(deal.userProfile.location)}}</p>
+                  <p>{{getSubLocation(deal.userProfile.location)}}</p>
+                </ion-label>
+              </ion-item>
             </div>
-        </ion-slide>
-        </ion-slides>
+  
+            <div class="no-deals" [hidden]="deals.length != 0">
+              <h2>No Deals Found!</h2>
+              <p style="font-size: 1rem;">Please check another time for more deals near you.</p>
+            </div>
+          </div>
+  
+          <div class="loading-deals" [hidden]="!loadingDeals">
+            <div class="deal" *ngFor="let post of [1,2,3,4,5]">
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <ion-skeleton-text></ion-skeleton-text>
+                </ion-thumbnail>
+                <ion-label>
+                  <h3>
+                    <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                  </h3>
+                  <p>
+                    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                  </p>
+                  <p>
+                    <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+                  </p>
+                </ion-label>
+              </ion-item>
+            </div>
+          </div>
+  
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
+    </div>
+
+    <div class="search-display" [hidden]="searchTerm == ''">
+      <div class="deal" *ngFor="let deal of deals" (click)="openDeal(deal)">
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img src={{deal.images[0]}}>
+          </ion-thumbnail>
+          <ion-label>
+            <h3>{{deal.title}}</h3>
+            <p>{{getLocation(deal.userProfile.location)}}</p>
+            <p>{{getSubLocation(deal.userProfile.location)}}</p>
+          </ion-label>
+        </ion-item>
+      </div>
     </div>
     
-    <ion-infinite-scroll>
-      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data…">
-        <div class="deals" [hidden]="loadingDeals">
-          <div class="deal" *ngFor="let deal of bottomDisplay" (click)="openDeal(deal)">
-            <ion-item>
-              <ion-thumbnail slot="start">
-                <img src={{deal.images[0]}}>
-              </ion-thumbnail>
-              <ion-label>
-                <h3>{{deal.title}}</h3>
-                <p>{{getLocation(deal.userProfile.location)}}</p>
-                <p>{{getSubLocation(deal.userProfile.location)}}</p>
-              </ion-label>
-            </ion-item>
-          </div>
-
-          <div class="no-deals" [hidden]="deals.length != 0">
-            <h2>No Deals Found!</h2>
-            <p style="font-size: 1rem;">Please check another time for more deals near you.</p>
-          </div>
-        </div>
-
-        <div class="loading-deals" [hidden]="!loadingDeals">
-          <div class="deal" *ngFor="let post of [1,2,3,4,5]">
-            <ion-item>
-              <ion-thumbnail slot="start">
-                <ion-skeleton-text></ion-skeleton-text>
-              </ion-thumbnail>
-              <ion-label>
-                <h3>
-                  <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
-                </h3>
-                <p>
-                  <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
-                </p>
-                <p>
-                  <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
-                </p>
-              </ion-label>
-            </ion-item>
-          </div>
-        </div>
-
-      </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
   </div>
     
   </ion-content>
