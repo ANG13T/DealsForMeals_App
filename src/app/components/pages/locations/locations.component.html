@@ -12,13 +12,13 @@
   <ion-content [fullscreen]="true" *ngIf="user">
     <ion-searchbar></ion-searchbar>
     <div class="indicators">
-      <div class="indicator">
+      <div class="indicator" (click)="toggleIndicators('foodbanks')" [ngClass]="{'foodbanksIndicator': toggledFoodbanks}">
         <ion-icon name="nutrition-outline"></ion-icon>
       </div>
-      <div class="indicator">
+      <div class="indicator" (click)="toggleIndicators('restaurants')" [ngClass]="{'restaurantsIndicator': toggledRestaurants}">
         <ion-icon name="storefront-outline"></ion-icon>
       </div>
-      <div class="indicator">
+      <div class="indicator" (click)="toggleIndicators('others')" [ngClass]="{'othersIndicator': toggledOthers}">
         <ion-icon name="business-outline"></ion-icon>
       </div>
     </div>

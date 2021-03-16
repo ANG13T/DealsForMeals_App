@@ -24,6 +24,9 @@ export class LocationsComponent implements OnInit {
   zoom: number = 11;
   defaultSheetState = SheetState.Docked;
   loading: boolean = true;
+  toggledFoodbanks: boolean = false;
+  toggledRestaurants: boolean = false;
+  toggledOthers: boolean = false;
   userLocation: Location = null;
 
   @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
@@ -54,7 +57,6 @@ export class LocationsComponent implements OnInit {
             this.buisnesses = result;
             this.loading = false;
           });
-   
       }
     })
   }
@@ -77,7 +79,31 @@ export class LocationsComponent implements OnInit {
   getLocation(location: Location){
     let result = `${location.subThoroughfare} ${location.thoroughfare}, ${location.subLocality}`;
     return result;
-}
+  }
+
+  toggleIndicators(indicator: string){
+    console.log("hum")
+   
+    
+    
+    if(indicator == "others" && this.toggledOthers == false){
+      this.toggledOthers = true;
+    }else{
+      this.toggledOthers = false;
+    }
+
+    if(indicator == "foodbanks" && this.toggledFoodbanks == false){
+      this.toggledFoodbanks = true;
+    }else{
+      this.toggledFoodbanks = false;
+    }
+
+    if(indicator == "restaurants" && this.toggledRestaurants == false){
+      this.toggledRestaurants = true;
+    }else{
+      this.toggledRestaurants = false;
+    }
+  }
 
 getSubLocation(location: Location){
     let result = `${location.locality} ${location.administrativeArea}, ${location.postalCode}`;
