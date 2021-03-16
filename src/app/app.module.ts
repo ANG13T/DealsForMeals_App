@@ -51,7 +51,7 @@ import { AppRate } from '@ionic-native/app-rate/ngx';
 import { DealsComponent } from './components/pages/deals/deals.component';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { IonIntlTelInputModule } from 'ion-intl-tel-input';
-import { FilterPipeModule } from 'ngx-filter-pipe';
+import {NgPipesModule} from 'ngx-pipes';
 
 
 @NgModule({
@@ -59,7 +59,7 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
   entryComponents: [CreatePostComponent, EditPostComponent, ViewAllDealsComponent, ViewDealComponent, ViewBuisnessComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, AngularFireModule.initializeApp(environment.firebaseConfig), AngularFireAuthModule, AngularFireStorageModule, FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule, MaterialModule, AgmOverlays, AgmCoreModule.forRoot({
     apiKey: environment.googleMapsAPIKey
-  }), AvatarModule, IonBottomSheetModule, IonIntlTelInputModule, FilterPipeModule],
+  }), AvatarModule, IonBottomSheetModule, IonIntlTelInputModule, NgPipesModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AngularFirestore, NativeGeocoder, Geolocation,SocialSharing, AppRate, EmailComposer],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
