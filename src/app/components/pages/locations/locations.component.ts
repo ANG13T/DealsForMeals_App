@@ -24,6 +24,7 @@ export class LocationsComponent implements OnInit {
   zoom: number = 11;
   defaultSheetState = SheetState.Docked;
   loading: boolean = true;
+  userLocation: Location = null;
 
   @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
 
@@ -37,10 +38,23 @@ export class LocationsComponent implements OnInit {
       if (userProfile) {
         this.user = userProfile;
 
-        this.businessService.getBuisnessesNearLocation(this.user.location).then((result) => {
-          this.buisnesses = result;
-          this.loading = false;
-        })
+        if(this.user.accountType == "foodie"){
+          this.userService.location$.subscribe((locationInfo) => {
+            if(locationInfo){
+              this.userLocation.latitude = locationInfo.coords.latitude;
+              this.userLocation.longitude = locationInfo.coords.longitude;
+            }
+          })
+          
+        }
+
+        let resultantLocation = this.userLocation ? this.userLocation : this.user.location;
+        
+          this.businessService.getBuisnessesNearLocation(resultantLocation).then((result) => {
+            this.buisnesses = result;
+            this.loading = false;
+          });
+   
       }
     })
   }

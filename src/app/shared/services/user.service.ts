@@ -17,15 +17,13 @@ import app from 'firebase/app';
 export class UserService {
   public currentUser;
   user$: Observable<any>;
+  location$: Observable<any>;
   loggedIn : boolean;
   location: any;
   
   constructor(private router: Router, private afAuth: AngularFireAuth, private afs: AngularFirestore, private geolocation: Geolocation,  private storage: AngularFireStorage, private userService: UserService) {
-    // let watch = this.geolocation.watchPosition();
-    // watch.subscribe((data: any) => {
-    // this.location.latitude = data.coords.latitude;
-    // this.location.longitude = data.coords.longitude;
-    // }); 
+    this.location$ = this.geolocation.watchPosition();
+   
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if(user){

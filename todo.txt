@@ -28,8 +28,8 @@ NEXT STEPS:
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 
 DO RIGHT NOW:
--  make search and filter?
 - get stream of location for foodie account
+- make no results found page
 - make categorie options for location maps 
 
 - load more data when scroll to bottom
