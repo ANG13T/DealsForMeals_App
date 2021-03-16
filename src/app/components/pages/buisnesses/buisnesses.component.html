@@ -44,7 +44,8 @@
                   </ion-item>
                 </div>
 
-                <div class="no-deals" [hidden]="buisnesses.length != 0">
+                <!-- modify for piping -->
+                <div class="no-deals" [hidden]="buisnesses.length != 0"> 
                   <h2 style="margin-top: 1rem;">No Buisnesses Found!</h2>
                   <p style="font-size: 1rem;">Please check another time to find buisnesses near you.</p>
                 </div>
@@ -90,6 +91,14 @@
               <p>{{getLocation(buisness.location)}}</p>
               <p>{{getSubLocation(buisness.location)}}</p>
             </ion-label>
+          </ion-item>
+
+          <!-- modify for piping -->
+          <ion-item>
+            <div class="no-deals" [hidden]="buisnesses.length != 0"> 
+              <h2 style="margin-top: 1rem;">No Buisnesses Found!</h2>
+              <p style="font-size: 1rem;">Please check another time to find buisnesses near you.</p>
+            </div>
           </ion-item>
         </div>
 

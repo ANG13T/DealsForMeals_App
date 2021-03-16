@@ -76,7 +76,7 @@
 
     </div>
 
-    <div class="search-display" [hidden]="searchTerm == ''">
+    <div class="search-display" [hidden]="searchTerm == ''" >
       <div class="deal" *ngFor="let deal of deals | filterBy: ['title', 'userProfile.name']: [searchTerm, searchTerm]" (click)="openDeal(deal)">
         <ion-item>
           <ion-thumbnail slot="start">
@@ -88,6 +88,11 @@
             <p>{{getSubLocation(deal.userProfile.location)}}</p>
           </ion-label>
         </ion-item>
+      </div>
+
+      <div class="no-deals" [hidden]="(deals | filterBy: ['title', 'userProfile.name']: [searchTerm, searchTerm])?.length != 0">
+        <h3>No Deals Found</h3>
+        <p>Please try searching with another term.</p>
       </div>
     </div>
     
