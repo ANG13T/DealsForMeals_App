@@ -31,7 +31,7 @@
           <ion-infinite-scroll>
             <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data…">
               <div class="foodbanks" [hidden]="loadingBuisnesses">
-                <div class="foodbank" *ngFor="let foodbank of buisnesses" (click)="openBuisness(foodbank)">
+                <div class="foodbank" *ngFor="let foodbank of buisnesses | filterBy: ['accountType']: ['Foodbanks', 'Restaurants', 'Other']" (click)="openBuisness(foodbank)">
                   <ion-item>
                     <ion-thumbnail slot="start">
                       <img src={{foodbank.photoURL}}>
