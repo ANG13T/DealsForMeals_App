@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true" class="hide-nav-bar">
+<ion-content class="hide-nav-bar" overflow-scroll="true">
   <div profile *ngIf="user" #content class="full-profile">
     <div class="top-content">
       <div class="menu-button">
@@ -78,6 +78,7 @@
                   </ion-card>
                 </div>
                 <div class="posts" *ngIf="!loading">
+      
                     <div class="recentDeal" *ngFor="let post of recentDeals">
                       <ion-card (click)="presentPost(post)">
                         <div class="card-main">
@@ -98,7 +99,7 @@
                         
                       </ion-card>
                       </div>
-                      
+            
                   </div>
 
                 <div class="loading-posts" *ngIf="loading && isBuisness">
@@ -121,6 +122,7 @@
                        
                       </div>
                     </ion-card>
+
                 </div>
 
               </div>

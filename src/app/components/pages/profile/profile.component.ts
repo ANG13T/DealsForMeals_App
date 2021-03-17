@@ -109,7 +109,8 @@ export class ProfileComponent implements OnInit {
     const modal = await this.modalController.create({
       component: ViewAllDealsComponent,
       componentProps: { 
-        deals: this.posts
+        deals: this.posts,
+        swipeToClose: true
       }
     });
 

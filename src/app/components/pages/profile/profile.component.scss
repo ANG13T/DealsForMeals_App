@@ -276,3 +276,22 @@ agm-map{
 ion-content::before{
     background-color: blue;
 }
+
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) { 
+    .profile-image{
+        margin-top: 0rem !important;
+    }
+
+    ion-card-subtitle{
+        display: none !important;
+    }
+
+    ion-card-content{
+        font-size: 10px !important;
+    }
+}

@@ -29,9 +29,7 @@ export class ViewAllDealsComponent implements OnInit {
   }
 
   dismissModal() {
-    this.modalController.dismiss({
-      'dismissed': true
-    });
+    this.modalController.dismiss();
   }
 
 

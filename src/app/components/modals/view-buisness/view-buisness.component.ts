@@ -87,7 +87,8 @@ export class ViewBuisnessComponent implements OnInit {
     const modal = await this.modalController.create({
       component: ViewAllDealsComponent,
       componentProps: { 
-        deals: this.posts
+        deals: this.posts,
+        swipeToClose: true
       }
     });
 
@@ -95,9 +96,7 @@ export class ViewBuisnessComponent implements OnInit {
   }
 
    dismissModal() {
-    this.modalCtrl.dismiss({
-      'dismissed': true
-    });
+    this.modalCtrl.dismiss();
   }
 
   contactBuisness(){

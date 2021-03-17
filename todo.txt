@@ -15,21 +15,17 @@ TODOS:
 
 - enable google maps billing account
 
-- fix collapse location bottom
-
-- clean up code (api keys, etc)
-
 
 NEXT STEPS:
 - make start up tutorial slideshow
-- fix intermittent header styles problem
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 
 DO RIGHT NOW:
 - make mobile responsive (profile, edit profile, create deal, view deal, edit deals, locations);
-- make splash screen
-
 - load more data when scroll to bottom
+- fix intermittent header styles problem
+- fix collapse location bottom
+- clean up code (api keys, etc)
 
 
 
