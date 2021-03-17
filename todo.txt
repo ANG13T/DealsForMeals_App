@@ -21,7 +21,7 @@ NEXT STEPS:
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 
 DO RIGHT NOW:
-- make mobile responsive (edit profile, create deal, view deal, edit deals, locations);
+- make mobile responsive (view deal, view deals, view locations, sign up, login, view all deals, edit deals, locations);
 - load more data when scroll to bottom
 - fix intermittent header styles problem
 - fix collapse location bottom
