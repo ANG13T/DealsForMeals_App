@@ -231,6 +231,10 @@ ion-card{
 }
 
 
+ion-card{
+    width: 85vw !important;
+}
+
 .card-main, .step-card-main{
     display: flex;
 
@@ -277,14 +281,28 @@ ion-content::before{
     background-color: blue;
 }
 
-
+/* Portrait: IPhone 5 */
 @media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 667px) 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2)
-  and (orientation: portrait) { 
+  and (orientation: portrait) {
     .profile-image{
+        width: 5rem !important;
         margin-top: 0rem !important;
+        height: 5rem !important;
+    }
+
+    .profile-name{
+        margin-top: 0rem !important;
+    }
+
+    .profile-description{
+        margin-bottom: 5px !important;
+    }
+
+    .profile-top{
+        padding-bottom: 10px !important;
     }
 
     ion-card-subtitle{
@@ -293,5 +311,35 @@ ion-content::before{
 
     ion-card-content{
         font-size: 10px !important;
+    }
+
+    .top-deal-display{
+        margin-top: 0px !important;
+    }
+}
+
+
+// Iphone 6, 7, 8
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) { 
+    .profile-image{
+        margin-top: 1rem !important;
+        width: 7rem !important;
+        height: 7rem !important;
+    }
+
+    .profile-top{
+        padding-bottom: 2rem !important;
+    }
+
+    ion-card-content{
+        font-size: 1rem !important;
+    }
+
+    .top-deal-display{
+        margin-top: 10px !important;
     }
 }
