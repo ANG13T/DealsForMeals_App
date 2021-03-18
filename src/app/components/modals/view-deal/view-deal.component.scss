@@ -126,3 +126,62 @@ input{
       margin-bottom: 1rem;
   }
 
+
+/* Portrait: Smaller Iphones */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+
+    .title{
+        font-size: 20px !important;
+        margin-bottom: 0px !important;
+    }
+
+    .location{
+        font-size: 12px !important;
+    }
+
+    ion-segment{
+        margin-bottom: 0px !important;
+    }
+
+    .description{
+        margin-top: 15px !important;
+    }
+
+    agm-map{
+        height: 36vh !important;
+    }
+}
+
+// Iphone 6, 7, 8
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) { 
+    agm-map{
+        height: 40vh !important;
+    }
+    
+    .title{
+        font-size: 24px !important;
+        margin-bottom: 5px !important;
+    }
+
+    .location{
+        font-size: 15px !important;
+    }
+}
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+    agm-map{
+        height: 49vh !important;
+    }
+}
