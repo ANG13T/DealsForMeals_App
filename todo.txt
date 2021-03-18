@@ -27,7 +27,7 @@ NEXT STEPS:
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 
 DO RIGHT NOW:
-- make mobile responsive (view deals, view locations, sign up, login, view all deals, edit deals, locations);
+- make mobile responsive (view locations, view buisnesses, sign up, login, view all deals, edit deals);
  fix collapse location bottom
 - load more data when scroll to bottom
 
