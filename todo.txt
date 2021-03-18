@@ -15,6 +15,12 @@ TODOS:
 
 - enable google maps billing account
 
+- add security to firebase app
+
+- fix intermittent header styles problem
+
+- clean up code
+
 
 NEXT STEPS:
 - make start up tutorial slideshow
@@ -22,10 +28,9 @@ NEXT STEPS:
 
 DO RIGHT NOW:
 - make mobile responsive (view deal, view deals, view locations, sign up, login, view all deals, edit deals, locations);
+ fix collapse location bottom
 - load more data when scroll to bottom
-- fix intermittent header styles problem
-- fix collapse location bottom
-- clean up code (api keys, etc)
+
 
 
 
