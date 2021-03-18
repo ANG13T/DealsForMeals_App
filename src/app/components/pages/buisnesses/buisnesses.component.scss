@@ -183,3 +183,70 @@ ion-title{
         margin-top: 1rem;
     }
 }
+
+/* Portrait: Smaller Iphones */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .title{
+        font-size: 23px !important;
+        margin-top: 25px !important;
+        margin-bottom: 5px !important;
+    }
+
+    ion-thumbnail{
+      height: 5rem !important;
+      width: 5rem !important;
+    }
+
+    .item-native{
+      padding-left: 0px !important;
+    }
+
+    .near-you{
+      margin-bottom: 5px !important;
+    }
+
+    ion-item{
+
+      h3{
+        margin-bottom: 5px !important;
+      margin-top: 5px !important;
+      }
+
+      p{
+        margin-bottom: 5px !important;
+      }
+    }
+    
+}
+
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+    .title{
+      font-size: 1.7rem !important;
+      margin-top: 30px !important;
+      margin-bottom: 1rem !important;
+  }
+
+  .near-you{
+    margin-bottom: 8px !important;
+  }
+
+    ion-item{
+
+      h3{
+        margin-bottom: 5px !important;
+        margin-top: 5px !important;
+      }
+
+      p{
+        margin-bottom: 5px !important;
+      }
+    }
+}
