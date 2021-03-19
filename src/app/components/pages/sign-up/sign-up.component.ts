@@ -9,6 +9,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { ViewEncapsulation } from '@angular/core';
 import * as geofire from 'geofire-common';
+import { MapsAPILoader } from '@agm/core';
 
 declare var google;
 
@@ -49,10 +50,12 @@ export class SignUpComponent implements OnInit {
   autocompleteItems: any[];
 
 
-  constructor(private router: Router, private userService: UserService, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder, public zone: NgZone) { 
-    this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
-    this.autocomplete = { input: '' };
-    this.autocompleteItems = [];
+  constructor(private router: Router, private userService: UserService, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder, public zone: NgZone, private mapsAPILoader: MapsAPILoader) { 
+    this.mapsAPILoader.load().then(() => {
+      this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
+      this.autocomplete = { input: '' };
+      this.autocompleteItems = [];
+    })
   }
 
   ngOnInit() {

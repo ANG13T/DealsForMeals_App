@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-.form{
+.form-body{
     margin-left: 2rem;
     margin-right: 2rem;
     width: 75%;
@@ -13,7 +13,7 @@
 
 .header{
     color: #666A86;
-    --border-width: 0px !important;
+    --border-width: 0px;
     margin-bottom: 2rem;
 }
 
@@ -38,7 +38,7 @@ ion-back-button{
     filter: drop-shadow(10px 10px 9px rgba(0, 0, 0, 0.1)) !important;
 }
 
- .title{
+ .title-form{
      font-family: 'Poppins', sans-serif !important;
      width: 14rem !important;
      margin-left: 1rem !important;
@@ -67,7 +67,6 @@ ion-back-button{
   }
 
 
-
   .google-section{
     margin-bottom: 2rem;
   }
@@ -80,11 +79,11 @@ and (min-device-width: 320px)
 and (max-device-width: 480px)
 and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: portrait) {
-  .top{
+  .top-form{
     background-size: 100% 100px;
   }
 
-  .title{
+  .title-form{
     font-size: 1.5rem !important;
   }
 
@@ -113,7 +112,7 @@ and (orientation: portrait) {
     }
   }
 
-  .title{
+  .title-form{
     margin-top: 2vh !important;
    }
 }
@@ -130,14 +129,6 @@ and (orientation: portrait) {
 }
 
 
-/* Portrait: iPhone 6, 6S, 7 and 8 */
-@media only screen 
-and (min-device-width: 375px) 
-and (max-device-width: 667px) 
-and (-webkit-min-device-pixel-ratio: 2)
-and (orientation: portrait) { 
-  
-}
 
 /* Portrait: iPhone X */
 
@@ -146,7 +137,7 @@ and (orientation: portrait) {
   and (max-device-width: 812px) 
   and (-webkit-min-device-pixel-ratio: 3)
   and (orientation: portrait) { 
-    .title{
+    .title-form{
         margin-top: 3vh !important;
     }
 }
