@@ -1,6 +1,4 @@
 TODOS: 
-- improve for more mobile devices
-
 - improve mobile animations (headers)
 
 - buisness tweaks
@@ -15,19 +13,16 @@ TODOS:
 
 - enable google maps billing account
 
-- add security to firebase app
-
 - fix intermittent header styles problem
-
-- clean up code
 
 
 NEXT STEPS:
-- make start up tutorial slideshow
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 
 DO RIGHT NOW:
-- fix collapse location bottom
+- minor styling
+- clean up code
+- add security to firebase app
 - load more data when scroll to bottom
 
 
