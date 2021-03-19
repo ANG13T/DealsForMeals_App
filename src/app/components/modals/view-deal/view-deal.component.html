@@ -53,10 +53,7 @@
                   [longitude]="post.userProfile.location.longitude"></agm-marker>
         </agm-map>
       </div>
-     
-  <div class="bottom-section" [hidden]="selectedTabIndex == 1">
-    <ion-button class="contact-button" *ngIf="!isOwner">Contact Supplier</ion-button>
-  </div>
+    
 
   <ion-fab vertical="bottom" horizontal="start" slot="fixed" (click)="contactBuisness()">
     <ion-fab-button>

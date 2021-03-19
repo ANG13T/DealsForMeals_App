@@ -10,6 +10,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import * as geofire from 'geofire-common';
 import { AngularFireStorage } from '@angular/fire/storage';
 import app from 'firebase/app';
+import { Post } from '../models/post.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ import app from 'firebase/app';
 export class UserService {
   public currentUser;
   user$: Observable<any>;
+  userDeals$: any | undefined;
   location$: Observable<any>;
   loggedIn : boolean;
   location: any;
@@ -36,7 +38,12 @@ export class UserService {
           return of(null);
         }
       })
-    )
+    );
+
+    let userDeals = this.afs.collection('deals', ref => {
+      return ref.where('userProfile.uid', '==', this.currentUser.uid).orderBy("createdAt");
+    });
+    this.userDeals$ = userDeals.valueChanges();
   }
 
   async login(email, password): Promise<any>{
