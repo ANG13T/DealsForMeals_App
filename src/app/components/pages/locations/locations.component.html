@@ -1,4 +1,4 @@
-<div class="locations-container">
+<!-- <div class="locations-container"> -->
   <ion-header>
     <ion-toolbar class="header">
       <ion-buttons slot="start">
@@ -6,12 +6,15 @@
       </ion-buttons>
       <ion-title>Locations Near You</ion-title>
     </ion-toolbar>
+
+    <ion-toolbar>
+      <!-- TODO: make this google places seach via location + buisness name -->
+      <ion-searchbar [(ngModel)]="searchTerm"></ion-searchbar>
+    </ion-toolbar>
   </ion-header>
   
 
-  <ion-content [fullscreen]="true" *ngIf="user">
-    <!-- TODO: make this google places seach via location + buisness name -->
-    <ion-searchbar [(ngModel)]="searchTerm"></ion-searchbar>
+  <ion-content *ngIf="user" no-bounce>
     <div class="indicators">
       <div class="indicator" (click)="toggleIndicators('foodbanks')" [ngClass]="{'foodbanksIndicator': toggledFoodbanks}">
         <ion-icon name="nutrition-outline"></ion-icon>
@@ -34,20 +37,10 @@
       [markerClickable]="true"
       (markerClick)="openBuisnessDialog(buisness)"
       ></agm-marker>
-      <!-- <agm-overlay
-      *ngFor="let buisness of buisnesses"
-      [latitude]="buisness.location.latitude"
-      [longitude]="buisness.location.longitude"
-      (click)="openBuisnessDialog(buisness)"
-    >
-      <div class="customMarker" (click)="openBuisnessDialog(buisness)">
-        <img [src]="buisness.photoURL" alt="Image" />
-      </div>
-    </agm-overlay> -->
-    </agm-map>
+    </agm-map> -->
   </ion-content>
 
-  <ion-bottom-sheet title="Buisnesses Near You" dockedHeight="100px" state="defaultSheetState" disableDrag="false" >
+  <ion-bottom-sheet title="Buisnesses Near You" [hideCloseButton]="true" [state]="defaultSheetState">
     <ion-list>
       <ion-item *ngFor="let buisness of buisnesses | filterBy: ['name']: searchTerm | buisnessCategory: [selectedIndicators]: selectedIndicators" (click)="openBuisnessDialog(buisness)">
         <ion-thumbnail slot="start">
@@ -66,6 +59,6 @@
       </div>
     </ion-list>
   </ion-bottom-sheet>
-</div>
+<!-- </div> -->
 
 
