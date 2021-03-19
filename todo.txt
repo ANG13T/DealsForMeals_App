@@ -20,8 +20,7 @@ NEXT STEPS:
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 
 DO RIGHT NOW:
-- minor styling
-- clean up code
+- fix deal reload error
 - add security to firebase app
 - load more data when scroll to bottom
 
