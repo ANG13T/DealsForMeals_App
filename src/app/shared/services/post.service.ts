@@ -5,6 +5,7 @@ import { Post } from '../models/post.model';
 import { User } from '../models/user.model';
 import * as geofire from 'geofire-common';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,7 @@ export class PostService {
     })
   }
 
+
   async getDealsForUser(uid: string): Promise<any>{
     let posts: Post[] = [];
     let promise = this.afs.firestore.collection("deals").where('userProfile.uid', '==', uid).orderBy("createdAt").get().then((snapshot) => {
@@ -38,6 +40,16 @@ export class PostService {
     return promise;
   }
 
+  deals$ = this.afs.collection("deals").snapshotChanges().pipe(map(actions => {
+    return actions.map(p => {
+      const doc = p.payload.doc;
+      const id = doc.id;
+      const docData:any = doc.data();
+      let newDeal: Post = {userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id, createdAt: docData.created};
+      return newDeal;
+    });
+  }))
+  
   getDeals(amount: number): Promise<any>{
     let deals: Post[] = [];
     let promise = this.afs.firestore.collection("deals").limit(amount).get().then((snapshot) => {

@@ -27,6 +27,8 @@ export class DealsComponent implements OnInit {
 
   constructor(private postService: PostService, private modalController: ModalController, private userService: UserService) { }
 
+  deals$ = this.postService.deals$;
+  
   async ngOnInit() {
     this.loadingDeals = true;
 
