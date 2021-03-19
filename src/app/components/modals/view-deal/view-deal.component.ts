@@ -98,7 +98,7 @@ export class ViewDealComponent implements OnInit {
 
   async presentActionSheet() {
     const actionSheet = await this.actionSheetController.create({
-      header: 'Post Actions',
+      header: 'Deal Actions',
       cssClass: 'my-custom-class',
       buttons: [{
         text: 'Edit Post',
@@ -114,7 +114,6 @@ export class ViewDealComponent implements OnInit {
         }
       }, {
         text: 'Cancel',
-        icon: 'close',
         role: 'cancel',
       }]
     });
