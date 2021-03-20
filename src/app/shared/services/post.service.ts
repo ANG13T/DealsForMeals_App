@@ -142,8 +142,8 @@ export class PostService {
   paginate (limit: number, last: string):  Observable<DocumentChangeAction<any>[]> {
     return this.afs.collection('deals', (ref) => (
      ref
-       .where('id', '<', last)
-       .orderBy('id', 'desc')
+      //  .where('createdAt', '<', last)
+       .orderBy('createdAt', 'desc')
        .limit(limit)
     )).snapshotChanges();
  }

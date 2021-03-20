@@ -50,6 +50,7 @@
     "ion-intl-tel-input": "^1.0.3",
     "ionic-angular": "^3.9.10",
     "ionic-selectable": "^4.7.1",
+    "lodash": "^4.17.21",
     "ngx-avatar": "^4.0.0",
     "ngx-pipes": "^2.7.5",
     "rxjs": "^6.6.6",

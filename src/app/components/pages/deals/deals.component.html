@@ -29,10 +29,11 @@
           </ion-slides>
       </div>
       
-      <ion-infinite-scroll>
+      <ion-infinite-scroll (ionInfinite)="onScroll()">
         <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data…">
-          <div class="deals" [hidden]="!deals$">
-            <div class="deal" *ngFor="let deal of deals | slice:4:(deals.length)" (click)="openDeal(deal)">
+          <!-- [hidden]="!deals$" -->
+          <div class="deals" > 
+            <div class="deal" *ngFor="let deal of paginationDeals" (click)="openDeal(deal)">
               <ion-item>
                 <ion-thumbnail slot="start">
                   <img src={{deal.images[0]}}>
