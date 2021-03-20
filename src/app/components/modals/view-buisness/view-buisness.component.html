@@ -23,7 +23,7 @@
       </h2>
       <ion-skeleton-text animated [hidden]="displayLocation != ''"></ion-skeleton-text>
 
-      <ion-button class="contact-button" (click)="contactBuisness()">Contact</ion-button>
+      <ion-button class="buisness-contact-button" (click)="contactBuisness()">Contact</ion-button>
     </div>
   
 
@@ -40,7 +40,7 @@
     </ion-segment>
 
 
-    <div class="bottom">
+    <div class="bottom-buisness-display">
           <div class="posts" [hidden]="selectedIndex != 'deals'">
             <ion-card *ngIf="posts.length == 0">
               <ion-card-header>
@@ -49,7 +49,7 @@
               </ion-card-header>
             </ion-card>
 
-            <div class="top-deal-display" [hidden]="posts.length == 0">
+            <div class="top-deal-content" [hidden]="posts.length == 0">
               <h3 class="content-header">Recent Deals</h3>
               <button class="view-all" (click)="presentViewAllDeals()">View All</button>
             </div>
@@ -118,6 +118,7 @@
               <agm-marker [latitude]="buisness.location.latitude"
                       [longitude]="buisness.location.longitude"></agm-marker>
             </agm-map>
+            <p style="display: none;"> </p>
           </div>
       
     </div>

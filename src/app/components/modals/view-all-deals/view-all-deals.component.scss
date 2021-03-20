@@ -37,18 +37,29 @@ ion-card-header{
             width: 6rem;
         }
     }
+
+    ion-card{
+        margin-top: 0px;
+        width: 100vw;
+        margin-bottom: 10px;
+  
+        ion-card-header{
+          margin-top: 0px;
+          padding-top: 0px;
+        }
+  
+        ion-card-header{
+          padding-right: 0px;
+          font-size: 16px;
+        }
+    }
+  
+    ion-item-option{
+        ion-icon{
+            font-size: 1.3rem;
+        }
+    }
   }
 
-  ion-card{
-      margin-top: 0px;
-      width: 100vw;
-      margin-bottom: 10px;
-  }
-
-  ion-item-option{
-      ion-icon{
-          font-size: 1.3rem;
-      }
-  }
 
 
