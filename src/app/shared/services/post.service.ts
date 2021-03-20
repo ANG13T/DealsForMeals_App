@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, DocumentChangeAction } from '@angular/fire/firestore';
 import { Location } from '../models/location.model';
 import { Post } from '../models/post.model';
 import { User } from '../models/user.model';
 import * as geofire from 'geofire-common';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
@@ -136,6 +137,16 @@ export class PostService {
     });
     return promise;
   }
+
+  // Pagination Methods
+  paginate (limit: number, last: string):  Observable<DocumentChangeAction<any>[]> {
+    return this.afs.collection('deals', (ref) => (
+     ref
+       .where('id', '<', last)
+       .orderBy('id', 'desc')
+       .limit(limit)
+    )).snapshotChanges();
+ }
   
 
 }

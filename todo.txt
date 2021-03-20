@@ -1,32 +1,25 @@
 TODOS: 
-- improve mobile animations (headers)
-
-- buisness tweaks
-
-- change header component orientation
-
-- format ion-item cards
-
 - enter search location for locations page
-
-- move to marker on click of bottom item
 
 - enable google maps billing account
 
-- fix intermittent header styles problem
+- minor CSS changes based on FIGMA design
+
+- make loading images for slide in deals page
+
+- make loading alert in locations page
+
+- make error alert for user if not have location on deals and locations and buisnesses
+
+- rename variables
 
 
 NEXT STEPS:
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 
 DO RIGHT NOW:
-- fix deal reload error
-- add security to firebase app
+- fix deal (deals obseravble) reload error
+- make buisnesses observable
 - load more data when scroll to bottom
-
-
-
-
-
-
-
+- fix intermittent header styles problem
+- move to marker on click of bottom item
