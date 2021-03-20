@@ -139,10 +139,21 @@ export class PostService {
   }
 
   // Pagination Methods
-  paginate (limit: number, last: string):  Observable<DocumentChangeAction<any>[]> {
+  paginate (limit: number, last: any):  Observable<DocumentChangeAction<any>[]> {
+    console.log("last", last)
+    let submit;
+
+    if((typeof last) != "number"){
+      var t = new Date(1970, 0, 1); // Epoch
+      t.setSeconds(last.seconds);
+      submit = t;
+    }else{
+      submit = new Date(last);
+    }
+    
     return this.afs.collection('deals', (ref) => (
      ref
-      //  .where('createdAt', '<', last)
+       .where('createdAt', '<', submit)
        .orderBy('createdAt', 'desc')
        .limit(limit)
     )).snapshotChanges();

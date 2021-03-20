@@ -28,7 +28,7 @@ export class DealsComponent implements OnInit {
   topDisplay: Post[];
   bottomDisplay: Post[];
   // Pagination variables
-  batch: number = 4;
+  batch: number = 2;
   last: any = Date.now();
   empty: boolean = false;
 
@@ -97,6 +97,7 @@ export class DealsComponent implements OnInit {
           this.empty = true;
         }
         let last = _.last(data);
+
         if (last) {
           this.last = last.payload.doc.data().createdAt;
           data.map(todoSnap => {
