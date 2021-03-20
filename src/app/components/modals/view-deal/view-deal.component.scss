@@ -102,6 +102,16 @@ input{
     margin-top: 2rem;
 }
 
+.details{
+    margin-left: 9px;
+    margin-right: 9px;
+
+    .description{
+        font-size: 16px;
+        line-height: 25px;
+    }
+}
+
 
 .contact-button{
     width: 65%;

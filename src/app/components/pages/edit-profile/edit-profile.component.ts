@@ -79,7 +79,6 @@ export class EditProfileComponent implements OnInit {
           duration: 2000
         });
         toast.present();
-        console.log(this.initUserProfile, this.userProfile, this.fieldsDifferent());
         this.initUserProfile.name = this.userProfile.name;
         this.initUserProfile.email = this.userProfile.email;
         this.initUserProfile.photoURL = this.userProfile.photoURL;
@@ -112,6 +111,10 @@ export class EditProfileComponent implements OnInit {
     }
     
     if(this.userProfile.description != this.initUserProfile.description){
+      return true;
+    }
+
+    if(this.userProfile.photoURL != this.initUserProfile.photoURL){
       return true;
     }
 
