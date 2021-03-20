@@ -21,7 +21,7 @@
       <div class="topDisplay">
         <h3 class="subtitle" [hidden]="(deals.length == 0)">Deals Near You</h3>
         <ion-slides pager>
-          <ion-slide *ngFor="let deal of deals | slice:1:4">
+          <ion-slide *ngFor="let deal of paginationDeals | slice:0:3">
               <div class="card-main" (click)="openDeal(deal)">
                 <img src={{deal.images[0]}} />
               </div>

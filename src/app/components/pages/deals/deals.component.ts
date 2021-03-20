@@ -1,11 +1,9 @@
 import { Component, OnInit, ViewChildren } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
-import { untilDestroyed, UntilDestroy } from '@ngneat/until-destroy';
+import { UntilDestroy } from '@ngneat/until-destroy';
 import { map } from 'rxjs/internal/operators/map';
 import { Post } from 'src/app/shared/models/post.model';
 import { User } from 'src/app/shared/models/user.model';
-import { BuisnessService } from 'src/app/shared/services/buisness.service';
 import { PostService } from 'src/app/shared/services/post.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Location } from '../../../shared/models/location.model';
@@ -22,9 +20,9 @@ export class DealsComponent implements OnInit {
 
   deals: Post[] = [];
   paginationDeals: Post[] = [];
+  topDeals: Post[] = [];
   user: User;
   loadingDeals: boolean = false;
-  paginationFinished: boolean = false;
   searchTerm: string = "";
   topDisplay: Post[];
   bottomDisplay: Post[];
@@ -39,12 +37,15 @@ export class DealsComponent implements OnInit {
   
   async ngOnInit() {
     this.loadingDeals = true;
-    this.paginationFinished = false;
 
     this.userService.user$.subscribe(async (userProfile) => {
       if(userProfile){
         this.user = userProfile;
         console.log("got user", userProfile);
+
+        this.deals$.subscribe((deals) => {
+          this.topDeals = deals.slice(0, 4);
+        })
 
         // this.postService.getDealsNearLocation(this.user.location).then((result) => {
         //   console.log("resultant deals", result)
