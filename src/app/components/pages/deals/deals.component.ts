@@ -28,7 +28,7 @@ export class DealsComponent implements OnInit {
   topDisplay: Post[];
   bottomDisplay: Post[];
   // Pagination variables
-  batch: number = 2;
+  batch: number = 3;
   last: any = Date.now();
   empty: boolean = false;
 
@@ -81,6 +81,15 @@ export class DealsComponent implements OnInit {
 
   // Fetch Data via Pagination
 
+  alreadyContainsDeal(deal: Post){
+    for(let pageDeal of this.paginationDeals){
+      if(pageDeal.id == deal.id){
+        return true;
+      }
+    }
+    return false;
+  }
+
   onScroll () {
     console.log("scroll more")
     setTimeout(() => {
@@ -92,7 +101,6 @@ export class DealsComponent implements OnInit {
     console.log("paginate")
     this.postService.paginate(this.batch, this.last).pipe(
       map(data => {
-        console.log("gottem data", data);
         if ( !data.length) {
           this.empty = true;
         }
@@ -101,9 +109,14 @@ export class DealsComponent implements OnInit {
         if (last) {
           this.last = last.payload.doc.data().createdAt;
           data.map(todoSnap => {
-            this.paginationDeals.push(todoSnap.payload.doc.data());
+            let resultData = todoSnap.payload.doc.data();
+            let id = todoSnap.payload.doc.id;
+            resultData.id = id;
+            let result = {...resultData} as Post;
+            if(!this.alreadyContainsDeal(result)){
+              this.paginationDeals.push(result);
+            }
           })
-
           console.log("done", this.paginationDeals)
         }
       })

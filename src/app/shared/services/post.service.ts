@@ -140,7 +140,6 @@ export class PostService {
 
   // Pagination Methods
   paginate (limit: number, last: any):  Observable<DocumentChangeAction<any>[]> {
-    console.log("last", last)
     let submit;
 
     if((typeof last) != "number"){
@@ -151,6 +150,7 @@ export class PostService {
       submit = new Date(last);
     }
     
+    console.log("timing", submit);
     return this.afs.collection('deals', (ref) => (
      ref
        .where('createdAt', '<', submit)
