@@ -288,3 +288,16 @@ agm-map{
     }
 }
 
+/* Portrait: Iphone 4 */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+    .top-content{
+        .profile-top{
+            padding-top: 1rem !important;
+        }
+    }
+}
+
