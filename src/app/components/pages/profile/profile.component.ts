@@ -46,6 +46,7 @@ export class ProfileComponent implements OnInit {
 
 
      this.userService.userDeals$.subscribe(async (userProfileData) => {
+       console.log("got the data", userProfileData)
       if(userProfileData){
         console.log(userProfileData);
         this.loading = false;

@@ -4,7 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { User } from '../models/user.model';
-import { switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import * as geofire from 'geofire-common';
@@ -34,7 +34,14 @@ export class UserService {
           let userDeals = this.afs.collection('deals', ref => {
             return ref.where('userProfile.uid', '==', this.currentUser.uid).orderBy("createdAt");
           });
-          this.userDeals$ = userDeals.valueChanges();
+          this.userDeals$ = userDeals.snapshotChanges().pipe(map(deals => {
+            return deals.map((deal) => {
+              let retrievedDoc = deal.payload.doc.data() as Post;
+              retrievedDoc.id = deal.payload.doc.id;
+              return retrievedDoc;
+            })
+          }));
+      
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         }else{
           this.loggedIn = false;
