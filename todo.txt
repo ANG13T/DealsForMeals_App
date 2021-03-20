@@ -19,6 +19,7 @@ NEXT STEPS:
 
 DO RIGHT NOW:
 - fix deal (deals obseravble) reload error
+- remove deal subscription from service
 - make buisnesses observable
 - load more data when scroll to bottom
 - fix intermittent header styles problem

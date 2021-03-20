@@ -32,8 +32,6 @@ export class DealsComponent implements OnInit {
   empty: boolean = false;
 
   constructor(private postService: PostService, private modalController: ModalController, private userService: UserService) { }
-
-  deals$ = this.postService.deals$;
   
   async ngOnInit() {
     this.loadingDeals = true;
@@ -42,10 +40,6 @@ export class DealsComponent implements OnInit {
       if(userProfile){
         this.user = userProfile;
         console.log("got user", userProfile);
-
-        this.deals$.subscribe((deals) => {
-          this.topDeals = deals.slice(0, 4);
-        })
 
         // this.postService.getDealsNearLocation(this.user.location).then((result) => {
         //   console.log("resultant deals", result)
