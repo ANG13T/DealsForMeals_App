@@ -41,15 +41,15 @@ export class PostService {
     return promise;
   }
 
-  deals$ = this.afs.collection("deals").snapshotChanges().pipe(map(actions => {
-    return actions.map(p => {
-      const doc = p.payload.doc;
-      const id = doc.id;
-      const docData:any = doc.data();
-      let newDeal: Post = {userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id, createdAt: docData.created};
-      return newDeal;
-    });
-  }))
+  // deals$ = this.afs.collection("deals").snapshotChanges().pipe(map(actions => {
+  //   return actions.map(p => {
+  //     const doc = p.payload.doc;
+  //     const id = doc.id;
+  //     const docData:any = doc.data();
+  //     let newDeal: Post = {userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id, createdAt: docData.created};
+  //     return newDeal;
+  //   });
+  // }))
   
   getDeals(amount: number): Promise<any>{
     let deals: Post[] = [];
@@ -88,14 +88,9 @@ export class PostService {
           const lat = dealData.lat;
           const lng = dealData.lng;
 
-          console.log("doc is ", doc, "lat: ", lat, "long: ", lng)
-
-          // We have to filter out a few false positives due to GeoHash
-          // accuracy, but most will match
           const distanceInKm = geofire.distanceBetween([lat, lng], center);
           const distanceInM = distanceInKm * 1000;
           if (distanceInM <= radiusInM) {
-            // let userDoc = {doc.data().uid, } as User;
             matchingDocs.push(dealData);
           }
         }

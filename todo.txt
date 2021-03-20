@@ -18,9 +18,5 @@ NEXT STEPS:
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 
 DO RIGHT NOW:
-- fix deal (deals obseravble) reload error
-- remove deal subscription from service
-- make buisnesses observable
-- load more data when scroll to bottom
 - fix intermittent header styles problem
 - move to marker on click of bottom item
