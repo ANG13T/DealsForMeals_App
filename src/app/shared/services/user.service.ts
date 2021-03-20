@@ -31,19 +31,20 @@ export class UserService {
         if(user){
           this.loggedIn = true;
           this.currentUser = {displayName: user.displayName, email: user.email, imageUrl: user.photoURL, uid: user.uid}
+          let userDeals = this.afs.collection('deals', ref => {
+            return ref.where('userProfile.uid', '==', this.currentUser.uid).orderBy("createdAt");
+          });
+          this.userDeals$ = userDeals.valueChanges();
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         }else{
           this.loggedIn = false;
           this.currentUser = null;
+          this.userDeals$ = null;
           return of(null);
         }
       })
     );
-
-    let userDeals = this.afs.collection('deals', ref => {
-      return ref.where('userProfile.uid', '==', this.currentUser.uid).orderBy("createdAt");
-    });
-    this.userDeals$ = userDeals.valueChanges();
+   
   }
 
   async login(email, password): Promise<any>{

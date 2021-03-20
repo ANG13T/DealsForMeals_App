@@ -1,5 +1,5 @@
 <ion-content class="hide-nav-bar" overflow-scroll="true">
-  <div profile *ngIf="user" #content class="full-profile">
+  <div profile #content class="full-profile" *ngIf="user">
     <div class="top-content">
       <div class="menu-button">
         <ion-menu-button></ion-menu-button>
@@ -59,14 +59,14 @@
     
             <!-- TODO: display deals in a gallery -->
             <!-- TODO: make show all deals button -->
-            <div class="deals" [hidden]="selectedIndex != 'deals'">
+            <div class="deals" [hidden]="selectedIndex != 'deals'" *ngIf="userPosts">
               <div class="top-deal-display">
                 <h3 class="content-header">Recent Deals</h3>
                 <button class="view-all" (click)="presentViewAllDeals()">View All</button>
               </div>
               <div class="posts">
                 <div class="dealDisplay">
-                  <ion-card *ngIf="posts.length == 0">
+                  <ion-card *ngIf="userPosts.length == 0">
                     <div class="step-card-main">
                       <div class="card-content">
                         <ion-card-header>
@@ -79,7 +79,7 @@
                 </div>
                 <div class="posts" *ngIf="!loading">
       
-                    <div class="recentDeal" *ngFor="let post of recentDeals">
+                    <div class="recentDeal" *ngFor="let post of userPosts">
                       <ion-card (click)="presentPost(post)">
                         <div class="card-main">
                           <img src={{post.images[0]}} />

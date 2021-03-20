@@ -21,8 +21,7 @@ export class ProfileComponent implements OnInit {
   user: User;
   userAddress: string = "";
   loading: boolean = true;
-  posts: Post[] = [];
-  recentDeals: Post[] = [];
+  userPosts: Post[] = [];
   showDealsInfo: boolean = false;
   map: any;
   isBuisness: boolean = false;
@@ -36,28 +35,25 @@ export class ProfileComponent implements OnInit {
       console.log(userProfile)
       if(!userProfile) return;
       this.user = userProfile;
-      if(this.user.isBusiness){
-        this.isBuisness = true;
-        await this.postService.getDealsForUser(this.user.uid).then((data) => {
-          console.log("got the posts", data)
-          this.posts = data;
-          this.recentDeals = this.posts.slice(0, 4);
-        })
-      }else{
-        await this.postService.getDealsForUser(this.user.uid).then((data) => {
-          console.log("got the posts", data)
-          this.posts = data;
-        })
-      }
+      this.isBuisness = this.user.isBusiness;
       this.userAddress = `${this.user.location.locality}, ${this.user.location.administrativeArea}`;
 
       if(this.user.description == ""){
         this.user.description = "User has not written a description yet.";
       }
-        
-      this.showDealsInfo = (this.posts == []);
       
-      this.loading = false;
+    });
+
+
+     this.userService.userDeals$.subscribe(async (userProfileData) => {
+      if(userProfileData){
+        console.log(userProfileData);
+        this.loading = false;
+        this.userPosts = userProfileData;
+      }else{
+        this.loading = false;
+        this.userPosts = null;
+      }
     });
   }
 
@@ -94,14 +90,7 @@ export class ProfileComponent implements OnInit {
       component: CreatePostComponent,
       cssClass: 'my-custom-class'
     });
-    modal.onDidDismiss()
-    .then((data) => {
-      console.log("got the data", data)
-      if(data.data.status == "create"){
-        this.posts.push(data.data.data);
-      }
-    });
-
+   
     return await modal.present();
   }
 
@@ -109,7 +98,7 @@ export class ProfileComponent implements OnInit {
     const modal = await this.modalController.create({
       component: ViewAllDealsComponent,
       componentProps: { 
-        deals: this.posts,
+        deals: this.userPosts,
         swipeToClose: true
       }
     });
@@ -126,14 +115,7 @@ export class ProfileComponent implements OnInit {
         isOwner: true
       }
     });
-    modal.onDidDismiss()
-      .then((data) => {
-        console.log("got the data", data)
-        if(data.data.status == "delete"){
-          this.posts = this.posts.filter((el) => {el.id != data.data.data.id});
-        }
-    });
-
+  
     return await modal.present();
   }
 
