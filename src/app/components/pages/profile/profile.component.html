@@ -128,7 +128,7 @@
               </div>
             </div>
             
-          <div class="location" [hidden]="selectedIndex != 'location'">
+          <div class="profile-location" [hidden]="selectedIndex != 'location'">
             <agm-map [zoom]="13" [latitude]="user.location.latitude" [longitude]="user.location.longitude">
               <agm-marker [latitude]="user.location.latitude"
                       [longitude]="user.location.longitude"></agm-marker>

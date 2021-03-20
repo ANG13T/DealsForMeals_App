@@ -56,7 +56,9 @@
 
             <ion-card (click)="presentPost(post)" *ngFor="let post of previewDeals">
               <div class="card-main">
-                <img src={{post.images[0]}} />
+                <div class="deal-display-image-container">
+                  <div class="inside-image" style="width: 50px; height: 50px;" [ngStyle]="{'background-image': 'url('+ post.images[0] +')'}"><img /></div>
+                </div>
 
                 <div class="card-content">
                   <ion-card-header>

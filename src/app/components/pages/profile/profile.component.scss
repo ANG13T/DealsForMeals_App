@@ -260,9 +260,13 @@ ion-card{
     }
 }
 
-agm-map{
-    height: 48vh;
+.profile-location{
+    margin-left: 0px !important;
+    agm-map{
+        height: 48vh;
+    }
 }
+
 
 .top-deal-display{
     display: flex;
