@@ -122,6 +122,7 @@ agm-map{
 
     .settings-button, .back-button{
         position: absolute;
+        pointer-events: all;
         color: white;
         font-size: 1.5rem;
     }
