@@ -24,6 +24,7 @@ export class DealsComponent implements OnInit {
   paginationDeals: Post[] = [];
   user: User;
   loadingDeals: boolean = false;
+  paginationFinished: boolean = false;
   searchTerm: string = "";
   topDisplay: Post[];
   bottomDisplay: Post[];
@@ -38,6 +39,7 @@ export class DealsComponent implements OnInit {
   
   async ngOnInit() {
     this.loadingDeals = true;
+    this.paginationFinished = false;
 
     this.userService.user$.subscribe(async (userProfile) => {
       if(userProfile){
@@ -101,7 +103,8 @@ export class DealsComponent implements OnInit {
     console.log("paginate")
     this.postService.paginate(this.batch, this.last).pipe(
       map(data => {
-        if ( !data.length) {
+        console.log("data coming back", data)
+        if (!data.length) {
           this.empty = true;
         }
         let last = _.last(data);
@@ -115,12 +118,16 @@ export class DealsComponent implements OnInit {
             let result = {...resultData} as Post;
             if(!this.alreadyContainsDeal(result)){
               this.paginationDeals.push(result);
+            }else{
+              if(data.length == 1){
+                this.empty = true;
+              }
             }
           })
-          console.log("done", this.paginationDeals)
         }
       })
     ).subscribe();
+
   }
 
 }
