@@ -28,4 +28,5 @@ NEXT STEPS:
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 
 DO RIGHT NOW:
+- fix loading more and feat
 - fix intermittent header styles problem

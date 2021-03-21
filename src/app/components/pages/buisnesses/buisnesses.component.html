@@ -14,7 +14,7 @@
       <h1 class="title">View Buisnesses</h1>
       <div class="options-bar">
         <ion-searchbar [(ngModel)]="searchTerm"></ion-searchbar>
-        <button mat-icon-button color="primary" (click)="toggleFilter()">
+        <button mat-icon-button style="color: #3fa7b5;" (click)="toggleFilter()">
           <mat-icon>filter_list</mat-icon>
         </button>
       </div>
@@ -29,7 +29,7 @@
 
         
           <ion-infinite-scroll>
-            <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data…">
+            <ion-infinite-scroll-content loadingSpinner="crescent">
               <div class="foodbanks" [hidden]="loadingBuisnesses">
                 <div class="foodbank" *ngFor="let foodbank of buisnesses | buisnessCategory: categoryControl.value" (click)="openBuisness(foodbank)">
                   <ion-item>

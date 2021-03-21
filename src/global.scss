@@ -175,3 +175,11 @@
         transform-origin: bottom right;
         z-index: -1;
     }
+
+    .infinite-loading{
+        margin-top: 15px;
+
+        ion-spinner{
+        color: #3fa7b5;
+        }
+    }
