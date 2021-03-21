@@ -1,3 +1,19 @@
-<p>
-  profile-settings works!
-</p>
+<ion-header>
+  <ion-toolbar class="header">
+    <ion-title>Account Settings</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="dangerous-area">
+    <h3>Delete Account</h3>
+    <ion-button class="delete-button" color="danger" (click)="presentDeleteAlert()">
+      <ion-icon name="trash-outline"></ion-icon>
+      Delete Account
+    </ion-button>
+    <p><b>Caution</b>: this action will delete your profile data and all of your user data from the app.</p>
+  </div>
+</ion-content>
