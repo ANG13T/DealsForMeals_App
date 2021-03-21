@@ -64,6 +64,16 @@ export class PostService {
     return promise;
   }
 
+  deals$ = this.afs.collection("deals").snapshotChanges().pipe(map(actions => {
+    return actions.map(p => {
+      const doc = p.payload.doc;
+      const id = doc.id;
+      const docData:any = doc.data();
+      let newDeal: Post = {userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id, createdAt: docData.created};
+      return newDeal;
+    });
+  }))
+
   async getDealsNearLocation(location: Location): Promise<any>{
     let center = [location.latitude, location.longitude];
     const radiusInM = 50 * 1000;

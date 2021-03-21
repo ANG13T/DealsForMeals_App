@@ -18,9 +18,7 @@ import * as _ from 'lodash';
 })
 export class DealsComponent implements OnInit {
 
-  deals: Post[] = [];
   paginationDeals: Post[] = [];
-  topDeals: Post[] = [];
   user: User;
   loadingDeals: boolean = false;
   searchTerm: string = "";
@@ -32,6 +30,8 @@ export class DealsComponent implements OnInit {
   empty: boolean = false;
 
   constructor(private postService: PostService, private modalController: ModalController, private userService: UserService) { }
+
+  deals$ = this.postService.deals$;
   
   async ngOnInit() {
     this.loadingDeals = true;

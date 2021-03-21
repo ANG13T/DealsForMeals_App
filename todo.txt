@@ -11,6 +11,20 @@ TODOS:
 
 - rename variables
 
+- sign up page (location not found alert and disable)
+
+- any page with user (location not found alert and disable)
+
+- location based search on location maps + remove name based search? (test before remove) 
+
+- location based search on buisness
+
+- deals near you pagination
+
+- placeholder for deal image on profile 
+
+- remove console logs
+
 
 NEXT STEPS:
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
