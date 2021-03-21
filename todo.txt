@@ -7,8 +7,6 @@ TODOS:
 
 - make loading images for slide in deals page
 
-- make loading alert in locations page
-
 - make error alert for user if not have location on deals and locations and buisnesses
 
 - rename variables
@@ -19,4 +17,4 @@ NEXT STEPS:
 
 DO RIGHT NOW:
 - fix intermittent header styles problem
-- move to marker on click of bottom item
+- move to marker on click of bottom item + info window + more to popup

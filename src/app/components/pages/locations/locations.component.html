@@ -37,7 +37,19 @@
       [longitude]="buisness.location.longitude"
       [markerClickable]="true"
       (markerClick)="goToMapPosition(buisness.location.latitude, buisness.location.longitude)"
-      ></agm-marker>
+      >
+      <agm-info-window style="width: 190px;">
+        <div class="buisness-info-display">
+          <img src={{buisness.photoURL}} />
+          <div class="display-content">
+            <h3>{{buisness.name}}</h3>
+            <p>{{getLocation(buisness.location)}}</p>
+            <p>{{getSubLocation(buisness.location)}}</p>
+            <button class="more">MORE</button>
+          </div>
+        </div>
+      </agm-info-window>
+    </agm-marker>
     </agm-map>
   </ion-content>
 

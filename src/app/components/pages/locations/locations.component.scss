@@ -6,7 +6,6 @@ agm-map {
     height: 95vh;
 }
 
-
 .customMarker {
     position: absolute;
     cursor: pointer;
@@ -50,6 +49,29 @@ ion-content{
         border-radius: 50%;
         margin-bottom: 15px;
     }
+}
+
+.buisness-info-display{
+    img{
+        max-height: 6rem;
+    }
+
+    p{
+        margin-bottom: 5px;
+    }
+
+    h3{
+        margin-top: 3px;
+        margin-bottom: 2px;
+    }
+
+    .more{
+        background-color: transparent;
+        margin-top: 8px;
+        color: rgb(0, 153, 255);
+        font-weight: bold;
+    }
+
 }
 
 .foodbanksIndicator{
