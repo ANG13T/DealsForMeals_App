@@ -29,20 +29,21 @@
     
     <agm-map 
     [zoom]="zoom" 
-    [latitude]="user.location.latitude"
-    [longitude]="user.location.longitude">
+    [latitude]="mapLatitiude"
+    [longitude]="mapLongitude"
+    [usePanning]="true">
       <agm-marker *ngFor="let buisness of buisnesses | buisnessCategory: [selectedIndicators]: selectedIndicators | filterBy: ['name']: searchTerm" 
       [latitude]="buisness.location.latitude"
       [longitude]="buisness.location.longitude"
       [markerClickable]="true"
-      (markerClick)="openBuisnessDialog(buisness)"
+      (markerClick)="goToMapPosition(buisness.location.latitude, buisness.location.longitude)"
       ></agm-marker>
     </agm-map>
   </ion-content>
 
   <ion-bottom-sheet title="Buisnesses Near You" [hideCloseButton]="true" [state]="defaultSheetState">
     <ion-list>
-      <ion-item *ngFor="let buisness of buisnesses | filterBy: ['name']: searchTerm | buisnessCategory: [selectedIndicators]: selectedIndicators" (click)="openBuisnessDialog(buisness)">
+      <ion-item *ngFor="let buisness of buisnesses | filterBy: ['name']: searchTerm | buisnessCategory: [selectedIndicators]: selectedIndicators" (click)="goToMapPosition(buisness.location.latitude, buisness.location.longitude)">
         <ion-thumbnail slot="start">
           <img src={{buisness.photoURL}}>
         </ion-thumbnail>

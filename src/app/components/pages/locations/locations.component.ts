@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { Geolocation, GeolocationOptions, Geoposition, PositionError } from '@ionic-native/geolocation';
-import { IonRouterOutlet, ModalController } from '@ionic/angular';
+import { IonRouterOutlet, LoadingController, ModalController } from '@ionic/angular';
 import { User } from 'src/app/shared/models/user.model';
 import { BuisnessService } from 'src/app/shared/services/buisness.service';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -22,6 +22,8 @@ export class LocationsComponent implements OnInit {
   user: User;
   buisnesses: User[] = [];
   searchTerm: string;
+  mapLongitude: number = 0;
+  mapLatitiude: number = 0;
   zoom: number = 11;
   selectedIndicators: string = "all";
   defaultSheetState = SheetState.Docked;
@@ -34,20 +36,26 @@ export class LocationsComponent implements OnInit {
   @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
 
 
-  constructor(private businessService: BuisnessService, private userService: UserService, private routerOutlet: IonRouterOutlet, private modalController: ModalController) {
+  constructor(private businessService: BuisnessService, private userService: UserService, private routerOutlet: IonRouterOutlet, private modalController: ModalController, private loadingController: LoadingController) {
   }
 
   ngOnInit() {
     this.loading = true;
+    this.presentLoading();
     this.userService.user$.subscribe((userProfile) => {
       if (userProfile) {
         this.user = userProfile;
+
+        this.mapLatitiude = this.user.location.latitude;
+        this.mapLongitude = this.user.location.longitude;
 
         if(this.user.accountType == "foodie"){
           this.userService.location$.subscribe((locationInfo) => {
             if(locationInfo){
               this.userLocation.latitude = locationInfo.coords.latitude;
               this.userLocation.longitude = locationInfo.coords.longitude;
+              this.mapLatitiude = this.userLocation.latitude;
+              this.mapLongitude = this.userLocation.longitude;
             }
           })
           
@@ -56,8 +64,10 @@ export class LocationsComponent implements OnInit {
         let resultantLocation = this.userLocation ? this.userLocation : this.user.location;
         
           this.businessService.getBuisnessesNearLocation(resultantLocation).then((result) => {
+            console.log("got the locations");
             this.buisnesses = result;
             this.loading = false;
+            this.dismissLoading();
           });
       }
     })
@@ -75,6 +85,30 @@ export class LocationsComponent implements OnInit {
       presentingElement: this.routerOutlet.nativeEl
     });
     return await modal.present();
+  }
+
+
+  goToMapPosition(latitude: number, longitude: number){
+    console.log("hoi")
+    this.mapLatitiude = latitude;
+    this.mapLongitude = longitude;
+  }
+
+  async dismissLoading(){
+    return await this.loadingController.dismiss().then(() => console.log('dismissed'));
+  }
+
+  async presentLoading() {
+    return await this.loadingController.create({
+      message: 'Loading',
+    }).then(a => {
+      a.present().then(() => {
+        console.log('presented');
+        if (!this.loading) {
+          a.dismiss().then(() => console.log('abort presenting'));
+        }
+      });
+    });
   }
 
 
