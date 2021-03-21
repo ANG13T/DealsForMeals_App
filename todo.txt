@@ -17,4 +17,5 @@ NEXT STEPS:
 
 DO RIGHT NOW:
 - fix intermittent header styles problem
-- move to marker on click of bottom item + info window + more to popup
+- fix close buisness modal issue
+- move to marker on click of bottom item

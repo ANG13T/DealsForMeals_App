@@ -45,7 +45,7 @@
             <h3>{{buisness.name}}</h3>
             <p>{{getLocation(buisness.location)}}</p>
             <p>{{getSubLocation(buisness.location)}}</p>
-            <button class="more">MORE</button>
+            <button class="more" (click)="openBuisnessDialog(buisness)">MORE</button>
           </div>
         </div>
       </agm-info-window>
@@ -53,7 +53,7 @@
     </agm-map>
   </ion-content>
 
-  <ion-bottom-sheet title="Buisnesses Near You" [hideCloseButton]="true" [state]="defaultSheetState">
+  <ion-bottom-sheet title="Buisnesses Near You" [hideCloseButton]="true" [state]="defaultSheetState" [minHeight]="mapMinHeight">
     <ion-list>
       <ion-item *ngFor="let buisness of buisnesses | filterBy: ['name']: searchTerm | buisnessCategory: [selectedIndicators]: selectedIndicators" (click)="goToMapPosition(buisness.location.latitude, buisness.location.longitude)">
         <ion-thumbnail slot="start">

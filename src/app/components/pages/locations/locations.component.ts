@@ -24,6 +24,7 @@ export class LocationsComponent implements OnInit {
   searchTerm: string;
   mapLongitude: number = 0;
   mapLatitiude: number = 0;
+  mapMinHeight: number = 150;
   zoom: number = 11;
   selectedIndicators: string = "all";
   defaultSheetState = SheetState.Docked;
