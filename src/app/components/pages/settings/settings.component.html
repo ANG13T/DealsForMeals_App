@@ -17,20 +17,43 @@
       </ion-label>
     </ion-item>
     <!-- Account Settings -->
-    <!-- <ion-item detail (click)="navigate('profile/settings')">
+    <ion-item detail (click)="navigate('profile/settings')">
       <ion-icon slot="start" name="cog"></ion-icon>
       <ion-label>
         Account Settings
       </ion-label>
-    </ion-item> -->
+    </ion-item>
+     <!-- Log Out Settings -->
+     <ion-item detail (click)="logOut()" class="logout-item">
+      <ion-icon slot="start" name="log-out"></ion-icon>
+      <ion-label>
+        Log Out
+      </ion-label>
+    </ion-item>
 
+
+      <!-- Support -->
+      <ion-item detail (click)="navigate('profile/share')">
+        <ion-icon slot="start" name="share-social"></ion-icon>
+        <ion-label>
+          Support 
+        </ion-label>   
+      </ion-item>  
     <!-- Share -->
     <ion-item detail (click)="navigate('profile/share')">
       <ion-icon slot="start" name="share-social"></ion-icon>
       <ion-label>
-        Share and Rate App
+        Share 
       </ion-label>   
     </ion-item>
+    <!-- Rate -->
+    <ion-item detail (click)="navigate('profile/share')">
+      <ion-icon slot="start" name="share-social"></ion-icon>
+      <ion-label>
+        Rate 
+      </ion-label>   
+    </ion-item>
+  
     <!-- Get Help -->
     <ion-item detail (click)="navigate('profile/help')">
       <ion-icon slot="start" name="information-circle"></ion-icon>
@@ -38,14 +61,22 @@
        Get Help and FAQ
       </ion-label>   
     </ion-item>
-
-    <!-- Log Out Settings -->
-    <ion-item detail (click)="logOut()" class="logout-item">
-      <ion-icon slot="start" name="log-out"></ion-icon>
+    <!-- Privacy Policy -->
+    <ion-item detail (click)="navigate('profile/help')">
+      <ion-icon slot="start" name="information-circle"></ion-icon>
       <ion-label>
-        Log Out
-      </ion-label>
+        Privacy Policy
+      </ion-label>   
     </ion-item>
+    <!-- Terms of Use -->
+    <ion-item detail (click)="navigate('profile/help')">
+      <ion-icon slot="start" name="information-circle"></ion-icon>
+      <ion-label>
+        Terms of Use
+      </ion-label>   
+    </ion-item>
+
+   
 
     <!-- Delete Account Settings -->
     <div class="dangerous-area">

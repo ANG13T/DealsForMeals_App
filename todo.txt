@@ -30,3 +30,19 @@ DO RIGHT NOW:
 - placeholder for deal image on profile 
 - make loading images for slide in deals page
 - minor CSS changes based on FIGMA design
+
+
+
+- profile details
+- settings
+- logout
+
+- support
+- share
+- rate
+
+
+privacy and terms
+- about
+- privacy policy
+- terms of use

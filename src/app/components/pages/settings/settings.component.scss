@@ -9,17 +9,13 @@ ion-title{
 }
 
 ion-item{
-    margin-top: 2vh;
+    // margin-top: 2vh;
 }
 
 ion-content::before{
     background-color: blue;
 }
 
-.logout-item{
-    color: red;
-    margin-top: 3rem;
-}
 
 .dangerous-area{
     width: 90%;
