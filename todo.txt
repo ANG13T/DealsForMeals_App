@@ -18,4 +18,3 @@ NEXT STEPS:
 DO RIGHT NOW:
 - fix intermittent header styles problem
 - fix close buisness modal issue
-- move to marker on click of bottom item

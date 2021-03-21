@@ -40,6 +40,7 @@ export class BuisnessService {
           const userData = doc.data();
           const lat = userData.lat;
           const lng = userData.lng;
+          userData.id = doc.id;
 
           console.log("doc is ", doc, "lat: ", lat, "long: ", lng)
 

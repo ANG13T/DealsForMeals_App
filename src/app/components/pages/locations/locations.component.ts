@@ -20,6 +20,7 @@ export class LocationsComponent implements OnInit {
 
   map: any;
   user: User;
+  openedWindow : number = 0;
   buisnesses: User[] = [];
   searchTerm: string;
   mapLongitude: number = 0;
@@ -97,6 +98,18 @@ export class LocationsComponent implements OnInit {
 
   async dismissLoading(){
     return await this.loadingController.dismiss().then(() => console.log('dismissed'));
+  }
+
+  openWindow(id) {
+    if(this.openedWindow == id){
+      this.openedWindow = 0;
+    }else{
+      this.openedWindow = id;
+    }  
+  }
+
+  isInfoWindowOpen(id) {
+    return this.openedWindow == id; 
   }
 
   async presentLoading() {

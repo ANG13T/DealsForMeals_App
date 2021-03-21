@@ -36,9 +36,9 @@
       [latitude]="buisness.location.latitude"
       [longitude]="buisness.location.longitude"
       [markerClickable]="true"
-      (markerClick)="goToMapPosition(buisness.location.latitude, buisness.location.longitude)"
+      (markerClick)="openWindow(buisness.id)"
       >
-      <agm-info-window style="width: 190px;">
+      <agm-info-window style="width: 190px;" [isOpen]="isInfoWindowOpen(buisness.id)">
         <div class="buisness-info-display">
           <img src={{buisness.photoURL}} />
           <div class="display-content">
@@ -55,7 +55,7 @@
 
   <ion-bottom-sheet title="Buisnesses Near You" [hideCloseButton]="true" [state]="defaultSheetState" [minHeight]="mapMinHeight">
     <ion-list>
-      <ion-item *ngFor="let buisness of buisnesses | filterBy: ['name']: searchTerm | buisnessCategory: [selectedIndicators]: selectedIndicators" (click)="goToMapPosition(buisness.location.latitude, buisness.location.longitude)">
+      <ion-item *ngFor="let buisness of buisnesses | filterBy: ['name']: searchTerm | buisnessCategory: [selectedIndicators]: selectedIndicators" (click)="openWindow(buisness.id)">
         <ion-thumbnail slot="start">
           <img src={{buisness.photoURL}}>
         </ion-thumbnail>
