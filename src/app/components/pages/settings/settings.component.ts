@@ -7,7 +7,6 @@ import { UserService } from 'src/app/shared/services/user.service';
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent implements OnInit {

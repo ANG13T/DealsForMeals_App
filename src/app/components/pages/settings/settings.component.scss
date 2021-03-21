@@ -3,18 +3,32 @@
     color: black;
 }
 
+ion-content{
+    --ion-background-color: #caeff1;
+}
+
 
 ion-title{
     color: black;
 }
 
-ion-item{
-    // margin-top: 2vh;
+.divider-item{
+    margin-top: 2rem;
 }
 
-ion-content::before{
-    background-color: blue;
+main{
+    background: #d6e9f0;
 }
+
+ion-item{
+    --ion-background-color: white;
+}
+
+.open-option{
+    color: gray;
+    font-size: 1.3rem;
+}
+
 
 
 .dangerous-area{
