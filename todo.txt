@@ -24,25 +24,9 @@ NEXT STEPS:
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 
 DO RIGHT NOW:
-- make wikipedia layout for side nav
+- side nav external urls
 - remove console logs
 - rename variables
 - placeholder for deal image on profile 
 - make loading images for slide in deals page
 - minor CSS changes based on FIGMA design
-
-
-
-- profile details
-- settings
-- logout
-
-- support
-- share
-- rate
-
-
-privacy and terms
-- about
-- privacy policy
-- terms of use

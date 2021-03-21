@@ -60,6 +60,16 @@ export class ChipsSelectComponent implements OnInit, AfterViewInit, ControlValue
     this.disabled = isDisabled;
   }
 
+  getOptionIcon(option: string){
+    if(option == "Foodbanks"){
+      return "fastfood";
+    }else if(option == "Other"){
+      return "business";
+    }else{
+      return "storefront";
+    }
+  }
+
   ngOnInit() {}
 
   ngAfterViewInit() {

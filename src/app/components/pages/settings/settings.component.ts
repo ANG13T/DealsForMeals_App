@@ -24,6 +24,10 @@ export class SettingsComponent implements OnInit {
     this.navCtrl.back();
   }
 
+  openExternalURL(url: string){
+    window.location.assign(url);
+  }
+
 
   logOut(){
     this.userService.signOut();
