@@ -3,13 +3,7 @@ TODOS:
 
 - enable google maps billing account
 
-- minor CSS changes based on FIGMA design
-
-- make loading images for slide in deals page
-
 - make error alert for user if not have location on deals and locations and buisnesses
-
-- rename variables
 
 - sign up page (location not found alert and disable)
 
@@ -19,14 +13,20 @@ TODOS:
 
 - location based search on buisness
 
-- placeholder for deal image on profile 
+- pagination for buisnesses
 
-- remove console logs
+- update pagination for deals near you
+
+- update pagination for buisnesses near you
 
 
 NEXT STEPS:
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 
 DO RIGHT NOW:
-- fix loading more and feat
-- fix intermittent header styles problem
+- make wikipedia layout for side nav
+- remove console logs
+- rename variables
+- placeholder for deal image on profile 
+- make loading images for slide in deals page
+- minor CSS changes based on FIGMA design
