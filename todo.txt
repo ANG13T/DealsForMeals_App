@@ -29,4 +29,3 @@ NEXT STEPS:
 
 DO RIGHT NOW:
 - fix intermittent header styles problem
-- skeletons on view buiseness

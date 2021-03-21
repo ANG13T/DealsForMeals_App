@@ -78,9 +78,7 @@
           </div>
 
           <div class="loading-posts" *ngIf="loadingPosts">
-            <ion-slides pager>
-              <ion-slide *ngFor="let post of posts">
-                <ion-card>
+                <ion-card *ngFor="let post of [1,2,3]">
                   <div class="card-main" style="padding-left: 10px;">
                     <ion-skeleton-text animated height="10vh" width="50px"></ion-skeleton-text>
 
@@ -95,13 +93,8 @@
                         <ion-skeleton-text animated></ion-skeleton-text>
                       </ion-card-content>
                     </div>
-                   
                   </div>
-                  
                 </ion-card>
-
-              </ion-slide>
-            </ion-slides>
           </div>
 
 
