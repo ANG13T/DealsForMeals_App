@@ -24,55 +24,55 @@
       </div>
 
       <div class="general-section" [hidden]="searchTerm != ''">
-      <h3 [hidden]="(!loadingBuisnesses && buisnesses.length == 0)" class="near-you">Locations Near You</h3>
-      <div class="foodbanks-section">
+        <h3 [hidden]="(!loadingBuisnesses && buisnesses.length == 0)" class="near-you">Locations Near You</h3>
+        <div class="foodbanks-section">
+          <div class="foodbanks" [hidden]="loadingBuisnesses">
+            <div class="foodbank" *ngFor="let foodbank of buisnesses | buisnessCategory: categoryControl.value"
+              (click)="openBuisness(foodbank)">
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <img src={{foodbank.photoURL}}>
+                </ion-thumbnail>
+                <ion-label>
+                  <h3>{{foodbank.name}}</h3>
+                  <p>{{getLocation(foodbank.location)}}</p>
+                  <p>{{getSubLocation(foodbank.location)}}</p>
+                </ion-label>
+              </ion-item>
+            </div>
 
-        
-          <ion-infinite-scroll>
+            <!-- modify for piping -->
+            <div class="no-deals" [hidden]="(buisnesses | buisnessCategory: categoryControl.value)?.length != 0"
+              style="text-align: center;">
+              <h2 style="margin-top: 1rem;">No Buisnesses Found!</h2>
+              <p style="font-size: 1rem;">Please check another time to find buisnesses near you.</p>
+            </div>
+
+          </div>
+
+          <div class="loading-foodbanks" [hidden]="!loadingBuisnesses">
+            <div class="foodbank" *ngFor="let post of [1,2,3,4,5]">
+              <ion-item>
+                <ion-thumbnail slot="start">
+                  <ion-skeleton-text></ion-skeleton-text>
+                </ion-thumbnail>
+                <ion-label>
+                  <h3>
+                    <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                  </h3>
+                  <p>
+                    <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+                  </p>
+                  <p>
+                    <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+                  </p>
+                </ion-label>
+              </ion-item>
+            </div>
+          </div>
+
+          <ion-infinite-scroll *ngIf="loadingBuisnesses">
             <ion-infinite-scroll-content loadingSpinner="crescent">
-              <div class="foodbanks" [hidden]="loadingBuisnesses">
-                <div class="foodbank" *ngFor="let foodbank of buisnesses | buisnessCategory: categoryControl.value" (click)="openBuisness(foodbank)">
-                  <ion-item>
-                    <ion-thumbnail slot="start">
-                      <img src={{foodbank.photoURL}}>
-                    </ion-thumbnail>
-                    <ion-label>
-                      <h3>{{foodbank.name}}</h3>
-                      <p>{{getLocation(foodbank.location)}}</p>
-                      <p>{{getSubLocation(foodbank.location)}}</p>
-                    </ion-label>
-                  </ion-item>
-                </div>
-
-                <!-- modify for piping -->
-                <div class="no-deals" [hidden]="(buisnesses | buisnessCategory: categoryControl.value)?.length != 0" style="text-align: center;"> 
-                  <h2 style="margin-top: 1rem;">No Buisnesses Found!</h2>
-                  <p style="font-size: 1rem;">Please check another time to find buisnesses near you.</p>
-                </div>
-
-              </div>
-
-              <div class="loading-foodbanks" [hidden]="!loadingBuisnesses">
-                <div class="foodbank" *ngFor="let post of [1,2,3,4,5]">
-                  <ion-item>
-                    <ion-thumbnail slot="start">
-                      <ion-skeleton-text></ion-skeleton-text>
-                    </ion-thumbnail>
-                    <ion-label>
-                      <h3>
-                        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
-                      </h3>
-                      <p>
-                        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
-                      </p>
-                      <p>
-                        <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
-                      </p>
-                    </ion-label>
-                  </ion-item>
-                </div>
-              </div>
-
             </ion-infinite-scroll-content>
           </ion-infinite-scroll>
         </div>
@@ -81,7 +81,9 @@
 
       <div class="search-section" [hidden]="searchTerm == ''">
 
-        <div class="buisness" *ngFor="let buisness of buisnesses | filterBy: ['name']: searchTerm | buisnessCategory: categoryControl.value" (click)="openDeal(deal)">
+        <div class="buisness"
+          *ngFor="let buisness of buisnesses | filterBy: ['name']: searchTerm | buisnessCategory: categoryControl.value"
+          (click)="openDeal(deal)">
           <ion-item>
             <ion-thumbnail slot="start">
               <img src={{buisness.photoURL}}>
@@ -91,10 +93,12 @@
               <p>{{getLocation(buisness.location)}}</p>
               <p>{{getSubLocation(buisness.location)}}</p>
             </ion-label>
-          </ion-item>   
+          </ion-item>
         </div>
 
-        <div class="no-deals" [hidden]="(buisnesses | filterBy: ['name']: searchTerm | buisnessCategory: categoryControl.value)?.length != 0" style="text-align: center;"> 
+        <div class="no-deals"
+          [hidden]="(buisnesses | filterBy: ['name']: searchTerm | buisnessCategory: categoryControl.value)?.length != 0"
+          style="text-align: center;">
           <h3 style="font-weight: bold; text-align: center;">No Buisnesses Found!</h3>
           <p style="font-size: 1rem;">Please check another time to find buisnesses near you.</p>
         </div>
