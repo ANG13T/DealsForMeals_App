@@ -1,9 +1,13 @@
 <ion-content fullscreen>
   <div class="entire">
     <div class="top-content">
-      <div class="back-button" (click)="dismissModal()">
-        <ion-icon name="close-outline"></ion-icon>
-      </div>
+
+      <ion-buttons slot="start">
+        <ion-button (click)="dismissModal()" class="back-button">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+     
       <div class="profile-top">
         <div class="topDisplay">
             <img src={{buisness.photoURL}} alt="Buisness Image" class="profile-image" />

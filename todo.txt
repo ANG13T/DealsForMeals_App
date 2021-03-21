@@ -19,8 +19,6 @@ TODOS:
 
 - location based search on buisness
 
-- deals near you pagination
-
 - placeholder for deal image on profile 
 
 - remove console logs
@@ -31,4 +29,4 @@ NEXT STEPS:
 
 DO RIGHT NOW:
 - fix intermittent header styles problem
-- fix close buisness modal issue
+- skeletons on view buiseness

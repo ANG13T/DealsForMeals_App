@@ -30,6 +30,7 @@ ion-content{
         background-repeat: no-repeat;
         background-size: cover;
         background-size: 100% 350px;
+        position: relative;
 
         .top{
             width: 100%;
@@ -120,11 +121,18 @@ agm-map{
 	overflow: hidden;
     font-family: 'poppins', sans-serif !important;
 
-    .settings-button, .back-button{
+    .settings-button{
         position: absolute;
         pointer-events: all;
         color: white;
         font-size: 1.5rem;
+    }
+
+    .back-button{
+        font-size: 1.3rem;
+        margin-top: 7px;
+        color: white;
+        margin-left: 5px;
     }
 
     .settings-button{

@@ -95,8 +95,10 @@ export class ViewBuisnessComponent implements OnInit {
     return await modal.present();
   }
 
-   dismissModal() {
-    this.modalCtrl.dismiss();
+   async dismissModal() {
+     console.log("closing")
+    const modal = await this.modalCtrl.getTop();
+    modal.dismiss();
   }
 
   contactBuisness(){
