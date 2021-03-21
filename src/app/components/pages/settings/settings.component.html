@@ -2,14 +2,12 @@
   <ion-toolbar class="header">
     <ion-title>Settings</ion-title>
     <ion-buttons slot="start">
-      <ion-button (click)="goBack()">
-        <ion-icon name="close"></ion-icon>
-      </ion-button>
+      <ion-back-button></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" bacj>
+<ion-content [fullscreen]="true">
   <div class="settings-form">
     <ion-list lines="none">
     <!-- Profile -->
