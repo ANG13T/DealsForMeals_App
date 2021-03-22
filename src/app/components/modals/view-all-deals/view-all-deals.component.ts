@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
-import { Post } from 'src/app/shared/models/deal.model';
+import { Deal } from 'src/app/shared/models/deal.model';
 import { Location } from 'src/app/shared/models/location.model';
 import { ViewDealComponent } from '../view-deal/view-deal.component';
 import { EditPostComponent } from '../edit-post/edit-post.component';
@@ -15,7 +15,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class ViewAllDealsComponent implements OnInit {
 
-  deals: Post[];
+  deals: Deal[];
   isOwner: boolean = false;
 
   constructor(private modalController: ModalController, private alertController: AlertController, private dealService: DealService, private userService: UserService) { }
@@ -51,7 +51,7 @@ export class ViewAllDealsComponent implements OnInit {
     return description.trim();
   }
 
-  async presentDeal(deal: Post){
+  async presentDeal(deal: Deal){
     const modal = await this.modalController.create({
       component: ViewDealComponent,
       componentProps: { 
@@ -70,7 +70,7 @@ export class ViewAllDealsComponent implements OnInit {
   }
 
 
-  async updateDeal(deal: Post){
+  async updateDeal(deal: Deal){
     const modal = await this.modalController.create({
       component: EditPostComponent,
       cssClass: 'my-custom-class',
@@ -91,7 +91,7 @@ export class ViewAllDealsComponent implements OnInit {
     return await modal.present();
   }
 
-  async deleteDeal(deal: Post) {
+  async deleteDeal(deal: Deal) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Are you sure?',

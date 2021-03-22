@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { ModalController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
-import { Post } from 'src/app/shared/models/deal.model';
+import { Deal } from 'src/app/shared/models/deal.model';
 import { DealService } from 'src/app/shared/services/deal.service';
 
 
@@ -13,8 +13,8 @@ import { DealService } from 'src/app/shared/services/deal.service';
 })
 export class EditPostComponent implements OnInit {
 
-  post: Post;
-  initPost: Post;
+  post: Deal;
+  initPost: Deal;
   errors = {title: "", description: "", amount: ""};
   imageLoading: boolean = false;
   loading: boolean = false;
@@ -28,7 +28,7 @@ export class EditPostComponent implements OnInit {
     console.log("init", this.initPost)
   }
 
-  dismissModal(status?: string, post?: Post){
+  dismissModal(status?: string, post?: Deal){
     if(status == "" || post == null){
       this._modalController.dismiss({
         'dismissed': true,

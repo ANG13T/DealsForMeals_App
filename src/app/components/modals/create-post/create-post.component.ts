@@ -3,7 +3,7 @@ import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
-import { Post } from 'src/app/shared/models/deal.model';
+import { Deal } from 'src/app/shared/models/deal.model';
 import { DealService } from 'src/app/shared/services/deal.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import * as geofire from 'geofire-common';
@@ -15,7 +15,7 @@ import * as geofire from 'geofire-common';
 })
 export class CreatePostComponent implements OnInit {
 
-  post: Post = {title: "", description: "", userProfile: null, images: [], id: "", location: null, lat: "", lng: "", hash: "", createdAt: null};
+  post: Deal = {title: "", description: "", userProfile: null, images: [], id: "", location: null, lat: "", lng: "", hash: "", createdAt: null};
   errors = {title: "", description: "", amount: ""};
   loading: boolean = false;
   imageLoading: boolean = false;
@@ -36,7 +36,7 @@ export class CreatePostComponent implements OnInit {
     
   }
 
-  dismissModal(status?: string, post?: Post){
+  dismissModal(status?: string, post?: Deal){
     this.modalController.dismiss({
       'dismissed': true,
       status: status,

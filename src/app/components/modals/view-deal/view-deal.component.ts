@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ActionSheetController, ModalController } from '@ionic/angular';
-import { Post } from 'src/app/shared/models/deal.model';
+import { Deal } from 'src/app/shared/models/deal.model';
 import { AlertController } from '@ionic/angular';
 import { DealService } from 'src/app/shared/services/deal.service';
 import { EditPostComponent } from '../edit-post/edit-post.component';
@@ -17,8 +17,8 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
 })
 export class ViewDealComponent implements OnInit {
 
-  post: Post;
-  beforeEditPost: Post;
+  post: Deal;
+  beforeEditPost: Deal;
   origin: string;
   postID: string;
   displayLocation: string;
@@ -39,7 +39,7 @@ export class ViewDealComponent implements OnInit {
     });
   }
 
-  dismissModal(status?: string, post?: Post){
+  dismissModal(status?: string, post?: Deal){
     this.modalController.dismiss({
       'dismissed': true,
       status: status,

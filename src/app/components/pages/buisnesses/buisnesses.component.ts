@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Post } from 'src/app/shared/models/deal.model';
+import { Deal } from 'src/app/shared/models/deal.model';
 import { User } from 'src/app/shared/models/user.model';
 import { BuisnessService } from 'src/app/shared/services/buisness.service';
 import { DealService } from 'src/app/shared/services/deal.service';
