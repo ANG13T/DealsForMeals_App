@@ -1,11 +1,5 @@
 TODOS: 
-- enter search location for locations page
-
-- enable google maps billing account
-
 - make error alert for user if not have location on deals and locations and buisnesses
-
-- sign up page (location not found alert and disable)
 
 - any page with user (location not found alert and disable)
 
@@ -21,10 +15,13 @@ TODOS:
 
 
 NEXT STEPS:
-- make custom location for sign up (Google Places Autocomplete on an ion-input)
+
 
 DO RIGHT NOW:
 - side nav external urls
 - remove console logs
-- make loading images for slide in deals page
 - minor CSS changes based on FIGMA design
+- enable google maps billing account
+- sign up page (location not found alert and disable)
+- make custom location for sign up (Google Places Autocomplete on an ion-input)
+- enter search location for locations page
