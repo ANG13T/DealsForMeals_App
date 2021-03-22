@@ -27,6 +27,5 @@ DO RIGHT NOW:
 - side nav external urls
 - remove console logs
 - rename variables
-- placeholder for deal image on profile 
 - make loading images for slide in deals page
 - minor CSS changes based on FIGMA design
