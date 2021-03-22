@@ -10,7 +10,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import * as geofire from 'geofire-common';
 import { AngularFireStorage } from '@angular/fire/storage';
 import app from 'firebase/app';
-import { Post } from '../models/post.model';
+import { Deal } from '../models/deal.model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +36,7 @@ export class UserService {
           });
           this.userDeals$ = userDeals.snapshotChanges().pipe(map(deals => {
             return deals.map((deal) => {
-              let retrievedDoc = deal.payload.doc.data() as Post;
+              let retrievedDoc = deal.payload.doc.data() as Deal;
               retrievedDoc.id = deal.payload.doc.id;
               return retrievedDoc;
             })

@@ -3,7 +3,7 @@ import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
-import { Post } from 'src/app/shared/models/post.model';
+import { Post } from 'src/app/shared/models/deal.model';
 import { DealService } from 'src/app/shared/services/deal.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import * as geofire from 'geofire-common';

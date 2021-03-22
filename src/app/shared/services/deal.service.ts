@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, DocumentChangeAction } from '@angular/fire/firestore';
 import { Location } from '../models/location.model';
-import { Post } from '../models/post.model';
+import { Deal } from '../models/deal.model';
 import { User } from '../models/user.model';
 import * as geofire from 'geofire-common';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -15,9 +15,8 @@ export class DealService {
 
   constructor(private afs: AngularFirestore, private storage: AngularFireStorage) { }
 
-  async createDeal(post: Post): Promise<any>{
+  async createDeal(post: Deal): Promise<any>{
     this.afs.collection("deals").add(post).then((doc) => {
-      console.log("post ", post, "created");
       post.id = doc.id;
       return post;
     }).catch((err) => {
@@ -29,11 +28,11 @@ export class DealService {
 
 
   async getDealsForUser(uid: string): Promise<any>{
-    let posts: Post[] = [];
+    let posts: Deal[] = [];
     let promise = this.afs.firestore.collection("deals").where('userProfile.uid', '==', uid).orderBy("createdAt").get().then((snapshot) => {
       snapshot.forEach((doc) => {
         let docData = doc.data();
-        let newPost: Post = {userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id, createdAt: docData.createdAt};
+        let newPost: Deal = {userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id, createdAt: docData.createdAt};
         posts.push(newPost);
       })
       return posts;
@@ -46,17 +45,17 @@ export class DealService {
   //     const doc = p.payload.doc;
   //     const id = doc.id;
   //     const docData:any = doc.data();
-  //     let newDeal: Post = {userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id, createdAt: docData.created};
+  //     let newDeal: Deal = {userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id, createdAt: docData.created};
   //     return newDeal;
   //   });
   // }))
   
   getDeals(amount: number): Promise<any>{
-    let deals: Post[] = [];
+    let deals: Deal[] = [];
     let promise = this.afs.firestore.collection("deals").limit(amount).get().then((snapshot) => {
       snapshot.forEach((doc) => {
         let docData = doc.data();
-        let newDeal: Post = {userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id, createdAt: docData.created};
+        let newDeal: Deal = {userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id, createdAt: docData.created};
         deals.push(newDeal);
       })
       return deals;
@@ -69,7 +68,7 @@ export class DealService {
       const doc = p.payload.doc;
       const id = doc.id;
       const docData:any = doc.data();
-      let newDeal: Post = {userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id, createdAt: docData.created};
+      let newDeal: Deal = {userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id, createdAt: docData.created};
       return newDeal;
     });
   }))
@@ -114,7 +113,7 @@ export class DealService {
     return result;
   }
 
-  async deleteDeal(post: Post): Promise<any>{
+  async deleteDeal(post: Deal): Promise<any>{
     const fileStorage= this.storage;
     let promise = this.afs.firestore.collection("deals").doc(post.id).delete().then(async () => {
       for(let image of post.images){
@@ -133,7 +132,7 @@ export class DealService {
     return promise;
   }
 
-  async updateDeal(post: Post): Promise<any>{
+  async updateDeal(post: Deal): Promise<any>{
     let promise = this.afs.firestore.collection("deals").doc(post.id).update(post).then(() => {
       return;
     }).catch((err) => {

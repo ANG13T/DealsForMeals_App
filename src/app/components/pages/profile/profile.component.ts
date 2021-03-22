@@ -4,7 +4,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { MenuController, ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { CreatePostComponent } from '../../modals/create-post/create-post.component';
-import { Post } from 'src/app/shared/models/post.model';
+import { Deal } from 'src/app/shared/models/deal.model';
 import { DealService } from 'src/app/shared/services/deal.service';
 import { ViewDealComponent } from '../../modals/view-deal/view-deal.component';
 import { ViewAllDealsComponent } from '../../modals/view-all-deals/view-all-deals.component';
@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
   user: User;
   userAddress: string = "";
   loading: boolean = true;
-  userPosts: Post[] = [];
+  userPosts: Deal[] = [];
   showDealsInfo: boolean = false;
   map: any;
   isBuisness: boolean = false;
@@ -107,7 +107,7 @@ export class ProfileComponent implements OnInit {
     return await modal.present();
   }
 
-  async presentPost(post: Post){
+  async presentPost(post: Deal){
     const modal = await this.modalController.create({
       component: ViewDealComponent,
       componentProps: { 

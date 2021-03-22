@@ -1,7 +1,7 @@
 import { Location } from "./location.model";
 import { User } from "./user.model";
 
-export interface Post {
+export interface Deal {
     userProfile: User;
     title: string;
     description: string;

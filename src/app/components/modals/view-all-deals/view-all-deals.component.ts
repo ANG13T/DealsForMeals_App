@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
-import { Post } from 'src/app/shared/models/post.model';
+import { Post } from 'src/app/shared/models/deal.model';
 import { Location } from 'src/app/shared/models/location.model';
 import { ViewDealComponent } from '../view-deal/view-deal.component';
 import { EditPostComponent } from '../edit-post/edit-post.component';

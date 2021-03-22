@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChildren } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { map } from 'rxjs/internal/operators/map';
-import { Post } from 'src/app/shared/models/post.model';
+import { Deal } from 'src/app/shared/models/deal.model';
 import { User } from 'src/app/shared/models/user.model';
 import { DealService } from 'src/app/shared/services/deal.service';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -18,12 +18,12 @@ import * as _ from 'lodash';
 })
 export class DealsComponent implements OnInit {
 
-  paginationDeals: Post[] = [];
+  paginationDeals: Deal[] = [];
   user: User;
   loadingDeals: boolean = false;
   searchTerm: string = "";
-  topDisplay: Post[];
-  bottomDisplay: Post[];
+  topDisplay: Deal[];
+  bottomDisplay: Deal[];
   // Pagination variables
   batch: number = 3;
   last: any = Date.now();
@@ -56,7 +56,7 @@ export class DealsComponent implements OnInit {
 
   }
 
-  async openDeal(post: Post){
+  async openDeal(post: Deal){
     const modal = await this.modalController.create({
       component: ViewDealComponent,
       componentProps: {
@@ -78,7 +78,7 @@ export class DealsComponent implements OnInit {
 
   // Fetch Data via Pagination
 
-  alreadyContainsDeal(deal: Post){
+  alreadyContainsDeal(deal: Deal){
     for(let pageDeal of this.paginationDeals){
       if(pageDeal.id == deal.id){
         return true;
@@ -110,7 +110,7 @@ export class DealsComponent implements OnInit {
             let resultData = todoSnap.payload.doc.data();
             let id = todoSnap.payload.doc.id;
             resultData.id = id;
-            let result = {...resultData} as Post;
+            let result = {...resultData} as Deal;
             if(!this.alreadyContainsDeal(result)){
               this.paginationDeals.push(result);
             }else{

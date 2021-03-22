@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ActionSheetController, ModalController } from '@ionic/angular';
-import { Post } from 'src/app/shared/models/post.model';
+import { Post } from 'src/app/shared/models/deal.model';
 import { AlertController } from '@ionic/angular';
 import { DealService } from 'src/app/shared/services/deal.service';
 import { EditPostComponent } from '../edit-post/edit-post.component';

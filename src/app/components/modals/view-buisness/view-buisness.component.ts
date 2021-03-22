@@ -3,7 +3,7 @@ import { User } from 'src/app/shared/models/user.model';
 import { BuisnessService } from 'src/app/shared/services/buisness.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { ModalController } from '@ionic/angular';
-import { Post } from 'src/app/shared/models/post.model';
+import { Deal } from 'src/app/shared/models/deal.model';
 import { DealService } from 'src/app/shared/services/deal.service';
 import { ViewDealComponent } from '../view-deal/view-deal.component';
 import { ViewAllDealsComponent } from '../view-all-deals/view-all-deals.component';
@@ -18,9 +18,9 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
 export class ViewBuisnessComponent implements OnInit {
 
   buisness: User;
-  posts: Post[] = [];
+  posts: Deal[] = [];
   loadingPosts:boolean = false;
-  previewDeals: Post[] = [];
+  previewDeals: Deal[] = [];
   shownItem: string = 'deals';
   displayLocation: string;
   selectedIndex: string = "deals";
@@ -50,7 +50,7 @@ export class ViewBuisnessComponent implements OnInit {
     }
   }
 
-  async presentPost(post: Post){
+  async presentPost(post: Deal){
     const modal = await this.modalController.create({
       component: ViewDealComponent,
       cssClass: 'my-custom-class',
