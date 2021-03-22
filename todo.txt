@@ -26,6 +26,5 @@ NEXT STEPS:
 DO RIGHT NOW:
 - side nav external urls
 - remove console logs
-- rename variables
 - make loading images for slide in deals page
 - minor CSS changes based on FIGMA design

@@ -117,7 +117,6 @@ export class DealService {
     const fileStorage= this.storage;
     let promise = this.afs.firestore.collection("deals").doc(post.id).delete().then(async () => {
       for(let image of post.images){
-        console.log("delete image");
         let storageRefFile = fileStorage.refFromURL(image);
         await storageRefFile.delete().toPromise().catch((error) => {
           console.log("error with storage file delete", error.message);

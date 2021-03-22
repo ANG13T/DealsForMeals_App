@@ -42,7 +42,6 @@ export class BuisnessService {
           const lng = userData.lng;
           userData.id = doc.id;
 
-          console.log("doc is ", doc, "lat: ", lat, "long: ", lng)
 
           // We have to filter out a few false positives due to GeoHash
           // accuracy, but most will match

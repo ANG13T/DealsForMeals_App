@@ -39,7 +39,6 @@ export class DealsComponent implements OnInit {
     this.userService.user$.subscribe(async (userProfile) => {
       if(userProfile){
         this.user = userProfile;
-        console.log("got user", userProfile);
 
         // this.dealService.getDealsNearLocation(this.user.location).then((result) => {
         //   console.log("resultant deals", result)
@@ -88,17 +87,14 @@ export class DealsComponent implements OnInit {
   }
 
   onScroll () {
-    console.log("scroll more")
     setTimeout(() => {
       this.fetchTodosPaginated();
     }, 1500);
   }
 
   fetchTodosPaginated () {
-    console.log("paginate")
     this.dealService.paginate(this.batch, this.last).pipe(
       map(data => {
-        console.log("data coming back", data)
         if (!data.length) {
           this.empty = true;
         }

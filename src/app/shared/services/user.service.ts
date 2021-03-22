@@ -58,7 +58,6 @@ export class UserService {
     let promise = this.afAuth.signInWithEmailAndPassword(email, password).then((res) => {
       this.loggedIn = true;
       this.router.navigate(['/profile']);
-      console.log("Success");
       return;
     })
     .catch((err) => {
@@ -172,7 +171,6 @@ export class UserService {
 
   async updateUserData(user: User): Promise<any>{
     let promise = this.afs.firestore.collection("users").doc(user.uid).update(user).then(() => {
-      console.log("user updated")
       return;
     }).catch((err) => {
       console.log("err");
@@ -193,7 +191,6 @@ export class UserService {
 
   async deleteUser(user: User){
    this.afs.firestore.collection("users").doc(user.uid).delete().then(async() => {
-      console.log("user deleted")
 
       if(user.photoURL != "https://firebasestorage.googleapis.com/v0/b/deals2meals-4e239.appspot.com/o/default_user.jpg?alt=media&token=e1c97c88-5aab-487b-ae6d-878415e28b6a"){
         this.deleteUserImage(user.photoURL);

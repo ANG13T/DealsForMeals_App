@@ -58,8 +58,6 @@ export class EditProfileComponent implements OnInit {
 
       }
     })
-
-    console.log("done", this.userProfile)
   }
 
   goBack(){
@@ -73,7 +71,6 @@ export class EditProfileComponent implements OnInit {
       if(data){
         alert("Error: " + data.message);
       }else{
-        console.log("presenting toast")
         const toast = await this.toastController.create({
           message: 'Profile edited successfully.',
           duration: 2000

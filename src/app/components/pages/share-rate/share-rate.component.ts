@@ -44,12 +44,10 @@ export class ShareRateComponent implements OnInit {
   }
 
   otherShare(){
-    console.log("sharing...")
     let options = {
       message: 'Download DealsForMeals on the App Store', // not supported on some apps (Facebook, Instagram)
       subject: 'Download DealsForMeals on the App Store', // fi. for email
-      url: 'https://example.com/',
-      chooserTitle: 'Pick an app' // Android only, you can override the default share sheet title
+      url: 'https://angelina-tsuboi.github.io/DealsForMeals/'
   }
   this.socialSharing.shareWithOptions(options).then((result) => {
       console.log("Share completed? ", result.completed); // On Android apps mostly return false even while it's true
