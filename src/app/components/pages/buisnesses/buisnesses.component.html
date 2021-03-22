@@ -30,8 +30,8 @@
             <div class="foodbank" *ngFor="let foodbank of buisnesses | buisnessCategory: categoryControl.value"
               (click)="openBuisness(foodbank)">
               <ion-item>
-                <ion-thumbnail slot="start">
-                  <img src={{foodbank.photoURL}}>
+                <ion-thumbnail slot="start" style="background-color: rgb(192, 184, 184);">
+                  <img src={{foodbank.photoURL}} loading="lazy">
                 </ion-thumbnail>
                 <ion-label>
                   <h3>{{foodbank.name}}</h3>

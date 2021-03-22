@@ -33,8 +33,8 @@
         <div class="deals" > 
           <div class="deal" *ngFor="let deal of paginationDeals" (click)="openDeal(deal)">
             <ion-item>
-              <ion-thumbnail slot="start">
-                <img src={{deal.images[0]}}>
+              <ion-thumbnail slot="start" style="background-color: rgb(192, 184, 184);">
+                <img src={{deal.images[0]}} loading="lazy">
               </ion-thumbnail>
               <ion-label>
                 <h3>{{deal.title}}</h3>

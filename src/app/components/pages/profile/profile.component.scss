@@ -238,12 +238,22 @@ ion-card{
 .card-main, .step-card-main{
     display: flex;
 
-    img{
+    .deal-display-image-container{
         max-width: 8rem;
         max-height: 8rem;
-        display: block;
-        width: auto;
-        height: auto;
+        min-width: 6rem;
+        min-height: 6rem;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color: rgb(128, 122, 122);
+
+        .inside-image{
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            min-width: 100%;
+            min-height: 100%;
+        }
     }
 
     ion-card-title{
