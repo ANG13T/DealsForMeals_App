@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
 import { Post } from 'src/app/shared/models/post.model';
-import { PostService } from 'src/app/shared/services/post.service';
+import { DealService } from 'src/app/shared/services/deal.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import * as geofire from 'geofire-common';
 
@@ -21,7 +21,7 @@ export class CreatePostComponent implements OnInit {
   imageLoading: boolean = false;
   complete: boolean = false;
 
-  constructor(private modalController: ModalController, private router: Router, private userService: UserService, private postService: PostService, private storage: AngularFireStorage) { 
+  constructor(private modalController: ModalController, private router: Router, private userService: UserService, private dealService: DealService, private storage: AngularFireStorage) { 
     this.userService.user$.subscribe((userProfile) => {
       if(userProfile){
         this.post.userProfile = userProfile;
@@ -133,7 +133,7 @@ export class CreatePostComponent implements OnInit {
     if(this.validateForm()){
       this.giveGeoHash();
       this.post.createdAt = new Date();
-      await this.postService.createDeal(this.post).then((result) => {
+      await this.dealService.createDeal(this.post).then((result) => {
         this.loading = false;
         this.complete = true;
         this.post = result;

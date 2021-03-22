@@ -4,7 +4,7 @@ import { UntilDestroy } from '@ngneat/until-destroy';
 import { map } from 'rxjs/internal/operators/map';
 import { Post } from 'src/app/shared/models/post.model';
 import { User } from 'src/app/shared/models/user.model';
-import { PostService } from 'src/app/shared/services/post.service';
+import { DealService } from 'src/app/shared/services/deal.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Location } from '../../../shared/models/location.model';
 import { ViewDealComponent } from '../../modals/view-deal/view-deal.component';
@@ -29,9 +29,9 @@ export class DealsComponent implements OnInit {
   last: any = Date.now();
   empty: boolean = false;
 
-  constructor(private postService: PostService, private modalController: ModalController, private userService: UserService) { }
+  constructor(private dealService: DealService, private modalController: ModalController, private userService: UserService) { }
 
-  deals$ = this.postService.deals$;
+  deals$ = this.dealService.deals$;
   
   async ngOnInit() {
     this.loadingDeals = true;
@@ -41,7 +41,7 @@ export class DealsComponent implements OnInit {
         this.user = userProfile;
         console.log("got user", userProfile);
 
-        // this.postService.getDealsNearLocation(this.user.location).then((result) => {
+        // this.dealService.getDealsNearLocation(this.user.location).then((result) => {
         //   console.log("resultant deals", result)
         //   this.deals = result;
         //   let results = this.deals;
@@ -96,7 +96,7 @@ export class DealsComponent implements OnInit {
 
   fetchTodosPaginated () {
     console.log("paginate")
-    this.postService.paginate(this.batch, this.last).pipe(
+    this.dealService.paginate(this.batch, this.last).pipe(
       map(data => {
         console.log("data coming back", data)
         if (!data.length) {

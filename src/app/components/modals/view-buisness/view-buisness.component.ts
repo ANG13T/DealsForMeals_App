@@ -4,7 +4,7 @@ import { BuisnessService } from 'src/app/shared/services/buisness.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Post } from 'src/app/shared/models/post.model';
-import { PostService } from 'src/app/shared/services/post.service';
+import { DealService } from 'src/app/shared/services/deal.service';
 import { ViewDealComponent } from '../view-deal/view-deal.component';
 import { ViewAllDealsComponent } from '../view-all-deals/view-all-deals.component';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
@@ -25,7 +25,7 @@ export class ViewBuisnessComponent implements OnInit {
   displayLocation: string;
   selectedIndex: string = "deals";
 
-  constructor(private buisnessService: BuisnessService, private route:ActivatedRoute, private router: Router, private modalCtrl: ModalController, private postService: PostService, private modalController: ModalController, private emailSender: EmailComposer) { }
+  constructor(private buisnessService: BuisnessService, private route:ActivatedRoute, private router: Router, private modalCtrl: ModalController, private dealService: DealService, private modalController: ModalController, private emailSender: EmailComposer) { }
 
   ngOnInit() {
     this.loadingPosts = true;
@@ -36,7 +36,7 @@ export class ViewBuisnessComponent implements OnInit {
       })
     }
 
-    this.postService.getDealsForUser(this.buisness.uid).then((postData) => {
+    this.dealService.getDealsForUser(this.buisness.uid).then((postData) => {
       this.posts = postData;
       this.previewDeals = this.posts.slice(0, 4);
       this.loadingPosts = false;

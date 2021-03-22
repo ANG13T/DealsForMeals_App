@@ -4,7 +4,7 @@ import { Post } from 'src/app/shared/models/post.model';
 import { Location } from 'src/app/shared/models/location.model';
 import { ViewDealComponent } from '../view-deal/view-deal.component';
 import { EditPostComponent } from '../edit-post/edit-post.component';
-import { PostService } from 'src/app/shared/services/post.service';
+import { DealService } from 'src/app/shared/services/deal.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class ViewAllDealsComponent implements OnInit {
   deals: Post[];
   isOwner: boolean = false;
 
-  constructor(private modalController: ModalController, private alertController: AlertController, private postService: PostService, private userService: UserService) { }
+  constructor(private modalController: ModalController, private alertController: AlertController, private dealService: DealService, private userService: UserService) { }
 
   ngOnInit() { 
     this.userService.user$.subscribe((userProfile) => {
@@ -105,7 +105,7 @@ export class ViewAllDealsComponent implements OnInit {
           text: 'Delete',
           handler: () => {
             console.log('Confirm Okay');
-            this.postService.deleteDeal(deal).then(() => {
+            this.dealService.deleteDeal(deal).then(() => {
               this.deals = this.deals.filter(data => data.id != deal.id);
             })
           }

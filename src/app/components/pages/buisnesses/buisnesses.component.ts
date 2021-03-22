@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Post } from 'src/app/shared/models/post.model';
 import { User } from 'src/app/shared/models/user.model';
 import { BuisnessService } from 'src/app/shared/services/buisness.service';
-import { PostService } from 'src/app/shared/services/post.service';
+import { DealService } from 'src/app/shared/services/deal.service';
 import { ViewBuisnessComponent } from '../../modals/view-buisness/view-buisness.component';
 import { IonRouterOutlet } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';

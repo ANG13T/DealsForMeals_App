@@ -3,7 +3,7 @@ import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage
 import { ModalController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
 import { Post } from 'src/app/shared/models/post.model';
-import { PostService } from 'src/app/shared/services/post.service';
+import { DealService } from 'src/app/shared/services/deal.service';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class EditPostComponent implements OnInit {
   imageLoading: boolean = false;
   loading: boolean = false;
 
-  constructor(private _modalController: ModalController, private storage: AngularFireStorage, private postService: PostService) { 
+  constructor(private _modalController: ModalController, private storage: AngularFireStorage, private dealService: DealService) { 
     
   }
 
@@ -51,7 +51,7 @@ export class EditPostComponent implements OnInit {
     console.log(this.isDifferent());
     if(this.validateForm()){
       this.loading = true;
-      this.postService.updateDeal(this.post).then(() => {
+      this.dealService.updateDeal(this.post).then(() => {
         this.loading = false;
         this.dismissModal('edit', this.post);
       })

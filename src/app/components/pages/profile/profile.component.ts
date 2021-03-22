@@ -5,7 +5,7 @@ import { MenuController, ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { CreatePostComponent } from '../../modals/create-post/create-post.component';
 import { Post } from 'src/app/shared/models/post.model';
-import { PostService } from 'src/app/shared/services/post.service';
+import { DealService } from 'src/app/shared/services/deal.service';
 import { ViewDealComponent } from '../../modals/view-deal/view-deal.component';
 import { ViewAllDealsComponent } from '../../modals/view-all-deals/view-all-deals.component';
 
@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
   isBuisness: boolean = false;
   selectedIndex: string = "deals";
 
-  constructor(private userService: UserService, private router: Router, public modalController: ModalController, private postService: PostService) { }
+  constructor(private userService: UserService, private router: Router, public modalController: ModalController, private dealService: DealService) { }
 
   ngOnInit() {
     this.loading = true;

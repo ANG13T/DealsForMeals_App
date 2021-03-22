@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ActionSheetController, ModalController } from '@ionic/angular';
 import { Post } from 'src/app/shared/models/post.model';
 import { AlertController } from '@ionic/angular';
-import { PostService } from 'src/app/shared/services/post.service';
+import { DealService } from 'src/app/shared/services/deal.service';
 import { EditPostComponent } from '../edit-post/edit-post.component';
 import { UserService } from 'src/app/shared/services/user.service';
 import { MatTabChangeEvent } from '@angular/material/tabs';
@@ -26,7 +26,7 @@ export class ViewDealComponent implements OnInit {
   uid: string;
   selectedIndex: string = "description";
 
-  constructor(private router: Router, private route: ActivatedRoute, private modalController: ModalController, public alertController: AlertController, private postService: PostService, public actionSheetController: ActionSheetController, private userService: UserService, private emailSender: EmailComposer) { }
+  constructor(private router: Router, private route: ActivatedRoute, private modalController: ModalController, public alertController: AlertController, private dealService: DealService, public actionSheetController: ActionSheetController, private userService: UserService, private emailSender: EmailComposer) { }
 
   ngOnInit() {
     this.userService.user$.subscribe((userProfile) => {
@@ -85,7 +85,7 @@ export class ViewDealComponent implements OnInit {
           text: 'Delete',
           handler: () => {
             console.log('Confirm Okay');
-            this.postService.deleteDeal(this.post).then(() => {
+            this.dealService.deleteDeal(this.post).then(() => {
               this.dismissModal('delete', this.post);
             })
           }

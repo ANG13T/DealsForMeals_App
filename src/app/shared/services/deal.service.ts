@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/internal/Observable';
 @Injectable({
   providedIn: 'root'
 })
-export class PostService {
+export class DealService {
 
   constructor(private afs: AngularFirestore, private storage: AngularFireStorage) { }
 
