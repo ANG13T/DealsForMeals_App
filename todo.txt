@@ -11,15 +11,15 @@ TODOS:
 
 - update pagination for buisnesses near you
 
+- side nav external urls (rate)
+
 
 NEXT STEPS:
 
 
 DO RIGHT NOW:
 - make view profile on location mobile responsive
-- no deals yet placeholder for view all deals
 - pagination for buisnesses
-- side nav external urls
 - remove console logs
 - minor CSS changes based on FIGMA design
 - sign up page (location not found alert and disable)

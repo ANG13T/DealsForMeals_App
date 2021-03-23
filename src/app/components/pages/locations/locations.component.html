@@ -38,13 +38,13 @@
       [markerClickable]="true"
       (markerClick)="openWindow(buisness.id)"
       >
-      <agm-info-window style="width: 190px;" [isOpen]="isInfoWindowOpen(buisness.id)">
+      <agm-info-window style="width: 200px;" [isOpen]="isInfoWindowOpen(buisness.id)">
         <div class="buisness-info-display">
           <img src={{buisness.photoURL}} />
           <div class="display-content">
             <h3>{{buisness.name}}</h3>
-            <p>{{getLocation(buisness.location)}}</p>
-            <p>{{getSubLocation(buisness.location)}}</p>
+            <p style="padding-right: 10px;">{{getLocation(buisness.location)}}</p>
+            <p style="padding-right: 10px;">{{getSubLocation(buisness.location)}}</p>
             <button class="more" (click)="openBuisnessDialog(buisness)">MORE</button>
           </div>
         </div>

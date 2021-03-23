@@ -46,6 +46,8 @@
       </ion-item-options>
 
     </ion-item-sliding>
+
+    <h2 [hidden]="deals.length > 0" style="text-align: center;">No Deals Created Yet.</h2>
     </ion-list>
 
     <ion-list lines="none" class="viewerDisplay" [hidden]="isOwner">
@@ -66,6 +68,7 @@
           </div>
       </ion-card>
       </ion-item>
+      <h2 [hidden]="deals.length > 0" style="text-align: center;">No Deals Created Yet.</h2>
     </ion-list>
   </div>
 </ion-content>

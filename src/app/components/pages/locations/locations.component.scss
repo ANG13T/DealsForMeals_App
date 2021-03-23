@@ -3,7 +3,7 @@
 }
 
 agm-map {
-    height: 95vh;
+    height: 95vh !important;
 }
 
 
@@ -71,6 +71,10 @@ ion-content{
         margin-top: 8px;
         color: rgb(0, 153, 255);
         font-weight: bold;
+        font-size: 1rem;
+        padding-bottom: 7px;
+        padding-left: 0px;
+        margin-left: 0px;
         outline: none;
     }
 
