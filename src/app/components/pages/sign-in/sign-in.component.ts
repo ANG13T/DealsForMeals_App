@@ -31,6 +31,7 @@ export class SignInComponent implements OnInit {
       this.loading = true;
         await this.userService.login(this.email, this.password).then((data) => {
           if(data){
+            this.loading = false;
             if(data.code == "auth/user-not-found"){
               alert("User not found. Please try signing in or trying again");
               this.email = "";

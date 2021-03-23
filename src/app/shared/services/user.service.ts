@@ -143,7 +143,7 @@ export class UserService {
             lat: newUser.location.latitude,
             hash: geofire.geohashForLocation([newUser.location.latitude, newUser.location.longitude]),
             accountType: newUser.accountType,
-            photoURL: 'https://firebasestorage.googleapis.com/v0/b/deals2meals-4e239.appspot.com/o/default_user.jpg?alt=media&token=e1c97c88-5aab-487b-ae6d-878415e28b6a',
+            photoURL: 'https://firebasestorage.googleapis.com/v0/b/dealsformeals-3f16f.appspot.com/o/default-user.jpeg?alt=media&token=66617a87-47ac-4ff8-92da-9ccc0ad92c0b',
             isBusiness: newUser.isBusiness,
             description: ''
           }
@@ -192,7 +192,7 @@ export class UserService {
   async deleteUser(user: User){
    this.afs.firestore.collection("users").doc(user.uid).delete().then(async() => {
 
-      if(user.photoURL != "https://firebasestorage.googleapis.com/v0/b/deals2meals-4e239.appspot.com/o/default_user.jpg?alt=media&token=e1c97c88-5aab-487b-ae6d-878415e28b6a"){
+      if(user.photoURL != "https://firebasestorage.googleapis.com/v0/b/dealsformeals-3f16f.appspot.com/o/default-user.jpeg?alt=media&token=66617a87-47ac-4ff8-92da-9ccc0ad92c0b"){
         this.deleteUserImage(user.photoURL);
       }else{
         this.userService.signOut();

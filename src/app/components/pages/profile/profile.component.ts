@@ -41,21 +41,22 @@ export class ProfileComponent implements OnInit {
       if(this.user.description == ""){
         this.user.description = "User has not written a description yet.";
       }
-      
+
+      this.loading = false;
     });
 
-
-     this.userService.userDeals$.subscribe(async (userProfileData) => {
-       console.log("got the data", userProfileData)
-      if(userProfileData){
-        console.log(userProfileData);
-        this.loading = false;
-        this.userPosts = userProfileData;
-      }else{
-        this.loading = false;
-        this.userPosts = null;
-      }
-    });
+    this.userService.userDeals$.subscribe(async (userProfileData) => {
+      console.log("got the data", userProfileData)
+     if(userProfileData){
+       console.log(userProfileData);
+       this.loading = false;
+       this.userPosts = userProfileData;
+     }else{
+       this.loading = false;
+       this.userPosts = null;
+     }
+   });
+   
   }
 
 
