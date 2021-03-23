@@ -52,6 +52,13 @@ ion-card-header{
           padding-right: 0px;
           font-size: 16px;
         }
+
+        .card-main{
+            .card-main-image{
+                max-width: 8rem;
+                max-height: 8rem;
+            }
+        }
     }
   
     ion-item-option{

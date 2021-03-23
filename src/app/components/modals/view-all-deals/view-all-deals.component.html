@@ -18,7 +18,7 @@
         <ion-item>
           <ion-card (click)="presentDeal(deal)">
             <div class="card-main">
-              <img src={{deal.images[0]}} />
+              <img src={{deal.images[0]}} class="card-main-image"/>
     
               <div class="card-content">
                 <ion-card-header>
@@ -49,7 +49,23 @@
     </ion-list>
 
     <ion-list lines="none" class="viewerDisplay" [hidden]="isOwner">
-      <h3>Not owner</h3>
+      <ion-item *ngFor="let deal of deals">
+        <ion-card (click)="viewerPresent(deal)">
+          <div class="card-main">
+            <img src={{deal.images[0]}} class="card-main-image"/>
+  
+            <div class="card-content">
+              <ion-card-header>
+                <ion-card-title>{{deal.title}}</ion-card-title>
+              </ion-card-header>
+  
+              <ion-card-content>
+                {{viewDescription(deal.description)}}
+              </ion-card-content>
+            </div>
+          </div>
+      </ion-card>
+      </ion-item>
     </ion-list>
   </div>
 </ion-content>

@@ -16,7 +16,8 @@ NEXT STEPS:
 
 
 DO RIGHT NOW:
-- change firebase project
+- make view profile on location mobile responsive
+- no deals yet placeholder for view all deals
 - pagination for buisnesses
 - side nav external urls
 - remove console logs

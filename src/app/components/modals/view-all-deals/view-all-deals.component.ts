@@ -60,6 +60,8 @@ export class ViewAllDealsComponent implements OnInit {
         isOwner: true
       }
     });
+
+    await modal.present();
     modal.onDidDismiss()
       .then((data) => {
         console.log("got the data", data)
@@ -67,6 +69,17 @@ export class ViewAllDealsComponent implements OnInit {
           this.deals = this.deals.filter((el) => {el.id != data.data.data.id});
         }
     });
+  }
+
+  async viewerPresent(deal: Deal){
+    let modal = await this.modalController.create({
+      component: ViewDealComponent,
+      componentProps: { 
+        origin: 'profile',
+        post: deal
+      }
+    });
+    await modal.present();
   }
 
 
