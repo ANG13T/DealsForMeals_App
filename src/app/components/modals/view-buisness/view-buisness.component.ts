@@ -100,6 +100,7 @@ export class ViewBuisnessComponent implements OnInit {
   }
 
   contactBuisness(){
+    console.log("clicked contatc")
     this.emailSender.open({
       to:     this.buisness.email,
       subject: 'DealsForMeals Buisness Request'

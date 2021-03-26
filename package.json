@@ -52,6 +52,7 @@
     "ionic-selectable": "^4.7.1",
     "lodash": "^4.17.21",
     "ngx-avatar": "^4.0.0",
+    "ngx-google-places-autocomplete": "^2.0.5",
     "ngx-pipes": "^2.7.5",
     "rxjs": "^6.6.6",
     "tslib": "^2.0.0",
