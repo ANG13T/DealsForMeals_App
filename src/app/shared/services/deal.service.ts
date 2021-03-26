@@ -158,12 +158,13 @@ export class DealService {
       ref
         .where('createdAt', '<', submit)
         .orderBy('createdAt', 'desc')
+        .orderBy('hash')
         .limit(limit)
     )).snapshotChanges();
   }
 
   // paginate deals based on location
-  paginateLocation(limit: number, last: any, location: Location): Promise<any> {
+  paginateLocation(limit: number, last: any, location: Location) {
     let submit;
 
     if ((typeof last) != "number") {
@@ -177,35 +178,48 @@ export class DealService {
     let center = [location.latitude, location.longitude];
     const radiusInM = 50 * 1000;
 
-    const bounds = geofire.geohashQueryBounds(center, radiusInM);
-    const promises = [];
-    for (const b of bounds) {
-      const q = this.afs.collection('deals').ref.where('createdAt', '<', submit).orderBy('hash')
-        .startAt(b[0])
-        .endAt(b[1]);
+    return this.afs.collection('deals', (ref) => (
+      ref
+        .where('createdAt', '<', submit)
+        .orderBy('createdAt', 'desc')
+        .orderBy('hash')
+        .limit(limit)
+    )).snapshotChanges();
 
-      promises.push(q.get());
-    }
+
+    // const bounds = geofire.geohashQueryBounds(center, radiusInM);
+    // console.log("bounds are", bounds)
+    // const promises = [];
+    // for (const b of bounds) {
+    //   const q = this.afs.collection('deals').ref.where('createdAt', '<', submit).orderBy('createdAt', 'desc').orderBy('hash')
+    //     .startAt(b[0])
+    //     .endAt(b[1]);
+
+    //   promises.push(q.get());
+    // }
 
     // Collect all the query results together into a single list
-    let result = Promise.all(promises).then((snapshots) => {
-      const matchingDocs: User[] = [];
+    // let result = Promise.all(promises).then((snapshots) => {
+    //   const matchingDocs: User[] = [];
+    //   console.log("got to result", snapshots);
 
-      for (const snap of snapshots) {
-        for (const doc of snap.docs) {
-          const dealData = doc.data();
-          const lat = dealData.lat;
-          const lng = dealData.lng;
+    //   for (const snap of snapshots) {
+    //     console.log("snap", snap)
+    //     for (const doc of snap.docs) {
+    //       const dealData = doc.data();
+    //       console.log("deal data", dealData);
+    //       const lat = dealData.lat;
+    //       const lng = dealData.lng;
 
-          const distanceInKm = geofire.distanceBetween([lat, lng], center);
-          const distanceInM = distanceInKm * 1000;
-          if (distanceInM <= radiusInM) {
-            matchingDocs.push(dealData);
-          }
-        }
-      }
-    })
-    return result;
+    //       const distanceInKm = geofire.distanceBetween([lat, lng], center);
+    //       const distanceInM = distanceInKm * 1000;
+    //       if (distanceInM <= radiusInM) {
+    //         matchingDocs.push(dealData);
+    //       }
+    //     }
+    //   }
+    // })
+    // return result;
   }
 
 

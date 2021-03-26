@@ -49,6 +49,7 @@ export class DealsComponent implements OnInit {
         //   this.loadingDeals = false;
         // })
         this.fetchTodosPaginated();
+        // this.fetchDealsPaginated();
         this.loadingDeals = false;
       }
     });
@@ -89,6 +90,7 @@ export class DealsComponent implements OnInit {
   onScroll () {
     setTimeout(() => {
       this.fetchTodosPaginated();
+      // this.fetchDealsPaginated()
     }, 1500);
   }
 
@@ -120,5 +122,14 @@ export class DealsComponent implements OnInit {
     ).subscribe();
 
   }
+
+  // fetchDealsPaginated(){
+  //   this.dealService.paginateLocation(this.batch, this.last, this.user.location).then((data) => {
+  //     if (!data.length) {
+  //       this.empty = true;
+  //     }
+  //     console.log("data serve", data);
+  //   });
+  // }
 
 }
