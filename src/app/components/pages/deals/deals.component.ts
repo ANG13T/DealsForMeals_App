@@ -7,6 +7,7 @@ import { User } from 'src/app/shared/models/user.model';
 import { DealService } from 'src/app/shared/services/deal.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Location } from '../../../shared/models/location.model';
+import * as geofire from 'geofire-common';
 import { ViewDealComponent } from '../../modals/view-deal/view-deal.component';
 import * as _ from 'lodash';
 
@@ -49,7 +50,6 @@ export class DealsComponent implements OnInit {
         //   this.loadingDeals = false;
         // })
         this.fetchTodosPaginated();
-        // this.fetchDealsPaginated();
         this.loadingDeals = false;
       }
     });
@@ -87,10 +87,41 @@ export class DealsComponent implements OnInit {
     return false;
   }
 
+  filterByLocation(data: Deal[]){
+    let center = [this.user.location.latitude, this.user.location.longitude];
+    const radiusInM = 50 * 1000;
+
+    let matchingData: Deal[] = [];
+    data.forEach((deal) => {
+      const lat = deal.lat;
+      const lng = deal.lng;
+
+      const distanceInKm = geofire.distanceBetween([lat, lng], center);
+      const distanceInM = distanceInKm * 1000;
+      if (distanceInM <= radiusInM) {
+        matchingData.push(deal);
+      }
+    })
+
+    console.log("completed", matchingData);
+  }
+
+  validLocation(data:  Deal): boolean {
+    let center = [this.user.location.latitude, this.user.location.longitude];
+    const radiusInM = 50 * 1000;
+    const lat = data.lat;
+    const lng = data.lng;
+    const distanceInKm = geofire.distanceBetween([lat, lng], center);
+    const distanceInM = distanceInKm * 1000;
+    if (distanceInM <= radiusInM) {
+      return true;
+    }
+    return false;
+  }
+
   onScroll () {
     setTimeout(() => {
       this.fetchTodosPaginated();
-      // this.fetchDealsPaginated()
     }, 1500);
   }
 
@@ -110,6 +141,11 @@ export class DealsComponent implements OnInit {
             resultData.id = id;
             let result = {...resultData} as Deal;
             if(!this.alreadyContainsDeal(result)){
+              if(this.validLocation(result)){
+                console.log("valid location")
+              }else{
+                console.log("invalid location")
+              }
               this.paginationDeals.push(result);
             }else{
               if(data.length == 1){
@@ -123,13 +159,5 @@ export class DealsComponent implements OnInit {
 
   }
 
-  // fetchDealsPaginated(){
-  //   this.dealService.paginateLocation(this.batch, this.last, this.user.location).then((data) => {
-  //     if (!data.length) {
-  //       this.empty = true;
-  //     }
-  //     console.log("data serve", data);
-  //   });
-  // }
 
 }
