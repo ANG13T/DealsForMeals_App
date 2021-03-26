@@ -9,6 +9,8 @@ TODOS:
 
 - side nav external urls (rate)
 
+- foodie functionality
+
 NEXT STEPS:
 
 DO RIGHT NOW:

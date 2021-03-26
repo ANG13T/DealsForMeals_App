@@ -10,6 +10,8 @@ import { FormGroup } from '@angular/forms';
 import { ViewEncapsulation } from '@angular/core';
 import * as geofire from 'geofire-common';
 import { MapsAPILoader } from '@agm/core';
+import { GooglePlaceDirective } from 'ngx-google-places-autocomplete/ngx-google-places-autocomplete.directive';
+import { Address } from 'ngx-google-places-autocomplete/objects/address';
 
 @Component({
   selector: 'app-sign-up',
@@ -19,6 +21,7 @@ import { MapsAPILoader } from '@agm/core';
 })
 export class SignUpComponent implements OnInit {
   @ViewChild('map') mapElement: ElementRef;
+  @ViewChild("placesRef") placesRef : GooglePlaceDirective;
 
   isLinear = true;
   firstFormGroup: FormGroup;
@@ -89,6 +92,10 @@ export class SignUpComponent implements OnInit {
       this.accountType = "foodie";
     }
 
+  }
+
+  public handleAddressChange(address: Address) {
+    console.log("the adress", address);
   }
 
   async signUp() {

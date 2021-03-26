@@ -43,13 +43,15 @@
                   [longitude]="location.longitude"></agm-marker>
         </agm-map>
 
-        <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="UpdateSearchResults()" placeholder="Search for a place"  (ionClear)="ClearAutocomplete()"></ion-searchbar>
+        <!-- <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="UpdateSearchResults()" placeholder="Search for a place"  (ionClear)="ClearAutocomplete()"></ion-searchbar>
         <p>hello</p>
         <ion-list [hidden]="autocompleteItems.length == 0" style="height: 30vh;">
           <ion-item *ngFor="let item of autocompleteItems" tappable (click)="SelectSearchResult(item)">
             {{ item.description }}
           </ion-item>
-        </ion-list>
+        </ion-list> -->
+
+        <input ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
         
         
         <div class="buttons">

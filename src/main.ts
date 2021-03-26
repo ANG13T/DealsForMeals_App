@@ -4,7 +4,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
-let googleMapsAPI = `http://maps.google.com/maps/api/js?libraries=places&key=${environment.googleMapsAPIKey}`;
+// let googleMapsAPI = `http://maps.google.com/maps/api/js?libraries=places&key=${environment.googleMapsAPIKey}`;
+let googleMapsAPI = `https://maps.googleapis.com/maps/api/js?key=${environment.googleMapsAPIKey}&libraries=places&sensor=false&language=en`
 
 if (environment.production) {
   enableProdMode();
