@@ -282,7 +282,6 @@ export class SignUpComponent implements OnInit {
   UpdateSearchResults(){
     console.log(this.autocomplete.input);
     if (this.autocomplete.input == '') {
-      console.log("not running the code");
       this.autocompleteItems = [];
       return;
     }

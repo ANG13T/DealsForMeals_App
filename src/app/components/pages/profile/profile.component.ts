@@ -32,7 +32,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.loading = true;
     this.userService.user$.subscribe(async (userProfile) => {
-      console.log(userProfile)
       if(!userProfile) return;
       this.user = userProfile;
       this.isBuisness = this.user.isBusiness;

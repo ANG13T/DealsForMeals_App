@@ -37,15 +37,7 @@ export class BottomBarComponent implements OnInit {
       component: CreatePostComponent,
       cssClass: 'my-custom-class'
     });
-    modal.onDidDismiss()
-    .then((data) => {
-      console.log("got the data", data)
-      if(data.data.status == "create"){
-        //send create event to profile
-        // this.posts.push(data.data.data);
-      }
-    });
-
+  
     return await modal.present();
   }
 

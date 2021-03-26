@@ -72,9 +72,6 @@ export class BuisnessService {
 
       return matchingDocs;
     }).then((matchingDocs) => {
-      // Process the matching documents
-      // ...
-      console.log("the matching docs are", matchingDocs)
       return matchingDocs;
     });
     return result;

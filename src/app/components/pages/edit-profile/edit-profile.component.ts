@@ -27,7 +27,6 @@ export class EditProfileComponent implements OnInit {
   constructor(private router: Router, private userService: UserService, private storage: AngularFireStorage, public toastController: ToastController, private navCtrl: NavController) {
     this.userService.user$.subscribe(async (userProfile) => {
       if(userProfile){
-        console.log(userProfile)
         this.userProfile.name = userProfile.name;
         this.userProfile.email = userProfile.email;
         this.userProfile.photoURL = userProfile.photoURL;
@@ -182,7 +181,6 @@ export class EditProfileComponent implements OnInit {
     const path = `files/${Date.now()}_${file.name}`;
      // Reference to storage bucket
     const ref = this.storage.ref(path);
-    console.log(ref);
 
      // The main task
     task = this.storage.upload(path, file);

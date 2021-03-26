@@ -67,7 +67,6 @@ export class LocationsComponent implements OnInit {
         let resultantLocation = this.userLocation ? this.userLocation : this.user.location;
         
           this.businessService.getBuisnessesNearLocation(resultantLocation).then((result) => {
-            console.log("got the locations");
             this.buisnesses = result;
             this.loading = false;
             this.dismissLoading();
@@ -92,7 +91,6 @@ export class LocationsComponent implements OnInit {
 
 
   goToMapPosition(latitude: number, longitude: number){
-    console.log("hoi")
     this.mapLatitiude = latitude;
     this.mapLongitude = longitude;
   }
@@ -118,7 +116,6 @@ export class LocationsComponent implements OnInit {
       message: 'Loading',
     }).then(a => {
       a.present().then(() => {
-        console.log('presented');
         if (!this.loading) {
           a.dismiss().then(() => console.log('abort presenting'));
         }

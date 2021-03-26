@@ -173,7 +173,6 @@ export class UserService {
     let promise = this.afs.firestore.collection("users").doc(user.uid).update(user).then(() => {
       return;
     }).catch((err) => {
-      console.log("err");
       return err;
     })
 

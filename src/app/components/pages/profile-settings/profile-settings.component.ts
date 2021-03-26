@@ -30,10 +30,7 @@ export class ProfileSettingsComponent implements OnInit {
         {
           text: 'Cancel',
           role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
+          cssClass: 'secondary'
         }, {
           text: 'Delete',
           handler: async() => {

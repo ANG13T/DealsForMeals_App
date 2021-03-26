@@ -63,8 +63,6 @@ export class ViewDealComponent implements OnInit {
     });
     modal.onDidDismiss()
       .then((data) => {
-        console.log("got the data", data)
-        console.log(data.role)
         this.post = data.data.data;
     });
 

@@ -66,7 +66,6 @@ export class CreatePostComponent implements OnInit {
     const path = `files/${Date.now()}_${file.name}`;
      // Reference to storage bucket
     const ref = this.storage.ref(path);
-    console.log(ref);
 
      // The main task
     task = this.storage.upload(path, file);

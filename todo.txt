@@ -12,7 +12,6 @@ TODOS:
 NEXT STEPS:
 
 DO RIGHT NOW:
-- update pagination for buisnesses near you
 - remove console logs
 - minor CSS changes based on FIGMA design
 

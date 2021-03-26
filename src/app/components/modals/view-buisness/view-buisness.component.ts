@@ -62,7 +62,6 @@ export class ViewBuisnessComponent implements OnInit {
     });
     modal.onDidDismiss()
       .then((data) => {
-        console.log("got the data", data)
         if(data.data.status == "delete"){
           this.posts = this.posts.filter((el) => {el.id != data.data.data.id});
         }
@@ -96,7 +95,6 @@ export class ViewBuisnessComponent implements OnInit {
   }
 
    async dismissModal() {
-     console.log("closing")
     const modal = await this.modalCtrl.getTop();
     modal.dismiss();
   }
@@ -106,7 +104,6 @@ export class ViewBuisnessComponent implements OnInit {
       to:     this.buisness.email,
       subject: 'DealsForMeals Buisness Request'
     }).then(() => {
-      console.log("done!")
     }).catch((err) => {
       console.log("something went wrong");
     });

@@ -153,7 +153,6 @@ export class DealService {
       submit = new Date(last);
     }
 
-    console.log("timing", submit);
     return this.afs.collection('deals', (ref) => (
       ref
         .where('createdAt', '<', submit)

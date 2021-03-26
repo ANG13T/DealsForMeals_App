@@ -54,9 +54,7 @@ export class BuisnessesComponent implements OnInit {
     this.userService.user$.subscribe(async (userProfile) => {
       if(userProfile){
         this.user = userProfile;
-        console.log("got user", userProfile);
         this.buisnessService.getBuisnessesNearLocation(this.user.location).then((result) => {
-          console.log("done with result", result);
           this.buisnesses = result;
           this.loadingBuisnesses = false;
         })

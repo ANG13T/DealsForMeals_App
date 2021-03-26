@@ -25,7 +25,6 @@ export class EditPostComponent implements OnInit {
 
   ngOnInit() {
     this.initPost = JSON.parse(JSON.stringify(this.post));
-    console.log("init", this.initPost)
   }
 
   dismissModal(status?: string, post?: Deal){
@@ -48,7 +47,6 @@ export class EditPostComponent implements OnInit {
   };
 
   updatePost(){
-    console.log(this.isDifferent());
     if(this.validateForm()){
       this.loading = true;
       this.dealService.updateDeal(this.post).then(() => {
@@ -124,7 +122,6 @@ export class EditPostComponent implements OnInit {
     const path = `files/${Date.now()}_${file.name}`;
      // Reference to storage bucket
     const ref = this.storage.ref(path);
-    console.log(ref);
 
      // The main task
     task = this.storage.upload(path, file);

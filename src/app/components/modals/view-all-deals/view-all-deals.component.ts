@@ -64,7 +64,6 @@ export class ViewAllDealsComponent implements OnInit {
     await modal.present();
     modal.onDidDismiss()
       .then((data) => {
-        console.log("got the data", data)
         if(data.data.status == "delete"){
           this.deals = this.deals.filter((el) => {el.id != data.data.data.id});
         }
@@ -93,8 +92,6 @@ export class ViewAllDealsComponent implements OnInit {
     });
     modal.onDidDismiss()
       .then((data) => {
-        console.log("got the data", data)
-        console.log(data.role)
         let updatedDeal = data.data.data;
         let restDeals = this.deals.filter(deal => deal.id != updatedDeal.id);
         restDeals.push(updatedDeal);
@@ -117,7 +114,6 @@ export class ViewAllDealsComponent implements OnInit {
         }, {
           text: 'Delete',
           handler: () => {
-            console.log('Confirm Okay');
             this.dealService.deleteDeal(deal).then(() => {
               this.deals = this.deals.filter(data => data.id != deal.id);
             })
