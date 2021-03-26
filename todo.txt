@@ -15,7 +15,6 @@ DO RIGHT NOW:
 - update pagination for buisnesses near you
 - remove console logs
 - minor CSS changes based on FIGMA design
-- update marker design on locations page
 
 
 - sign up page (location not found alert and disable)

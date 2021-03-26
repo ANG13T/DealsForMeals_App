@@ -35,6 +35,7 @@
       <agm-marker *ngFor="let buisness of buisnesses | buisnessCategory: [selectedIndicators]: selectedIndicators | filterBy: ['name']: searchTerm" 
       [latitude]="buisness.location.latitude"
       [longitude]="buisness.location.longitude"
+      [iconUrl]='{"url": markerImage,"scaledSize": {"height": 40, "width": 40}}'
       [markerClickable]="true"
       (markerClick)="openWindow(buisness.id)"
       >

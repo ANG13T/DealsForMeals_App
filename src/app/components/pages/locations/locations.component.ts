@@ -20,6 +20,7 @@ export class LocationsComponent implements OnInit {
 
   map: any;
   user: User;
+  markerImage: string = '../../../../assets/images/buisness-marker.png';
   openedWindow : number = 0;
   buisnesses: User[] = [];
   searchTerm: string;
