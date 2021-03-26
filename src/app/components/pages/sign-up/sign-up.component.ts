@@ -11,8 +11,6 @@ import { ViewEncapsulation } from '@angular/core';
 import * as geofire from 'geofire-common';
 import { MapsAPILoader } from '@agm/core';
 
-declare var google;
-
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -44,18 +42,10 @@ export class SignUpComponent implements OnInit {
     maxResults: 5
   };
 
-  // form location autocomplete
-  GoogleAutocomplete: any;
-  autocomplete: { input: string; };
-  autocompleteItems: any[];
 
 
   constructor(private router: Router, private userService: UserService, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder, public zone: NgZone, private mapsAPILoader: MapsAPILoader) { 
-    this.mapsAPILoader.load().then(() => {
-      this.GoogleAutocomplete = new google.maps.places.AutocompleteService();
-      this.autocomplete = { input: '' };
-      this.autocompleteItems = [];
-    })
+
   }
 
   ngOnInit() {
@@ -272,34 +262,5 @@ export class SignUpComponent implements OnInit {
     }
     return address.slice(0, -2);
   }
-
-  // Autocmoplete Functionality
-  ClearAutocomplete(){
-    this.autocompleteItems = []
-    this.autocomplete.input = ''
-  }
-
-  UpdateSearchResults(){
-    console.log(this.autocomplete.input);
-    if (this.autocomplete.input == '') {
-      this.autocompleteItems = [];
-      return;
-    }
-    console.log(" running the code");
-    this.GoogleAutocomplete.getPlacePredictions({ input: this.autocomplete.input },
-    (predictions, status) => {
-      this.autocompleteItems = [];
-      console.log("the status is", status);
-      console.log("the predications are", predictions)
-      this.zone.run(() => {
-        predictions.forEach((prediction) => {
-          this.autocompleteItems.push(prediction);
-        });
-      });
-    });
-  }
-
-
-
 
 }
