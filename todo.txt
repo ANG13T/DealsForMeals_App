@@ -7,21 +7,17 @@ TODOS:
 
 - location based search on buisness
 
-- update pagination for deals near you
-
-- update pagination for buisnesses near you
-
 - side nav external urls (rate)
-
 
 NEXT STEPS:
 
-
 DO RIGHT NOW:
-- make view profile on location mobile responsive
-- pagination for buisnesses
+- update pagination for buisnesses near you
+- update pagination for deals near you
 - remove console logs
 - minor CSS changes based on FIGMA design
+
+
 - sign up page (location not found alert and disable)
 - make custom location for sign up (Google Places Autocomplete on an ion-input)
 - enter search location for locations page
