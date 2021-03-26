@@ -18,8 +18,8 @@ import * as _ from 'lodash';
 })
 export class BuisnessesComponent implements OnInit {
 
-  // buisnesses: User[] = [];
-  paginationBuisnesses: User[] = [];
+  buisnesses: User[] = [];
+  // paginationBuisnesses: User[] = [];
   user: User;
   filter: boolean = false;
   searchTerm:string = "";
@@ -32,9 +32,9 @@ export class BuisnessesComponent implements OnInit {
 
   disabledControl = new FormControl(false);
 
-  batch: number = 4;
-  last: string = "ZZZZZZZ";
-  empty: boolean = false;
+  // batch: number = 4;
+  // last: string = "ZZZZZZZ";
+  // empty: boolean = false;
 
   constructor(private buisnessService: BuisnessService, private modalController: ModalController, private userService: UserService) { }
 
@@ -55,25 +55,23 @@ export class BuisnessesComponent implements OnInit {
       if(userProfile){
         this.user = userProfile;
         console.log("got user", userProfile);
-        // this.buisnessService.getBuisnessesNearLocation(this.user.location).then((result) => {
-        //   console.log("done with result", result);
-        //   this.buisnesses = result;
-        //   this.loadingBuisnesses = false;
-        // })
-        this.fetchBuisnessesPaginated();
-        this.loadingBuisnesses = false;
+        this.buisnessService.getBuisnessesNearLocation(this.user.location).then((result) => {
+          console.log("done with result", result);
+          this.buisnesses = result;
+          this.loadingBuisnesses = false;
+        })
 
       }
     });
 
   }
 
-  onScroll () {
-    console.log("scroll more")
-    setTimeout(() => {
-      this.fetchBuisnessesPaginated();
-    }, 1500);
-  }
+  // onScroll () {
+  //   console.log("scroll more")
+  //   setTimeout(() => {
+  //     this.fetchBuisnessesPaginated();
+  //   }, 1500);
+  // }
 
   toggleFilter(){
     this.filter = !this.filter;
@@ -99,48 +97,47 @@ export class BuisnessesComponent implements OnInit {
       return result;
   }
 
-  alreadyContainsBuisness(user: User){
-    for(let pageBuisness of this.paginationBuisnesses){
-      if(pageBuisness.uid == user.uid){
-        return true;
-      }
-    }
-    return false;
-  }
+  // alreadyContainsBuisness(user: User){
+  //   for(let pageBuisness of this.paginationBuisnesses){
+  //     if(pageBuisness.uid == user.uid){
+  //       return true;
+  //     }
+  //   }
+  //   return false;
+  // }
 
-  fetchBuisnessesPaginated () {
-    console.log("paginate")
-    this.loadingBuisnesses = true;
-    this.userService.paginate(this.batch, this.last).pipe(
-      map(data => {
-        console.log("gottem data", data);
-        if ( !data.length) {
-          this.empty = true;
-        }
-        let last = _.last(data);
-        if (last) {
-          this.last = last.payload.doc.data().createdAt;
-          data.map(todoSnap => {
-            let resultData = todoSnap.payload.doc.data();
-            let id = todoSnap.payload.doc.id;
-            resultData.id = id;
-            let result = {...resultData} as User;
-            // && this.validLocation(result)
-            if(!this.alreadyContainsBuisness(result)){
-              this.paginationBuisnesses.push(result);
-            }else{
-              if(data.length == 1){
-                this.empty = true;
-              }
-            }
-          })
+  // fetchBuisnessesPaginated () {
+  //   console.log("paginate")
+  //   this.loadingBuisnesses = true;
+  //   this.userService.paginate(this.batch, this.last).pipe(
+  //     map(data => {
+  //       console.log("gottem data", data);
+  //       if ( !data.length) {
+  //         this.empty = true;
+  //       }
+  //       let last = _.last(data);
+  //       if (last) {
+  //         this.last = last.payload.doc.data().createdAt;
+  //         data.map(todoSnap => {
+  //           let resultData = todoSnap.payload.doc.data();
+  //           let id = todoSnap.payload.doc.id;
+  //           resultData.id = id;
+  //           let result = {...resultData} as User;
+  //           if(!this.alreadyContainsBuisness(result)){
+  //             this.paginationBuisnesses.push(result);
+  //           }else{
+  //             if(data.length == 1){
+  //               this.empty = true;
+  //             }
+  //           }
+  //         })
 
-          console.log("done", this.paginationBuisnesses)
-          this.loadingBuisnesses = false;
-        }
-      })
-    ).subscribe();
-  }
+  //         console.log("done", this.paginationBuisnesses)
+  //         this.loadingBuisnesses = false;
+  //       }
+  //     })
+  //   ).subscribe();
+  // }
 
 
 }
