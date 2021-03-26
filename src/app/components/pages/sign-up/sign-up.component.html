@@ -38,10 +38,10 @@
           <ion-icon name="location-outline"></ion-icon>
           Get Location
         </ion-button>
-        <agm-map [latitude]="location.latitude" [longitude]="location.longitude" [hidden]="location.fullAddress == ''">
+        <!-- <agm-map [latitude]="location.latitude" [longitude]="location.longitude" [hidden]="location.fullAddress == ''">
           <agm-marker [latitude]="location.latitude"
                   [longitude]="location.longitude"></agm-marker>
-        </agm-map>
+        </agm-map> -->
 
         <!-- <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="UpdateSearchResults()" placeholder="Search for a place"  (ionClear)="ClearAutocomplete()"></ion-searchbar>
         <p>hello</p>
@@ -51,7 +51,8 @@
           </ion-item>
         </ion-list> -->
 
-        <input ngx-google-places-autocomplete #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
+        <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" placeholder="Enter your address"/>
+        
         
         
         <div class="buttons">

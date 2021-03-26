@@ -45,6 +45,13 @@ export class SignUpComponent implements OnInit {
     maxResults: 5
   };
 
+  options={
+    componentRestrictions:{
+      country: ["us", "ca"]
+    },
+    fields: ["address_components", "geometry"],
+    types: ["address"]
+  }
 
 
   constructor(private router: Router, private userService: UserService, private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder, public zone: NgZone, private mapsAPILoader: MapsAPILoader) { 
@@ -96,6 +103,9 @@ export class SignUpComponent implements OnInit {
 
   public handleAddressChange(address: Address) {
     console.log("the adress", address);
+    let long = address.geometry.location.lng();
+    let lat = address.geometry.location.lat();
+    this.location = { fullAddress: "ddjkhksjadjdsa", longitude: long, latitude: lat, locality: "", subLocality: "", thoroughfare: "", subThoroughfare: "", administrativeArea: "", subAdministrativeArea: "", postalCode: "", countryCode: "" } as Location;
   }
 
   async signUp() {
