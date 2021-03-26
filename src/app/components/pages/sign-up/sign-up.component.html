@@ -34,10 +34,10 @@
       </mat-step>
       <mat-step *ngIf="isBusiness">
         <ng-template matStepLabel>Step 2</ng-template>
-        <ion-button (click)="getGeolocation()" class="location-button" expand="full">
+        <!-- <ion-button (click)="getGeolocation()" class="location-button" expand="full">
           <ion-icon name="location-outline"></ion-icon>
           Get Location
-        </ion-button>
+        </ion-button> -->
         <!-- <agm-map [latitude]="location.latitude" [longitude]="location.longitude" [hidden]="location.fullAddress == ''">
           <agm-marker [latitude]="location.latitude"
                   [longitude]="location.longitude"></agm-marker>
@@ -52,8 +52,20 @@
         </ion-list> -->
 
         <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" placeholder="Enter your address"/>
-        
-        
+
+        <!-- <div class="description-zone" [hidden]="location.fullAddress == ''">
+          <h3>Address Description:</h3>
+          <h4>Street</h4>
+          <h4>{{}}</h4>
+          <h4>City</h4>
+          <h4>{{}}</h4>
+          <h4>State</h4>
+          <h4>{{}}</h4>
+          <h4>Country</h4>
+          <h4>{{}}</h4>
+          <h4>Zip Code</h4>
+          <h4>{{}}</h4>
+        </div> -->
         
         <div class="buttons">
           <button mat-button matStepperPrevious class="continue-button back-button">Back</button>

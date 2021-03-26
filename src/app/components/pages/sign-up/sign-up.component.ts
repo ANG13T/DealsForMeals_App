@@ -13,12 +13,24 @@ import { MapsAPILoader } from '@agm/core';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete/ngx-google-places-autocomplete.directive';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 
+interface AddressInfo {
+  postalCode: string;
+  administrativeArea: string;
+  countryCode: string;
+  locality: string;
+  subAdministrativeArea: string;
+  subLocality: string;
+  subThoroughfare: string;
+  thoroughfare: string;
+} 
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./sign-up.component.scss']
 })
+
 export class SignUpComponent implements OnInit {
   @ViewChild('map') mapElement: ElementRef;
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
@@ -49,7 +61,7 @@ export class SignUpComponent implements OnInit {
     componentRestrictions:{
       country: ["us", "ca"]
     },
-    fields: ["address_components", "geometry"],
+    fields: ["address_components", "geometry", "formatted_address"],
     types: ["address"]
   }
 
@@ -103,9 +115,13 @@ export class SignUpComponent implements OnInit {
 
   public handleAddressChange(address: Address) {
     console.log("the adress", address);
+    console.log("the adress", address.adr_address);
+    console.log("the adress", address.formatted_address);
     let long = address.geometry.location.lng();
     let lat = address.geometry.location.lat();
-    this.location = { fullAddress: "ddjkhksjadjdsa", longitude: long, latitude: lat, locality: "", subLocality: "", thoroughfare: "", subThoroughfare: "", administrativeArea: "", subAdministrativeArea: "", postalCode: "", countryCode: "" } as Location;
+    this.getAddressInfo(address.address_components);
+    
+    this.location = { fullAddress: address.formatted_address, longitude: long, latitude: lat, locality: "", subLocality: "", thoroughfare: "", subThoroughfare: "", administrativeArea: "", subAdministrativeArea: "", postalCode: "", countryCode: "" } as Location;
   }
 
   async signUp() {
@@ -263,6 +279,19 @@ export class SignUpComponent implements OnInit {
     this.location.subLocality = locationData.subLocality;
     this.location.thoroughfare = locationData.thoroughfare;
     this.location.subThoroughfare = locationData.subThoroughfare;
+  }
+
+  filterType(type: string, data: any[]){
+    var result = data.find(obj => {
+      return obj.types == [type];
+    })
+    return result;
+  }
+
+  // get address places info
+  getAddressInfo(data: any[]){
+    // let addressInfo: AddressInfo = {postalCode: this.filterType("street_number", data)}
+    console.log(this.filterType("street_number", data))
   }
 
   //Return Comma saperated address
