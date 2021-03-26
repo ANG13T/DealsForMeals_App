@@ -18,7 +18,7 @@ export class BuisnessService {
 
   }
 
-  buisnesses$ = this.afs.collection("users", ref => ref.where('isBusiness', '==', true)).snapshotChanges().pipe(map(actions => {
+  buisnesses$ = this.afs.collection("users", ref => ref.where('isBusiness', '==', true).orderBy('hash')).snapshotChanges().pipe(map(actions => {
     return actions.map(p => {
       const doc = p.payload.doc;
       const docData: any = doc.data();
