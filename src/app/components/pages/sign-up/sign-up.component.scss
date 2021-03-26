@@ -17,6 +17,31 @@
     color: red;
 }
 
+.places-input{
+    width: 85vw;
+    border-radius: 10px;
+    height: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    outline: none;
+}
+
+.description-zone{
+    text-align: left;
+    padding-left: 1rem;
+    h3, h4{
+        margin-bottom: 0px;
+    }
+
+    h3{
+        color: rgb(46, 45, 45);
+    }
+
+    h4{
+        color: rgb(87, 85, 85);
+    }
+}
+
 .header{
     color: #666A86;
     --border-width: 0px !important;

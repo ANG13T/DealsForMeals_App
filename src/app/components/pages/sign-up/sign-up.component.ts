@@ -293,8 +293,16 @@ export class SignUpComponent implements OnInit {
     let subthroughfare = this.filterType("street_number", data).short_name;
     let throughfare = this.filterType("route", data).short_name;
     let subLocality = this.filterType("locality", data).long_name;
-    let locality = this.filterType("administrative_area_level_2", data).short_name;
-    let subAdministrativeArea = this.filterType("administrative_area_level_2", data).long_name;
+    let locality;
+    let subAdministrativeArea;
+    if(this.filterType("administrative_area_level_2", data)){
+       locality = this.filterType("administrative_area_level_2", data).short_name;
+       subAdministrativeArea = this.filterType("administrative_area_level_2", data).long_name;
+    }else{
+      locality = this.filterType("political", data).short_name;
+      subAdministrativeArea = this.filterType("political", data).long_name;
+    }
+    
     let administrativeArea = this.filterType("administrative_area_level_1", data).short_name;
     let countryCode = this.filterType("country", data).short_name;
     let postalCode = this.filterType("postal_code", data).short_name;
