@@ -13,6 +13,8 @@ import { Location } from 'src/app/shared/models/location.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import { FormControl } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { map } from 'rxjs/operators';
+import * as _ from 'lodash';
 
 @UntilDestroy()
 @Component({
@@ -23,6 +25,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 export class BuisnessesComponent implements OnInit {
 
   buisnesses: User[] = [];
+  paginationBuisnesses: User[] = [];
   user: User;
   filter: boolean = false;
   searchTerm:string = "";
@@ -34,6 +37,10 @@ export class BuisnessesComponent implements OnInit {
   chipsControlValue$ = this.categoryControl.valueChanges;
 
   disabledControl = new FormControl(false);
+
+  batch: number = 4;
+  last: any = Date.now();
+  empty: boolean = false;
 
   constructor(private buisnessService: BuisnessService, private modalController: ModalController, private userService: UserService) { }
 
@@ -52,14 +59,24 @@ export class BuisnessesComponent implements OnInit {
       if(userProfile){
         this.user = userProfile;
         console.log("got user", userProfile);
-        this.buisnessService.getBuisnessesNearLocation(this.user.location).then((result) => {
-          console.log("done with result", result);
-          this.buisnesses = result;
-          this.loadingBuisnesses = false;
-        })
+        // this.buisnessService.getBuisnessesNearLocation(this.user.location).then((result) => {
+        //   console.log("done with result", result);
+        //   this.buisnesses = result;
+        //   this.loadingBuisnesses = false;
+        // })
+        this.fetchBuisnessesPaginated();
+        this.loadingBuisnesses = false;
+
       }
     });
 
+  }
+
+  onScroll () {
+    console.log("scroll more")
+    setTimeout(() => {
+      this.fetchBuisnessesPaginated();
+    }, 1500);
   }
 
   toggleFilter(){
@@ -84,6 +101,27 @@ export class BuisnessesComponent implements OnInit {
   getSubLocation(location: Location){
       let result = `${location.locality} ${location.administrativeArea}, ${location.postalCode}`;
       return result;
+  }
+
+  fetchBuisnessesPaginated () {
+    console.log("paginate")
+    this.userService.paginate(this.batch, this.last).pipe(
+      map(data => {
+        console.log("gottem data", data);
+        if ( !data.length) {
+          this.empty = true;
+        }
+        let last = _.last(data);
+        if (last) {
+          this.last = last.payload.doc.data().createdAt;
+          data.map(todoSnap => {
+            this.paginationBuisnesses.push(todoSnap.payload.doc.data());
+          })
+
+          console.log("done", this.paginationBuisnesses)
+        }
+      })
+    ).subscribe();
   }
 
 
