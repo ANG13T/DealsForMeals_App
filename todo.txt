@@ -13,7 +13,6 @@ NEXT STEPS:
 
 DO RIGHT NOW:
 - update pagination for buisnesses near you
-- update pagination for deals near you
 - remove console logs
 - minor CSS changes based on FIGMA design
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, DocumentChangeAction } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { User } from '../models/user.model';
@@ -203,5 +203,15 @@ export class UserService {
     })
   }
 
+// Pagination Methods
+paginate(limit: number, last: string): Observable<DocumentChangeAction<any>[]> {
 
+  return this.afs.collection('users', (ref) => (
+    ref
+      .where('uid', '<', last)
+      .orderBy('uid', 'desc')
+      .orderBy('hash')
+      .limit(limit)
+  )).snapshotChanges();
+}
 }
