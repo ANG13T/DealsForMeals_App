@@ -119,9 +119,9 @@ export class SignUpComponent implements OnInit {
     console.log("the adress", address.formatted_address);
     let long = address.geometry.location.lng();
     let lat = address.geometry.location.lat();
-    this.getAddressInfo(address.address_components);
+    let addressInfo = this.getAddressInfo(address.address_components);
     
-    this.location = { fullAddress: address.formatted_address, longitude: long, latitude: lat, locality: "", subLocality: "", thoroughfare: "", subThoroughfare: "", administrativeArea: "", subAdministrativeArea: "", postalCode: "", countryCode: "" } as Location;
+    this.location = { fullAddress: address.formatted_address, longitude: long, latitude: lat, locality: addressInfo.locality, subLocality: addressInfo.subLocality, thoroughfare: addressInfo.thoroughfare, subThoroughfare: addressInfo.subThoroughfare, administrativeArea: addressInfo.administrativeArea, subAdministrativeArea: addressInfo.subAdministrativeArea, postalCode: addressInfo.postalCode, countryCode: addressInfo.countryCode } as Location;
   }
 
   async signUp() {
@@ -283,15 +283,23 @@ export class SignUpComponent implements OnInit {
 
   filterType(type: string, data: any[]){
     var result = data.find(obj => {
-      return obj.types == [type];
+      return obj.types.includes(type);
     })
     return result;
   }
 
   // get address places info
   getAddressInfo(data: any[]){
-    // let addressInfo: AddressInfo = {postalCode: this.filterType("street_number", data)}
-    console.log(this.filterType("street_number", data))
+    let subthroughfare = this.filterType("street_number", data).short_name;
+    let throughfare = this.filterType("route", data).short_name;
+    let subLocality = this.filterType("locality", data).long_name;
+    let locality = this.filterType("administrative_area_level_2", data).short_name;
+    let subAdministrativeArea = this.filterType("administrative_area_level_2", data).long_name;
+    let administrativeArea = this.filterType("administrative_area_level_1", data).short_name;
+    let countryCode = this.filterType("country", data).short_name;
+    let postalCode = this.filterType("postal_code", data).short_name;
+    let addressInfo: AddressInfo = {postalCode: postalCode, subLocality: subLocality, locality: locality, subAdministrativeArea: subAdministrativeArea, countryCode: countryCode, subThoroughfare: subthroughfare, thoroughfare: throughfare, administrativeArea: administrativeArea};
+    return addressInfo;
   }
 
   //Return Comma saperated address

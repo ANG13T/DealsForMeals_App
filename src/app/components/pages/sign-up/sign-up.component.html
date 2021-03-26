@@ -53,19 +53,19 @@
 
         <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" placeholder="Enter your address"/>
 
-        <!-- <div class="description-zone" [hidden]="location.fullAddress == ''">
+        <div class="description-zone" [hidden]="location.fullAddress == ''">
           <h3>Address Description:</h3>
           <h4>Street</h4>
-          <h4>{{}}</h4>
+          <h4>{{location.subThoroughfare}} {{location.thoroughfare}}</h4>
           <h4>City</h4>
-          <h4>{{}}</h4>
+          <h4>{{location.subLocality}}</h4>
           <h4>State</h4>
-          <h4>{{}}</h4>
+          <h4>{{location.locality}}</h4>
           <h4>Country</h4>
-          <h4>{{}}</h4>
+          <h4>{{location.countryCode}}</h4>
           <h4>Zip Code</h4>
-          <h4>{{}}</h4>
-        </div> -->
+          <h4>{{location.postalCode}}</h4>
+        </div>
         
         <div class="buttons">
           <button mat-button matStepperPrevious class="continue-button back-button">Back</button>
