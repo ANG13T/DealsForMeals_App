@@ -65,12 +65,19 @@ export class LocationsComponent implements OnInit {
         }
 
         let resultantLocation = this.userLocation ? this.userLocation : this.user.location;
+
+        this.businessService.buisnesses$.subscribe((buisnesses) => {
+          console.log("buisnesses are", buisnesses)
+          this.buisnesses = buisnesses;
+          this.loading = false;
+          this.dismissLoading();
+        })
         
-          this.businessService.getBuisnessesNearLocation(resultantLocation).then((result) => {
-            this.buisnesses = result;
-            this.loading = false;
-            this.dismissLoading();
-          });
+          // this.businessService.getBuisnessesNearLocation(resultantLocation).then((result) => {
+          //   this.buisnesses = result;
+          //   this.loading = false;
+          //   this.dismissLoading();
+          // });
       }
     })
   }

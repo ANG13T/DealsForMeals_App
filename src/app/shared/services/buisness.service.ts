@@ -18,15 +18,12 @@ export class BuisnessService {
 
   }
 
-  buisnesses$ = this.afs.collection("users").snapshotChanges().pipe(map(actions => {
+  buisnesses$ = this.afs.collection("users", ref => ref.where('isBusiness', '==', true)).snapshotChanges().pipe(map(actions => {
     return actions.map(p => {
       const doc = p.payload.doc;
       const docData: any = doc.data();
-      if(docData.accountType != "foodie"){
-        let user: User = { uid: doc.id, name: docData.name, email: docData.email, accountType: docData.accountType, lat: docData.lat, lng: docData.lng, hash: docData.hash, phoneNumber: docData.phoneNumber, description: docData.description, location: docData.location, photoURL: docData.photoURL, isBusiness: docData.isBusiness };
-        return user;
-      }
-      return;
+      let user: User = { uid: doc.id, name: docData.name, email: docData.email, accountType: docData.accountType, lat: docData.lat, lng: docData.lng, hash: docData.hash, phoneNumber: docData.phoneNumber, description: docData.description, location: docData.location, photoURL: docData.photoURL, isBusiness: docData.isBusiness };
+      return user;
     });
   }))
 

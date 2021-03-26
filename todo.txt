@@ -5,18 +5,19 @@ TODOS:
 
 - location based search on location maps + remove name based search? (test before remove) 
 
-- location based search on buisness
-
 - side nav external urls (rate)
 
 - foodie functionality
 
+- update location functionality on buisness update profile
+
 NEXT STEPS:
 
 DO RIGHT NOW:
+- locations code: get buisnesses and order based on closest locations 
 - sign up page (location not found alert and disable)
 - send email functionality
-- fix locations code resizing 
 - enter search location for locations page
 
+- fix locations code resizing 
 - minor CSS changes based on FIGMA design (view buisness responsiveness, home page)
