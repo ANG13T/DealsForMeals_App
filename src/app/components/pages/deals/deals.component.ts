@@ -87,25 +87,6 @@ export class DealsComponent implements OnInit {
     return false;
   }
 
-  filterByLocation(data: Deal[]){
-    let center = [this.user.location.latitude, this.user.location.longitude];
-    const radiusInM = 50 * 1000;
-
-    let matchingData: Deal[] = [];
-    data.forEach((deal) => {
-      const lat = deal.lat;
-      const lng = deal.lng;
-
-      const distanceInKm = geofire.distanceBetween([lat, lng], center);
-      const distanceInM = distanceInKm * 1000;
-      if (distanceInM <= radiusInM) {
-        matchingData.push(deal);
-      }
-    })
-
-    console.log("completed", matchingData);
-  }
-
   validLocation(data:  Deal): boolean {
     let center = [this.user.location.latitude, this.user.location.longitude];
     const radiusInM = 50 * 1000;
@@ -140,12 +121,7 @@ export class DealsComponent implements OnInit {
             let id = todoSnap.payload.doc.id;
             resultData.id = id;
             let result = {...resultData} as Deal;
-            if(!this.alreadyContainsDeal(result)){
-              if(this.validLocation(result)){
-                console.log("valid location")
-              }else{
-                console.log("invalid location")
-              }
+            if(!this.alreadyContainsDeal(result) && this.validLocation(result)){
               this.paginationDeals.push(result);
             }else{
               if(data.length == 1){
