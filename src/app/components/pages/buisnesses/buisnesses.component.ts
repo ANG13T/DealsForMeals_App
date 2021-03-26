@@ -1,14 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Deal } from 'src/app/shared/models/deal.model';
 import { User } from 'src/app/shared/models/user.model';
 import { BuisnessService } from 'src/app/shared/services/buisness.service';
-import { DealService } from 'src/app/shared/services/deal.service';
 import { ViewBuisnessComponent } from '../../modals/view-buisness/view-buisness.component';
-import { IonRouterOutlet } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
-import { Observable } from 'rxjs/internal/Observable';
-import { ViewDealComponent } from '../../modals/view-deal/view-deal.component';
-import * as firebase from 'firebase/app';
 import { Location } from 'src/app/shared/models/location.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import { FormControl } from '@angular/forms';

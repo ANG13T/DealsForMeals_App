@@ -7,6 +7,9 @@ import { User } from '../models/user.model';
 export class BuisnessCategoryPipe implements PipeTransform {
 
   transform(buisnesses: User[], categories: string[], freePass?: string) {
+    if(!buisnesses){
+      return;
+    }
     if(freePass == "all"){
       return buisnesses;
     }
@@ -17,7 +20,12 @@ export class BuisnessCategoryPipe implements PipeTransform {
       }
       return cat;
     })
-    return buisnesses.filter(buisness => modifiedCategories.includes(buisness.accountType));
+    return buisnesses.filter(buisness => {
+      if(buisness){
+        modifiedCategories.includes(buisness.accountType)
+      }
+      
+    });
   }
 
 }

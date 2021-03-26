@@ -24,8 +24,8 @@
       <div class="general-section" [hidden]="searchTerm != ''">
         <h3 [hidden]="(!loadingBuisnesses && buisnesses.length == 0)" class="near-you">Locations Near You</h3>
         <div class="foodbanks-section">
-          <div class="foodbanks" [hidden]="loadingBuisnesses">
-            <div class="foodbank" *ngFor="let foodbank of buisnesses | buisnessCategory: categoryControl.value"
+          <div class="foodbanks" [hidden]="loadingBuisnesses || !paginationBuisnesses">
+            <div class="foodbank" *ngFor="let foodbank of paginationBuisnesses | buisnessCategory: categoryControl.value"
               (click)="openBuisness(foodbank)">
               <ion-item>
                 <ion-thumbnail slot="start" style="background-color: rgb(192, 184, 184);">
@@ -69,8 +69,8 @@
             </div>
           </div>
 
-          <ion-infinite-scroll *ngIf="loadingBuisnesses">
-            <ion-infinite-scroll-content loadingSpinner="crescent">
+          <ion-infinite-scroll *ngIf="!empty">
+            <ion-infinite-scroll-content loadingSpinner="crescent" *ngIf="!empty">
             </ion-infinite-scroll-content>
           </ion-infinite-scroll>
         </div>
