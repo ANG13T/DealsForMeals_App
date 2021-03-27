@@ -1,6 +1,6 @@
 <div>
   <ion-content *ngIf="user" no-bounce> 
-    <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" [(ngModel)]="searchTerm" (onAddressChange)="handleAddressChange($event)" placeholder="Search for Location" class="places-input"/>
+    <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" [(ngModel)]="searchTerm" (onAddressChange)="handleAddressChange($event)" placeholder="Search for Location" id="places-input"/>
     <div class="indicators">
       <div class="indicator" (click)="toggleIndicators('foodbanks')" [ngClass]="{'foodbanksIndicator': toggledFoodbanks}">
         <ion-icon name="nutrition-outline"></ion-icon>
