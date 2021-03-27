@@ -2,10 +2,9 @@
   <h3 class="title">Send Message</h3>
   <h4>TO: {{data.buisness.email}}</h4>
   <h4>MESSAGE</h4>
-  <textarea name="" id="" cols="30" rows="10" [(ngModel)]="message">
-
+  <textarea cols="30" rows="10" [(ngModel)]="message" maxlength="2000">
   </textarea>
-  <p class="chars-remain">1000 characters left</p>
-  <button class="send-button">SEND</button>
-  <button class="cancel-button">CANCEL</button>
+  <p class="chars-remain">{{message.length}} / 2000</p>
+  <button class="send-button" (click)="sendEmail()">SEND</button>
+  <button class="cancel-button" mat-dialog-close>CANCEL</button>
 </div>
