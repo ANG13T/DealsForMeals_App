@@ -2,6 +2,7 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const nodemailer = require('nodemailer');
 const cors = require('cors')({origin: true});
+import credentials from './config/credentials';
 admin.initializeApp();
 
 /**
@@ -10,26 +11,29 @@ admin.initializeApp();
 let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'yourgmailaccount@gmail.com',
-        pass: 'yourgmailaccpassword'
+        user: credentials.gmail,
+        pass: credentials.gmail_password
     }
 });
 
 exports.sendMail = functions.https.onRequest((req, res) => {
     cors(req, res, () => {
-      
-        // getting dest email by query string
         const dest = req.query.dest;
+        // const senderEmail = req.query.senderEmail;
         const message = req.query.message;
+        const username = req.query.username;
 
         const mailOptions = {
-            from: 'Your Account Name <yourgmailaccount@gmail.com>', // Something like: Jane Doe <janedoe@gmail.com>
+            from: `"DealsForMeals" <${credentials.gmail}>`, 
             to: dest,
-            subject: 'I\'M A PICKLE!!!', // email subject
-            html: `<p style="font-size: 16px;">Pickle Riiiiiiiiiiiiiiiick!!</p>
-                <br />
-                <img src="https://images.prod.meredith.com/product/fc8754735c8a9b4aebb786278e7265a5/1538025388228/l/rick-and-morty-pickle-rick-sticker" />
-            ` // email content in HTML
+            subject: `[DealsForMeals] You've received a message from ${username}`, 
+            text: message,
+            html: `
+            <h3>You've received a message from ${username}</h3>
+            <p>
+             ${message}
+            </p>
+            `
         };
   
         // returning result
