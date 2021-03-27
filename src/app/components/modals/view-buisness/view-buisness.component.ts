@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { User } from 'src/app/shared/models/user.model';
 import { BuisnessService } from 'src/app/shared/services/buisness.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -7,7 +7,8 @@ import { Deal } from 'src/app/shared/models/deal.model';
 import { DealService } from 'src/app/shared/services/deal.service';
 import { ViewDealComponent } from '../view-deal/view-deal.component';
 import { ViewAllDealsComponent } from '../view-all-deals/view-all-deals.component';
-import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { SendEmailComponent } from '../send-email/send-email.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-view-buisness',
@@ -25,7 +26,7 @@ export class ViewBuisnessComponent implements OnInit {
   displayLocation: string;
   selectedIndex: string = "deals";
 
-  constructor(private buisnessService: BuisnessService, private route:ActivatedRoute, private router: Router, private modalCtrl: ModalController, private dealService: DealService, private modalController: ModalController, private emailSender: EmailComposer) { }
+  constructor(private buisnessService: BuisnessService, private route:ActivatedRoute, private router: Router, private modalCtrl: ModalController, private dealService: DealService, private modalController: ModalController, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.loadingPosts = true;
@@ -100,13 +101,9 @@ export class ViewBuisnessComponent implements OnInit {
   }
 
   contactBuisness(){
-    console.log("clicked contatc")
-    this.emailSender.open({
-      to:     this.buisness.email,
-      subject: 'DealsForMeals Buisness Request'
-    }).then(() => {
-    }).catch((err) => {
-      console.log("something went wrong");
+    this.dialog.open(SendEmailComponent, {
+      width: '250px',
+      data: {buisness: this.buisness}
     });
   }
 

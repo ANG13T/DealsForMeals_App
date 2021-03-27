@@ -10,6 +10,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDialogModule,
     MatSelectModule,
     MatTabsModule,
     MatIconModule,

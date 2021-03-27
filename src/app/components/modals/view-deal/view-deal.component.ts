@@ -1,13 +1,13 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActionSheetController, ModalController } from '@ionic/angular';
 import { Deal } from 'src/app/shared/models/deal.model';
 import { AlertController } from '@ionic/angular';
 import { DealService } from 'src/app/shared/services/deal.service';
 import { EditPostComponent } from '../edit-post/edit-post.component';
 import { UserService } from 'src/app/shared/services/user.service';
-import { MatTabChangeEvent } from '@angular/material/tabs';
-import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { SendEmailComponent } from '../send-email/send-email.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-deal',
@@ -26,7 +26,7 @@ export class ViewDealComponent implements OnInit {
   uid: string;
   selectedIndex: string = "description";
 
-  constructor(private router: Router, private route: ActivatedRoute, private modalController: ModalController, public alertController: AlertController, private dealService: DealService, public actionSheetController: ActionSheetController, private userService: UserService, private emailSender: EmailComposer) { }
+  constructor(private router: Router, private modalController: ModalController, public alertController: AlertController, private dealService: DealService, public actionSheetController: ActionSheetController, private userService: UserService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.userService.user$.subscribe((userProfile) => {
@@ -120,13 +120,9 @@ export class ViewDealComponent implements OnInit {
 
 
   contactBuisness(){
-    this.emailSender.open({
-      to: this.post.userProfile.email,
-      subject: 'DealsForMeals Buisness Request'
-    }).then(() => {
-      console.log("done!")
-    }).catch((err) => {
-      console.log("something went wrong");
+    this.dialog.open(SendEmailComponent, {
+      width: '250px',
+      data: {buisness: this.post.userProfile}
     });
   }
 
