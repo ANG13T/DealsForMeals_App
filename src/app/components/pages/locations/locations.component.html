@@ -9,14 +9,14 @@
     [latitude]="mapLatitiude"
     [longitude]="mapLongitude"
     [usePanning]="true">
-      <agm-marker *ngFor="let buisness of buisnesses | buisnessCategory: categoryControl.value | filterBy: ['name']: searchTerm" 
+      <agm-marker *ngFor="let buisness of buisnesses | buisnessCategory: categoryControl.value" 
       [latitude]="buisness.location.latitude"
       [longitude]="buisness.location.longitude"
       [iconUrl]='{"url": markerImage,"scaledSize": {"height": 40, "width": 40}}'
       [markerClickable]="true"
-      (markerClick)="openWindow(buisness.id)"
+      (markerClick)="openWindow(buisness.uid)"
       >
-      <agm-info-window style="width: 200px;" [isOpen]="isInfoWindowOpen(buisness.id)">
+      <agm-info-window style="width: 200px;" [isOpen]="isInfoWindowOpen(buisness.uid)">
         <div class="buisness-info-display">
           <img src={{buisness.photoURL}} />
           <div class="display-content">
@@ -33,7 +33,7 @@
 
   <ion-bottom-sheet title="Buisnesses Near You" [hideCloseButton]="true" [state]="defaultSheetState" [minHeight]="mapMinHeight" id="sheet">
     <ion-list [hidden]="searchTerm == '' && categoryControl.value == buisnessOptions">
-      <ion-item *ngFor="let buisness of buisnesses | buisnessCategory: categoryControl.value | filterBy: ['name']: searchTerm" (click)="openWindow(buisness.id)">
+      <ion-item *ngFor="let buisness of buisnesses | buisnessCategory: categoryControl.value" (click)="openWindow(buisness.uid)">
         <ion-thumbnail slot="start">
           <img src={{buisness.photoURL}}>
         </ion-thumbnail>
@@ -51,7 +51,7 @@
     </ion-list>
 
     <ion-list [hidden]="searchTerm != '' || categoryControl.value != buisnessOptions">
-      <ion-item *ngFor="let buisness of buisnesses | slice:0:4" (click)="openWindow(buisness.id)">
+      <ion-item *ngFor="let buisness of buisnesses | slice:0:4" (click)="openWindow(buisness.uid)">
         <ion-thumbnail slot="start">
           <img src={{buisness.photoURL}}>
         </ion-thumbnail>

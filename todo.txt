@@ -11,6 +11,8 @@ TODOS:
 
 - fix deals page
 
+- add ads 
+
 - update location functionality on buisness update profile
 
 NEXT STEPS:
@@ -19,8 +21,6 @@ DO RIGHT NOW:
 - locations code: order based on closest locations 
 - sign up page (location not found alert and disable)
 - send email functionality
-- enter search location for locations page
 
 - fix locations code resizing 
-- fix locations code marker clicking 
 - minor CSS changes based on FIGMA design (view buisness responsiveness, home page)
