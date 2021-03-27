@@ -1,25 +1,41 @@
 .send-email-dialog{
     .title{
-
+        font-weight: bold;
+        color: #3880ff;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
     }
 
     h4{
-
+        font-weight: bold;
+        margin-bottom: 8px;
     }
 
     textarea{
-
+        width: 100%;
+        border-radius: 0px;
+        border-color: #a1a4b5;
     }
 
-    chars-remain{
-
+    .chars-remain{
+        text-align: right;
+        color: #757373;
     }
 
     .send-button{
-
+        width: 100%;
+        background-color: #3880ff;
+        color: white;
+        height: 2rem;
+        border-radius: 4px;
+        margin-bottom: 1rem;
+        font-weight: bold;
     }
 
     .cancel-button{
-        
+        width: 100%;
+        background-color: white;
+        color: gray;
+        font-weight: bold;
     }
 }
