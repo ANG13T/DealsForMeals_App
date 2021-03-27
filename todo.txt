@@ -9,6 +9,8 @@ TODOS:
 
 - foodie functionality
 
+- fix deals page
+
 - update location functionality on buisness update profile
 
 NEXT STEPS:

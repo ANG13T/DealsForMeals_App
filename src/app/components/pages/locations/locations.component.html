@@ -1,7 +1,7 @@
 <div>
   <ion-content *ngIf="user" no-bounce> 
     <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" [(ngModel)]="searchTerm" (onAddressChange)="handleAddressChange($event)" placeholder="Search for Location" id="places-input"/>
-    <div class="indicators">
+    <!-- <div class="indicators">
       <div class="indicator" (click)="toggleIndicators('foodbanks')" [ngClass]="{'foodbanksIndicator': toggledFoodbanks}">
         <ion-icon name="nutrition-outline"></ion-icon>
       </div>
@@ -11,7 +11,9 @@
       <div class="indicator" (click)="toggleIndicators('others')" [ngClass]="{'othersIndicator': toggledOthers}">
         <ion-icon name="business-outline"></ion-icon>
       </div>
-    </div>
+    </div> -->
+    <app-chips-select [options]="buisnessOptions" [formControl]="categoryControl" id="chip-select">
+    </app-chips-select>
     
     <agm-map 
     [zoom]="zoom" 

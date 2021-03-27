@@ -9,6 +9,7 @@ import { ViewBuisnessComponent } from '../../modals/view-buisness/view-buisness.
 import { Location } from '../../../shared/models/location.model';
 import { SheetState } from 'ion-bottom-sheet';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
+import { FormControl } from '@angular/forms';
 
 declare var google: any;
 
@@ -38,6 +39,12 @@ export class LocationsComponent implements OnInit {
   userLocation: Location = null;
 
   @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
+
+  buisnessOptions = ["Foodbanks", "Restaurants", "Other"];
+
+  categoryControl = new FormControl(this.buisnessOptions);
+
+  chipsControlValue$ = this.categoryControl.valueChanges;
 
   options={
     componentRestrictions:{
