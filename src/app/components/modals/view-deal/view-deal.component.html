@@ -17,7 +17,7 @@
 <div class="main">
   <h1 class="title">{{post.title | uppercase}}</h1>
   <ion-skeleton-text animated [hidden]="post.title != ''" style="height: 3vh;" class="skeleton"></ion-skeleton-text>
-  <h3 class="location">{{displayLocation}}</h3>
+  <h3 class="location-display">{{displayLocation}}</h3>
   <ion-skeleton-text animated [hidden]="displayLocation != ''" style="height: 3vh; margin-bottom: 2rem;" class="skeleton"></ion-skeleton-text>
   <!-- TODO: skeleton for on loading -->
   <ion-slides pager>

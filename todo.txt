@@ -3,8 +3,6 @@ TODOS:
 
 - any page with user (location not found alert and disable)
 
-- location based search on location maps + remove name based search? (test before remove) 
-
 - side nav external urls (rate)
 
 - foodie functionality
@@ -22,5 +20,5 @@ DO RIGHT NOW:
 - sign up page (location not found alert and disable)
 - send email functionality
 
-- fix locations code resizing 
+- fix scroll on view buisness
 - minor CSS changes based on FIGMA design (view buisness responsiveness, home page)

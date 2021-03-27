@@ -25,14 +25,14 @@
 }
 
 
-input{
-    width: 80%;
-    height: 2rem;
-    border-radius: 7px;
-    border-color: transparent;
-    background-color: #e3e4f9;
-    border: 1px solid #4043e1;
-}
+// input{
+//     width: 80%;
+//     height: 2rem;
+//     border-radius: 7px;
+//     border-color: transparent;
+//     background-color: #e3e4f9;
+//     border: 1px solid #4043e1;
+// }
 
 .post-image{
     width: 100% !important;
@@ -80,7 +80,7 @@ input{
     text-transform: capitalize !important;
 }
 
-.location{
+.location-display{
     text-align: left;
     margin-left: 32px !important;
     text-overflow: ellipsis;
