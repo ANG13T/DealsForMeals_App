@@ -23,7 +23,7 @@ export class LocationsComponent implements OnInit {
   markerImage: string = '../../../../assets/images/buisness-marker.png';
   openedWindow : number = 0;
   buisnesses: User[] = [];
-  searchTerm: string;
+  searchTerm: string = "";
   mapLongitude: number = 0;
   mapLatitiude: number = 0;
   mapMinHeight: number = 150;

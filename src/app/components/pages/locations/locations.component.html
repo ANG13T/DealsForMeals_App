@@ -55,7 +55,7 @@
   </ion-content>
 
   <ion-bottom-sheet title="Buisnesses Near You" [hideCloseButton]="true" [state]="defaultSheetState" [minHeight]="mapMinHeight">
-    <ion-list>
+    <ion-list [hidden]="searchTerm == ''">
       <ion-item *ngFor="let buisness of buisnesses | filterBy: ['name']: searchTerm | buisnessCategory: [selectedIndicators]: selectedIndicators" (click)="openWindow(buisness.id)">
         <ion-thumbnail slot="start">
           <img src={{buisness.photoURL}}>
@@ -72,6 +72,25 @@
         <p style="font-size: 1rem;">Please check another time to find more buisnesses near you.</p>
       </div>
     </ion-list>
+
+    <ion-list [hidden]="searchTerm != ''">
+      <ion-item *ngFor="let buisness of buisnesses | slice:0:4" (click)="openWindow(buisness.id)">
+        <ion-thumbnail slot="start">
+          <img src={{buisness.photoURL}}>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>{{buisness.name}}</h3>
+          <p>{{getLocation(buisness.location)}}</p>
+          <p>{{getSubLocation(buisness.location)}}</p>
+        </ion-label>
+      </ion-item>
+  
+      <div class="no-buisnesses" [hidden]="buisnesses.length != 0 || loading" style="text-align: center; margin-top: 2rem;">
+        <h2>No Buisnesses Found!</h2>
+        <p style="font-size: 1rem;">Please check another time to find more buisnesses near you.</p>
+      </div>
+    </ion-list>
+
   </ion-bottom-sheet>
 <!-- </div> -->
 
