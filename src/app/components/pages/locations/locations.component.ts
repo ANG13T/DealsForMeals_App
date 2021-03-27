@@ -10,9 +10,11 @@ import { Location } from '../../../shared/models/location.model';
 import { SheetState } from 'ion-bottom-sheet';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { FormControl } from '@angular/forms';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 declare var google: any;
 
+@UntilDestroy()
 @Component({
   selector: 'app-locations',
   templateUrl: './locations.component.html',
@@ -44,6 +46,8 @@ export class LocationsComponent implements OnInit {
 
   categoryControl = new FormControl(this.buisnessOptions);
 
+  disabledControl = new FormControl(false);
+
   chipsControlValue$ = this.categoryControl.valueChanges;
 
   options={
@@ -61,6 +65,14 @@ export class LocationsComponent implements OnInit {
   ngOnInit() {
     this.loading = true;
     this.presentLoading();
+
+    this.disabledControl.valueChanges
+    .pipe(untilDestroyed(this))
+    .subscribe((val) => {
+      if (val) this.categoryControl.disable();
+      else this.categoryControl.enable();
+    });
+
     this.userService.user$.subscribe((userProfile) => {
       if (userProfile) {
         this.user = userProfile;

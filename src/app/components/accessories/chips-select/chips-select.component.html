@@ -1,4 +1,4 @@
-<mat-chip-list selectable multiple [disabled]="disabled">
+<mat-chip-list selectable [disabled]="disabled" [multiple]="true">
   <mat-chip #c="matChip" *ngFor="let option of options" (click)="toggleSelection(c)" [value]="option"
       [disabled]="disabled" class="selected-color">
       <mat-icon [hidden]="!c.selected">check</mat-icon>

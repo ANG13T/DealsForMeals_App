@@ -10,3 +10,7 @@ mat-icon {
     color: #3fa7b5 !important;
     border: 2px solid !important;
 }
+
+.mat-chip.mat-standard-chip::after {
+    background: #0000;
+}
