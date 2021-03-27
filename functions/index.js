@@ -17,7 +17,7 @@ let transporter = nodemailer.createTransport({
 });
 
 exports.sendMail = functions.https.onCall((data, context) => {
-    cors(req, res, () => {
+    return new Promise((resolve, reject) => {
         const dest = data.dest;
         // const senderEmail = req.query.senderEmail;
         const message = data.message;
@@ -39,9 +39,9 @@ exports.sendMail = functions.https.onCall((data, context) => {
         // returning result
         return transporter.sendMail(mailOptions, (erro, info) => {
             if(erro){
-                return res.send(erro.toString());
+                return reject(erro.toString());
             }
-            return res.send('Sended');
-        });
-    });    
+            return resolve('Sended');
+        });  
+    })    
 });
