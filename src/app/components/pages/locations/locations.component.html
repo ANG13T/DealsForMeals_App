@@ -1,21 +1,6 @@
-<!-- <div class="locations-container"> -->
-  <ion-header>
-    <ion-toolbar class="header">
-      <ion-buttons slot="start">
-        <ion-menu-button style="color: black;"></ion-menu-button>
-      </ion-buttons>
-      <ion-title>Locations Near You</ion-title>
-    </ion-toolbar>
-
-    <ion-toolbar>
-      <!-- TODO: make this google places seach via location + buisness name -->
-      <!-- <ion-searchbar [(ngModel)]="searchTerm"></ion-searchbar> -->
-      <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" [(ngModel)]="searchTerm" (onAddressChange)="handleAddressChange($event)" placeholder="Enter your address" class="places-input"/>
-    </ion-toolbar>
-  </ion-header>
-  
-
-  <ion-content *ngIf="user" no-bounce>
+<div>
+  <ion-content *ngIf="user" no-bounce> 
+    <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" [(ngModel)]="searchTerm" (onAddressChange)="handleAddressChange($event)" placeholder="Search for Location" class="places-input"/>
     <div class="indicators">
       <div class="indicator" (click)="toggleIndicators('foodbanks')" [ngClass]="{'foodbanksIndicator': toggledFoodbanks}">
         <ion-icon name="nutrition-outline"></ion-icon>
@@ -55,7 +40,7 @@
     </agm-map>
   </ion-content>
 
-  <ion-bottom-sheet title="Buisnesses Near You" [hideCloseButton]="true" [state]="defaultSheetState" [minHeight]="mapMinHeight">
+  <ion-bottom-sheet title="Buisnesses Near You" [hideCloseButton]="true" [state]="defaultSheetState" [minHeight]="mapMinHeight" id="sheet">
     <ion-list [hidden]="searchTerm == ''">
       <ion-item *ngFor="let buisness of buisnesses | filterBy: ['name']: searchTerm | buisnessCategory: [selectedIndicators]: selectedIndicators" (click)="openWindow(buisness.id)">
         <ion-thumbnail slot="start">
@@ -93,6 +78,7 @@
     </ion-list>
 
   </ion-bottom-sheet>
-<!-- </div> -->
+</div>
 
 
+<app-bottom-bar style="z-index: 1000;"></app-bottom-bar>

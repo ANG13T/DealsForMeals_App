@@ -35,7 +35,7 @@ agm-map {
 }
 
 ion-content{
-    height: 60vh;
+    height: 80vh;
 }
 
 .indicators{
@@ -50,6 +50,12 @@ ion-content{
         border-radius: 50%;
         margin-bottom: 15px;
     }
+}
+
+#sheet{
+    position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .buisness-info-display{
