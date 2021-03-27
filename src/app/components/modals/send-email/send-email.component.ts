@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import firebase from 'firebase/app';
+import { AngularFireFunctions } from '@angular/fire/functions';
 
 @Component({
   selector: 'app-send-email',
@@ -8,14 +8,15 @@ import firebase from 'firebase/app';
   styleUrls: ['./send-email.component.scss'],
 })
 export class SendEmailComponent implements OnInit {
-  sendMail = firebase.functions().httpsCallable('sendMail');
   message:string = "";
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data, private functions: AngularFireFunctions) { }
 
   ngOnInit() {}
 
   async sendEmail(){
+    const sendMail = this.functions.httpsCallable('sendMail');
+
     if(this.message.length < 20){
       alert("Please type atleast 20 characters");
       return;
@@ -25,12 +26,11 @@ export class SendEmailComponent implements OnInit {
       return;
     }
 
-    this.sendMail({dest: this.data.buisness.email, message: this.message, username: this.data.sent.name}).then((data) => {
-      console.log("got back data", data);
-    }).catch((err) => {
-      console.log("error", err);
-      alert("Something went wrong please try again");
-    });
+    const mailObservable = sendMail({dest: this.data.buisness.email, message: this.message, username: this.data.sent.name});
+
+    mailObservable.subscribe(async res => {
+      console.log("got back data", res);
+    })
   }
 
 }

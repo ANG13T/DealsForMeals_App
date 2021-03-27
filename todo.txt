@@ -18,7 +18,6 @@ NEXT STEPS:
 DO RIGHT NOW:
 - locations code: order based on closest locations 
 - sign up page (location not found alert and disable)
-- send email functionality
 
 - fix scroll on view buisness
 - minor CSS changes based on FIGMA design (view buisness responsiveness, home page)
