@@ -50,7 +50,6 @@ import { ShareRateComponent } from './components/pages/share-rate/share-rate.com
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { AppRate } from '@ionic-native/app-rate/ngx';
 import { DealsComponent } from './components/pages/deals/deals.component';
-import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { IonIntlTelInputModule } from 'ion-intl-tel-input';
 import {NgPipesModule} from 'ngx-pipes';
 import { BuisnessCategoryPipe } from './shared/pipes/buisness-category.pipe';
@@ -64,7 +63,7 @@ import { SendEmailComponent } from './components/modals/send-email/send-email.co
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, AngularFireModule.initializeApp(environment.firebaseConfig), AngularFireAuthModule, AngularFireStorageModule, FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule, MaterialModule, AgmOverlays, AgmCoreModule.forRoot({
     apiKey: environment.googleMapsAPIKey
   }), AvatarModule, IonBottomSheetModule, IonIntlTelInputModule, NgPipesModule, GooglePlaceModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AngularFirestore, NativeGeocoder, Geolocation,SocialSharing, AppRate, EmailComposer],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AngularFirestore, NativeGeocoder, Geolocation,SocialSharing, AppRate],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

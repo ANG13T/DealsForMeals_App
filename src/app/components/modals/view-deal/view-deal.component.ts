@@ -121,7 +121,7 @@ export class ViewDealComponent implements OnInit {
 
   contactBuisness(){
     this.dialog.open(SendEmailComponent, {
-      width: '250px',
+      width: '350px',
       data: {buisness: this.post.userProfile}
     });
   }
