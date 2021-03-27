@@ -8,6 +8,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { ViewBuisnessComponent } from '../../modals/view-buisness/view-buisness.component';
 import { Location } from '../../../shared/models/location.model';
 import { SheetState } from 'ion-bottom-sheet';
+import { Address } from 'ngx-google-places-autocomplete/objects/address';
 
 declare var google: any;
 
@@ -38,6 +39,14 @@ export class LocationsComponent implements OnInit {
 
   @ViewChild('map', { read: ElementRef, static: false }) mapRef: ElementRef;
 
+  options={
+    componentRestrictions:{
+      country: ["us", "ca"]
+    },
+    fields: ["address_components", "geometry"],
+    types: ["address"]
+  }
+
 
   constructor(private businessService: BuisnessService, private userService: UserService, private routerOutlet: IonRouterOutlet, private modalController: ModalController, private loadingController: LoadingController) {
   }
@@ -64,7 +73,6 @@ export class LocationsComponent implements OnInit {
           
         }
 
-        let resultantLocation = this.userLocation ? this.userLocation : this.user.location;
 
         this.businessService.buisnesses$.subscribe((buisnesses) => {
           console.log("buisnesses are", buisnesses)
@@ -100,6 +108,13 @@ export class LocationsComponent implements OnInit {
   goToMapPosition(latitude: number, longitude: number){
     this.mapLatitiude = latitude;
     this.mapLongitude = longitude;
+  }
+
+  public handleAddressChange(address: Address) {
+    console.log("the adress", address);
+    let long = address.geometry.location.lng();
+    let lat = address.geometry.location.lat();
+    this.goToMapPosition(lat, long);
   }
 
   async dismissLoading(){

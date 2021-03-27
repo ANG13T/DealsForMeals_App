@@ -9,7 +9,8 @@
 
     <ion-toolbar>
       <!-- TODO: make this google places seach via location + buisness name -->
-      <ion-searchbar [(ngModel)]="searchTerm"></ion-searchbar>
+      <!-- <ion-searchbar [(ngModel)]="searchTerm"></ion-searchbar> -->
+      <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" [(ngModel)]="searchTerm" (onAddressChange)="handleAddressChange($event)" placeholder="Enter your address" class="places-input"/>
     </ion-toolbar>
   </ion-header>
   

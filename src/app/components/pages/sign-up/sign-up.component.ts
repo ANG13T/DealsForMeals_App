@@ -5,7 +5,6 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 import { Location } from 'src/app/shared/models/location.model';
-import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { ViewEncapsulation } from '@angular/core';
 import * as geofire from 'geofire-common';
