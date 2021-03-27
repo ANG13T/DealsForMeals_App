@@ -8,6 +8,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { SendEmailComponent } from '../send-email/send-email.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-view-deal',
@@ -23,6 +24,7 @@ export class ViewDealComponent implements OnInit {
   postID: string;
   displayLocation: string;
   isOwner: boolean = false;
+  currentUser: User;
   uid: string;
   selectedIndex: string = "description";
 
@@ -31,6 +33,7 @@ export class ViewDealComponent implements OnInit {
   ngOnInit() {
     this.userService.user$.subscribe((userProfile) => {
       if(userProfile){
+        this.currentUser = userProfile;
         this.uid = userProfile.uid;
         this.isOwner = (this.post.userProfile.uid == this.uid);
         let location = this.post.userProfile.location;
@@ -122,7 +125,7 @@ export class ViewDealComponent implements OnInit {
   contactBuisness(){
     this.dialog.open(SendEmailComponent, {
       width: '350px',
-      data: {buisness: this.post.userProfile}
+      data: {buisness: this.post.userProfile, sent: this.currentUser}
     });
   }
 

@@ -9,6 +9,7 @@ import { ViewDealComponent } from '../view-deal/view-deal.component';
 import { ViewAllDealsComponent } from '../view-all-deals/view-all-deals.component';
 import { SendEmailComponent } from '../send-email/send-email.component';
 import { MatDialog } from '@angular/material/dialog';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-view-buisness',
@@ -19,6 +20,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class ViewBuisnessComponent implements OnInit {
 
   buisness: User;
+  currentUser: User;
   posts: Deal[] = [];
   loadingPosts:boolean = false;
   previewDeals: Deal[] = [];
@@ -26,7 +28,7 @@ export class ViewBuisnessComponent implements OnInit {
   displayLocation: string;
   selectedIndex: string = "deals";
 
-  constructor(private buisnessService: BuisnessService, private route:ActivatedRoute, private router: Router, private modalCtrl: ModalController, private dealService: DealService, private modalController: ModalController, public dialog: MatDialog) { }
+  constructor(private buisnessService: BuisnessService, private route:ActivatedRoute, private router: Router, private modalCtrl: ModalController, private dealService: DealService, private modalController: ModalController, public dialog: MatDialog, private userService: UserService) { }
 
   ngOnInit() {
     this.loadingPosts = true;
@@ -36,6 +38,12 @@ export class ViewBuisnessComponent implements OnInit {
         this.buisness = buisness;
       })
     }
+
+    this.userService.user$.subscribe((userProfile) => {
+      if(userProfile){
+        this.currentUser = userProfile;
+      }
+    });
 
     this.dealService.getDealsForUser(this.buisness.uid).then((postData) => {
       this.posts = postData;
@@ -103,7 +111,7 @@ export class ViewBuisnessComponent implements OnInit {
   contactBuisness(){
     this.dialog.open(SendEmailComponent, {
       width: '350px',
-      data: {buisness: this.buisness}
+      data: {buisness: this.buisness, sent: this.currentUser}
     });
   }
 

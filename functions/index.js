@@ -2,7 +2,7 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const nodemailer = require('nodemailer');
 const cors = require('cors')({origin: true});
-import credentials from './config/credentials';
+var credentials = require('./config/credentials.json');
 admin.initializeApp();
 
 /**
@@ -16,12 +16,12 @@ let transporter = nodemailer.createTransport({
     }
 });
 
-exports.sendMail = functions.https.onRequest((req, res) => {
+exports.sendMail = functions.https.onCall((data, context) => {
     cors(req, res, () => {
-        const dest = req.query.dest;
+        const dest = data.dest;
         // const senderEmail = req.query.senderEmail;
-        const message = req.query.message;
-        const username = req.query.username;
+        const message = data.message;
+        const username = data.username;
 
         const mailOptions = {
             from: `"DealsForMeals" <${credentials.gmail}>`, 
