@@ -32,8 +32,8 @@
   </ion-content>
 
   <ion-bottom-sheet title="Buisnesses Near You" [hideCloseButton]="true" [state]="defaultSheetState" [minHeight]="mapMinHeight" id="sheet">
-    <ion-list [hidden]="searchTerm == ''">
-      <ion-item *ngFor="let buisness of buisnesses | filterBy: ['name']: searchTerm | buisnessCategory: categoryControl.value" (click)="openWindow(buisness.id)">
+    <ion-list [hidden]="searchTerm == '' && categoryControl.value == buisnessOptions">
+      <ion-item *ngFor="let buisness of buisnesses | buisnessCategory: categoryControl.value | filterBy: ['name']: searchTerm" (click)="openWindow(buisness.id)">
         <ion-thumbnail slot="start">
           <img src={{buisness.photoURL}}>
         </ion-thumbnail>
@@ -50,7 +50,7 @@
       </div>
     </ion-list>
 
-    <ion-list [hidden]="searchTerm != ''">
+    <ion-list [hidden]="searchTerm != '' || categoryControl.value != buisnessOptions">
       <ion-item *ngFor="let buisness of buisnesses | slice:0:4" (click)="openWindow(buisness.id)">
         <ion-thumbnail slot="start">
           <img src={{buisness.photoURL}}>
