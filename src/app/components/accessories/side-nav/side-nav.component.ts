@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { menuController } from "@ionic/core";
 import { User } from 'src/app/shared/models/user.model';
 import { UserService } from 'src/app/shared/services/user.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-side-nav',
@@ -12,11 +13,14 @@ import { UserService } from 'src/app/shared/services/user.service';
 export class SideNavComponent implements OnInit {
 
   user: User;
+  userServiceSubscription: Subscription;
 
-  constructor(private router: Router, private userService: UserService) { }
+  constructor(private router: Router, private userService: UserService) { 
+    this.userServiceSubscription = new Subscription();
+  }
 
   ngOnInit() {
-    this.userService.user$.subscribe((userProfile) => {
+    this.userServiceSubscription = this.userService.user$.subscribe((userProfile) => {
       if(userProfile){
         this.user = userProfile;
       }
@@ -29,6 +33,7 @@ export class SideNavComponent implements OnInit {
   }
 
   logOut(){
+    this.userServiceSubscription.unsubscribe();
     this.userService.signOut();
     menuController.toggle();
   }
