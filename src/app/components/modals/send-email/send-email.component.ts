@@ -31,6 +31,7 @@ export class SendEmailComponent implements OnInit {
     mailObservable.subscribe(async res => {
       console.log("got back data", res);
     })
+
   }
 
 }
