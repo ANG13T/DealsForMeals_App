@@ -8,16 +8,17 @@ admin.initializeApp();
 /**
 * Here we're using Gmail to send 
 */
-let transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: credentials.gmail,
-        pass: credentials.gmail_password
-    }
-});
 
 
 exports.emailMessage = functions.https.onCall((data, context) => {
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: credentials.gmail,
+            pass: credentials.gmail_password
+        }
+    });
+
     const username = data.username;
     const dest = data.dest;
     const message = data.message;

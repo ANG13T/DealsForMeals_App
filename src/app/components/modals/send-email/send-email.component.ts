@@ -9,13 +9,15 @@ import { AngularFireFunctions } from '@angular/fire/functions';
 })
 export class SendEmailComponent implements OnInit {
   message:string = "";
+  loading: boolean = false;
+  complete: boolean = false;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data, private functions: AngularFireFunctions) { }
 
   ngOnInit() {}
 
   async sendEmail(){
-    const sendMail = this.functions.httpsCallable('sendMail');
+    const sendMail = this.functions.httpsCallable('emailMessage');
 
     if(this.message.length < 20){
       alert("Please type atleast 20 characters");
@@ -26,11 +28,17 @@ export class SendEmailComponent implements OnInit {
       return;
     }
 
-    const mailObservable = sendMail({dest: this.data.buisness.email, message: this.message, username: this.data.sent.name});
-
-    mailObservable.subscribe(async res => {
-      console.log("got back data", res);
+    this.loading = true;
+    sendMail({dest: this.data.buisness.email, message: this.message, username: this.data.sent.name}).toPromise().then((result) => {
+      console.log("resultant", result);
+      this.loading = false;
+      this.complete = true;
+    }).catch((err) => {
+      console.log("there was an error", err);
+      alert("Something went wrong. Please try again");
+      this.loading = false;
     })
+    
 
   }
 
