@@ -27,6 +27,7 @@ export class LocationsComponent implements OnInit {
   markerImage: string = '../../../../assets/images/buisness-marker.png';
   openedWindow : number = 0;
   buisnesses: User[] = [];
+  allBuisnesses: User[] = [];
   searchTerm: string = "";
   mapLongitude: number = 0;
   mapLatitiude: number = 0;
@@ -96,6 +97,7 @@ export class LocationsComponent implements OnInit {
         this.businessService.buisnesses$.subscribe((buisnesses) => {
           console.log("buisnesses are", buisnesses)
           this.buisnesses = buisnesses;
+          this.allBuisnesses = this.buisnesses;
           this.loading = false;
           this.dismissLoading();
         })
@@ -134,6 +136,14 @@ export class LocationsComponent implements OnInit {
     let long = address.geometry.location.lng();
     let lat = address.geometry.location.lat();
     this.goToMapPosition(lat, long);
+    this.getBuisnessesNearLocation(lat, long);
+  }
+
+  getBuisnessesNearLocation(lat: number, long: number){
+    let location: Location = {latitude: lat, longitude: long, fullAddress: ""};
+    this.businessService.getBuisnessesNearLocation(location).then((data) => {
+      this.buisnesses = data;
+    })
   }
 
   async dismissLoading(){

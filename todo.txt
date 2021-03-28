@@ -1,23 +1,16 @@
 TODOS: 
-- make error alert for user if not have location on deals and locations and buisnesses
-
-- any page with user (location not found alert and disable)
+- any page with foodies (location not found alert and disable)
+- foodie functionality
 
 - side nav external urls (rate)
 
-- foodie functionality
-
-- fix deals page
-
-- add ads 
-
-- update location functionality on buisness update profile
+- add ads sometimes
 
 NEXT STEPS:
 
 DO RIGHT NOW:
-- locations code: order based on closest locations 
+- locations code: order based on closest locations (fetch from db)
+- update location functionality on buisness update profile
 - sign up page (location not found alert and disable)
-
 - fix scroll on view buisness
 - minor CSS changes based on FIGMA design (view buisness responsiveness, home page)
