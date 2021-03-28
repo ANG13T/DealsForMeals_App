@@ -51,7 +51,7 @@
           </ion-item>
         </ion-list> -->
 
-        <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" placeholder="Enter your address" class="places-input"/>
+        <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)" placeholder="Enter your address" class="places-input" [(ngModel)]="placesText"/>
 
         <div class="description-zone" [hidden]="location.fullAddress == ''">
           <h3>Address Description:</h3>

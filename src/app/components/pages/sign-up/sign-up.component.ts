@@ -40,6 +40,7 @@ export class SignUpComponent implements OnInit {
 
   loading: boolean = false;
   name: string = "";
+  placesText: string = "";
   firstName: string = "";
   lastName: string = "";
   location: Location = { fullAddress: "", longitude: 0, latitude: 0, locality: "", subLocality: "", thoroughfare: "", subThoroughfare: "", administrativeArea: "", subAdministrativeArea: "", postalCode: "", countryCode: "" } as Location;
@@ -105,6 +106,7 @@ export class SignUpComponent implements OnInit {
 
     if (type == 'business') {
       this.isBusiness = true;
+      this.accountType = "foodbank";
     } else {
       this.isBusiness = false;
       this.accountType = "foodie";
@@ -118,9 +120,14 @@ export class SignUpComponent implements OnInit {
     console.log("the adress", address.formatted_address);
     let long = address.geometry.location.lng();
     let lat = address.geometry.location.lat();
-    let addressInfo = this.getAddressInfo(address.address_components);
-    
-    this.location = { fullAddress: address.formatted_address, longitude: long, latitude: lat, locality: addressInfo.locality, subLocality: addressInfo.subLocality, thoroughfare: addressInfo.thoroughfare, subThoroughfare: addressInfo.subThoroughfare, administrativeArea: addressInfo.administrativeArea, subAdministrativeArea: addressInfo.subAdministrativeArea, postalCode: addressInfo.postalCode, countryCode: addressInfo.countryCode } as Location;
+    try{
+      let addressInfo = this.getAddressInfo(address.address_components);
+      this.location = { fullAddress: address.formatted_address, longitude: long, latitude: lat, locality: addressInfo.locality, subLocality: addressInfo.subLocality, thoroughfare: addressInfo.thoroughfare, subThoroughfare: addressInfo.subThoroughfare, administrativeArea: addressInfo.administrativeArea, subAdministrativeArea: addressInfo.subAdministrativeArea, postalCode: addressInfo.postalCode, countryCode: addressInfo.countryCode } as Location;
+    }catch(err){
+      this.placesText= "";
+      alert("Invalid Location. Please try again");
+    }
+   
   }
 
   async signUp() {
@@ -291,7 +298,13 @@ export class SignUpComponent implements OnInit {
   getAddressInfo(data: any[]){
     let subthroughfare = this.filterType("street_number", data).short_name;
     let throughfare = this.filterType("route", data).short_name;
-    let subLocality = this.filterType("locality", data).long_name;
+    let subLocality;
+    if(this.filterType("locality", data)){
+      subLocality = this.filterType("locality", data).long_name;
+    }else{
+      subLocality = this.filterType("sublocality", data).long_name;
+    }
+    
     let locality;
     let subAdministrativeArea;
     if(this.filterType("administrative_area_level_2", data)){
