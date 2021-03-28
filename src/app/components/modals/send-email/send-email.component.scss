@@ -39,4 +39,53 @@
         color: gray;
         font-weight: bold;
     }
+
+    .loading-screen{
+        .sending-spinner{
+            color: #3880ff;
+            text-align: center;
+
+            ion-spinner {
+                transform: scale(3);
+                margin-top: 2rem;
+            }
+
+            h3{
+                margin-top: 3rem;
+                font-size: 1.3rem;
+                font-weight: bold;
+            }
+        }
+        
+    }
+
+    .complete-screen{
+        text-align: center;
+        .check-logo{
+            font-size: 4rem;
+            margin-bottom: 1.3rem;
+            color: #3880ff;
+        }
+
+        h3{
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        p{
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .back-to-app{
+            width: 80%;
+            outline: none;
+            height: 2rem;
+            background: #3880ff;
+            font-weight: bold;
+            color: white;
+            font-size: 1.2rem;
+            border-radius: 10px;
+        }
+    }
 }

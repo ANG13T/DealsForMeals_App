@@ -11,8 +11,10 @@
   </div>
   
   <div class="loading-screen" [hidden]="!loading">
-    <ion-spinner name="bubbles"></ion-spinner>
-    <h3>Sending Message...</h3>
+    <div class="sending-spinner">
+      <ion-spinner name="crescent"></ion-spinner>
+      <h3>Sending Message...</h3>
+    </div>
   </div>
 
   <div class="complete-screen" [hidden]="!complete">
