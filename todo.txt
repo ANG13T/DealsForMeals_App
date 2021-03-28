@@ -1,17 +1,7 @@
-TODOS: 
-- any page with foodies (location not found alert and disable)
-
-- foodie functionality
-
-- side nav external urls (rate)
-
+NEXT STEPS: 
 - add ads sometimes
 
-NEXT STEPS:
-
-DO RIGHT NOW:
-- fix location bug
+TODOS:
 - missing insufficent errors bug
-- sign up page (location not found alert and disable)
-- fix scroll on view buisness
+- material chips bug
 - minor CSS changes based on FIGMA design (view buisness responsiveness, home page)
