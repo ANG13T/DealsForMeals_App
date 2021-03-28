@@ -150,6 +150,11 @@ export class LocationsComponent implements OnInit {
     return await this.loadingController.dismiss().then(() => console.log('dismissed'));
   }
 
+  clearPlacesInput(){
+    this.buisnesses = this.allBuisnesses;
+    this.searchTerm = "";
+  }
+
   openWindow(id) {
     if(this.openedWindow == id){
       this.openedWindow = 0;

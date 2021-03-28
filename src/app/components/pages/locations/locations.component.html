@@ -2,7 +2,7 @@
   <ion-content *ngIf="user" no-bounce> 
     <div class="places-input-container">
       <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" [(ngModel)]="searchTerm" (onAddressChange)="handleAddressChange($event)" placeholder="Search for Location" id="places-input"/>
-      <button id="clear">
+      <button id="clear" (click)="clearPlacesInput()">
         <ion-icon name="close-outline"></ion-icon>
       </button>
     </div>
