@@ -2,30 +2,21 @@
   <ion-header>
     <ion-toolbar class="header">
       <ion-buttons slot="start">
-        <ion-menu-button style="color: black;"></ion-menu-button>
+        <ion-menu-button style="color: white;"></ion-menu-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
 
+  <!-- TODO: restyle skeletons on page -->
+
   <ion-content class="content">
     <div class="main-buisnesss-content">
-      <h1 class="title">View Buisnesses</h1>
-      <div class="options-bar">
-        <ion-searchbar [(ngModel)]="searchTerm"></ion-searchbar>
-        <button mat-icon-button style="color: #3fa7b5;" (click)="toggleFilter()">
-          <mat-icon>filter_list</mat-icon>
-        </button>
-      </div>
-      <div class="chip-section" [hidden]="!filter">
-        <app-chips-select [options]="buisnessOptions" [formControl]="categoryControl">
-        </app-chips-select>
-      </div>
 
-      <div class="general-section" [hidden]="searchTerm != ''">
+      <div class="general-section">
         <h3 [hidden]="(!loadingBuisnesses && buisnesses.length == 0)" class="near-you">Locations Near You</h3>
         <div class="foodbanks-section">
           <div class="foodbanks" [hidden]="loadingBuisnesses">
-            <div class="foodbank" *ngFor="let foodbank of buisnesses | buisnessCategory: categoryControl.value"
+            <div class="foodbank" *ngFor="let foodbank of buisnesses"
               (click)="openBuisness(foodbank)">
               <ion-item>
                 <ion-thumbnail slot="start" style="background-color: rgb(192, 184, 184);">
@@ -39,8 +30,7 @@
               </ion-item>
             </div>
 
-            <!-- modify for piping -->
-            <div class="no-deals" [hidden]="(buisnesses | buisnessCategory: categoryControl.value)?.length != 0"
+            <div class="no-deals" [hidden]="buisnesses.length != 0"
               style="text-align: center;">
               <h2 style="margin-top: 1rem;">No Buisnesses Found!</h2>
               <p style="font-size: 1rem;">Please check another time to find buisnesses near you.</p>
@@ -73,32 +63,6 @@
             <ion-infinite-scroll-content loadingSpinner="crescent">
             </ion-infinite-scroll-content>
           </ion-infinite-scroll>
-        </div>
-
-      </div>
-
-      <div class="search-section" [hidden]="searchTerm == ''">
-
-        <div class="buisness"
-          *ngFor="let buisness of buisnesses | filterBy: ['name']: searchTerm | buisnessCategory: categoryControl.value"
-          (click)="openDeal(deal)">
-          <ion-item>
-            <ion-thumbnail slot="start">
-              <img src={{buisness.photoURL}}>
-            </ion-thumbnail>
-            <ion-label>
-              <h3>{{buisness.name}}</h3>
-              <p>{{getLocation(buisness.location)}}</p>
-              <p>{{getSubLocation(buisness.location)}}</p>
-            </ion-label>
-          </ion-item>
-        </div>
-
-        <div class="no-deals"
-          [hidden]="(buisnesses | filterBy: ['name']: searchTerm | buisnessCategory: categoryControl.value)?.length != 0"
-          style="text-align: center;">
-          <h3 style="font-weight: bold; text-align: center;">No Buisnesses Found!</h3>
-          <p style="font-size: 1rem;">Please check another time to find buisnesses near you.</p>
         </div>
 
       </div>
