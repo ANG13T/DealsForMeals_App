@@ -2,9 +2,9 @@ NEXT STEPS:
 - add ads sometimes
 - missing insufficent errors bug
 - material chips 
-- skeletons on deals page + buisness page
+- show phone number for deal and buisness view + profile ?
 
 TODOS:
-- options bar in deal
+- skeletons on deals page + buisness page
 - upvote and downvote display + functionality
 - minor CSS changes based on FIGMA design (view buisness responsiveness, home page)

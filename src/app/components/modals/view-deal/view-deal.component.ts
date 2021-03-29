@@ -129,4 +129,13 @@ export class ViewDealComponent implements OnInit {
     });
   }
 
+
+  downvote(){
+
+  }
+
+  upvote(){
+    
+  }
+
 }

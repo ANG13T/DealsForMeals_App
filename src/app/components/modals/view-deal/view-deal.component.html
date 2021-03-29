@@ -26,7 +26,20 @@
     </ion-slide>
   </ion-slides>
   <ion-skeleton-text animated [hidden]="post.images != []" class="skeleton" style="height: 14rem; margin-bottom: 2rem;"></ion-skeleton-text>
-  <!-- TODO: add phone number as optional field -->
+  <div class="functionality-buttons">
+    <button class="upvote">
+      <ion-icon name="chevron-up"></ion-icon>
+      <span>Upvote</span>
+    </button>
+    <button class="downvote">
+      <ion-icon name="chevron-down"></ion-icon>
+      <span>Downvote</span>
+    </button>
+    <button class="message">
+      <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+      <span>Message</span>
+    </button>
+  </div>
   <ion-segment value="deals" [(ngModel)]="selectedIndex">
     <ion-segment-button value="description">
       <ion-label>DESCRIPTION</ion-label>
@@ -55,21 +68,10 @@
       </div>
     
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="position: fixed;">
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed"  (click)="contactBuisness()" style="position: fixed;">
     <ion-fab-button>
-      <ion-icon name="chevron-up-circle-outline"></ion-icon>
+      <ion-icon name="chatbox-ellipses-outline"></ion-icon>
     </ion-fab-button>
-    <ion-fab-list side="top">
-      <ion-fab-button color="light">
-        <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button color="light">
-        <ion-icon name="chevron-down"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-button color="light">
-        <ion-icon name="chevron-up"></ion-icon>
-      </ion-fab-button>
-    </ion-fab-list>
   </ion-fab>
 </div>
 </ion-content>

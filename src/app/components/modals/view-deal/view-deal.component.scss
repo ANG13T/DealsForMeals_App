@@ -14,6 +14,29 @@
     }
 }
 
+.functionality-buttons{
+    display: flex;
+
+    button{
+        display: flex;
+        width: 33.33%;
+
+        ion-icon {
+            display: inline-block;
+            font-size: 1rem;
+            color: #ffC977;
+            vertical-align: middle;
+           }
+           
+        span{
+             display: inline-block;
+             color: blue;
+             font-size: 1rem;
+             vertical-align: middle;
+        }
+    }
+}
+
 .form{
     position: absolute;
     top: 10%;
