@@ -7,6 +7,16 @@
     width: 100%;
 }
 
+#main-display-slides{
+  height: 15rem;
+  .header-main{
+    img{
+      width: 95vw;
+      border-radius: 1rem;
+    }
+  }
+}
+
 .header{
   background-color: rgba(255, 255, 255, 0);
   color: black !important;
@@ -55,6 +65,10 @@ ion-title{
   display: flex;
   height: 100%;
   flex-direction: column;
+
+  .header{
+    --background: #06A67C;
+  }
 
   ion-list{
     ion-item{

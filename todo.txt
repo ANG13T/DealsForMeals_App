@@ -1,7 +1,9 @@
 NEXT STEPS: 
 - add ads sometimes
+- missing insufficent errors bug
+- material chips 
 
 TODOS:
-- missing insufficent errors bug
-- material chips bug
+- upvote and downvote
+- restyle deal layout and make header + show distance away
 - minor CSS changes based on FIGMA design (view buisness responsiveness, home page)

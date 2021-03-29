@@ -2,7 +2,7 @@
   <ion-header>
     <ion-toolbar class="header">
       <ion-buttons slot="start">
-        <ion-menu-button style="color: black;"></ion-menu-button>
+        <ion-menu-button style="color: white;"></ion-menu-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
@@ -10,25 +10,26 @@
   <!-- TODO: add skeleton for top display -->
 
   <ion-content class="content">
+
+    <ion-slides pager id="main-display-slides">
+      <ion-slide>
+          <div class="header-main">
+            <img src="../../../../assets/images/welcome-header.png" alt="Welcome Header"/>
+          </div>
+      </ion-slide>
+      <ion-slide *ngFor="let deal of paginationDeals | slice:0:3">
+        <div class="card-main" (click)="openDeal(deal)">
+          <img src={{deal.images[0]}} />
+        </div>
+      </ion-slide>
+      </ion-slides>
+
   <div class="deals-section" *ngIf="deals$ | async as deals">
 
-     <h1 class="title">View Deals</h1>
-    <div class="options-bar">
-      <ion-searchbar [(ngModel)]="searchTerm"></ion-searchbar>
-    </div>
-
-    <div class="general-display" [hidden]="searchTerm != ''">
+    <div class="general-display">
       <div class="topDisplay">
-        <h3 class="subtitle" [hidden]="(deals.length == 0)">Deals Near You</h3>
-        <ion-slides pager>
-          <ion-slide *ngFor="let deal of paginationDeals | slice:0:3">
-              <div class="card-main" (click)="openDeal(deal)">
-                <img src={{deal.images[0]}} />
-              </div>
-          </ion-slide>
-          </ion-slides>
+        <h3 class="subtitle">All Deals</h3>
       </div>
-
       <ion-list>
         <div class="deals" > 
           <div class="deal" *ngFor="let deal of paginationDeals" (click)="openDeal(deal)">
@@ -90,26 +91,6 @@
         </ion-infinite-scroll-content>
       </ion-infinite-scroll>
 
-    </div>
-
-    <div class="search-display" [hidden]="searchTerm == ''" >
-      <div class="deal" *ngFor="let deal of deals | filterBy: ['title', 'userProfile.name']: [searchTerm, searchTerm]" (click)="openDeal(deal)">
-        <ion-item>
-          <ion-thumbnail slot="start">
-            <img src={{deal.images[0]}}>
-          </ion-thumbnail>
-          <ion-label>
-            <h3>{{deal.title}}</h3>
-            <p>{{getLocation(deal.userProfile.location)}}</p>
-            <p>{{getSubLocation(deal.userProfile.location)}}</p>
-          </ion-label>
-        </ion-item>
-      </div>
-
-      <div class="no-deals" [hidden]="(deals | filterBy: ['title', 'userProfile.name']: [searchTerm, searchTerm])?.length != 0">
-        <h3>No Deals Found</h3>
-        <p>Please try searching with another term.</p>
-      </div>
     </div>
 
   </div>
