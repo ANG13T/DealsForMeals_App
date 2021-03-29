@@ -100,6 +100,16 @@ export class DealsComponent implements OnInit {
     return false;
   }
 
+  getDistanceBetweenDeal(data: Deal): number{
+    let center = [this.user.location.latitude, this.user.location.longitude];
+    const lat = data.lat;
+    const lng = data.lng;
+    const distanceInKm = geofire.distanceBetween([lat, lng], center);
+    const distanceInM = distanceInKm * 1000;
+    const distanceInMiles = distanceInM / (0.000621371);
+    return distanceInMiles;
+  }
+
   onScroll () {
     setTimeout(() => {
       this.fetchTodosPaginated();

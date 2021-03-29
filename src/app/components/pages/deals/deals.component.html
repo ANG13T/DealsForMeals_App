@@ -7,7 +7,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- TODO: add skeleton for top display -->
+  <!-- TODO: adjust loading skeletons -->
 
   <ion-content class="content">
 
@@ -31,7 +31,7 @@
               <div class="deal-image" style="background-color: rgb(192, 184, 184);">
                 <img src={{deal.images[0]}} loading="lazy" />
               </div>
-                <h3>{{deal.title}}</h3>
+                <h3>{{getDistanceBetweenDeal(deal)}} mi</h3>
           </div>
 
           <div class="no-deals" [hidden]="paginationDeals.length != 0">
@@ -41,19 +41,6 @@
         </div>
 
         <div class="loading-deals" [hidden]="!loadingDeals">
-          <div class="general-display">
-            <div class="topDisplay">
-              <ion-slides pager>
-                <ion-slide *ngFor="let deal of [1,2,3]">
-                    <div class="card-main">
-                      <!-- <img src={{deal.images[0]}} /> -->
-                      <ion-skeleton-text animated style="height: 25vh;"></ion-skeleton-text>
-                    </div>
-                </ion-slide>
-                </ion-slides>
-            </div>
-            </div>
-
           <div class="deal" *ngFor="let post of [1,2,3,4,5]">
             <ion-item>
               <ion-thumbnail slot="start">
