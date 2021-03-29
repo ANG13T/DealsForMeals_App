@@ -28,16 +28,22 @@
   <ion-skeleton-text animated [hidden]="post.images != []" class="skeleton" style="height: 14rem; margin-bottom: 2rem;"></ion-skeleton-text>
   <div class="functionality-buttons">
     <button class="upvote">
-      <ion-icon name="chevron-up"></ion-icon>
+      <div class="button-content">
+        <ion-icon name="arrow-up"></ion-icon>
       <span>Upvote</span>
+      </div>
     </button>
     <button class="downvote">
-      <ion-icon name="chevron-down"></ion-icon>
-      <span>Downvote</span>
+      <div class="button-content">
+        <ion-icon name="arrow-down"></ion-icon>
+        <span>Downvote</span>
+      </div>
     </button>
     <button class="message">
-      <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-      <span>Message</span>
+      <div class="button-content">
+        <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+        <span>Message</span>
+      </div>
     </button>
   </div>
   <ion-segment value="deals" [(ngModel)]="selectedIndex">
