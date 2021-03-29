@@ -55,10 +55,21 @@
       </div>
     
 
-  <ion-fab vertical="bottom" horizontal="start" slot="fixed" (click)="contactBuisness()" style="position: fixed;">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="position: fixed;">
     <ion-fab-button>
-      <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+      <ion-icon name="chevron-up-circle-outline"></ion-icon>
     </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button color="light">
+        <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light">
+        <ion-icon name="chevron-down"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button color="light">
+        <ion-icon name="chevron-up"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
   </ion-fab>
 </div>
 </ion-content>
