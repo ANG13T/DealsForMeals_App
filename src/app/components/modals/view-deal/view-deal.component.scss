@@ -19,12 +19,21 @@
     padding-top: 10px;
     padding-bottom: 10px;
 
+    .vote-display{
+        width: 33.33%;
+
+        h2{
+            margin-bottom: 0px;
+            color: #676464;
+        }
+    }
     button{
         display: flex;
         width: 33.33%;
         display: inline-flex;
         align-items: center; 
         height: 2rem;
+        outline: none;
         text-align: center;
         background-color: white;
 
@@ -36,14 +45,12 @@
 
             ion-icon {
                 display: inline-block;
-                color: #6AB3FC;
                 vertical-align: middle;
                 margin-right: 4px;
                }
                
             span{
                  display: inline-block;
-                 color: #6AB3FC;
                  vertical-align: middle;
             }
         }

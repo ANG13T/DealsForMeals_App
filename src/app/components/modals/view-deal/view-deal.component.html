@@ -28,23 +28,20 @@
   <ion-skeleton-text animated [hidden]="post.images != []" class="skeleton" style="height: 14rem; margin-bottom: 2rem;"></ion-skeleton-text>
   <div class="functionality-buttons">
     <button class="upvote">
-      <div class="button-content">
+      <div class="button-content" style="color: #5bca7e;">
         <ion-icon name="arrow-up"></ion-icon>
       <span>Upvote</span>
       </div>
     </button>
     <button class="downvote">
-      <div class="button-content">
+      <div class="button-content" style="color: #f44336;">
         <ion-icon name="arrow-down"></ion-icon>
         <span>Downvote</span>
       </div>
     </button>
-    <button class="message">
-      <div class="button-content">
-        <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-        <span>Message</span>
-      </div>
-    </button>
+    <div class="vote-display">
+      <h2>0 votes</h2>
+    </div>
   </div>
   <ion-segment value="deals" [(ngModel)]="selectedIndex">
     <ion-segment-button value="description">
@@ -72,12 +69,12 @@
                   [longitude]="post.userProfile.location.longitude"></agm-marker>
         </agm-map>
       </div>
-    
 
-  <ion-fab vertical="bottom" horizontal="start" slot="fixed"  (click)="contactBuisness()" style="position: fixed;">
-    <ion-fab-button>
-      <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+      <ion-fab vertical="bottom" horizontal="start" slot="fixed" (click)="contactBuisness()" style="position: fixed;">
+        <ion-fab-button>
+          <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    
 </div>
 </ion-content>
