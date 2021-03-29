@@ -121,7 +121,7 @@ export class DealsComponent implements OnInit {
             let id = todoSnap.payload.doc.id;
             resultData.id = id;
             let result = {...resultData} as Deal;
-            if(!this.alreadyContainsDeal(result) && this.validLocation(result)){
+            if(!this.alreadyContainsDeal(result)){
               this.paginationDeals.push(result);
             }else{
               if(data.length == 1){

@@ -17,11 +17,6 @@
             <img src="../../../../assets/images/welcome-header.png" alt="Welcome Header"/>
           </div>
       </ion-slide>
-      <ion-slide *ngFor="let deal of paginationDeals | slice:0:3">
-        <div class="card-main" (click)="openDeal(deal)">
-          <img src={{deal.images[0]}} />
-        </div>
-      </ion-slide>
       </ion-slides>
 
   <div class="deals-section" *ngIf="deals$ | async as deals">
@@ -33,16 +28,10 @@
       <ion-list>
         <div class="deals" > 
           <div class="deal" *ngFor="let deal of paginationDeals" (click)="openDeal(deal)">
-            <ion-item>
-              <ion-thumbnail slot="start" style="background-color: rgb(192, 184, 184);">
-                <img src={{deal.images[0]}} loading="lazy">
-              </ion-thumbnail>
-              <ion-label>
+              <div class="deal-image" style="background-color: rgb(192, 184, 184);">
+                <img src={{deal.images[0]}} loading="lazy" />
+              </div>
                 <h3>{{deal.title}}</h3>
-                <p>{{getLocation(deal.userProfile.location)}}</p>
-                <p>{{getSubLocation(deal.userProfile.location)}}</p>
-              </ion-label>
-            </ion-item>
           </div>
 
           <div class="no-deals" [hidden]="paginationDeals.length != 0">
