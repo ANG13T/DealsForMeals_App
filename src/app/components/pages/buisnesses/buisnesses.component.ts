@@ -54,7 +54,7 @@ export class BuisnessesComponent implements OnInit {
         //   this.loadingBuisnesses = false;
         // })
         this.buisnessService.getBuisnesses(10).then((data) => {
-          this.buisnesses = data;
+          this.sortBuisnessesByDistance(data);
           this.loadingBuisnesses = false;
         })
       }
@@ -68,6 +68,12 @@ export class BuisnessesComponent implements OnInit {
   //     this.fetchBuisnessesPaginated();
   //   }, 1500);
   // }
+
+  sortBuisnessesByDistance(buisnesses: User[]){
+    let sortedBuisnesses = buisnesses.sort((a, b) => (this.getDistanceBetweenBuisness(a) < this.getDistanceBetweenBuisness(b)) ? 1 : -1);
+    console.log("sort complete", sortedBuisnesses)
+    this.buisnesses = sortedBuisnesses;
+  }
 
   toggleFilter(){
     this.filter = !this.filter;
