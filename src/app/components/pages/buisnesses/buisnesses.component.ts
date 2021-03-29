@@ -7,7 +7,7 @@ import { Location } from 'src/app/shared/models/location.model';
 import { UserService } from 'src/app/shared/services/user.service';
 import { FormControl } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { map } from 'rxjs/operators';
+import * as geofire from 'geofire-common';
 import * as _ from 'lodash';
 
 @UntilDestroy()
@@ -19,7 +19,6 @@ import * as _ from 'lodash';
 export class BuisnessesComponent implements OnInit {
 
   buisnesses: User[] = [];
-  // paginationBuisnesses: User[] = [];
   user: User;
   filter: boolean = false;
   searchTerm:string = "";
@@ -31,10 +30,6 @@ export class BuisnessesComponent implements OnInit {
   chipsControlValue$ = this.categoryControl.valueChanges;
 
   disabledControl = new FormControl(false);
-
-  // batch: number = 4;
-  // last: string = "ZZZZZZZ";
-  // empty: boolean = false;
 
   constructor(private buisnessService: BuisnessService, private modalController: ModalController, private userService: UserService) { }
 
@@ -54,11 +49,14 @@ export class BuisnessesComponent implements OnInit {
     this.userService.user$.subscribe(async (userProfile) => {
       if(userProfile){
         this.user = userProfile;
-        this.buisnessService.getBuisnessesNearLocation(this.user.location).then((result) => {
-          this.buisnesses = result;
+        // this.buisnessService.getBuisnessesNearLocation(this.user.location).then((result) => {
+        //   this.buisnesses = result;
+        //   this.loadingBuisnesses = false;
+        // })
+        this.buisnessService.getBuisnesses(10).then((data) => {
+          this.buisnesses = data;
           this.loadingBuisnesses = false;
         })
-
       }
     });
 
@@ -93,6 +91,28 @@ export class BuisnessesComponent implements OnInit {
   getSubLocation(location: Location){
       let result = `${location.locality} ${location.administrativeArea}, ${location.postalCode}`;
       return result;
+  }
+
+  getDistanceBetweenBuisness(buisness: User): number{
+    let center = [this.user.location.latitude, this.user.location.longitude];
+    const lat = buisness.location.latitude;
+    const lng = buisness.location.longitude;
+    const distanceInKm = geofire.distanceBetween([lat, lng], center);
+    const distanceInM = distanceInKm * 1000;
+    const distanceInMiles = distanceInM / (0.000621371);
+    return distanceInMiles;
+  }
+
+  getAccountIcon(accountType: string){
+    if(accountType == "foodbank"){
+      return "fast-food";
+    }
+
+    if(accountType == "other"){
+      return "business";
+    }
+
+    return "storefront";
   }
 
   // alreadyContainsBuisness(user: User){

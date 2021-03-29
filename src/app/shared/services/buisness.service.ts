@@ -76,7 +76,7 @@ export class BuisnessService {
 
   async getBuisnesses(amount: number) {
     let buisnesses: User[] = [];
-    let promise = this.afs.firestore.collection("users").limit(amount).get().then((snapshot) => {
+    let promise = this.afs.firestore.collection("users").where('isBusiness', '==', true).limit(amount).get().then((snapshot) => {
       snapshot.forEach((doc) => {
         let data = doc.data();
         let foodbank: User = {

@@ -4,8 +4,8 @@ NEXT STEPS:
 - material chips 
 - skeletons on deals page + buisness page
 
-
 TODOS:
+- sort buisnesses by distance
 - restyle buisness display: distance away _ account type
 - options bar in deal
 - upvote and downvote display + functionality

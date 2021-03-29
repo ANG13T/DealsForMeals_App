@@ -13,7 +13,7 @@
     <div class="main-buisnesss-content">
 
       <div class="general-section">
-        <h3 [hidden]="(!loadingBuisnesses && buisnesses.length == 0)" class="near-you">Locations Near You</h3>
+        <h3 [hidden]="(!loadingBuisnesses && buisnesses.length == 0)" class="near-you">Buisnesses Near You</h3>
         <div class="foodbanks-section">
           <div class="foodbanks" [hidden]="loadingBuisnesses">
             <div class="foodbank" *ngFor="let foodbank of buisnesses"
@@ -24,8 +24,8 @@
                 </ion-thumbnail>
                 <ion-label>
                   <h3>{{foodbank.name}}</h3>
-                  <p>{{getLocation(foodbank.location)}}</p>
-                  <p>{{getSubLocation(foodbank.location)}}</p>
+                  <p><ion-icon name="location-outline"></ion-icon> {{getDistanceBetweenBuisness(foodbank)}}mi away</p>
+                  <p><ion-icon name={{getAccountIcon(foodbank.accountType)}}></ion-icon> {{getLocation(foodbank.location)}}</p>
                 </ion-label>
               </ion-item>
             </div>
