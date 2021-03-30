@@ -99,6 +99,11 @@
     text-align: center;
 }
 
+.ripple-parent {
+    position: relative;
+    overflow: hidden;
+  }
+
 .mat-tab-header{
     border-bottom: 0px;
     margin: auto;
@@ -115,6 +120,13 @@
     font-weight: bold;
 }
 
+.upvoted{
+    background-color: #cbf3cb !important;
+}
+
+.downvoted{
+    background-color: #efd2d2 !important;
+}
 
 .title{
     font-family: 'Poppins', sans-serif;

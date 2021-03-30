@@ -27,16 +27,18 @@
   </ion-slides>
   <ion-skeleton-text animated [hidden]="post.images != []" class="skeleton" style="height: 14rem; margin-bottom: 2rem;"></ion-skeleton-text>
   <div class="functionality-buttons">
-    <button class="upvote">
+    <button class="upvote ion-activatable ripple-parent" (click)="upvote()" [class.upvoted]="upvoted">
       <div class="button-content" style="color: #5bca7e;">
         <ion-icon name="arrow-up"></ion-icon>
-      <span>Upvote</span>
+        <span>Upvote</span>
+        <ion-ripple-effect></ion-ripple-effect>
       </div>
     </button>
-    <button class="downvote">
+    <button class="downvote ion-activatable ripple-parent" (click)="downvote()" [class.downvoted]="downvoted">
       <div class="button-content" style="color: #f44336;">
         <ion-icon name="arrow-down"></ion-icon>
         <span>Downvote</span>
+        <ion-ripple-effect></ion-ripple-effect>
       </div>
     </button>
     <div class="vote-display">

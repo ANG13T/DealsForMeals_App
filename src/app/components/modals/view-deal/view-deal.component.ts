@@ -26,6 +26,8 @@ export class ViewDealComponent implements OnInit {
   isOwner: boolean = false;
   currentUser: User;
   uid: string;
+  upvoted: boolean = false;
+  downvoted: boolean = false;
   selectedIndex: string = "description";
 
   constructor(private router: Router, private modalController: ModalController, public alertController: AlertController, private dealService: DealService, public actionSheetController: ActionSheetController, private userService: UserService, private dialog: MatDialog) { }
@@ -131,11 +133,18 @@ export class ViewDealComponent implements OnInit {
 
 
   downvote(){
-
+    console.log("dowsnvote")
+    if(this.upvoted){
+      this.upvoted =  false;
+    }
+    this.downvoted = !this.downvoted;
   }
 
   upvote(){
-    
+    if(this.downvoted){
+      this.downvoted =  false;
+    }
+    this.upvoted = !this.upvoted;
   }
 
 }
