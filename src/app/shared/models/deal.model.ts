@@ -8,6 +8,7 @@ export interface Deal {
     images: string[];
     createdAt: Date;
     id: string;
+    votes: number;
     location?: Location; 
     lat?: any;
     lng?: any;

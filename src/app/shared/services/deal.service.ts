@@ -32,7 +32,7 @@ export class DealService {
     let promise = this.afs.firestore.collection("deals").where('userProfile.uid', '==', uid).orderBy("createdAt").get().then((snapshot) => {
       snapshot.forEach((doc) => {
         let docData = doc.data();
-        let newPost: Deal = { userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id, createdAt: docData.createdAt };
+        let newPost: Deal = { userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id, createdAt: docData.createdAt, votes: docData.votes };
         posts.push(newPost);
       })
       return posts;
@@ -55,7 +55,7 @@ export class DealService {
     let promise = this.afs.firestore.collection("deals").limit(amount).get().then((snapshot) => {
       snapshot.forEach((doc) => {
         let docData = doc.data();
-        let newDeal: Deal = { userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id, createdAt: docData.created };
+        let newDeal: Deal = { userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id, createdAt: docData.created, votes: docData.votes };
         deals.push(newDeal);
       })
       return deals;
@@ -68,7 +68,7 @@ export class DealService {
       const doc = p.payload.doc;
       const id = doc.id;
       const docData: any = doc.data();
-      let newDeal: Deal = { userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id, createdAt: docData.created };
+      let newDeal: Deal = { userProfile: docData.userProfile, title: docData.title, description: docData.description, images: docData.images, id: doc.id, createdAt: docData.created, votes: docData.votes };
       return newDeal;
     });
   }))

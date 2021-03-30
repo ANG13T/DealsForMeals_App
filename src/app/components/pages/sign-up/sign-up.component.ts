@@ -143,7 +143,9 @@ export class SignUpComponent implements OnInit {
         accountType: this.accountType,
         email: this.email,
         photoURL: '',
-        isBusiness: this.isBusiness
+        isBusiness: this.isBusiness,
+        upvotes: [],
+        downvotes: []
       }
 
       if (newUser == null) {
@@ -196,7 +198,9 @@ export class SignUpComponent implements OnInit {
         accountType: this.accountType,
         email: '',
         photoURL: '',
-        isBusiness: this.isBusiness
+        isBusiness: this.isBusiness,
+        upvotes: [],
+        downvotes: []
       }
 
       await this.userService.googleSignUp(newUser)

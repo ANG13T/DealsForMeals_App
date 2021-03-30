@@ -104,7 +104,9 @@ export class UserService {
           accountType: user.accountType,
           photoURL: creds.user.photoURL,
           isBusiness: user.isBusiness,
-          description: ''
+          description: '',
+          upvotes: [],
+          downvotes: []
         }
 
         this.afs.firestore.collection("users").doc(userData.uid).set(userData)
@@ -145,7 +147,9 @@ export class UserService {
             accountType: newUser.accountType,
             photoURL: 'https://firebasestorage.googleapis.com/v0/b/dealsformeals-3f16f.appspot.com/o/default-user.jpeg?alt=media&token=66617a87-47ac-4ff8-92da-9ccc0ad92c0b',
             isBusiness: newUser.isBusiness,
-            description: ''
+            description: '',
+            upvotes: [],
+            downvotes: []
           }
   
           this.afs.firestore.collection("users").doc(userData.uid).set(userData)

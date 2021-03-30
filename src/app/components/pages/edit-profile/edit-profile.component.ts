@@ -14,13 +14,13 @@ import { NavController, ToastController } from '@ionic/angular';
   styleUrls: ['./edit-profile.component.scss'],
 })
 export class EditProfileComponent implements OnInit {
-  userProfile: User = {name: "", email: "", accountType: "foodbank", photoURL: "", uid: "", location: null, isBusiness: false, description: "", phoneNumber: ""};
+  userProfile: User = {name: "", email: "", accountType: "foodbank", photoURL: "", uid: "", location: null, isBusiness: false, description: "", phoneNumber: "", upvotes: [], downvotes: []};
   firstName: string = "";
   lastName: string = "";
   initFirstName: string = "";
   phoneNumber = '';
   initLastName: string = "";
-  initUserProfile: User = {name: "", email: "", accountType: "foodbank", photoURL: "", uid: "", location: null, isBusiness: false, phoneNumber: ""};
+  initUserProfile: User = {name: "", email: "", accountType: "foodbank", photoURL: "", uid: "", location: null, isBusiness: false, phoneNumber: "", upvotes: [], downvotes: []};
   profileLoading: boolean = false;
   errors = {password: "", name: "", email: ""};
 

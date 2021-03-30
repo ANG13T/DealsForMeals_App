@@ -6,6 +6,8 @@ export interface User {
     name: string;
     accountType: 'foodie' | 'foodbank' | 'resturant' | 'other';
     isBusiness:boolean;
+    upvotes: string[];
+    downvotes: string[];
     photoURL?: string;
     description?:string;
     location?: Location; 

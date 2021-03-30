@@ -22,7 +22,8 @@ export class BuisnessService {
     return actions.map(p => {
       const doc = p.payload.doc;
       const docData: any = doc.data();
-      let user: User = { uid: doc.id, name: docData.name, email: docData.email, accountType: docData.accountType, lat: docData.lat, lng: docData.lng, hash: docData.hash, phoneNumber: docData.phoneNumber, description: docData.description, location: docData.location, photoURL: docData.photoURL, isBusiness: docData.isBusiness };
+      let user: User = { uid: doc.id, name: docData.name, email: docData.email, accountType: docData.accountType, lat: docData.lat, lng: docData.lng, hash: docData.hash, phoneNumber: docData.phoneNumber, description: docData.description, location: docData.location, photoURL: docData.photoURL, isBusiness: docData.isBusiness, upvotes: docData.upvotes,
+        downvotes: docData.downvotes };
       return user;
     });
   }))
@@ -86,7 +87,9 @@ export class BuisnessService {
           accountType: data.accountType,
           photoURL: data.photoURL,
           isBusiness: data.isBusiness,
-          location: data.location
+          location: data.location,
+          upvotes: data.upvotes,
+          downvotes: data.downvotes
         }
         buisnesses.push(foodbank);
       })
@@ -108,7 +111,9 @@ export class BuisnessService {
           accountType: data.accountType,
           photoURL: data.photoURL,
           isBusiness: data.isBusiness,
-          location: data.location
+          location: data.location,
+          upvotes: data.upvotes,
+          downvotes: data.downvotes
         }
         buisnesses.push(foodbank);
       })
@@ -128,7 +133,9 @@ export class BuisnessService {
         accountType: data.accountType,
         photoURL: data.photoURL,
         isBusiness: data.isBusiness,
-        location: data.location
+        location: data.location,
+        upvotes: data.upvotes,
+        downvotes: data.downvotes
       }
       return buisness;
     })
