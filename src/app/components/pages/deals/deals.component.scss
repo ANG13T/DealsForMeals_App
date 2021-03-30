@@ -11,6 +11,7 @@
   height: 15rem;
   .header-main{
     img{
+      height: 13rem;
       width: 95vw;
       border-radius: 1rem;
     }
@@ -81,11 +82,16 @@ ion-title{
       }
     }
 
-    h3{
-      margin-top: 10px !important;
-    font-weight: bold;
-    margin-bottom: 4px;
+    .end-information{
+      display: flex;
+      justify-content: space-between;
+      h3{
+        margin-top: 10px !important;
+        font-weight: bold;
+        margin-bottom: 4px;
+      }
     }
+
   }
 
   .header{

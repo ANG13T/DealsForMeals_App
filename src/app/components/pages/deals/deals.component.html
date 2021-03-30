@@ -31,7 +31,11 @@
               <div class="deal-image" style="background-color: rgb(192, 184, 184);">
                 <img src={{deal.images[0]}} loading="lazy" />
               </div>
+              <div class="end-information">
                 <h3>{{getDistanceBetweenDeal(deal)}} mi</h3>
+                <h3>{{deal.votes}} votes</h3>
+              </div>
+              
           </div>
 
           <div class="no-deals" [hidden]="paginationDeals.length != 0">
