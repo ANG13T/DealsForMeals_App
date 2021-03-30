@@ -277,6 +277,24 @@ ion-slides .swiper-pagination {
          }
      }
  }
+
+ .loading-deals{
+   .loading-deal{
+    margin-bottom: 2rem;
+     .image-loading{
+       margin: auto;
+       width: 95%;
+       height: 5rem;
+       border-radius: 5px;
+       margin-bottom: 1rem;
+     }
+
+     .subtext-loading{
+        width: 95%;
+        margin: auto;
+     }
+   }
+ }
  
  // Iphone 6, 7, 8
  @media only screen 

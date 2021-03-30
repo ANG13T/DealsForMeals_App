@@ -45,23 +45,9 @@
         </div>
 
         <div class="loading-deals" [hidden]="!loadingDeals">
-          <div class="deal" *ngFor="let post of [1,2,3,4,5]">
-            <ion-item>
-              <ion-thumbnail slot="start">
-                <ion-skeleton-text></ion-skeleton-text>
-              </ion-thumbnail>
-              <ion-label>
-                <h3>
-                  <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
-                </h3>
-                <p>
-                  <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
-                </p>
-                <p>
-                  <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
-                </p>
-              </ion-label>
-            </ion-item>
+          <div class="loading-deal" *ngFor="let post of [1,2,3]">
+            <ion-skeleton-text animated class="image-loading"></ion-skeleton-text>
+            <ion-skeleton-text animated class="subtext-loading"></ion-skeleton-text>
           </div>
         </div>
       </ion-list>

@@ -3,8 +3,7 @@ NEXT STEPS:
 - material chips 
 
 TODOS:
-- upvote and downvote functionality
-- skeletons on deals page + buisness page
+- skeletons on buisness page
 - show phone number for deal and buisness view + profile ?
 - minor CSS changes based on FIGMA design (view buisness responsiveness, home page)
 - missing insufficent errors bug
