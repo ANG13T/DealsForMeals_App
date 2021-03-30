@@ -128,6 +128,21 @@
     background-color: #efd2d2 !important;
 }
 
+.phone-number{
+    margin-top: 2.3vh !important;
+    margin-bottom: 1.3vh !important;
+    font-size: 18px !important;
+
+    ion-icon{
+        vertical-align: middle !important;
+        margin-right: 6px;
+    }
+
+    span{
+        vertical-align: middle !important;
+    }
+}
+
 .title{
     font-family: 'Poppins', sans-serif;
     font-weight: 600 !important;

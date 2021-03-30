@@ -106,7 +106,7 @@
             </h3>
             <h3 class="description">BUISNESS DESCRIPTION:</h3>
             <p *ngIf="buisness.description != ''">{{buisness.description}}</p>
-            <p *ngIf="buisness.description == ''">No description written yet</p>
+            <p *ngIf="buisness.description == '' || !buisness.description">No description written yet</p>
         </div>
   
 

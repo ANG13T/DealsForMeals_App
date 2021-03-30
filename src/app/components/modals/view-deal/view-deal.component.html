@@ -56,6 +56,10 @@
 
  
       <div class="details" [hidden]="selectedIndex != 'description'">
+        <h3 class="phone-number" *ngIf="post.userProfile.phoneNumber">
+          <ion-icon name="call"></ion-icon>
+          <span>{{post.userProfile.phoneNumber.internationalNumber}}</span>
+        </h3>
         <p class="description">{{post.description}}</p>
         <ion-skeleton-text animated [hidden]="post.description != ''" class="skeleton" style="margin-bottom: 5px;"></ion-skeleton-text>
         <ion-skeleton-text animated [hidden]="post.description != ''" class="skeleton" style="margin-bottom: 5px;"></ion-skeleton-text>
