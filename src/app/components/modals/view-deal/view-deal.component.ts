@@ -40,6 +40,14 @@ export class ViewDealComponent implements OnInit {
         this.isOwner = (this.post.userProfile.uid == this.uid);
         let location = this.post.userProfile.location;
         this.displayLocation = `${location.subThoroughfare} ${location.thoroughfare}, ${location.subLocality} ${location.locality}, ${location.administrativeArea}`;
+
+        if(this.currentUser.downvotes.includes(this.post.id)){
+          this.downvoted = true;
+        }
+
+        if(this.currentUser.upvotes.includes(this.post.id)){
+          this.upvoted = true;
+        }
       }
     });
   }
@@ -133,18 +141,46 @@ export class ViewDealComponent implements OnInit {
 
 
   downvote(){
-    console.log("dowsnvote")
     if(this.upvoted){
       this.upvoted =  false;
+      this.post.votes = this.post.votes - 1;
+      this.currentUser.upvotes = this.currentUser.upvotes.filter((vote) => vote != this.post.id);
     }
+
+    if(!this.downvoted){
+      this.post.votes = this.post.votes - 1;
+      this.currentUser.downvotes.push(this.post.id);
+    }else{
+      this.post.votes = this.post.votes + 1;
+      this.currentUser.downvotes = this.currentUser.downvotes.filter((vote) => vote != this.post.id);
+    }
+
     this.downvoted = !this.downvoted;
+    this.updateVoteCount(this.post.votes);
   }
 
   upvote(){
     if(this.downvoted){
       this.downvoted =  false;
+      this.post.votes = this.post.votes + 1;
+      this.currentUser.downvotes = this.currentUser.downvotes.filter((vote) => vote != this.post.id);
+    }
+
+    if(!this.upvoted){
+      this.post.votes = this.post.votes + 1;
+      this.currentUser.upvotes.push(this.post.id);
+    }else{
+      this.post.votes = this.post.votes - 1;
+      this.currentUser.upvotes = this.currentUser.upvotes.filter((vote) => vote != this.post.id);
     }
     this.upvoted = !this.upvoted;
+    this.updateVoteCount(this.post.votes);
+  }
+
+  async updateVoteCount(count: number){
+    this.dealService.updateVoteCount(this.post, count, this.currentUser.uid, this.currentUser.upvotes, this.currentUser.downvotes).catch((err) => {
+      alert("Something went wrong: " + err.message);
+    });
   }
 
 }

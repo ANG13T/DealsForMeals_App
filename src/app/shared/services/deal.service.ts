@@ -141,6 +141,21 @@ export class DealService {
     return promise;
   }
 
+  async updateVoteCount(deal: Deal, count: number, uid: string, upvotes: string[], downvotes: string[]){
+    let promise = this.afs.collection("deals").doc(deal.id).update({votes: count}).then(() => {
+      this.afs.collection("users").doc(uid).update({upvotes: upvotes, downvotes: downvotes}).then(() => {
+        return;
+      }).catch((err) => {
+        console.log("err", err);
+        return err;
+      })
+    }).catch((err) => {
+      console.log("err", err);
+      return err;
+    });
+    return promise;
+  }
+
   // Pagination Methods
   paginate(limit: number, last: any): Observable<DocumentChangeAction<any>[]> {
     let submit;
