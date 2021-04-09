@@ -23,11 +23,18 @@
   color: black !important;
 }
 
-.subtitle{
-  font-size: 1.3rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+.general-display{
+  .topDisplay{
+    .subtitle{
+      font-weight: bold;
+      margin-top: 6vh !important;
+      margin-bottom: 2vh;
+      font-size: 27px;
+    }
+  }
 }
+
+
 
 .deals-section{
   width: 90%;
@@ -73,6 +80,7 @@ ion-title{
     margin-bottom: 1rem;
     .deal-image{
       background-color: rgb(192, 184, 184);
+      margin-top: 1rem;
       height: 10rem;
       border-radius: 1rem;
       img{

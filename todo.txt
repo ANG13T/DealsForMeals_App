@@ -2,6 +2,6 @@ NEXT STEPS:
 - add ads sometimes
 
 TODOS:
-- minor CSS changes based on FIGMA design (view buisness responsiveness, home page)
 - missing insufficent errors bug
 - material chips 
+- minor CSS changes based on FIGMA design (view buisness responsiveness, home page)
