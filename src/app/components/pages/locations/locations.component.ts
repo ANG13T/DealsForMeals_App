@@ -168,15 +168,12 @@ export class LocationsComponent implements OnInit {
   }
 
   async presentLoading() {
-    return await this.loadingController.create({
+    await this.loadingController.create({
       message: 'Loading',
-    }).then(a => {
-      a.present().then(() => {
-        if (!this.loading) {
-          a.dismiss().then(() => console.log('abort presenting'));
-        }
-      });
-    });
+      duration: 5000
+    }).then(() => {
+      this.loading = false;
+    })
   }
 
 

@@ -79,7 +79,8 @@
 // }
 
 .post-image{
-    width: 100% !important;
+    width: 100% !important;    
+    max-height: 15rem !important;
     height: 14rem;
     object-fit:cover;
     object-position:50% 50%;
