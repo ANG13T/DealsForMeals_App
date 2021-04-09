@@ -198,7 +198,8 @@ export class UserService {
       if(user.photoURL != "https://firebasestorage.googleapis.com/v0/b/dealsformeals-3f16f.appspot.com/o/default-user.jpeg?alt=media&token=66617a87-47ac-4ff8-92da-9ccc0ad92c0b"){
         this.deleteUserImage(user.photoURL);
       }else{
-        this.userService.signOut();
+        // this.userService.signOut();
+        this.router.navigate(['/']);
       }
 
     }).catch((err) => {

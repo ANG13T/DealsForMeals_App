@@ -46,7 +46,7 @@ export class EditProfileComponent implements OnInit {
         this.initUserProfile.location = userProfile.location;
         this.initUserProfile.description = userProfile.description;
         this.initUserProfile.isBusiness = userProfile.isBusiness;
-        this.initUserProfile.phoneNumber = userProfile.phoneNumber;
+        this.initUserProfile.phoneNumber = userProfile.phoneNumber ? userProfile.phoneNumber : "";
 
         if(!userProfile.isBuisness){
           this.initFirstName = this.userProfile.name.split(" ")[0];
