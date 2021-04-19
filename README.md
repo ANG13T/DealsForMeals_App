@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="./resources/icon.png" alt="Logo" width="100" height="100">
+    <img src="./resources/icon.png" alt="Logo" width="150" height="150">
   </a>
 
   <h3 align="center">DealsForMeals</h3>
@@ -11,14 +11,14 @@
     A Discord Bot that provides quality music for work, productivity, and flow. Invite it on Discord to improve your focus!
     <br />
     <br />
-    <a href="https://discord.com/api/oauth2/authorize?client_id=815700293609324555&permissions=3172352&scope=bot" style="font-size: 25px;"><strong>Visit Website »</strong></a>
+    <a href="https://angelina-tsuboi.github.io/DealsForMeals/" style="font-size: 25px;"><strong>Visit Website »</strong></a>
     <br />
     <br />
-    <a href="https://discord.com/invite/w3Tp9x88Nw">Donate ❤️</a>
+    <a href="https://www.paypal.com/donate/?business=DZ68J9W436BGN&item_name=We+plan+to+use+your+donations+to+fund+future+features+for+Ambience&currency_code=USD">Donate</a>
     ·
-    <a href="https://github.com/angelina-tsuboi/Ambience/issues">Report Bug</a>
+    <a href="https://github.com/angelina-tsuboi/DealsForMeals_App/issues">Report Bug</a>
     ·
-    <a href="https://github.com/angelina-tsuboi/Ambience/issues">Request Feature</a>
+    <a href="https://github.com/angelina-tsuboi/DealsForMeals_App/issues">Request Feature</a>
   </p>
 </p>
 
@@ -52,7 +52,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-<img src="website/assets/images/screenshot1.png" alt="Ambience Screenshot">
+<img src="https://raw.githubusercontent.com/angelina-tsuboi/DealsForMeals/main/assets/img/Screenshot1.png" alt="Ambience Screenshot" height="400" width="200">
 
 Ambience is a Discord bot designated to help you focus and work with the use of calming and soothing background noise. Choose over 15 categories of sounds designed to help you concentrate and get work done.
 
