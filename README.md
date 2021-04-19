@@ -31,6 +31,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#future-goals">Future Goals</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -137,8 +138,8 @@ ionic serve
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Please visit the [Documentation page](https://angelina-tsuboi.github.io/Ambience/website/docs.html) on the Ambience site to view all the commands for the bot. 
-If you encounter any difficulties, please join our [Discord server](https://discord.com/invite/w3Tp9x88Nw) to receive the help you need.
+Please visit the [DealsForMeals website](https://angelina-tsuboi.github.io/DealsForMeals/) to view additional information. 
+If you encounter any difficulties, please email dealsformeals2021@gmail.com to receive the help you need.
 
 
 <!-- CONTRIBUTING -->
@@ -162,9 +163,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
 ## Contact
+Support DealsForMeals - [Donation Link](https://www.paypal.com/donate/?business=DZ68J9W436BGN&item_name=We+plan+to+use+your+donations+to+fund+future+features+for+Ambience&currency_code=USD)
 
-Join the Ambience Community - [Invite Link](https://discord.com/invite/w3Tp9x88Nw)
+DealsForMeals Email - [dealsformeals2021@gmail.com](https://mail.google.com/mail/?view=cm&fs=1&to=dealsformeals2021@gmail.com) 
 
-Ambience Email - [ambiencebot0@gmail.com](https://mail.google.com/mail/?view=cm&fs=1&to=ambiencebot0@gmail.com) 
-
-Project Link: [https://angelina-tsuboi.github.io/Ambience/](https://angelina-tsuboi.github.io/Ambience/)
+Project Link: [https://angelina-tsuboi.github.io/DealsForMeals/](https://angelina-tsuboi.github.io/DealsForMeals/)
