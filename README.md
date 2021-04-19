@@ -8,7 +8,7 @@
   <h3 align="center">DealsForMeals</h3>
 
   <p align="center">
-    A Discord Bot that provides quality music for work, productivity, and flow. Invite it on Discord to improve your focus!
+    DealsForMeals is an app that aims to help low-income families with finding the best deals. The app eliminates the need to sort through dozens of websites of each individual food bank, and shortens the distance from accessible food to hungry stomachs. 
     <br />
     <br />
     <a href="https://angelina-tsuboi.github.io/DealsForMeals/" style="font-size: 25px;"><strong>Visit Website »</strong></a>
@@ -54,22 +54,44 @@
 ## About The Project
 <img src="https://raw.githubusercontent.com/angelina-tsuboi/DealsForMeals/main/assets/img/Screenshot1.png" alt="Ambience Screenshot" height="400" width="200">
 
-Ambience is a Discord bot designated to help you focus and work with the use of calming and soothing background noise. Choose over 15 categories of sounds designed to help you concentrate and get work done.
+DealsForMeals is an app that aims to help low-income families with finding the best deals. The app eliminates the need to sort through dozens of websites of each individual food bank, and shortens the distance from accessible food to hungry stomachs.  With DealsForMeals, users will be able to conveniently access the newest deals, BOGOs, happy hour discounts, promotions, and more. More importantly, users can post deals they find to help struggling families save a couple dollars per purchase, eventually saving a great amount of money in cumulation. Furthermore, the app enables food providers, such as groceries, to help food banks restock their supplies more easily.
 
-Ambience Features:
-* Listen and Focus to Peaceful Tunes
-* 15+ categories and 50+ handpicked songs to choose from
-* Custom Music Commands
+DealsForMeals Features:
+* Google Maps Functionality to see Businesses on a map
+* Google Places API to Search for Locations
+* Upvote / Downvote Functionality
+* Upload Images to Firebase Storage
+* Stores User Data with Firebase
+* Utilizes Ngx piping to query through and search for users
+* Google and Username Authentication
+* Email Functionality
 * Open Source
 
-In the future, Ambience plans to improve audio quality, add more sound categories, and add more features depending on our customer's needs. If you would like to recommend a feature, please visit [this link](https://github.com/angelina-tsuboi/Ambience/issues).
+
+### Future Goals:
+1. Expand User base- university students, other countries, etc.
+2. Have app representatives and college students as brand ambassadors 
+3. Partner with businesses
+4. Get sponsorships from major food names in the industry (ex: Feeding America, Meals on Wheels)
+5. Add more app features 
+6. AI Moderation system that can detect if the image is valid 
+7. Expired coupons are automatically deleted (users have the ability to flag expired postings)
+8. Improve User Experience and cater towards Users’ needs.
+9. Expanding outside the U.S. 
+10. Possible territories include Australia and Canada; other English speaking countries 
+
 
 ### Built With
 
-The Ambience bot was made using the following JS libraries.
-* Node.js
-* discord-music-player
-* discord.js
+DealsForMeals was made with the following: 
+* Angular
+* Firebase Firestore
+* Firebase Storage
+* Google Maps API
+* Google Places API
+* Google Places API
+* Ionic Geolocation
+* Ngx Pipes
 
 <!-- GETTING STARTED -->
 ## Getting Started
