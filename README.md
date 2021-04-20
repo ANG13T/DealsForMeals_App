@@ -10,7 +10,7 @@
   <p align="center">
     DealsForMeals is an app that aims to help low-income families with finding the best deals. The app eliminates the need to sort through dozens of websites of each individual food bank, and shortens the distance from accessible food to hungry stomachs. 
     <br />
-    <br />x" style="font-size: 25px;"><strong>Visit Website »</strong></a>
+    <br /><strong>Visit Website »</strong></a>
     <br />
     <br />
   <a href="https://www.youtube.com/watch?v=wD2DCRm1wmk">Watch Trailer</a>
