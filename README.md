@@ -10,10 +10,11 @@
   <p align="center">
     DealsForMeals is an app that aims to help low-income families with finding the best deals. The app eliminates the need to sort through dozens of websites of each individual food bank, and shortens the distance from accessible food to hungry stomachs. 
     <br />
+    <br />x" style="font-size: 25px;"><strong>Visit Website »</strong></a>
     <br />
-    <a href="https://angelina-tsuboi.github.io/DealsForMeals/" style="font-size: 25px;"><strong>Visit Website »</strong></a>
     <br />
-    <br />
+  <a href="https://www.youtube.com/watch?v=wD2DCRm1wmk">Watch Trailer</a>
+    ·
     <a href="https://www.paypal.com/donate/?business=DZ68J9W436BGN&item_name=We+plan+to+use+your+donations+to+fund+future+features+for+Ambience&currency_code=USD">Donate</a>
     ·
     <a href="https://github.com/angelina-tsuboi/DealsForMeals_App/issues">Report Bug</a>
@@ -53,7 +54,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-<img src="https://raw.githubusercontent.com/angelina-tsuboi/DealsForMeals/main/assets/img/Screenshot1.png" alt="Ambience Screenshot" height="400" width="200">
+<img src="https://raw.githubusercontent.com/angelina-tsuboi/DealsForMeals/main/assets/img/Screenshot1.png" alt="Ambience Screenshot" height="400" width="200"> <img src="https://github.com/angelina-tsuboi/DealsForMeals/blob/main/assets/img/Screenshot3.png?raw=true" alt="Ambience Screenshot" height="400" width="200"> <img src="https://raw.githubusercontent.com/angelina-tsuboi/DealsForMeals/main/assets/img/Screenshot4.png" alt="Ambience Screenshot" height="400" width="200"><img src="https://raw.githubusercontent.com/angelina-tsuboi/DealsForMeals/main/assets/img/Screenshot5.png" alt="Ambience Screenshot" height="400" width="200"><img src="https://raw.githubusercontent.com/angelina-tsuboi/DealsForMeals/main/assets/img/Screenshot6.png" alt="Ambience Screenshot" height="400" width="200">
 
 DealsForMeals is an app that aims to help low-income families with finding the best deals. The app eliminates the need to sort through dozens of websites of each individual food bank, and shortens the distance from accessible food to hungry stomachs.  With DealsForMeals, users will be able to conveniently access the newest deals, BOGOs, happy hour discounts, promotions, and more. More importantly, users can post deals they find to help struggling families save a couple dollars per purchase, eventually saving a great amount of money in cumulation. Furthermore, the app enables food providers, such as groceries, to help food banks restock their supplies more easily.
 
@@ -81,6 +82,7 @@ DealsForMeals Features:
 9. Expanding outside the U.S. 
 10. Possible territories include Australia and Canada; other English speaking countries 
 
+[Click Here](https://www.youtube.com/watch?v=wD2DCRm1wmk) to Watch the DealsForMeals Trailer.
 
 ### Built With
 
@@ -168,3 +170,5 @@ Support DealsForMeals - [Donation Link](https://www.paypal.com/donate/?business=
 DealsForMeals Email - [dealsformeals2021@gmail.com](https://mail.google.com/mail/?view=cm&fs=1&to=dealsformeals2021@gmail.com) 
 
 Project Link: [https://angelina-tsuboi.github.io/DealsForMeals/](https://angelina-tsuboi.github.io/DealsForMeals/)
+
+Project Video: [https://www.youtube.com/watch?v=wD2DCRm1wmk](https://www.youtube.com/watch?v=wD2DCRm1wmk)
